@@ -100,38 +100,28 @@ input[type="text"]:focus, select:focus {
   flex-direction: column;
 }
 
-/*feature section*/
-.features {
-  text-align: center;
-  padding: 40px;
-  max-width: 840px;
-  margin:0 auto;
-}
-.feature-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-}
-.feature-item {
-  padding: 20px;
-  border-radius: 10px;
-  background: #fef9e1;
-}
-.icon {
-  font-size: 40px;
-  color: #ff9d23;
-}
-
 
 /* Media query for mobile screens */
 @media (max-width: 700px) {
-
+  .logo img{
+    padding-top: 25px;
+    height:50px;
+    width:50px;
+  }
+  .logo h1{
+    font-size: 2.3rem;
+    color: #fff;
+  }
+  .buttons{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
   main{
     padding-left: 0px;
   }
   .input-container {
     flex-direction: column; /* Stack the items vertically on mobile */
-   align-content: flex-start;
    gap:0px;
   }
   .hero-title {
@@ -149,7 +139,6 @@ input[type="text"]:focus, select:focus {
   .MuiToggleButtonGroup-root.MuiToggleButtonGroup-horizontal.css-1qb8o-MuiToggleButtonGroup-root {
     float:left;
     padding-left: 10px;
-  
 }
 .pronounce-box{
   margin:10px;
@@ -169,6 +158,9 @@ input[type="text"]:focus, select:focus {
   }
   .hero-content{
     text-align: justify;
+  }
+  .buttons{
+   flex-direction: column;
   }
 }
 /*hero section*/
@@ -207,6 +199,7 @@ input[type="text"]:focus, select:focus {
 
 
 /*button*/
+
 .pronounce-button {
   padding: 12px 16px;
   border: 2px solid #0A2472; /* Dark Navy */
