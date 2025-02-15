@@ -160,7 +160,7 @@ input[type="text"]:focus, select:focus {
 
   input[type="text"], select{
    box-sizing: border-box;
-   min-width: 250px;
+   min-width: 85vw;
   }
 }
 
