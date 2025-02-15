@@ -150,8 +150,8 @@ input[type="text"]:focus, select:focus {
 }
 .pronounce-box{
   margin:10px;
+  padding: 10px;
 }
-
 
   input[type="text"], select{
    box-sizing: border-box;

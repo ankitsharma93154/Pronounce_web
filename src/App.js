@@ -97,7 +97,7 @@ const App = () => {
          {/* Display Loading Indicator */}
          {isLoading && (
           <div className="loading-container">
-            <p>Fetching pronunciation...</p>
+            <p className='fetch-pronounciation' style={{paddingLeft:"20px"}}>Fetching pronunciation...</p>
           </div>
         )}
         
