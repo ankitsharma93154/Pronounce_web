@@ -117,7 +117,7 @@ const App = () => {
             {phonetic && (
               <div>
                 <h3>Phonetic Transcription:</h3>
-                <img onClick={getPronunciation} src={speakerIcon} alt="Pronounce" className='phonetic-image' />
+                <img onClick={getPronunciation} loading="lazy" src={speakerIcon} alt="QuickPronounce speaker" className='phonetic-image' />
                 <p className='phonetic'>{phonetic}</p>
               </div>
             )}

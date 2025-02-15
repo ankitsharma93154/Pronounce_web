@@ -6,8 +6,8 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="logo">
-        <img src={Logo}  alt="App logo"/>
-        <h1>Pronounce</h1>
+        <img src={Logo} loading="lazy" alt="QuickPronounce logo"/>
+        <h1>QuickPronounce</h1>
       </div>
     </nav>
   );
