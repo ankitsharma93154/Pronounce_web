@@ -266,7 +266,7 @@ input[type="text"]:focus, select:focus {
   flex-direction: column;
   max-width: 800px;
   margin:0 auto;
-  min-height: 350px;
+  min-height: 370px;
   background: #fef9e1;
   padding: 10px;
   border-radius: 10px;
