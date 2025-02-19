@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';  
 import GenderToggleButton from './Toggle';
 import speakerIcon from './volume_up_24dp_1976D2_FILL0_wght400_GRAD0_opsz24.png';
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
   const [word, setWord] = useState('');
