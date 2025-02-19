@@ -65,6 +65,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
+      <Analytics />
       <div className='main'>
         <div className='input-container'>
           <div className='input-box'>
