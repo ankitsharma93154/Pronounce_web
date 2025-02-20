@@ -10,9 +10,10 @@ const App = () => {
   const [accent, setAccent] = useState('en-US');
   const [isMale, setIsMale] = useState(true);
   const [phonetic, setPhonetic] = useState('');
-  const [meaning, setMeaning] = useState('');
   const [hasPronounced, setHasPronounced] = useState(false);
   const [isLoading, setIsLoading] = useState(false);  // Loading state
+  const [meanings, setMeanings] = useState([]);  // Corrected state definition
+
   const audioRef = useRef(new Audio());
 
   const handleGenderChange = (isMale) => {
@@ -24,41 +25,50 @@ const App = () => {
   const getPronunciation = async () => {
     try {
       setIsLoading(true); // Show loading spinner
-      
+  
       const response = await fetch('https://backend-8isq.vercel.app/get-pronunciation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ word: word.trim(), accent, isMale }),
       });
   
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status} - ${response.statusText}`);
+      }
+  
       const data = await response.json();
-      setPhonetic(data.phonetic);
-      setMeaning(data.meaning);
+      setPhonetic(data.phonetic || "Phonetic transcription not available.");
+  
+      // Ensure meanings are stored as an array for correct rendering
+      setMeanings(Array.isArray(data.meanings) && data.meanings.length > 0 ? data.meanings : ["Meaning not available."]);
   
       // Handle audio playback
       if (data.audioContent) {
-        const byteCharacters = atob(data.audioContent);
-        const byteNumbers = Array.from(byteCharacters, (char) =>
-          char.charCodeAt(0)
-        );
-        const byteArray = new Uint8Array(byteNumbers);
-        const audioBlob = new Blob([byteArray], { type: 'audio/mp3' });
-        const audioUrl = URL.createObjectURL(audioBlob);
+        try {
+          const byteCharacters = atob(data.audioContent);
+          const byteNumbers = Array.from(byteCharacters, (char) => char.charCodeAt(0));
+          const byteArray = new Uint8Array(byteNumbers);
+          const audioBlob = new Blob([byteArray], { type: 'audio/mp3' });
+          const audioUrl = URL.createObjectURL(audioBlob);
   
-        audioRef.current.src = audioUrl;
-        audioRef.current.play();
+          audioRef.current.src = audioUrl;
+          audioRef.current.play();
   
-        audioRef.current.onloadeddata = () => URL.revokeObjectURL(audioUrl);
+          audioRef.current.onloadeddata = () => URL.revokeObjectURL(audioUrl);
+        } catch (audioError) {
+          console.error("Error processing audio:", audioError);
+        }
       }
   
-      // Set the flag to indicate pronunciation has been played
-      setHasPronounced(true);  // Corrected function name
+      setHasPronounced(true);
     } catch (error) {
       console.error('Error fetching pronunciation:', error);
     } finally {
       setIsLoading(false); // Hide loading spinner
     }
   };
+  
+
   
   
 
@@ -74,10 +84,15 @@ const App = () => {
               type="text"
               value={word}
               onChange={(e) => setWord(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  getPronunciation();
+                }
+              }}
               placeholder="Enter a word"
             />
           </div>
-
+  
           <div className='input-box'>
             <label>Select Accent: </label>
             <select onChange={(e) => setAccent(e.target.value)} value={accent}>
@@ -88,18 +103,20 @@ const App = () => {
             </select>
           </div>
         </div>
-
+  
         <div className='buttons'>
           <GenderToggleButton onChange={handleGenderChange} />
           <button className='pronounce-button' onClick={getPronunciation} disabled={isLoading}>
             {isLoading ? 'Loading...' : 'Pronounce'}
           </button>
         </div>
-
-         {/* Display Loading Indicator */}
-         {isLoading && (
+  
+        {/* Display Loading Indicator */}
+        {isLoading && (
           <div className="loading-container">
-            <p className='fetch-pronounciation' style={{paddingLeft:"20px"}}>Fetching pronunciation...</p>
+            <p className='fetch-pronounciation' style={{ paddingLeft: "20px" }}>
+              Fetching pronunciation...
+            </p>
           </div>
         )}
         
@@ -112,31 +129,47 @@ const App = () => {
             </p>
           </div>
         )}
-
+  
         {/* Display Phonetic Transcription & Meaning (only when loaded) */}
         {!isLoading && hasPronounced && (
           <div className='pronounce-box'>
             {phonetic && (
               <div>
                 <h3>Phonetic Transcription:</h3>
-                <img onClick={getPronunciation} loading="lazy" src={speakerIcon} alt="QuickPronounce speaker" className='phonetic-image' />
+                <img 
+                  onClick={getPronunciation} 
+                  loading="lazy" 
+                  src={speakerIcon} 
+                  alt="QuickPronounce speaker" 
+                  className='phonetic-image' 
+                />
                 <p className='phonetic'>{phonetic}</p>
               </div>
             )}
+  
+  {meanings && meanings.length > 0 && (
+  <div>
+    <h3>Meanings:</h3>
+    <div className="meaning-list">
+      {meanings.map((def, index) => (
+        <div key={index} className="meaning-item">
+          {def}
+        </div>
+      ))}
+    </div>
+  </div>
+)}
 
-            {meaning && (
-              <div>
-                <h3>Meaning:</h3>
-                <p>{meaning}</p>
-              </div>
-            )}
+
+
           </div>
         )}
       </div>
-
+  
       <Footer />
     </div>
   );
-};
+}
+  
 
 export default App;

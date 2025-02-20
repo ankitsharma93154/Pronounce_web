@@ -57,9 +57,36 @@ body{
   padding-top: 25px;
   height:40px;
   width:40px;
-    filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.2)); /* Soft shadow */
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.2)); /* Soft shadow */
   
 }
+/*meanings*/
+.meaning-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* Increased gap for more breathing space */
+  margin-top: 10px;
+  padding: 10px;
+  padding-left: 0px;
+}
+
+.meaning-item {
+  font-size: 1.05rem;
+  padding: 8px 16px; /* Increased padding */
+  background: #FF9D23; /* Softer shade of orange */
+  color: white;
+  border-radius: 24px; /* More rounded for a smoother look */
+  display: inline-block;
+  transition: background 0.2s ease, transform 0.1s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.meaning-item:hover {
+  background: #C14600; /* Darker on hover */
+  transform: scale(1.01); /* Subtle hover effect */
+}
+
+
 
 
 /*input*/
@@ -108,6 +135,9 @@ input[type="text"]:focus, select:focus {
 @media (max-width: 768px) {
   body {
     font-size: 20px; /* Slightly bigger for better readability */
+  }
+  .meaning-item {
+    font-size: 1.2rem; /* Slightly bigger */
   }
 
   button {
