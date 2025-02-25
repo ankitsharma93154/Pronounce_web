@@ -507,11 +507,15 @@ body.dark {
   background-color: var(--bg-primary);
   border-top: 1px solid var(--border-color);
   padding: 2rem 0;
-  text-align: center;
   color: var(--text-secondary);
 }
 .footer .container {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 1rem;
 }
 /* Animations */
 @keyframes spin {
