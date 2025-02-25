@@ -30,6 +30,7 @@ body {
   color: var(--text-primary);
   line-height: 1.5;
   transition: background-color 0.3s, color 0.3s;
+  height: 100%;
 }
 
 /* Dark mode styles */
@@ -43,8 +44,24 @@ body.dark {
 
 .container {
   width: 100%;
+  max-width: 1200px; /* Add a max-width for larger screens */
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0 0.5rem; /* Reduce padding on mobile */
+  }
+}
+@media (max-width: 767px) {
+  .card {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    width: calc(
+      100% + 1rem
+    ); /* Adjust width to account for container padding */
+  }
 }
 
 /* Header styles */
@@ -65,7 +82,22 @@ body.dark {
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  width: 100%;
+  padding: 0 1rem;
 }
+
+@media (max-width: 767px) {
+  .header-content {
+    padding: 0 0.5rem;
+  }
+}
+
+/* .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+} */
 
 .logo {
   display: flex;
@@ -176,8 +208,15 @@ body.dark {
 .main {
   padding-top: 6rem;
   padding-bottom: 4rem;
+  width: 100%;
 }
 
+@media (max-width: 767px) {
+  .main {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
+}
 .hero {
   text-align: center;
   margin-bottom: 3rem;
@@ -212,16 +251,28 @@ body.dark {
   gap: 2rem;
   max-width: 64rem;
   margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .interface-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 0.5rem;
+    gap: 1rem; /* Reduce gap on mobile */
+  }
+}
+.interface-grid {
+  display: grid;
+  gap: 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {
   .interface-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 767px) {
-  .interface-grid {
-    grid-template-columns: 1fr; /* Stack elements */
   }
 }
 
