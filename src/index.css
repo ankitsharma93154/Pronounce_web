@@ -510,7 +510,9 @@ body.dark {
   text-align: center;
   color: var(--text-secondary);
 }
-
+.footer .container {
+  text-align: center;
+}
 /* Animations */
 @keyframes spin {
   to {
