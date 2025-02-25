@@ -329,11 +329,11 @@ const App = () => {
           <Volume2 className="icon" />
         </button>
       </main>
-      <footer className="footer">
+      {/* <footer className="footer">
         <div className="container">
           <p>© 2025 QuickPronounce. All rights reserved.</p>
         </div>
-      </footer>
+      </footer> */}
     </>
   );
 };
