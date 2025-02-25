@@ -12,6 +12,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
   const [word, setWord] = useState("");
@@ -100,6 +101,7 @@ const App = () => {
 
   return (
     <>
+      <Analytics />
       <header className="header">
         <div className="container header-content">
           <a href="/" className="logo">
