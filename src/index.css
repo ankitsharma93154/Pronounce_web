@@ -331,7 +331,12 @@ body.dark {
   gap: 0.5rem;
   transition: opacity 0.2s;
 }
-
+@media (max-width: 768px) {
+  .pronounce-button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
 .pronounce-button:hover {
   background: var(--primary-gradient-hover);
 }
