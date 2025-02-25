@@ -219,6 +219,11 @@ body.dark {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width: 767px) {
+  .interface-grid {
+    grid-template-columns: 1fr; /* Stack elements */
+  }
+}
 
 .card {
   background-color: var(--bg-primary);
