@@ -13,6 +13,7 @@ import {
   X,
 } from "lucide-react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const App = () => {
   const [word, setWord] = useState("");
@@ -102,6 +103,7 @@ const App = () => {
   return (
     <>
       <Analytics />
+      <SpeedInsights />
       <header className="header">
         <div className="container header-content">
           <a href="/" className="logo">
