@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
 import {
   Volume2,
   Moon,
@@ -12,8 +12,31 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
+// Import analytics only in production
+const Analytics =
+  process.env.NODE_ENV === "production"
+    ? lazy(() =>
+        import("@vercel/analytics/react").then((mod) => ({
+          default: mod.Analytics,
+        }))
+      )
+    : () => null;
+const SpeedInsights =
+  process.env.NODE_ENV === "production"
+    ? lazy(() =>
+        import("@vercel/speed-insights/react").then((mod) => ({
+          default: mod.SpeedInsights,
+        }))
+      )
+    : () => null;
+
+// Move static data outside the component
+const accentMap = {
+  "en-US": "American English",
+  "en-GB": "British English",
+  "en-AU": "Australian English",
+  "en-IN": "Indian English",
+};
 
 const App = () => {
   const [word, setWord] = useState("");
@@ -28,13 +51,6 @@ const App = () => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const audioRef = useRef(new Audio());
-
-  const accentMap = {
-    "en-US": "American English",
-    "en-GB": "British English",
-    "en-AU": "Australian English",
-    "en-IN": "Indian English",
-  };
 
   const getPronunciation = async () => {
     if (!word.trim()) return;
@@ -68,11 +84,10 @@ const App = () => {
       if (data.audioContent) {
         try {
           const byteCharacters = atob(data.audioContent);
-          const byteNumbers = Array.from(byteCharacters, (char) =>
-            char.charCodeAt(0)
+          const byteNumbers = new Uint8Array(
+            [...byteCharacters].map((char) => char.charCodeAt(0))
           );
-          const byteArray = new Uint8Array(byteNumbers);
-          const audioBlob = new Blob([byteArray], { type: "audio/mp3" });
+          const audioBlob = new Blob([byteNumbers], { type: "audio/mp3" });
           const audioUrl = URL.createObjectURL(audioBlob);
 
           audioRef.current.src = audioUrl;
@@ -92,18 +107,77 @@ const App = () => {
     }
   };
 
-  React.useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
+  // Handle keyboard input
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") getPronunciation();
+  };
+
+  // Toggle dark mode
+  const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
+
+  // Toggle mobile menu
+  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
+
+  // Toggle favorite
+  const toggleFavorite = () => setIsFavorite((prev) => !prev);
+
+  // Dark mode effect
+  useEffect(() => {
+    document.body.classList.toggle("dark", isDarkMode);
+    // Clean up on unmount
+    return () => {
+      if (isDarkMode) document.body.classList.remove("dark");
+    };
   }, [isDarkMode]);
+
+  // Memoized UI components
+  const ResultsContent = React.memo(() => (
+    <div className="results-content">
+      <div className="phonetic-section">
+        <div className="section-header">
+          <h3 className="section-title">Phonetic Transcription</h3>
+          <div className="header-actions">
+            <button onClick={toggleFavorite} className="icon-button">
+              <Heart
+                className="icon-sm"
+                fill={isFavorite ? "currentColor" : "none"}
+              />
+            </button>
+            <button className="icon-button">
+              <Share2 className="icon-sm" />
+            </button>
+          </div>
+        </div>
+        <div className="phonetic-display">
+          <button onClick={getPronunciation} className="icon-button">
+            <AudioWaveform className="icon" />
+          </button>
+          <span className="phonetic-text">{phonetic || "/ _ /"}</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="section-title">Meanings</h3>
+        <div className="meanings-list">
+          {meanings.map((meaning, index) => (
+            <div key={index} className="meaning-item">
+              {meaning}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ));
 
   return (
     <>
-      <Analytics />
-      <SpeedInsights />
+      {process.env.NODE_ENV === "production" && (
+        <Suspense fallback={null}>
+          <Analytics />
+          <SpeedInsights />
+        </Suspense>
+      )}
+
       <header className="header">
         <div className="container header-content">
           <a href="/" className="logo">
@@ -128,14 +202,14 @@ const App = () => {
 
           <div className="header-actions">
             <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
+              onClick={toggleDarkMode}
               className="icon-button"
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={toggleMobileMenu}
               className="icon-button"
               aria-label="Toggle menu"
             >
@@ -178,7 +252,7 @@ const App = () => {
                 className="word-input"
                 value={word}
                 onChange={(e) => setWord(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && getPronunciation()}
+                onKeyDown={handleKeyDown}
                 placeholder="Enter a word..."
               />
               <button
@@ -282,44 +356,7 @@ const App = () => {
                 </p>
               </div>
             ) : (
-              <div className="results-content">
-                <div className="phonetic-section">
-                  <div className="section-header">
-                    <h3 className="section-title">Phonetic Transcription</h3>
-                    <div className="header-actions">
-                      <button
-                        onClick={() => setIsFavorite(!isFavorite)}
-                        className="icon-button"
-                      >
-                        <Heart
-                          className="icon-sm"
-                          fill={isFavorite ? "currentColor" : "none"}
-                        />
-                      </button>
-                      <button className="icon-button">
-                        <Share2 className="icon-sm" />
-                      </button>
-                    </div>
-                  </div>
-                  <div className="phonetic-display">
-                    <button onClick={getPronunciation} className="icon-button">
-                      <AudioWaveform className="icon" />
-                    </button>
-                    <span className="phonetic-text">{phonetic || "/ _ /"}</span>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="section-title">Meanings</h3>
-                  <div className="meanings-list">
-                    {meanings.map((meaning, index) => (
-                      <div key={index} className="meaning-item">
-                        {meaning}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <ResultsContent />
             )}
           </div>
         </div>
