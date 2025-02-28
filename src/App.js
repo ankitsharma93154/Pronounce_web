@@ -1,13 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  lazy,
-  Suspense,
-  useCallback,
-  useDeferredValue,
-  useTransition,
-} from "react";
+import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
 import {
   Volume2,
   Moon,
@@ -21,7 +12,6 @@ import {
   Menu,
   X,
 } from "lucide-react";
-
 // Import analytics only in production
 const Analytics =
   process.env.NODE_ENV === "production"
@@ -48,79 +38,6 @@ const accentMap = {
   "en-IN": "Indian English",
 };
 
-// Debounce utility function
-const debounce = (func, wait) => {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-};
-
-// Lazy load the ResultsContent component
-const LazyResultsContent = lazy(() =>
-  Promise.resolve({
-    default: ({
-      phonetic,
-      meanings,
-      getPronunciation,
-      toggleFavorite,
-      isFavorite,
-    }) => (
-      <div className="results-content">
-        <div className="phonetic-section">
-          <div className="section-header">
-            <h3 className="section-title">Phonetic Transcription</h3>
-            <div className="header-actions">
-              <button onClick={toggleFavorite} className="icon-button">
-                <Heart
-                  className="icon-sm"
-                  fill={isFavorite ? "currentColor" : "none"}
-                />
-              </button>
-              <button className="icon-button">
-                <Share2 className="icon-sm" />
-              </button>
-            </div>
-          </div>
-          <div className="phonetic-display">
-            <button onClick={getPronunciation} className="icon-button">
-              <AudioWaveform className="icon" />
-            </button>
-            <span className="phonetic-text">{phonetic || "/ _ /"}</span>
-          </div>
-        </div>
-
-        <div>
-          <h3 className="section-title">Meanings</h3>
-          <div className="meanings-list">
-            {meanings.map((meaning, index) => (
-              <div key={index} className="meaning-item">
-                {meaning}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    ),
-  })
-);
-
-// Loading skeleton component
-const ResultsSkeleton = () => (
-  <div className="results-skeleton">
-    <div className="skeleton-line skeleton-title"></div>
-    <div className="skeleton-line skeleton-phonetic"></div>
-    <div className="skeleton-line"></div>
-    <div className="skeleton-line"></div>
-    <div className="skeleton-line skeleton-short"></div>
-  </div>
-);
-
 const App = () => {
   const [word, setWord] = useState("");
   const [accent, setAccent] = useState("en-US");
@@ -132,116 +49,125 @@ const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [isPending, startTransition] = useTransition();
-
-  // Use deferred value for word to avoid blocking UI
-  const deferredWord = useDeferredValue(word);
 
   const audioRef = useRef(new Audio());
 
-  // Memoize event handlers
-  const toggleDarkMode = useCallback(() => {
-    setIsDarkMode((prev) => !prev);
-  }, []);
+  const getPronunciation = async () => {
+    if (!word.trim()) return;
 
-  const toggleMobileMenu = useCallback(() => {
-    setIsMobileMenuOpen((prev) => !prev);
-  }, []);
+    try {
+      setIsLoading(true);
 
-  const toggleFavorite = useCallback(() => {
-    setIsFavorite((prev) => !prev);
-  }, []);
+      const response = await fetch(
+        "https://backend-8isq.vercel.app/get-pronunciation",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ word: word.trim(), accent, isMale }),
+        }
+      );
 
-  const getPronunciation = useCallback(async () => {
-    if (!deferredWord.trim()) return;
-
-    // Set loading state immediately for UI feedback
-    setIsLoading(true);
-
-    // Defer API call to next tick to avoid blocking the UI
-    setTimeout(async () => {
-      try {
-        const response = await fetch(
-          "https://backend-8isq.vercel.app/get-pronunciation",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ word: deferredWord.trim(), accent, isMale }),
-          }
+      if (!response.ok) {
+        throw new Error(
+          `Server error: ${response.status} - ${response.statusText}`
         );
-
-        if (!response.ok) {
-          throw new Error(
-            `Server error: ${response.status} - ${response.statusText}`
-          );
-        }
-
-        const data = await response.json();
-
-        // Batch state updates to reduce renders
-        startTransition(() => {
-          setPhonetic(data.phonetic || "Phonetic transcription not available.");
-          setMeanings(
-            Array.isArray(data.meanings) && data.meanings.length > 0
-              ? data.meanings
-              : ["Meaning not available."]
-          );
-          setHasPronounced(true);
-        });
-
-        if (data.audioContent) {
-          try {
-            const byteCharacters = atob(data.audioContent);
-            const byteNumbers = new Uint8Array(
-              [...byteCharacters].map((char) => char.charCodeAt(0))
-            );
-            const audioBlob = new Blob([byteNumbers], { type: "audio/mp3" });
-            const audioUrl = URL.createObjectURL(audioBlob);
-
-            audioRef.current.src = audioUrl;
-            audioRef.current.play();
-
-            audioRef.current.onloadeddata = () => URL.revokeObjectURL(audioUrl);
-          } catch (audioError) {
-            console.error("Error processing audio:", audioError);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching pronunciation:", error);
-      } finally {
-        setIsLoading(false);
       }
-    }, 0);
-  }, [deferredWord, accent, isMale]);
 
-  // Debounced input handler
-  const debouncedHandleChange = useCallback(
-    debounce((value) => {
-      setWord(value);
-    }, 150),
-    []
-  );
+      const data = await response.json();
+      setPhonetic(data.phonetic || "Phonetic transcription not available.");
+      setMeanings(
+        Array.isArray(data.meanings) && data.meanings.length > 0
+          ? data.meanings
+          : ["Meaning not available."]
+      );
 
-  // Handle keyboard input - memoized
-  const handleKeyDown = useCallback(
-    (e) => {
-      if (e.key === "Enter") getPronunciation();
-    },
-    [getPronunciation]
-  );
+      if (data.audioContent) {
+        try {
+          const byteCharacters = atob(data.audioContent);
+          const byteNumbers = new Uint8Array(
+            [...byteCharacters].map((char) => char.charCodeAt(0))
+          );
+          const audioBlob = new Blob([byteNumbers], { type: "audio/mp3" });
+          const audioUrl = URL.createObjectURL(audioBlob);
 
-  // Dark mode effect with requestAnimationFrame
+          audioRef.current.src = audioUrl;
+          audioRef.current.play();
+
+          audioRef.current.onloadeddata = () => URL.revokeObjectURL(audioUrl);
+        } catch (audioError) {
+          console.error("Error processing audio:", audioError);
+        }
+      }
+
+      setHasPronounced(true);
+    } catch (error) {
+      console.error("Error fetching pronunciation:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Handle keyboard input
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") getPronunciation();
+  };
+
+  // Toggle dark mode
+  const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
+
+  // Toggle mobile menu
+  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
+
+  // Toggle favorite
+  const toggleFavorite = () => setIsFavorite((prev) => !prev);
+
+  // Dark mode effect
   useEffect(() => {
-    const frameId = requestAnimationFrame(() => {
-      document.body.classList.toggle("dark", isDarkMode);
-    });
-
+    document.body.classList.toggle("dark", isDarkMode);
     // Clean up on unmount
     return () => {
-      cancelAnimationFrame(frameId);
       if (isDarkMode) document.body.classList.remove("dark");
     };
   }, [isDarkMode]);
+
+  // Memoized UI components
+  const ResultsContent = React.memo(() => (
+    <div className="results-content">
+      <div className="phonetic-section">
+        <div className="section-header">
+          <h3 className="section-title">Phonetic Transcription</h3>
+          <div className="header-actions">
+            <button onClick={toggleFavorite} className="icon-button">
+              <Heart
+                className="icon-sm"
+                fill={isFavorite ? "currentColor" : "none"}
+              />
+            </button>
+            <button className="icon-button">
+              <Share2 className="icon-sm" />
+            </button>
+          </div>
+        </div>
+        <div className="phonetic-display">
+          <button onClick={getPronunciation} className="icon-button">
+            <AudioWaveform className="icon" />
+          </button>
+          <span className="phonetic-text">{phonetic || "/ _ /"}</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="section-title">Meanings</h3>
+        <div className="meanings-list">
+          {meanings.map((meaning, index) => (
+            <div key={index} className="meaning-item">
+              {meaning}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ));
 
   return (
     <>
@@ -261,6 +187,18 @@ const App = () => {
             </div>
             <span className="logo-text">QuickPronounce</span>
           </a>
+
+          {/* <nav className="nav-desktop">
+            <a href="#" className="nav-link">
+              Features
+            </a>
+            <a href="#" className="nav-link">
+              About
+            </a>
+            <a href="#" className="nav-link">
+              Contact
+            </a>
+          </nav> */}
 
           <div className="header-actions">
             <button
@@ -312,14 +250,14 @@ const App = () => {
               <input
                 type="text"
                 className="word-input"
-                defaultValue={word}
-                onChange={(e) => debouncedHandleChange(e.target.value)}
+                value={word}
+                onChange={(e) => setWord(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Enter a word..."
               />
               <button
                 onClick={getPronunciation}
-                disabled={isLoading || !deferredWord.trim()}
+                disabled={isLoading}
                 className="pronounce-button"
               >
                 {isLoading ? (
@@ -406,12 +344,10 @@ const App = () => {
 
           <div className="card">
             {isLoading ? (
-              <Suspense fallback={<ResultsSkeleton />}>
-                <div className="results-empty">
-                  <div className="loading-spinner icon-lg" />
-                  <p>Fetching pronunciation...</p>
-                </div>
-              </Suspense>
+              <div className="results-empty">
+                <div className="loading-spinner icon-lg" />
+                <p>Fetching pronunciation...</p>
+              </div>
             ) : !hasPronounced ? (
               <div className="results-empty">
                 <Volume2 className="icon-lg" />
@@ -420,22 +356,14 @@ const App = () => {
                 </p>
               </div>
             ) : (
-              <Suspense fallback={<ResultsSkeleton />}>
-                <LazyResultsContent
-                  phonetic={phonetic}
-                  meanings={meanings}
-                  getPronunciation={getPronunciation}
-                  toggleFavorite={toggleFavorite}
-                  isFavorite={isFavorite}
-                />
-              </Suspense>
+              <ResultsContent />
             )}
           </div>
         </div>
 
         <button
           onClick={getPronunciation}
-          disabled={isLoading || !deferredWord.trim()}
+          disabled={isLoading || !word.trim()}
           className="float-button"
           aria-label="Pronounce word"
         >
