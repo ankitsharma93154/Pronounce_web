@@ -1,3 +1,202 @@
+/* Add these styles to your existing CSS file */
+
+/* Active nav link styling */
+.nav-link.active,
+.mobile-nav-link.active {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+/* Page content container */
+.page-content {
+  padding: 2rem 0;
+  max-width: 100%;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* Features page styles */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: #2563eb;
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* About page styles */
+.about-section {
+  margin-bottom: 2.5rem;
+}
+
+.about-section h2 {
+  font-size: 1.5rem;
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+
+.about-section p {
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 800px;
+}
+
+/* Contact page styles */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+.contact-form-container {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 0.375rem;
+  background: var(--bg-input, #f8fafc);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: #2563eb;
+  color: white;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #1d4ed8;
+}
+
+.contact-info {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.info-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.info-item h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  color: #2563eb;
+}
+
+.info-item p {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Dark mode adjustments for new components */
+.dark .feature-card,
+.dark .contact-form-container,
+.dark .contact-info {
+  background: var(--bg-card-dark, #1e293b);
+}
+
+.dark .form-group input,
+.dark .form-group textarea {
+  background: var(--bg-input-dark, #0f172a);
+  border-color: var(--border-color-dark, #334155);
+}
+
+.dark .info-item {
+  border-bottom-color: var(--border-color-dark, #334155);
+}
+
 /* Reset and base styles */
 :root {
   --primary: #2563eb;
@@ -170,6 +369,7 @@ body.dark {
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
+  min-height: calc(100vh - 70px);
 }
 
 .hero {
