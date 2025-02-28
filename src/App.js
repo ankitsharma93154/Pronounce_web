@@ -188,7 +188,7 @@ const App = () => {
             <span className="logo-text">QuickPronounce</span>
           </a>
 
-          {/* <nav className="nav-desktop">
+          <nav className="nav-desktop">
             <a href="#" className="nav-link">
               Features
             </a>
@@ -198,7 +198,7 @@ const App = () => {
             <a href="#" className="nav-link">
               Contact
             </a>
-          </nav> */}
+          </nav>
 
           <div className="header-actions">
             <button
