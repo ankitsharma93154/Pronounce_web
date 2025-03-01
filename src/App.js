@@ -236,10 +236,13 @@ const App = () => {
       <main className="main container">
         {!hasPronounced && (
           <div className="hero">
-            <h1 className="hero-title">Master Any Word's Pronunciation</h1>
+            <h1 className="hero-title">
+              Master Pronunciation with Clear American & British Accents
+            </h1>
             <p className="hero-subtitle">
-              Get crystal-clear pronunciations in multiple accents and voices.
-              Perfect for language learners and professionals.
+              Get accurate, high-quality word pronunciations in American and
+              British English. Perfect for language learners, professionals, and
+              anyone looking to improve pronunciation effortlessly.
             </p>
           </div>
         )}
@@ -253,7 +256,7 @@ const App = () => {
                 value={word}
                 onChange={(e) => setWord(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Enter a word..."
+                placeholder="Type a word or sentence..."
               />
               <button
                 onClick={getPronunciation}

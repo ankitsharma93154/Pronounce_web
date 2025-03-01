@@ -165,7 +165,7 @@ body.dark {
 
 /* Main content */
 .main {
-  padding-top: 6rem;
+  padding-top: 4.5rem;
   padding-bottom: 4rem;
   width: 100%;
   padding-left: 1rem;
@@ -175,13 +175,13 @@ body.dark {
 
 .hero {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -190,8 +190,8 @@ body.dark {
 
 .hero-subtitle {
   color: var(--text-secondary);
-  font-size: 1.125rem;
-  max-width: 42rem;
+  font-size: 1.1rem;
+  max-width: 48rem;
   margin: 0 auto;
 }
 
@@ -489,6 +489,9 @@ body.dark {
   .main {
     padding-top: 5rem;
     padding-bottom: 2rem;
+  }
+  .word-input {
+    font-size: 0.85rem;
   }
 
   .card {
