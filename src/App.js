@@ -256,7 +256,7 @@ const App = () => {
                 value={word}
                 onChange={(e) => setWord(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Type a word or sentence..."
+                placeholder="Enter text ..."
               />
               <button
                 onClick={getPronunciation}
