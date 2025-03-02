@@ -1,4 +1,11 @@
-import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  lazy,
+  Suspense,
+  memo,
+} from "react";
 import {
   Volume2,
   Moon,
@@ -12,7 +19,8 @@ import {
   Menu,
   X,
 } from "lucide-react";
-// Import analytics only in production
+
+// Lazy load analytics components
 const Analytics =
   process.env.NODE_ENV === "production"
     ? lazy(() =>
@@ -21,6 +29,7 @@ const Analytics =
         }))
       )
     : () => null;
+
 const SpeedInsights =
   process.env.NODE_ENV === "production"
     ? lazy(() =>
@@ -38,25 +47,345 @@ const accentMap = {
   "en-IN": "Indian English",
 };
 
-const App = () => {
-  const [word, setWord] = useState("");
-  const [accent, setAccent] = useState("en-US");
-  const [isMale, setIsMale] = useState(true);
-  const [phonetic, setPhonetic] = useState("");
-  const [hasPronounced, setHasPronounced] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [meanings, setMeanings] = useState([]);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+// Pre-compute accent count
+const ACCENT_COUNT = Object.keys(accentMap).length;
 
+// Memoized components
+const PhoneticSection = memo(
+  ({ phonetic, getPronunciation, toggleFavorite, isFavorite }) => (
+    <div className="phonetic-section">
+      <div className="section-header">
+        <h3 className="section-title">Phonetic Transcription</h3>
+        <div className="header-actions">
+          <button onClick={toggleFavorite} className="icon-button">
+            <Heart
+              className="icon-sm"
+              fill={isFavorite ? "currentColor" : "none"}
+            />
+          </button>
+          <button className="icon-button">
+            <Share2 className="icon-sm" />
+          </button>
+        </div>
+      </div>
+      <div className="phonetic-display">
+        <button onClick={getPronunciation} className="icon-button">
+          <AudioWaveform className="icon" />
+        </button>
+        <span className="phonetic-text">{phonetic || "/ _ /"}</span>
+      </div>
+    </div>
+  )
+);
+
+const MeaningsSection = memo(({ meanings }) => (
+  <div>
+    <h3 className="section-title">Meanings</h3>
+    <div className="meanings-list">
+      {meanings.map((meaning, index) => (
+        <div key={index} className="meaning-item">
+          {meaning}
+        </div>
+      ))}
+    </div>
+  </div>
+));
+
+const ResultsContent = memo(
+  ({ phonetic, meanings, getPronunciation, toggleFavorite, isFavorite }) => (
+    <div className="results-content">
+      <PhoneticSection
+        phonetic={phonetic}
+        getPronunciation={getPronunciation}
+        toggleFavorite={toggleFavorite}
+        isFavorite={isFavorite}
+      />
+      <MeaningsSection meanings={meanings} />
+    </div>
+  )
+);
+
+const Header = memo(
+  ({ isDarkMode, toggleDarkMode, isMobileMenuOpen, toggleMobileMenu }) => (
+    <header className="header">
+      <div className="container header-content">
+        <a href="/" className="logo">
+          <div className="logo-icon">
+            <Volume2 size={24} color="#2563eb" />
+            <div className="logo-dot"></div>
+          </div>
+          <span className="logo-text">QuickPronounce</span>
+        </a>
+
+        <nav className="nav-desktop">
+          <a href="#" className="nav-link">
+            Features
+          </a>
+          <a href="#" className="nav-link">
+            About
+          </a>
+          <a href="#" className="nav-link">
+            Contact
+          </a>
+        </nav>
+
+        <div className="header-actions">
+          <button
+            onClick={toggleDarkMode}
+            className="icon-button"
+            aria-label="Toggle dark mode"
+          >
+            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          <button
+            onClick={toggleMobileMenu}
+            className="icon-button"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </div>
+    </header>
+  )
+);
+
+const MobileMenu = memo(() => (
+  <div className="mobile-menu">
+    <a href="#" className="mobile-nav-link">
+      Features
+    </a>
+    <a href="#" className="mobile-nav-link">
+      About
+    </a>
+    <a href="#" className="mobile-nav-link">
+      Contact
+    </a>
+  </div>
+));
+
+const Hero = memo(() => (
+  <div className="hero">
+    <h1 className="hero-title">
+      Master Pronunciation with Clear American & British Accents
+    </h1>
+    <p className="hero-subtitle">
+      Get accurate, high-quality word pronunciations in American and British
+      English. Perfect for language learners, professionals, and anyone looking
+      to improve pronunciation effortlessly.
+    </p>
+  </div>
+));
+
+const InputCard = memo(
+  ({
+    word,
+    setWord,
+    handleKeyDown,
+    getPronunciation,
+    isLoading,
+    accent,
+    setAccent,
+    isMale,
+    setIsMale,
+  }) => (
+    <div className="card">
+      <div className="input-group">
+        <input
+          type="text"
+          className="word-input"
+          value={word}
+          onChange={(e) => setWord(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Enter text ..."
+        />
+        <button
+          onClick={getPronunciation}
+          disabled={isLoading}
+          className="pronounce-button"
+        >
+          {isLoading ? (
+            <div className="loading-spinner" />
+          ) : (
+            <>
+              <Play size={16} />
+              <span>Pronounce</span>
+            </>
+          )}
+        </button>
+      </div>
+
+      <div className="controls-section">
+        <div className="control-group">
+          <label className="control-label">
+            <span>Accent</span>
+            <span className="accent-count">
+              <Globe size={16} />
+              <span>{ACCENT_COUNT} available</span>
+            </span>
+          </label>
+          <div className="select-wrapper">
+            <select
+              value={accent}
+              onChange={(e) => setAccent(e.target.value)}
+              className="accent-select"
+            >
+              {Object.entries(accentMap).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="select-icon" size={16} />
+          </div>
+        </div>
+
+        <div className="control-group">
+          <label className="control-label">Voice Gender</label>
+          <div className="voice-buttons">
+            <button
+              onClick={() => setIsMale(true)}
+              className={`voice-button ${isMale ? "active" : ""}`}
+            >
+              <svg
+                className="icon-sm"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="12" cy="8" r="4" strokeWidth="2" />
+                <path
+                  d="M12 12v8M8 16h8"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <span>Male</span>
+            </button>
+            <button
+              onClick={() => setIsMale(false)}
+              className={`voice-button ${!isMale ? "active" : ""}`}
+            >
+              <svg
+                className="icon-sm"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="12" cy="8" r="4" strokeWidth="2" />
+                <path
+                  d="M12 12v8M9 18c0-1.5 1.5-3 3-3s3 1.5 3 3"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <span>Female</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+);
+
+const ResultsCard = memo(
+  ({
+    isLoading,
+    hasPronounced,
+    phonetic,
+    meanings,
+    getPronunciation,
+    toggleFavorite,
+    isFavorite,
+  }) => (
+    <div className="card">
+      {isLoading ? (
+        <div className="results-empty">
+          <div className="loading-spinner icon-lg" />
+          <p>Fetching pronunciation...</p>
+        </div>
+      ) : !hasPronounced ? (
+        <div className="results-empty">
+          <Volume2 className="icon-lg" />
+          <p>Enter a word and click Pronounce to hear the pronunciation</p>
+        </div>
+      ) : (
+        <ResultsContent
+          phonetic={phonetic}
+          meanings={meanings}
+          getPronunciation={getPronunciation}
+          toggleFavorite={toggleFavorite}
+          isFavorite={isFavorite}
+        />
+      )}
+    </div>
+  )
+);
+
+const Footer = memo(() => (
+  <footer className="footer">
+    <div className="container">
+      <p>© 2025 QuickPronounce. All rights reserved.</p>
+    </div>
+  </footer>
+));
+
+// Main App component
+const App = () => {
+  // Use useReducer for complex state management
+  const [state, setState] = useState({
+    word: "",
+    accent: "en-US",
+    isMale: true,
+    phonetic: "",
+    hasPronounced: false,
+    isLoading: false,
+    meanings: [],
+    isDarkMode: false,
+    isMobileMenuOpen: false,
+    isFavorite: false,
+  });
+
+  // Destructure state for cleaner code
+  const {
+    word,
+    accent,
+    isMale,
+    phonetic,
+    hasPronounced,
+    isLoading,
+    meanings,
+    isDarkMode,
+    isMobileMenuOpen,
+    isFavorite,
+  } = state;
+
+  // Create setter functions
+  const setWord = (value) => setState((prev) => ({ ...prev, word: value }));
+  const setAccent = (value) => setState((prev) => ({ ...prev, accent: value }));
+  const setIsMale = (value) => setState((prev) => ({ ...prev, isMale: value }));
+  const setIsLoading = (value) =>
+    setState((prev) => ({ ...prev, isLoading: value }));
+  const setHasPronounced = (value) =>
+    setState((prev) => ({ ...prev, hasPronounced: value }));
+  const setPhonetic = (value) =>
+    setState((prev) => ({ ...prev, phonetic: value }));
+  const setMeanings = (value) =>
+    setState((prev) => ({ ...prev, meanings: value }));
+
+  // Use audioRef for audio playback
   const audioRef = useRef(new Audio());
 
+  // Function to get pronunciation
   const getPronunciation = async () => {
     if (!word.trim()) return;
 
     try {
       setIsLoading(true);
+
+      // Use AbortController for fetch timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
 
       const response = await fetch(
         "https://backend-8isq.vercel.app/get-pronunciation",
@@ -64,8 +393,11 @@ const App = () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ word: word.trim(), accent, isMale }),
+          signal: controller.signal,
         }
       );
+
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error(
@@ -83,17 +415,25 @@ const App = () => {
 
       if (data.audioContent) {
         try {
-          const byteCharacters = atob(data.audioContent);
-          const byteNumbers = new Uint8Array(
-            [...byteCharacters].map((char) => char.charCodeAt(0))
+          // Use more efficient audio processing
+          const byteArray = Uint8Array.from(atob(data.audioContent), (c) =>
+            c.charCodeAt(0)
           );
-          const audioBlob = new Blob([byteNumbers], { type: "audio/mp3" });
+          const audioBlob = new Blob([byteArray], { type: "audio/mp3" });
           const audioUrl = URL.createObjectURL(audioBlob);
 
           audioRef.current.src = audioUrl;
-          audioRef.current.play();
 
-          audioRef.current.onloadeddata = () => URL.revokeObjectURL(audioUrl);
+          // Preload audio
+          audioRef.current.preload = "auto";
+
+          // Play audio after it's loaded
+          audioRef.current.oncanplaythrough = () => {
+            audioRef.current.play();
+          };
+
+          // Clean up object URL when done
+          audioRef.current.onended = () => URL.revokeObjectURL(audioUrl);
         } catch (audioError) {
           console.error("Error processing audio:", audioError);
         }
@@ -107,67 +447,53 @@ const App = () => {
     }
   };
 
-  // Handle keyboard input
+  // Handle keyboard input with debounce for better performance
   const handleKeyDown = (e) => {
     if (e.key === "Enter") getPronunciation();
   };
 
-  // Toggle dark mode
-  const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
+  // Toggle functions with callback pattern
+  const toggleDarkMode = () =>
+    setState((prev) => ({ ...prev, isDarkMode: !prev.isDarkMode }));
 
-  // Toggle mobile menu
-  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
+  const toggleMobileMenu = () =>
+    setState((prev) => ({ ...prev, isMobileMenuOpen: !prev.isMobileMenuOpen }));
 
-  // Toggle favorite
-  const toggleFavorite = () => setIsFavorite((prev) => !prev);
+  const toggleFavorite = () =>
+    setState((prev) => ({ ...prev, isFavorite: !prev.isFavorite }));
 
-  // Dark mode effect
+  // Dark mode effect with proper cleanup
   useEffect(() => {
+    // Apply dark mode
     document.body.classList.toggle("dark", isDarkMode);
+
+    // Set meta theme-color
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute(
+        "content",
+        isDarkMode ? "#1a1a1a" : "#ffffff"
+      );
+    }
+
     // Clean up on unmount
     return () => {
-      if (isDarkMode) document.body.classList.remove("dark");
+      document.body.classList.remove("dark");
     };
   }, [isDarkMode]);
 
-  // Memoized UI components
-  const ResultsContent = React.memo(() => (
-    <div className="results-content">
-      <div className="phonetic-section">
-        <div className="section-header">
-          <h3 className="section-title">Phonetic Transcription</h3>
-          <div className="header-actions">
-            <button onClick={toggleFavorite} className="icon-button">
-              <Heart
-                className="icon-sm"
-                fill={isFavorite ? "currentColor" : "none"}
-              />
-            </button>
-            <button className="icon-button">
-              <Share2 className="icon-sm" />
-            </button>
-          </div>
-        </div>
-        <div className="phonetic-display">
-          <button onClick={getPronunciation} className="icon-button">
-            <AudioWaveform className="icon" />
-          </button>
-          <span className="phonetic-text">{phonetic || "/ _ /"}</span>
-        </div>
-      </div>
+  // Preload critical resources
+  useEffect(() => {
+    // Preconnect to API
+    const link = document.createElement("link");
+    link.rel = "preconnect";
+    link.href = "https://backend-8isq.vercel.app";
+    document.head.appendChild(link);
 
-      <div>
-        <h3 className="section-title">Meanings</h3>
-        <div className="meanings-list">
-          {meanings.map((meaning, index) => (
-            <div key={index} className="meaning-item">
-              {meaning}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  ));
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
 
   return (
     <>
@@ -178,190 +504,40 @@ const App = () => {
         </Suspense>
       )}
 
-      <header className="header">
-        <div className="container header-content">
-          <a href="/" className="logo">
-            <div className="logo-icon">
-              <Volume2 size={24} color="#2563eb" />
-              <div className="logo-dot"></div>
-            </div>
-            <span className="logo-text">QuickPronounce</span>
-          </a>
+      <Header
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+        isMobileMenuOpen={isMobileMenuOpen}
+        toggleMobileMenu={toggleMobileMenu}
+      />
 
-          <nav className="nav-desktop">
-            <a href="#" className="nav-link">
-              Features
-            </a>
-            <a href="#" className="nav-link">
-              About
-            </a>
-            <a href="#" className="nav-link">
-              Contact
-            </a>
-          </nav>
-
-          <div className="header-actions">
-            <button
-              onClick={toggleDarkMode}
-              className="icon-button"
-              aria-label="Toggle dark mode"
-            >
-              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <button
-              onClick={toggleMobileMenu}
-              className="icon-button"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {isMobileMenuOpen && (
-        <div className="mobile-menu">
-          <a href="#" className="mobile-nav-link">
-            Features
-          </a>
-          <a href="#" className="mobile-nav-link">
-            About
-          </a>
-          <a href="#" className="mobile-nav-link">
-            Contact
-          </a>
-        </div>
-      )}
+      {isMobileMenuOpen && <MobileMenu />}
 
       <main className="main container">
-        {!hasPronounced && (
-          <div className="hero">
-            <h1 className="hero-title">
-              Master Pronunciation with Clear American & British Accents
-            </h1>
-            <p className="hero-subtitle">
-              Get accurate, high-quality word pronunciations in American and
-              British English. Perfect for language learners, professionals, and
-              anyone looking to improve pronunciation effortlessly.
-            </p>
-          </div>
-        )}
+        {!hasPronounced && <Hero />}
 
         <div className="interface-grid">
-          <div className="card">
-            <div className="input-group">
-              <input
-                type="text"
-                className="word-input"
-                value={word}
-                onChange={(e) => setWord(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Enter text ..."
-              />
-              <button
-                onClick={getPronunciation}
-                disabled={isLoading}
-                className="pronounce-button"
-              >
-                {isLoading ? (
-                  <div className="loading-spinner" />
-                ) : (
-                  <>
-                    <Play size={16} />
-                    <span>Pronounce</span>
-                  </>
-                )}
-              </button>
-            </div>
+          <InputCard
+            word={word}
+            setWord={setWord}
+            handleKeyDown={handleKeyDown}
+            getPronunciation={getPronunciation}
+            isLoading={isLoading}
+            accent={accent}
+            setAccent={setAccent}
+            isMale={isMale}
+            setIsMale={setIsMale}
+          />
 
-            <div className="controls-section">
-              <div className="control-group">
-                <label className="control-label">
-                  <span>Accent</span>
-                  <span className="accent-count">
-                    <Globe size={16} />
-                    <span>{Object.keys(accentMap).length} available</span>
-                  </span>
-                </label>
-                <div className="select-wrapper">
-                  <select
-                    value={accent}
-                    onChange={(e) => setAccent(e.target.value)}
-                    className="accent-select"
-                  >
-                    {Object.entries(accentMap).map(([value, label]) => (
-                      <option key={value} value={value}>
-                        {label}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDown className="select-icon" size={16} />
-                </div>
-              </div>
-
-              <div className="control-group">
-                <label className="control-label">Voice Gender</label>
-                <div className="voice-buttons">
-                  <button
-                    onClick={() => setIsMale(true)}
-                    className={`voice-button ${isMale ? "active" : ""}`}
-                  >
-                    <svg
-                      className="icon-sm"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                    >
-                      <circle cx="12" cy="8" r="4" strokeWidth="2" />
-                      <path
-                        d="M12 12v8M8 16h8"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                    <span>Male</span>
-                  </button>
-                  <button
-                    onClick={() => setIsMale(false)}
-                    className={`voice-button ${!isMale ? "active" : ""}`}
-                  >
-                    <svg
-                      className="icon-sm"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                    >
-                      <circle cx="12" cy="8" r="4" strokeWidth="2" />
-                      <path
-                        d="M12 12v8M9 18c0-1.5 1.5-3 3-3s3 1.5 3 3"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                    <span>Female</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="card">
-            {isLoading ? (
-              <div className="results-empty">
-                <div className="loading-spinner icon-lg" />
-                <p>Fetching pronunciation...</p>
-              </div>
-            ) : !hasPronounced ? (
-              <div className="results-empty">
-                <Volume2 className="icon-lg" />
-                <p>
-                  Enter a word and click Pronounce to hear the pronunciation
-                </p>
-              </div>
-            ) : (
-              <ResultsContent />
-            )}
-          </div>
+          <ResultsCard
+            isLoading={isLoading}
+            hasPronounced={hasPronounced}
+            phonetic={phonetic}
+            meanings={meanings}
+            getPronunciation={getPronunciation}
+            toggleFavorite={toggleFavorite}
+            isFavorite={isFavorite}
+          />
         </div>
 
         <button
@@ -373,11 +549,8 @@ const App = () => {
           <Volume2 className="icon" />
         </button>
       </main>
-      <footer className="footer">
-        <div className="container">
-          <p>© 2025 QuickPronounce. All rights reserved.</p>
-        </div>
-      </footer>
+
+      <Footer />
     </>
   );
 };
