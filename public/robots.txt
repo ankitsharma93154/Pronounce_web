@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://pronounce-web-j2m6.vercel.app/sitemap.xml
+Sitemap: https://www.quickpronounce.site/sitemap.xml
