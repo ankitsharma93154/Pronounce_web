@@ -19,6 +19,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import FeaturesPage from "./features";
 
 // Lazy load analytics components
 const Analytics =
@@ -118,7 +119,7 @@ const Header = memo(
         </a>
 
         <nav className="nav-desktop">
-          <a href="#" className="nav-link">
+          <a href="#features" className="nav-link">
             Features
           </a>
           <a href="#" className="nav-link">
@@ -152,7 +153,7 @@ const Header = memo(
 
 const MobileMenu = memo(() => (
   <div className="mobile-menu">
-    <a href="#" className="mobile-nav-link">
+    <a href="#features" className="mobile-nav-link">
       Features
     </a>
     <a href="#" className="mobile-nav-link">
@@ -549,6 +550,9 @@ const App = () => {
           <Volume2 className="icon" />
         </button>
       </main>
+      <hr />
+
+      <FeaturesPage id="features" />
 
       <Footer />
     </>
