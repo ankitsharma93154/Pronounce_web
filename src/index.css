@@ -50,7 +50,6 @@ body.dark {
 
 .container {
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -182,11 +181,11 @@ body.dark {
 /* Main content */
 .main {
   padding-top: 4.5rem;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
-  min-height: calc(100vh - 70px);
+  min-height: calc(90vh - 70px);
 }
 
 .hero {
@@ -195,9 +194,9 @@ body.dark {
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -207,8 +206,9 @@ body.dark {
 .hero-subtitle {
   color: var(--text-secondary);
   font-size: 1.1rem;
-  max-width: 48rem;
+  max-width: 55rem;
   margin: 0 auto;
+  padding: 5px;
 }
 
 /* Pronunciation interface */
@@ -282,6 +282,96 @@ body.dark {
 .pronounce-button:disabled {
   opacity: 0.9;
   cursor: not-allowed;
+}
+
+/* Mispronounced Words Styles */
+.mispronounced-container {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  margin-top: 2rem;
+  will-change: box-shadow;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.mispronounced-container h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.mispronounced-container h2::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  width: 50px;
+  height: 3px;
+  transform: translateX(-50%);
+  background: var(--primary-gradient);
+}
+
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.word-box {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  will-change: transform, box-shadow;
+}
+
+.word-box:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1),
+    0 2px 4px -1px rgba(37, 99, 235, 0.06);
+}
+
+.word-box:active {
+  transform: scale(0.98);
+  transition: transform 0.1s;
+}
+
+.word-box-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(37, 99, 235, 0.05) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.word-box:hover .word-box-overlay {
+  opacity: 1;
+}
+
+.word-box:hover {
+  opacity: 1;
+  bottom: -1rem;
 }
 
 /* Controls section */
@@ -439,6 +529,7 @@ body.dark {
   cursor: pointer;
   box-shadow: var(--shadow-lg);
   transition: transform 0.2s;
+  z-index: 1000;
 }
 
 .float-button:hover {
@@ -561,7 +652,7 @@ hr {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
   100% {
     transform: scale(1);
@@ -591,6 +682,7 @@ hr {
   width: 2rem;
   height: 2rem;
   animation: pulse 2s ease-in-out infinite;
+  color: var(--primary);
 }
 
 /* Media queries - grouped at the end for better caching */
@@ -605,7 +697,7 @@ hr {
     gap: 3rem;
   }
   .page-title {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
   .main {
@@ -631,10 +723,25 @@ hr {
     font-size: 0.9rem;
   }
   .hero-title {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
+    line-height: 1.2;
   }
   .hero-subtitle {
     font-size: 1rem;
+    line-height: 1.4;
+  }
+  .word-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .word-box {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .word-box-hint {
+    display: none;
   }
 }
 

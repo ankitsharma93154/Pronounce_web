@@ -20,6 +20,7 @@ import {
   X,
 } from "lucide-react";
 import FeaturesPage from "./features";
+import MispronouncedWords from "./mispronounce";
 
 // Lazy load analytics components
 const Analytics =
@@ -411,7 +412,11 @@ const App = () => {
       setMeanings(
         Array.isArray(data.meanings) && data.meanings.length > 0
           ? data.meanings
-          : ["Meaning not available."]
+          : [
+              `${
+                /^[A-Z][a-z]+$/.test(word) ? "This looks like a name! " : ""
+              }Hmm... we couldn't find a meaning for this word. Try another word!`,
+            ]
       );
 
       if (data.audioContent) {
@@ -446,6 +451,23 @@ const App = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+  // Add a flag to control when pronunciation should be triggered
+  const [shouldPronounce, setShouldPronounce] = useState(false);
+
+  useEffect(() => {
+    if (word && shouldPronounce) {
+      getPronunciation();
+      // Reset the flag after pronunciation
+      setShouldPronounce(false);
+    }
+  }, [word, shouldPronounce, getPronunciation]);
+
+  const pronounce = (selectedWord) => {
+    // Directly set the word and mark for pronunciation
+    setWord(selectedWord);
+    setShouldPronounce(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // Handle keyboard input with debounce for better performance
@@ -550,6 +572,7 @@ const App = () => {
           <Volume2 className="icon" />
         </button>
       </main>
+      <MispronouncedWords pronounce={pronounce} />
       <hr />
 
       <FeaturesPage id="features" />
