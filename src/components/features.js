@@ -1,6 +1,6 @@
 // Features page content with icons
 import React from "react";
-import { AudioWaveform, Globe, Book, Headphones, Section } from "lucide-react";
+import { AudioWaveform, Globe, Book, Headphones } from "lucide-react";
 
 const FeaturesPage = () => (
   <section id="features">

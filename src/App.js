@@ -1,26 +1,21 @@
 import React, {
+  useCallback,
   useState,
   useRef,
   useEffect,
   lazy,
   Suspense,
-  memo,
 } from "react";
-import {
-  Volume2,
-  Moon,
-  Sun,
-  ChevronDown,
-  Play,
-  AudioWaveform,
-  Globe,
-  Heart,
-  Share2,
-  Menu,
-  X,
-} from "lucide-react";
-import FeaturesPage from "./features";
-import MispronouncedWords from "./mispronounce";
+import { Volume2 } from "lucide-react";
+import FeaturesPage from "./components/features";
+import MispronouncedWords from "./components/mispronounce";
+import Header from "./components/header";
+import MobileMenu from "./components/mobileMenu";
+import Hero from "./components/hero";
+import InputCard from "./components/inputCard";
+import ResultsCard from "./components/resultCard";
+import Footer from "./components/footer";
+import ContactPage from "./components/contact";
 
 // Lazy load analytics components
 const Analytics =
@@ -40,297 +35,6 @@ const SpeedInsights =
         }))
       )
     : () => null;
-
-// Move static data outside the component
-const accentMap = {
-  "en-US": "American English",
-  "en-GB": "British English",
-  "en-AU": "Australian English",
-  "en-IN": "Indian English",
-};
-
-// Pre-compute accent count
-const ACCENT_COUNT = Object.keys(accentMap).length;
-
-// Memoized components
-const PhoneticSection = memo(
-  ({ phonetic, getPronunciation, toggleFavorite, isFavorite }) => (
-    <div className="phonetic-section">
-      <div className="section-header">
-        <h3 className="section-title">Phonetic Transcription</h3>
-        <div className="header-actions">
-          <button onClick={toggleFavorite} className="icon-button">
-            <Heart
-              className="icon-sm"
-              fill={isFavorite ? "currentColor" : "none"}
-            />
-          </button>
-          <button className="icon-button">
-            <Share2 className="icon-sm" />
-          </button>
-        </div>
-      </div>
-      <div className="phonetic-display">
-        <button onClick={getPronunciation} className="icon-button">
-          <AudioWaveform className="icon" />
-        </button>
-        <span className="phonetic-text">{phonetic || "/ _ /"}</span>
-      </div>
-    </div>
-  )
-);
-
-const MeaningsSection = memo(({ meanings }) => (
-  <div>
-    <h3 className="section-title">Meanings</h3>
-    <div className="meanings-list">
-      {meanings.map((meaning, index) => (
-        <div key={index} className="meaning-item">
-          {meaning}
-        </div>
-      ))}
-    </div>
-  </div>
-));
-
-const ResultsContent = memo(
-  ({ phonetic, meanings, getPronunciation, toggleFavorite, isFavorite }) => (
-    <div className="results-content">
-      <PhoneticSection
-        phonetic={phonetic}
-        getPronunciation={getPronunciation}
-        toggleFavorite={toggleFavorite}
-        isFavorite={isFavorite}
-      />
-      <MeaningsSection meanings={meanings} />
-    </div>
-  )
-);
-
-const Header = memo(
-  ({ isDarkMode, toggleDarkMode, isMobileMenuOpen, toggleMobileMenu }) => (
-    <header className="header">
-      <div className="container header-content">
-        <a href="/" className="logo">
-          <div className="logo-icon">
-            <Volume2 size={24} color="#2563eb" />
-            <div className="logo-dot"></div>
-          </div>
-          <span className="logo-text">QuickPronounce</span>
-        </a>
-
-        <nav className="nav-desktop">
-          <a href="#features" className="nav-link">
-            Features
-          </a>
-          <a href="#" className="nav-link">
-            About
-          </a>
-          <a href="#" className="nav-link">
-            Contact
-          </a>
-        </nav>
-
-        <div className="header-actions">
-          <button
-            onClick={toggleDarkMode}
-            className="icon-button"
-            aria-label="Toggle dark mode"
-          >
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-          <button
-            onClick={toggleMobileMenu}
-            className="icon-button"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-      </div>
-    </header>
-  )
-);
-
-const MobileMenu = memo(() => (
-  <div className="mobile-menu">
-    <a href="#features" className="mobile-nav-link">
-      Features
-    </a>
-    <a href="#" className="mobile-nav-link">
-      About
-    </a>
-    <a href="#" className="mobile-nav-link">
-      Contact
-    </a>
-  </div>
-));
-
-const Hero = memo(() => (
-  <div className="hero">
-    <h1 className="hero-title">
-      Master Pronunciation with Clear American & British Accents
-    </h1>
-    <p className="hero-subtitle">
-      Get accurate, high-quality word pronunciations in American and British
-      English. Perfect for language learners, professionals, and anyone looking
-      to improve pronunciation effortlessly.
-    </p>
-  </div>
-));
-
-const InputCard = memo(
-  ({
-    word,
-    setWord,
-    handleKeyDown,
-    getPronunciation,
-    isLoading,
-    accent,
-    setAccent,
-    isMale,
-    setIsMale,
-  }) => (
-    <div className="card">
-      <div className="input-group">
-        <input
-          type="text"
-          className="word-input"
-          value={word}
-          onChange={(e) => setWord(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Enter text ..."
-        />
-        <button
-          onClick={getPronunciation}
-          disabled={isLoading}
-          className="pronounce-button"
-        >
-          {isLoading ? (
-            <div className="loading-spinner" />
-          ) : (
-            <>
-              <Play size={16} />
-              <span>Pronounce</span>
-            </>
-          )}
-        </button>
-      </div>
-
-      <div className="controls-section">
-        <div className="control-group">
-          <label className="control-label">
-            <span>Accent</span>
-            <span className="accent-count">
-              <Globe size={16} />
-              <span>{ACCENT_COUNT} available</span>
-            </span>
-          </label>
-          <div className="select-wrapper">
-            <select
-              value={accent}
-              onChange={(e) => setAccent(e.target.value)}
-              className="accent-select"
-            >
-              {Object.entries(accentMap).map(([value, label]) => (
-                <option key={value} value={value}>
-                  {label}
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="select-icon" size={16} />
-          </div>
-        </div>
-
-        <div className="control-group">
-          <label className="control-label">Voice Gender</label>
-          <div className="voice-buttons">
-            <button
-              onClick={() => setIsMale(true)}
-              className={`voice-button ${isMale ? "active" : ""}`}
-            >
-              <svg
-                className="icon-sm"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <circle cx="12" cy="8" r="4" strokeWidth="2" />
-                <path
-                  d="M12 12v8M8 16h8"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <span>Male</span>
-            </button>
-            <button
-              onClick={() => setIsMale(false)}
-              className={`voice-button ${!isMale ? "active" : ""}`}
-            >
-              <svg
-                className="icon-sm"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <circle cx="12" cy="8" r="4" strokeWidth="2" />
-                <path
-                  d="M12 12v8M9 18c0-1.5 1.5-3 3-3s3 1.5 3 3"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <span>Female</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-);
-
-const ResultsCard = memo(
-  ({
-    isLoading,
-    hasPronounced,
-    phonetic,
-    meanings,
-    getPronunciation,
-    toggleFavorite,
-    isFavorite,
-  }) => (
-    <div className="card">
-      {isLoading ? (
-        <div className="results-empty">
-          <div className="loading-spinner icon-lg" />
-          <p>Fetching pronunciation...</p>
-        </div>
-      ) : !hasPronounced ? (
-        <div className="results-empty">
-          <Volume2 className="icon-lg" />
-          <p>Enter a word and click Pronounce to hear the pronunciation</p>
-        </div>
-      ) : (
-        <ResultsContent
-          phonetic={phonetic}
-          meanings={meanings}
-          getPronunciation={getPronunciation}
-          toggleFavorite={toggleFavorite}
-          isFavorite={isFavorite}
-        />
-      )}
-    </div>
-  )
-);
-
-const Footer = memo(() => (
-  <footer className="footer">
-    <div className="container">
-      <p>© 2025 QuickPronounce. All rights reserved.</p>
-    </div>
-  </footer>
-));
 
 // Main App component
 const App = () => {
@@ -379,7 +83,7 @@ const App = () => {
   const audioRef = useRef(new Audio());
 
   // Function to get pronunciation
-  const getPronunciation = async () => {
+  const getPronunciation = useCallback(async () => {
     if (!word.trim()) return;
 
     try {
@@ -451,7 +155,7 @@ const App = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [word, accent, isMale]);
   // Add a flag to control when pronunciation should be triggered
   const [shouldPronounce, setShouldPronounce] = useState(false);
 
@@ -473,7 +177,7 @@ const App = () => {
   // Warm up the API on load
   const DUMMY_WORD = "hello"; // Preload with a common word
 
-  const warmUpAPI = async () => {
+  const warmUpAPI = useCallback(async () => {
     try {
       await fetch("https://backend-8isq.vercel.app/get-pronunciation", {
         method: "POST",
@@ -483,11 +187,11 @@ const App = () => {
     } catch (error) {
       console.error("API warm-up failed:", error);
     }
-  };
+  }, [accent, isMale]);
   useEffect(() => {
     console.log("API warmed up!");
     warmUpAPI(); // Call it on component mount
-  }, []);
+  }, [warmUpAPI]);
 
   // Handle keyboard input with debounce for better performance
   const handleKeyDown = (e) => {
@@ -595,7 +299,8 @@ const App = () => {
       <hr />
 
       <FeaturesPage id="features" />
-
+      <hr />
+      <ContactPage id="contact" />
       <Footer />
     </>
   );
