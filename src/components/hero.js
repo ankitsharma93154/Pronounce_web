@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 const Hero = memo(() => (
-  <div className="hero" id="home">
+  <div className="hero">
     <h1 className="hero-title">
       Master Pronunciation with Clear American & British Accents
     </h1>

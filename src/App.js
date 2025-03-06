@@ -5,17 +5,22 @@ import React, {
   useEffect,
   lazy,
   Suspense,
+  memo,
 } from "react";
 import { Volume2 } from "lucide-react";
-import FeaturesPage from "./components/features";
-import MispronouncedWords from "./components/mispronounce";
+
+// Keep critical components for initial render
 import Header from "./components/header";
 import MobileMenu from "./components/mobileMenu";
 import Hero from "./components/hero";
 import InputCard from "./components/inputCard";
 import ResultsCard from "./components/resultCard";
-import Footer from "./components/footer";
-import ContactPage from "./components/contact";
+
+// Lazy load all components that aren't needed for initial render
+const FeaturesPage = lazy(() => import("./components/features"));
+const MispronouncedWords = lazy(() => import("./components/mispronounce"));
+const ContactPage = lazy(() => import("./components/contact"));
+const Footer = lazy(() => import("./components/footer"));
 
 // Lazy load analytics components
 const Analytics =
@@ -35,6 +40,18 @@ const SpeedInsights =
         }))
       )
     : () => null;
+
+// Create and memoize static components
+const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
+  <button
+    onClick={onClick}
+    disabled={isLoading || !word.trim()}
+    className="float-button"
+    aria-label="Pronounce word"
+  >
+    <Volume2 className="icon" />
+  </button>
+));
 
 // Main App component
 const App = () => {
@@ -67,27 +84,66 @@ const App = () => {
   } = state;
 
   // Create setter functions
-  const setWord = (value) => setState((prev) => ({ ...prev, word: value }));
-  const setAccent = (value) => setState((prev) => ({ ...prev, accent: value }));
-  const setIsMale = (value) => setState((prev) => ({ ...prev, isMale: value }));
-  const setIsLoading = (value) =>
-    setState((prev) => ({ ...prev, isLoading: value }));
-  const setHasPronounced = (value) =>
-    setState((prev) => ({ ...prev, hasPronounced: value }));
-  const setPhonetic = (value) =>
-    setState((prev) => ({ ...prev, phonetic: value }));
-  const setMeanings = (value) =>
-    setState((prev) => ({ ...prev, meanings: value }));
+  const setWord = useCallback(
+    (value) => setState((prev) => ({ ...prev, word: value })),
+    []
+  );
+  const setAccent = useCallback(
+    (value) => setState((prev) => ({ ...prev, accent: value })),
+    []
+  );
+  const setIsMale = useCallback(
+    (value) => setState((prev) => ({ ...prev, isMale: value })),
+    []
+  );
+  const setIsLoading = useCallback(
+    (value) => setState((prev) => ({ ...prev, isLoading: value })),
+    []
+  );
+  const setHasPronounced = useCallback(
+    (value) => setState((prev) => ({ ...prev, hasPronounced: value })),
+    []
+  );
+  const setPhonetic = useCallback(
+    (value) => setState((prev) => ({ ...prev, phonetic: value })),
+    []
+  );
+  const setMeanings = useCallback(
+    (value) => setState((prev) => ({ ...prev, meanings: value })),
+    []
+  );
 
   // Use audioRef for audio playback
   const audioRef = useRef(new Audio());
 
-  // Function to get pronunciation
+  // Add ref for caching previous results
+  const cacheRef = useRef({});
+
+  // Function to get pronunciation with caching
   const getPronunciation = useCallback(async () => {
     if (!word.trim()) return;
 
+    // Create cache key
+    const cacheKey = `${word.trim()}-${accent}-${isMale}`;
+
     try {
       setIsLoading(true);
+
+      // Check cache first
+      if (cacheRef.current[cacheKey]) {
+        const cachedData = cacheRef.current[cacheKey];
+        setPhonetic(cachedData.phonetic);
+        setMeanings(cachedData.meanings);
+
+        if (cachedData.audioUrl) {
+          audioRef.current.src = cachedData.audioUrl;
+          audioRef.current.play();
+        }
+
+        setHasPronounced(true);
+        setIsLoading(false);
+        return;
+      }
 
       // Use AbortController for fetch timeout
       const controller = new AbortController();
@@ -112,16 +168,20 @@ const App = () => {
       }
 
       const data = await response.json();
-      setPhonetic(data.phonetic || "Phonetic transcription not available.");
-      setMeanings(
+      const phonetic = data.phonetic || "Phonetic transcription not available.";
+      const meanings =
         Array.isArray(data.meanings) && data.meanings.length > 0
           ? data.meanings
           : [
               `${
                 /^[A-Z][a-z]+$/.test(word) ? "This looks like a name! " : ""
               }Hmm... we couldn't find a meaning for this word. Try another word!`,
-            ]
-      );
+            ];
+
+      setPhonetic(phonetic);
+      setMeanings(meanings);
+
+      let audioUrl = null;
 
       if (data.audioContent) {
         try {
@@ -130,7 +190,7 @@ const App = () => {
             c.charCodeAt(0)
           );
           const audioBlob = new Blob([byteArray], { type: "audio/mp3" });
-          const audioUrl = URL.createObjectURL(audioBlob);
+          audioUrl = URL.createObjectURL(audioBlob);
 
           audioRef.current.src = audioUrl;
 
@@ -141,13 +201,17 @@ const App = () => {
           audioRef.current.oncanplaythrough = () => {
             audioRef.current.play();
           };
-
-          // Clean up object URL when done
-          audioRef.current.onended = () => URL.revokeObjectURL(audioUrl);
         } catch (audioError) {
           console.error("Error processing audio:", audioError);
         }
       }
+
+      // Cache the results
+      cacheRef.current[cacheKey] = {
+        phonetic,
+        meanings,
+        audioUrl,
+      };
 
       setHasPronounced(true);
     } catch (error) {
@@ -155,7 +219,16 @@ const App = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [word, accent, isMale]);
+  }, [
+    word,
+    accent,
+    isMale,
+    setIsLoading,
+    setPhonetic,
+    setMeanings,
+    setHasPronounced,
+  ]);
+
   // Add a flag to control when pronunciation should be triggered
   const [shouldPronounce, setShouldPronounce] = useState(false);
 
@@ -167,14 +240,20 @@ const App = () => {
     }
   }, [word, shouldPronounce, getPronunciation]);
 
-  const pronounce = (selectedWord) => {
-    // Directly set the word and mark for pronunciation
-    setWord(selectedWord);
-    setShouldPronounce(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const pronounce = useCallback(
+    (selectedWord) => {
+      // Directly set the word and mark for pronunciation
+      setWord(selectedWord);
+      setShouldPronounce(true);
+      // Use requestAnimationFrame for smoother scrolling
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    },
+    [setWord]
+  );
 
-  // Warm up the API on load
+  // Warm up the API on load - moved to a separate effect with lower priority
   const DUMMY_WORD = "hello"; // Preload with a common word
 
   const warmUpAPI = useCallback(async () => {
@@ -188,25 +267,56 @@ const App = () => {
       console.error("API warm-up failed:", error);
     }
   }, [accent, isMale]);
+
+  // Use a separate effect with lower priority for API warm-up
   useEffect(() => {
-    console.log("API warmed up!");
-    warmUpAPI(); // Call it on component mount
+    // Use requestIdleCallback to run this during browser idle time
+    const idleCallbackId = requestIdleCallback
+      ? requestIdleCallback(() => {
+          warmUpAPI();
+          console.log("API warmed up!");
+        })
+      : setTimeout(() => {
+          warmUpAPI();
+          console.log("API warmed up!");
+        }, 2000); // Fallback for browsers not supporting requestIdleCallback
+
+    return () => {
+      if (requestIdleCallback) {
+        cancelIdleCallback(idleCallbackId);
+      } else {
+        clearTimeout(idleCallbackId);
+      }
+    };
   }, [warmUpAPI]);
 
   // Handle keyboard input with debounce for better performance
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") getPronunciation();
-  };
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (e.key === "Enter") getPronunciation();
+    },
+    [getPronunciation]
+  );
 
   // Toggle functions with callback pattern
-  const toggleDarkMode = () =>
-    setState((prev) => ({ ...prev, isDarkMode: !prev.isDarkMode }));
+  const toggleDarkMode = useCallback(
+    () => setState((prev) => ({ ...prev, isDarkMode: !prev.isDarkMode })),
+    []
+  );
 
-  const toggleMobileMenu = () =>
-    setState((prev) => ({ ...prev, isMobileMenuOpen: !prev.isMobileMenuOpen }));
+  const toggleMobileMenu = useCallback(
+    () =>
+      setState((prev) => ({
+        ...prev,
+        isMobileMenuOpen: !prev.isMobileMenuOpen,
+      })),
+    []
+  );
 
-  const toggleFavorite = () =>
-    setState((prev) => ({ ...prev, isFavorite: !prev.isFavorite }));
+  const toggleFavorite = useCallback(
+    () => setState((prev) => ({ ...prev, isFavorite: !prev.isFavorite })),
+    []
+  );
 
   // Dark mode effect with proper cleanup
   useEffect(() => {
@@ -230,14 +340,40 @@ const App = () => {
 
   // Preload critical resources
   useEffect(() => {
+    // Set explicit dimensions for components to prevent layout shifts
+    document.documentElement.style.setProperty(
+      "--app-height",
+      `${window.innerHeight}px`
+    );
+
+    // Listen for orientation changes
+    const handleResize = () => {
+      document.documentElement.style.setProperty(
+        "--app-height",
+        `${window.innerHeight}px`
+      );
+    };
+
+    window.addEventListener("resize", handleResize);
+
     // Preconnect to API
     const link = document.createElement("link");
     link.rel = "preconnect";
     link.href = "https://backend-8isq.vercel.app";
     document.head.appendChild(link);
 
+    // Add preload hint for the API
+    const preloadLink = document.createElement("link");
+    preloadLink.rel = "preload";
+    preloadLink.as = "fetch";
+    preloadLink.href = "https://backend-8isq.vercel.app/get-pronunciation";
+    preloadLink.crossOrigin = "anonymous";
+    document.head.appendChild(preloadLink);
+
     return () => {
       document.head.removeChild(link);
+      document.head.removeChild(preloadLink);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -259,7 +395,7 @@ const App = () => {
 
       {isMobileMenuOpen && <MobileMenu />}
 
-      <main className="main container">
+      <main className="main container" id="home">
         {!hasPronounced && <Hero />}
 
         <div className="interface-grid">
@@ -286,22 +422,60 @@ const App = () => {
           />
         </div>
 
-        <button
+        <FloatButton
           onClick={getPronunciation}
-          disabled={isLoading || !word.trim()}
-          className="float-button"
-          aria-label="Pronounce word"
-        >
-          <Volume2 className="icon" />
-        </button>
+          disabled={isLoading}
+          isLoading={isLoading}
+          word={word}
+        />
       </main>
-      <MispronouncedWords pronounce={pronounce} />
+
+      {/* Lazy load non-critical components */}
+      <Suspense
+        fallback={
+          <div
+            className="loading-placeholder"
+            style={{ height: "200px" }}
+          ></div>
+        }
+      >
+        <MispronouncedWords pronounce={pronounce} />
+      </Suspense>
       <hr />
 
-      <FeaturesPage id="features" />
+      <Suspense
+        fallback={
+          <div
+            className="loading-placeholder"
+            style={{ height: "300px" }}
+          ></div>
+        }
+      >
+        <FeaturesPage id="features" />
+      </Suspense>
       <hr />
-      <ContactPage id="contact" />
-      <Footer />
+
+      <Suspense
+        fallback={
+          <div
+            className="loading-placeholder"
+            style={{ height: "200px" }}
+          ></div>
+        }
+      >
+        <ContactPage id="contact" />
+      </Suspense>
+
+      <Suspense
+        fallback={
+          <div
+            className="loading-placeholder"
+            style={{ height: "100px" }}
+          ></div>
+        }
+      >
+        <Footer />
+      </Suspense>
     </>
   );
 };
