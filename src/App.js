@@ -470,6 +470,25 @@ const App = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Warm up the API on load
+  const DUMMY_WORD = "hello"; // Preload with a common word
+
+  const warmUpAPI = async () => {
+    try {
+      await fetch("https://backend-8isq.vercel.app/get-pronunciation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ word: DUMMY_WORD, accent, isMale }),
+      }); // Fire a request
+    } catch (error) {
+      console.error("API warm-up failed:", error);
+    }
+  };
+  useEffect(() => {
+    console.log("API warmed up!");
+    warmUpAPI(); // Call it on component mount
+  }, []);
+
   // Handle keyboard input with debounce for better performance
   const handleKeyDown = (e) => {
     if (e.key === "Enter") getPronunciation();
