@@ -621,7 +621,69 @@ hr {
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
+
+/* New styles for added elements */
+.feature-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  margin-bottom: 3rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-highlight {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.accent-tag {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.feature-stat {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.features-cta {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.features-cta h3 {
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.try-button {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-normal) ease;
+}
+
+.try-button:hover {
+  background-color: var(--primary-dark, #1e40af);
+}
+
 /* AboutPage.css */
 /* Specific CSS for the About page with no clashing class names */
 
@@ -811,6 +873,9 @@ hr {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 3rem;
+  }
+  .feature-card {
+    padding: 1.5rem;
   }
   .page-title {
     font-size: 1.7rem;

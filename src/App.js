@@ -453,7 +453,7 @@ const App = () => {
       >
         <FeaturesPage id="features" />
       </Suspense>
-      <hr />
+      <div className="about-page-divider"></div>
 
       <Suspense
         fallback={
