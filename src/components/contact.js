@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail } from "lucide-react";
+import { Mail, LucideInstagram } from "lucide-react";
 
 const ContactPage = () => {
   return (
@@ -14,10 +14,9 @@ const ContactPage = () => {
           </p>
           <p className="about-page-text">
             QuickPronounce was founded by a language enthusiast who understands
-            the challenges of pronouncing unfamiliar words. This platform was
-            born from a personal need to improve pronunciation skills. Whether
-            you're learning a new language or just want to improve your
-            pronunciation, we're here to support your journey.
+            the challenges of pronouncing unfamiliar words. Whether you're
+            learning a new language or just want to improve your pronunciation,
+            we're here to support your journey.
           </p>
         </div>
       </section>
@@ -25,27 +24,40 @@ const ContactPage = () => {
       <div className="about-page-divider"></div>
 
       <section className="about-page-section" id="contact">
-        <h2 className="about-page-section-title">Get In Touch</h2>
+        <h2 className="about-page-section-title">Stay Connected</h2>
         <div className="about-page-content">
           <p className="about-page-text">
-            Have questions or feedback? We'd love to hear from you! The easiest
-            way to reach us is through email. Drop us a message, and we'll get
-            back to you as soon as possible.
+            Got questions? Wanna say hi? Hit us up through email or Instagram—
+            we’re always around!
+          </p>
+          <p className="about-page-text">
+            Whether you have feedback, feature requests, or just want to share
+            how QuickPronounce has helped you, we'd love to hear from you. Our
+            inbox and DMs are always open—so don’t be a stranger!
+          </p>
+          <p className="about-page-text">
+            Follow us on Instagram to stay updated with the latest features,
+            tips, and updates. We’re building something awesome, and you’re a
+            part of it!
           </p>
 
-          <div className="about-page-contact-card">
-            <div className="about-page-icon-container">
-              <Mail size={24} className="about-page-mail-icon" />
-            </div>
-            <div className="about-page-contact-info">
-              <p className="about-page-contact-label">Email us at:</p>
-              <a
-                href="mailto:hello.quickpronounce@gmail.com"
-                className="about-page-email-link"
-              >
-                hello.quickpronounce@gmail.com
-              </a>
-            </div>
+          <div className="about-page-contact-icons">
+            <a
+              href="mailto:hello.quickpronounce@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-page-icon-link"
+            >
+              <Mail size={32} className="about-page-icon" />
+            </a>
+            <a
+              href="https://www.instagram.com/quickpronounce/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-page-icon-link"
+            >
+              <LucideInstagram size={32} className="about-page-icon" />
+            </a>
           </div>
         </div>
       </section>
