@@ -23,11 +23,11 @@ const FeaturesPage = () => (
           <p>
             Listen to accurate word pronunciations in <strong>American</strong>,{" "}
             <strong>British</strong>,<strong>Australian</strong>, and{" "}
-            <strong>Indian English</strong>. Perfect for{" "}
+            <strong>Indian English</strong>. This is perfect for{" "}
             <strong>students</strong>, <strong>professionals</strong>, and{" "}
-            <strong>ESL learners </strong>
-            looking to improve their <strong>spoken English clarity</strong> for
-            everyday conversations, business communication, and public speaking.
+            <strong>ESL learners </strong>who are looking to improve their
+            <strong>spoken English </strong> for everyday conversations,
+            business communication, and public speaking.
           </p>
           <div className="feature-highlight">
             <span className="accent-tag">
@@ -53,13 +53,13 @@ const FeaturesPage = () => (
             <strong>Phonetic Transcriptions (IPA)</strong>
           </h2>
           <p>
-            Learn correct <strong>English pronunciation </strong> using
+            You can learn correct <strong>English pronunciation </strong> using
             <strong>
               International Phonetic Alphabet (IPA) transcriptions
             </strong>
             . Understand <strong>word stress</strong>,{" "}
             <strong>vowel sounds</strong>, and <strong>syllable breaks </strong>
-            for clearer speech. Great for those preparing for{" "}
+            for clearer speech. Great for those who are preparing for{" "}
             <strong>IELTS</strong>, <strong>TOEFL</strong>, and other{" "}
             <strong>English proficiency exams</strong>.
           </p>
@@ -80,9 +80,9 @@ const FeaturesPage = () => (
           <p>
             Hear words pronounced by both{" "}
             <strong>male and female voices</strong> for better
-            <strong> listening comprehension</strong>. Ideal for{" "}
+            <strong> listening comprehension</strong>. It is ideal for{" "}
             <strong>language learners</strong>,<strong>professionals</strong>,
-            and <strong>students</strong> aiming for{" "}
+            and <strong>students</strong> that are aiming for{" "}
             <strong>natural-sounding pronunciation</strong>.
           </p>
           <div className="feature-highlight">
