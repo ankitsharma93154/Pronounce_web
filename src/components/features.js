@@ -25,7 +25,7 @@ const FeaturesPage = () => (
             <strong>British</strong>,<strong>Australian</strong>, and{" "}
             <strong>Indian English</strong>. Perfect for{" "}
             <strong>students</strong>, <strong>professionals</strong>, and{" "}
-            <strong>ESL learners</strong>
+            <strong>ESL learners </strong>
             looking to improve their <strong>spoken English clarity</strong> for
             everyday conversations, business communication, and public speaking.
           </p>
@@ -53,12 +53,12 @@ const FeaturesPage = () => (
             <strong>Phonetic Transcriptions (IPA)</strong>
           </h2>
           <p>
-            Learn correct <strong>English pronunciation</strong> using
+            Learn correct <strong>English pronunciation </strong> using
             <strong>
               International Phonetic Alphabet (IPA) transcriptions
             </strong>
             . Understand <strong>word stress</strong>,{" "}
-            <strong>vowel sounds</strong>, and <strong>syllable breaks</strong>
+            <strong>vowel sounds</strong>, and <strong>syllable breaks </strong>
             for clearer speech. Great for those preparing for{" "}
             <strong>IELTS</strong>, <strong>TOEFL</strong>, and other{" "}
             <strong>English proficiency exams</strong>.
@@ -80,7 +80,7 @@ const FeaturesPage = () => (
           <p>
             Hear words pronounced by both{" "}
             <strong>male and female voices</strong> for better
-            <strong>listening comprehension</strong>. Ideal for{" "}
+            <strong> listening comprehension</strong>. Ideal for{" "}
             <strong>language learners</strong>,<strong>professionals</strong>,
             and <strong>students</strong> aiming for{" "}
             <strong>natural-sounding pronunciation</strong>.
@@ -102,7 +102,7 @@ const FeaturesPage = () => (
           <p>
             Expand your <strong>English vocabulary</strong> with{" "}
             <strong>definitions</strong> and
-            <strong>real-world example sentences</strong>. Learn how words are
+            <strong> real-world example sentences</strong>. Learn how words are
             used in different contexts and situations, improving both{" "}
             <strong>pronunciation</strong> and <strong>fluency</strong>.
           </p>
