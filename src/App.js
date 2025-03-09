@@ -67,6 +67,9 @@ const App = () => {
     isDarkMode: false,
     isMobileMenuOpen: false,
     isFavorite: false,
+    // Add synonym-related state
+    synonyms: [],
+    synonymStatus: { loading: false, error: null },
   });
 
   // Destructure state for cleaner code
@@ -81,6 +84,9 @@ const App = () => {
     isDarkMode,
     isMobileMenuOpen,
     isFavorite,
+    // Destructure new synonym-related state
+    synonyms,
+    synonymStatus,
   } = state;
 
   // Create setter functions
@@ -113,15 +119,86 @@ const App = () => {
     []
   );
 
+  // Add synonym setters
+  const setSynonyms = useCallback(
+    (value) => setState((prev) => ({ ...prev, synonyms: value })),
+    []
+  );
+  const setSynonymStatus = useCallback(
+    (value) => setState((prev) => ({ ...prev, synonymStatus: value })),
+    []
+  );
+
   // Use audioRef for audio playback
   const audioRef = useRef(new Audio());
 
   // Add ref for caching previous results
   const cacheRef = useRef({});
 
+  // Add synonym-specific refs
+  const synonymCacheRef = useRef(new Map());
+  const synonymAbortControllerRef = useRef(null);
+
+  // Function to fetch synonyms
+  const fetchSynonyms = useCallback(async () => {
+    if (!word?.trim()) return;
+
+    // Check cache first
+    const cacheKey = word.toLowerCase();
+    if (synonymCacheRef.current.has(cacheKey)) {
+      setSynonyms(synonymCacheRef.current.get(cacheKey));
+      return;
+    }
+
+    // Cancel previous request if it exists
+    if (synonymAbortControllerRef.current) {
+      synonymAbortControllerRef.current.abort();
+    }
+
+    // Create new abort controller for this request
+    synonymAbortControllerRef.current = new AbortController();
+
+    setSynonymStatus({ loading: true, error: null });
+
+    try {
+      const response = await fetch(
+        `https://api.datamuse.com/words?rel_syn=${encodeURIComponent(
+          word
+        )}&max=10`,
+        { signal: synonymAbortControllerRef.current.signal }
+      );
+
+      if (!response.ok) {
+        throw new Error(`API responded with status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const wordList = data.slice(0, 5).map((item) => item.word);
+
+      // Update cache
+      synonymCacheRef.current.set(cacheKey, wordList);
+      setSynonyms(wordList);
+    } catch (err) {
+      // Only set error if not aborted
+      if (err.name !== "AbortError") {
+        setSynonymStatus({
+          loading: false,
+          error: "Failed to fetch synonyms. Please try again later.",
+        });
+      }
+    } finally {
+      if (synonymAbortControllerRef.current?.signal.aborted === false) {
+        setSynonymStatus({ loading: false, error: null });
+      }
+    }
+  }, [word, setSynonyms, setSynonymStatus]);
+
   // Function to get pronunciation with caching
   const getPronunciation = useCallback(async () => {
     if (!word.trim()) return;
+
+    //fetchSynonyms();
+    fetchSynonyms();
 
     // Create cache key
     const cacheKey = `${word.trim()}-${accent}-${isMale}`;
@@ -227,6 +304,7 @@ const App = () => {
     setPhonetic,
     setMeanings,
     setHasPronounced,
+    fetchSynonyms,
   ]);
 
   // Add a flag to control when pronunciation should be triggered
@@ -409,6 +487,9 @@ const App = () => {
             setAccent={setAccent}
             isMale={isMale}
             setIsMale={setIsMale}
+            hasPronounced={hasPronounced}
+            synonyms={synonyms}
+            synonymStatus={synonymStatus}
           />
 
           <ResultsCard
