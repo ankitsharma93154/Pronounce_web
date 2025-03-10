@@ -9,7 +9,7 @@ const WordSynonyms = ({ synonyms, status }) => {
     if (loading) return <p className="synonyms-loading">Loading synonyms...</p>;
     if (error) return <p className="synonyms-error">{error}</p>;
     if (synonyms.length === 0)
-      return <p className="synonyms-loading">No synonyms found.</p>;
+      return <p className="synonyms-loading">No direct synonyms.</p>;
 
     return (
       <div className="synonyms-list">

@@ -775,7 +775,6 @@ hr,
     padding: 0.4rem 1rem;
   }
 }
-
 @media (max-width: 767px) {
   .container,
   .header-content {
