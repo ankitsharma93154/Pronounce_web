@@ -528,11 +528,12 @@ hr,
 }
 .feature-card h2 {
   font-size: 1.25rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--text);
+  color: var(--text-primary);
 }
 .feature-card p {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -554,12 +555,16 @@ hr,
   margin-top: 0.5rem;
 }
 .accent-tag {
-  background-color: rgba(37, 99, 235, 0.1);
-  color: var(--primary);
+  background-color: rgba(37, 99, 235, 0.2);
+  color: #1e40af;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.875rem;
   font-weight: 500;
+}
+body.dark .accent-tag {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
 }
 .feature-stat {
   color: var(--primary);
@@ -746,8 +751,8 @@ hr,
   margin-top: 0.8rem;
 }
 .synonym-chip {
-  background-color: rgba(37, 99, 235, 0.1);
-  color: var(--primary);
+  background-color: rgba(37, 99, 235, 0.2);
+  color: #1e40af;
   border: none;
   padding: 0.5rem 1.2rem;
   border-radius: 16px;
@@ -755,6 +760,10 @@ hr,
   font-size: 1rem;
   font-weight: 500;
   display: inline-block;
+}
+body.dark .synonym-chip {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
 }
 .synonyms-loading,
 .synonyms-error {

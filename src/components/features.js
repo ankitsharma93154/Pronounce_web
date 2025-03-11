@@ -64,7 +64,7 @@ const FeaturesPage = () => (
             <strong>English proficiency exams</strong>.
           </p>
           <div className="feature-highlight">
-            <span className="feature-stat accent-tag">
+            <span className="accent-tag ">
               <strong>Supports IPA Symbols</strong>
             </span>
           </div>
@@ -86,7 +86,7 @@ const FeaturesPage = () => (
             <strong>natural-sounding pronunciation</strong>.
           </p>
           <div className="feature-highlight">
-            <span className="feature-stat accent-tag">
+            <span className="accent-tag">
               <strong>Clear & Natural Audio</strong>
             </span>
           </div>
@@ -107,7 +107,7 @@ const FeaturesPage = () => (
             <strong>pronunciation</strong> and <strong>fluency</strong>.
           </p>
           <div className="feature-highlight">
-            <span className="feature-stat accent-tag">
+            <span className="accent-tag ">
               <strong>Comprehensive Word Database</strong>
             </span>
           </div>
