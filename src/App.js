@@ -433,7 +433,7 @@ const App = () => {
       >
         <MispronouncedWords pronounce={pronounce} />
       </Suspense>
-      <hr />
+      <div className="about-page-divider"></div>
 
       <Suspense
         fallback={

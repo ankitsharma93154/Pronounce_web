@@ -249,6 +249,7 @@ body.dark {
 .mispronounced-container {
   padding: 2rem;
   margin: 0 auto;
+  max-width: 64rem;
 }
 .mispronounced-container h2,
 .about-page-section-title {
@@ -465,16 +466,12 @@ body.dark {
   text-align: center;
   color: var(--primary);
 }
-hr,
 .about-page-divider {
   max-width: 64rem;
   width: 100%;
   margin: 40px auto;
   border: none;
   height: 2px;
-}
-.hr {
-  background-color: #ddd;
 }
 .about-page-divider {
   background-color: var(--border-color);
@@ -825,7 +822,7 @@ body.dark .synonym-chip {
     display: none;
   }
   .mispronounced-container {
-    margin: 0 0.5rem;
+    margin: 1rem 0.5rem;
   }
   .about-page-container {
     padding-top: 5rem;
