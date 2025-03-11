@@ -55,7 +55,7 @@ const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
 
 // Main App component
 const App = () => {
-  // Use useReducer for complex state management
+  // Use useState for state management with initial state object
   const [state, setState] = useState({
     word: "",
     accent: "en-US",
@@ -67,10 +67,15 @@ const App = () => {
     isDarkMode: false,
     isMobileMenuOpen: false,
     isFavorite: false,
-    // Add synonym-related state
     synonyms: [],
     synonymStatus: { loading: false, error: null },
   });
+
+  // Create refs
+  const audioRef = useRef(new Audio());
+  const cacheRef = useRef({});
+  const synonymCacheRef = useRef(new Map());
+  const synonymAbortControllerRef = useRef(null);
 
   // Destructure state for cleaner code
   const {
@@ -84,60 +89,17 @@ const App = () => {
     isDarkMode,
     isMobileMenuOpen,
     isFavorite,
-    // Destructure new synonym-related state
     synonyms,
     synonymStatus,
   } = state;
 
-  // Create setter functions
-  const setWord = useCallback(
-    (value) => setState((prev) => ({ ...prev, word: value })),
-    []
-  );
-  const setAccent = useCallback(
-    (value) => setState((prev) => ({ ...prev, accent: value })),
-    []
-  );
-  const setIsMale = useCallback(
-    (value) => setState((prev) => ({ ...prev, isMale: value })),
-    []
-  );
-  const setIsLoading = useCallback(
-    (value) => setState((prev) => ({ ...prev, isLoading: value })),
-    []
-  );
-  const setHasPronounced = useCallback(
-    (value) => setState((prev) => ({ ...prev, hasPronounced: value })),
-    []
-  );
-  const setPhonetic = useCallback(
-    (value) => setState((prev) => ({ ...prev, phonetic: value })),
-    []
-  );
-  const setMeanings = useCallback(
-    (value) => setState((prev) => ({ ...prev, meanings: value })),
-    []
-  );
+  // Unified state updater
+  const updateState = useCallback((updates) => {
+    setState((prev) => ({ ...prev, ...updates }));
+  }, []);
 
-  // Add synonym setters
-  const setSynonyms = useCallback(
-    (value) => setState((prev) => ({ ...prev, synonyms: value })),
-    []
-  );
-  const setSynonymStatus = useCallback(
-    (value) => setState((prev) => ({ ...prev, synonymStatus: value })),
-    []
-  );
-
-  // Use audioRef for audio playback
-  const audioRef = useRef(new Audio());
-
-  // Add ref for caching previous results
-  const cacheRef = useRef({});
-
-  // Add synonym-specific refs
-  const synonymCacheRef = useRef(new Map());
-  const synonymAbortControllerRef = useRef(null);
+  // Add a flag to control when pronunciation should be triggered
+  const [shouldPronounce, setShouldPronounce] = useState(false);
 
   // Function to fetch synonyms
   const fetchSynonyms = useCallback(async () => {
@@ -146,7 +108,7 @@ const App = () => {
     // Check cache first
     const cacheKey = word.toLowerCase();
     if (synonymCacheRef.current.has(cacheKey)) {
-      setSynonyms(synonymCacheRef.current.get(cacheKey));
+      updateState({ synonyms: synonymCacheRef.current.get(cacheKey) });
       return;
     }
 
@@ -158,7 +120,7 @@ const App = () => {
     // Create new abort controller for this request
     synonymAbortControllerRef.current = new AbortController();
 
-    setSynonymStatus({ loading: true, error: null });
+    updateState({ synonymStatus: { loading: true, error: null } });
 
     try {
       const response = await fetch(
@@ -177,48 +139,50 @@ const App = () => {
 
       // Update cache
       synonymCacheRef.current.set(cacheKey, wordList);
-      setSynonyms(wordList);
+      updateState({ synonyms: wordList });
     } catch (err) {
       // Only set error if not aborted
       if (err.name !== "AbortError") {
-        setSynonymStatus({
-          loading: false,
-          error: "Failed to fetch synonyms. Please try again later.",
+        updateState({
+          synonymStatus: {
+            loading: false,
+            error: "Failed to fetch synonyms. Please try again later.",
+          },
         });
       }
     } finally {
       if (synonymAbortControllerRef.current?.signal.aborted === false) {
-        setSynonymStatus({ loading: false, error: null });
+        updateState({ synonymStatus: { loading: false, error: null } });
       }
     }
-  }, [word, setSynonyms, setSynonymStatus]);
+  }, [word, updateState]);
 
   // Function to get pronunciation with caching
   const getPronunciation = useCallback(async () => {
     if (!word.trim()) return;
 
-    //fetchSynonyms();
     fetchSynonyms();
 
     // Create cache key
     const cacheKey = `${word.trim()}-${accent}-${isMale}`;
 
     try {
-      setIsLoading(true);
+      updateState({ isLoading: true });
 
       // Check cache first
       if (cacheRef.current[cacheKey]) {
         const cachedData = cacheRef.current[cacheKey];
-        setPhonetic(cachedData.phonetic);
-        setMeanings(cachedData.meanings);
+        updateState({
+          phonetic: cachedData.phonetic,
+          meanings: cachedData.meanings,
+          hasPronounced: true,
+          isLoading: false,
+        });
 
         if (cachedData.audioUrl) {
           audioRef.current.src = cachedData.audioUrl;
           audioRef.current.play();
         }
-
-        setHasPronounced(true);
-        setIsLoading(false);
         return;
       }
 
@@ -255,14 +219,10 @@ const App = () => {
               }Hmm... we couldn't find a meaning for this word. Try another word!`,
             ];
 
-      setPhonetic(phonetic);
-      setMeanings(meanings);
-
       let audioUrl = null;
 
       if (data.audioContent) {
         try {
-          // Use more efficient audio processing
           const byteArray = Uint8Array.from(atob(data.audioContent), (c) =>
             c.charCodeAt(0)
           );
@@ -270,94 +230,64 @@ const App = () => {
           audioUrl = URL.createObjectURL(audioBlob);
 
           audioRef.current.src = audioUrl;
-
-          // Preload audio
           audioRef.current.preload = "auto";
-
-          // Play audio after it's loaded
-          audioRef.current.oncanplaythrough = () => {
-            audioRef.current.play();
-          };
+          audioRef.current.oncanplaythrough = () => audioRef.current.play();
         } catch (audioError) {
           console.error("Error processing audio:", audioError);
         }
       }
 
       // Cache the results
-      cacheRef.current[cacheKey] = {
+      cacheRef.current[cacheKey] = { phonetic, meanings, audioUrl };
+
+      updateState({
         phonetic,
         meanings,
-        audioUrl,
-      };
-
-      setHasPronounced(true);
+        hasPronounced: true,
+      });
     } catch (error) {
       console.error("Error fetching pronunciation:", error);
     } finally {
-      setIsLoading(false);
+      updateState({ isLoading: false });
     }
-  }, [
-    word,
-    accent,
-    isMale,
-    setIsLoading,
-    setPhonetic,
-    setMeanings,
-    setHasPronounced,
-    fetchSynonyms,
-  ]);
-
-  // Add a flag to control when pronunciation should be triggered
-  const [shouldPronounce, setShouldPronounce] = useState(false);
+  }, [word, accent, isMale, updateState, fetchSynonyms]);
 
   useEffect(() => {
     if (word && shouldPronounce) {
       getPronunciation();
-      // Reset the flag after pronunciation
       setShouldPronounce(false);
     }
   }, [word, shouldPronounce, getPronunciation]);
 
   const pronounce = useCallback(
     (selectedWord) => {
-      // Directly set the word and mark for pronunciation
-      setWord(selectedWord);
+      updateState({ word: selectedWord });
       setShouldPronounce(true);
-      // Use requestAnimationFrame for smoother scrolling
-      requestAnimationFrame(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
+      requestAnimationFrame(() =>
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      );
     },
-    [setWord]
+    [updateState]
   );
 
-  // Warm up the API on load - moved to a separate effect with lower priority
-  const DUMMY_WORD = "hello"; // Preload with a common word
-
+  // Warm up the API
   const warmUpAPI = useCallback(async () => {
     try {
       await fetch("https://backend-8isq.vercel.app/get-pronunciation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ word: DUMMY_WORD, accent, isMale }),
-      }); // Fire a request
+        body: JSON.stringify({ word: "hello", accent, isMale }),
+      });
     } catch (error) {
       console.error("API warm-up failed:", error);
     }
   }, [accent, isMale]);
 
-  // Use a separate effect with lower priority for API warm-up
+  // API warm-up effect
   useEffect(() => {
-    // Use requestIdleCallback to run this during browser idle time
     const idleCallbackId = requestIdleCallback
-      ? requestIdleCallback(() => {
-          warmUpAPI();
-          console.log("API warmed up!");
-        })
-      : setTimeout(() => {
-          warmUpAPI();
-          console.log("API warmed up!");
-        }, 2000); // Fallback for browsers not supporting requestIdleCallback
+      ? requestIdleCallback(() => warmUpAPI())
+      : setTimeout(() => warmUpAPI(), 2000);
 
     return () => {
       if (requestIdleCallback) {
@@ -368,7 +298,7 @@ const App = () => {
     };
   }, [warmUpAPI]);
 
-  // Handle keyboard input with debounce for better performance
+  // Event handlers
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === "Enter") getPronunciation();
@@ -376,32 +306,25 @@ const App = () => {
     [getPronunciation]
   );
 
-  // Toggle functions with callback pattern
-  const toggleDarkMode = useCallback(
-    () => setState((prev) => ({ ...prev, isDarkMode: !prev.isDarkMode })),
-    []
-  );
+  // Toggle functions
+  const togglers = {
+    darkMode: useCallback(
+      () => updateState({ isDarkMode: !isDarkMode }),
+      [updateState, isDarkMode]
+    ),
+    mobileMenu: useCallback(
+      () => updateState({ isMobileMenuOpen: !isMobileMenuOpen }),
+      [updateState, isMobileMenuOpen]
+    ),
+    favorite: useCallback(
+      () => updateState({ isFavorite: !isFavorite }),
+      [updateState, isFavorite]
+    ),
+  };
 
-  const toggleMobileMenu = useCallback(
-    () =>
-      setState((prev) => ({
-        ...prev,
-        isMobileMenuOpen: !prev.isMobileMenuOpen,
-      })),
-    []
-  );
-
-  const toggleFavorite = useCallback(
-    () => setState((prev) => ({ ...prev, isFavorite: !prev.isFavorite })),
-    []
-  );
-
-  // Dark mode effect with proper cleanup
+  // Dark mode effect
   useEffect(() => {
-    // Apply dark mode
     document.body.classList.toggle("dark", isDarkMode);
-
-    // Set meta theme-color
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
       metaThemeColor.setAttribute(
@@ -409,51 +332,39 @@ const App = () => {
         isDarkMode ? "#1a1a1a" : "#ffffff"
       );
     }
-
-    // Clean up on unmount
-    return () => {
-      document.body.classList.remove("dark");
-    };
+    return () => document.body.classList.remove("dark");
   }, [isDarkMode]);
 
-  // Preload critical resources
+  // Page setup effect - Modified to fix preload issues
   useEffect(() => {
-    // Set explicit dimensions for components to prevent layout shifts
-    document.documentElement.style.setProperty(
-      "--app-height",
-      `${window.innerHeight}px`
-    );
-
-    // Listen for orientation changes
+    // Set dimensions to prevent layout shifts
     const handleResize = () => {
       document.documentElement.style.setProperty(
         "--app-height",
         `${window.innerHeight}px`
       );
     };
-
+    handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Preconnect to API
+    // Only preconnect to API (removed problematic preload)
     const link = document.createElement("link");
     link.rel = "preconnect";
     link.href = "https://backend-8isq.vercel.app";
     document.head.appendChild(link);
 
-    // Add preload hint for the API
-    const preloadLink = document.createElement("link");
-    preloadLink.rel = "preload";
-    preloadLink.as = "fetch";
-    preloadLink.href = "https://backend-8isq.vercel.app/get-pronunciation";
-    preloadLink.crossOrigin = "anonymous";
-    document.head.appendChild(preloadLink);
+    // Immediately fetch a small request to warm up connection instead of using preload
+    setTimeout(() => {
+      warmUpAPI();
+    }, 300);
 
     return () => {
-      document.head.removeChild(link);
-      document.head.removeChild(preloadLink);
+      if (link.parentNode) {
+        document.head.removeChild(link);
+      }
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [warmUpAPI]);
 
   return (
     <>
@@ -466,9 +377,9 @@ const App = () => {
 
       <Header
         isDarkMode={isDarkMode}
-        toggleDarkMode={toggleDarkMode}
+        toggleDarkMode={togglers.darkMode}
         isMobileMenuOpen={isMobileMenuOpen}
-        toggleMobileMenu={toggleMobileMenu}
+        toggleMobileMenu={togglers.mobileMenu}
       />
 
       {isMobileMenuOpen && <MobileMenu />}
@@ -479,14 +390,14 @@ const App = () => {
         <div className="interface-grid">
           <InputCard
             word={word}
-            setWord={setWord}
+            setWord={(word) => updateState({ word })}
             handleKeyDown={handleKeyDown}
             getPronunciation={getPronunciation}
             isLoading={isLoading}
             accent={accent}
-            setAccent={setAccent}
+            setAccent={(accent) => updateState({ accent })}
             isMale={isMale}
-            setIsMale={setIsMale}
+            setIsMale={(isMale) => updateState({ isMale })}
             hasPronounced={hasPronounced}
             synonyms={synonyms}
             synonymStatus={synonymStatus}
@@ -498,7 +409,7 @@ const App = () => {
             phonetic={phonetic}
             meanings={meanings}
             getPronunciation={getPronunciation}
-            toggleFavorite={toggleFavorite}
+            toggleFavorite={togglers.favorite}
             isFavorite={isFavorite}
           />
         </div>
@@ -511,7 +422,7 @@ const App = () => {
         />
       </main>
 
-      {/* Lazy load non-critical components */}
+      {/* Lazy loaded components with placeholders */}
       <Suspense
         fallback={
           <div
