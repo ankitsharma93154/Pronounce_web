@@ -89,13 +89,16 @@ body.dark {
   background-color: var(--primary);
   border-radius: 50%;
 }
-.logo-text {
-  font-size: 1.25rem;
+.logo-text,
+.hero-title {
   font-weight: 700;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+.logo-text {
+  font-size: 1.25rem;
 }
 .nav-desktop {
   display: none;
@@ -158,12 +161,7 @@ body.dark {
 }
 .hero-title {
   font-size: 2.5rem;
-  font-weight: 700;
   margin-bottom: 0.5rem;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 .hero-subtitle {
   color: var(--text-secondary);
@@ -200,7 +198,8 @@ body.dark {
   position: relative;
   margin-bottom: 1.5rem;
 }
-.word-input {
+.word-input,
+.accent-select {
   width: 100%;
   padding: 0.75rem 1rem;
   font-size: 1rem;
@@ -208,6 +207,8 @@ body.dark {
   border-radius: 0.5rem;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+}
+.word-input {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .word-input:focus {
@@ -247,8 +248,6 @@ body.dark {
 }
 .mispronounced-container {
   padding: 2rem;
-  margin-top: 2rem;
-  max-width: 64rem;
   margin: 0 auto;
 }
 .mispronounced-container h2,
@@ -347,14 +346,7 @@ body.dark {
   position: relative;
 }
 .accent-select {
-  font-size: 1rem;
-  width: 100%;
-  padding: 0.75rem 1rem;
   appearance: none;
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
-  color: var(--text-primary);
   cursor: pointer;
 }
 .select-icon {
@@ -554,15 +546,19 @@ hr,
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
-.accent-tag {
+.accent-tag,
+.synonym-chip {
   background-color: rgba(37, 99, 235, 0.2);
   color: #1e40af;
-  padding: 0.25rem 0.75rem;
   border-radius: 9999px;
-  font-size: 0.875rem;
   font-weight: 500;
 }
-body.dark .accent-tag {
+.accent-tag {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+}
+body.dark .accent-tag,
+body.dark .synonym-chip {
   background-color: rgba(59, 130, 246, 0.3);
   color: #93c5fd;
 }
@@ -751,19 +747,12 @@ body.dark .accent-tag {
   margin-top: 0.8rem;
 }
 .synonym-chip {
-  background-color: rgba(37, 99, 235, 0.2);
-  color: #1e40af;
   border: none;
   padding: 0.5rem 1.2rem;
   border-radius: 16px;
   transition: background 0.3s ease, transform 0.2s ease;
   font-size: 1rem;
-  font-weight: 500;
   display: inline-block;
-}
-body.dark .synonym-chip {
-  background-color: rgba(59, 130, 246, 0.3);
-  color: #93c5fd;
 }
 .synonyms-loading,
 .synonyms-error {

@@ -46,7 +46,8 @@ const ContactPage = () => {
               href="mailto:hello.quickpronounce@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="about-page-icon-link"
+              class="about-page-icon-link"
+              aria-label="Email us at hello.quickpronounce@gmail.com"
             >
               <Mail size={32} className="about-page-icon" />
             </a>
@@ -54,7 +55,8 @@ const ContactPage = () => {
               href="https://www.instagram.com/quickpronounce/"
               target="_blank"
               rel="noopener noreferrer"
-              className="about-page-icon-link"
+              class="about-page-icon-link"
+              aria-label="Visit our Instagram page"
             >
               <LucideInstagram size={32} className="about-page-icon" />
             </a>
