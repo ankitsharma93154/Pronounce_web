@@ -26,7 +26,7 @@ const FeaturesPage = () => (
             <strong>Indian English</strong>. This is perfect for{" "}
             <strong>students</strong>, <strong>professionals</strong>, and{" "}
             <strong>ESL learners </strong>who are looking to improve their
-            <strong>spoken English </strong> for everyday conversations,
+            <strong> spoken English </strong> for everyday conversations,
             business communication, and public speaking.
           </p>
           <div className="feature-highlight">
