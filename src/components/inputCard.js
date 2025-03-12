@@ -44,7 +44,7 @@ const InputCard = memo(
           className="pronounce-button"
         >
           {isLoading ? (
-            <div className="loading-spinner" />
+            <span>Loading...</span>
           ) : (
             <>
               <Play size={16} />

@@ -21,6 +21,7 @@ const FeaturesPage = lazy(() => import("./components/features"));
 const MispronouncedWords = lazy(() => import("./components/mispronounce"));
 const ContactPage = lazy(() => import("./components/contact"));
 const Footer = lazy(() => import("./components/footer"));
+const WordOfDay = lazy(() => import("./components/wordOfDay"));
 
 // Lazy load analytics components
 const Analytics =
@@ -423,6 +424,10 @@ const App = () => {
       </main>
 
       {/* Lazy loaded components with placeholders */}
+      <Suspense fallback={null}>
+        <WordOfDay pronounce={pronounce} />
+      </Suspense>
+
       <Suspense
         fallback={
           <div

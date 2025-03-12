@@ -1,8 +1,9 @@
 :root {
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --primary-gradient: linear-gradient(to right, #2563eb, #3b82f6);
-  --primary-gradient-hover: linear-gradient(to right, #1d4ed8, #2563eb);
+  --primary: #6e45e2;
+  --primary-hover: #3a5ce7;
+  --secondary: #6e45e2;
+  --primary-gradient: linear-gradient(135deg, #4a6cf7 0%, #6e45e2 100%);
+  --primary-gradient-hover: linear-gradient(135deg, #3a5ce7 0%, #5e35d2 100%);
   --text-primary: #1e293b;
   --text-secondary: #64748b;
   --bg-primary: #fff;
@@ -22,9 +23,10 @@
   box-sizing: border-box;
 }
 body {
-  font: 1rem/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: var(--bg-secondary);
+  line-height: 1.5;
   color: var(--text-primary);
   transition: background-color 0.3s, color 0.3s;
   min-height: 100vh;
@@ -157,11 +159,12 @@ body.dark {
 }
 .hero {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 .hero-title {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  line-height: 1.5;
 }
 .hero-subtitle {
   color: var(--text-secondary);
@@ -255,7 +258,9 @@ body.dark {
 .about-page-section-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--text-primary);
+  background: var(--primary-gradient);
+  color: transparent;
+  background-clip: text;
   margin-bottom: 1.5rem;
   position: relative;
 }
@@ -464,7 +469,9 @@ body.dark {
   font-size: 2.5rem;
   margin-bottom: 3rem;
   text-align: center;
-  color: var(--primary);
+  background: var(--primary-gradient);
+  background-clip: text;
+  color: transparent;
 }
 .about-page-divider {
   max-width: 64rem;
@@ -546,9 +553,9 @@ body.dark {
 .accent-tag,
 .synonym-chip {
   background-color: rgba(37, 99, 235, 0.2);
-  color: #1e40af;
+  color: var(--primary);
   border-radius: 9999px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .accent-tag {
   padding: 0.25rem 0.75rem;
@@ -639,9 +646,193 @@ body.dark .synonym-chip {
   transition: color 0.2s;
 }
 .about-page-email-link:hover {
-  color: var(--primary-hover);
+  color: var(--secondary);
   text-decoration: underline;
 }
+.word-of-day-container {
+  max-width: 64rem;
+  margin: 0 auto 2rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.15);
+  border: 1px solid rgba(108, 92, 231, 0.1);
+  position: relative;
+  background: var(--bg-primary);
+}
+.word-of-day-badge {
+  position: absolute;
+  top: 0;
+  right: 30rem;
+  background: #ff9800;
+  color: var(--bg-primary);
+  padding: 0.3rem 1rem;
+  border-radius: 0 0 8px 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.word-of-day-header {
+  background: var(--primary-gradient);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.word-of-day-title,
+.word-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+.word-of-day-title {
+  font-size: 1.1rem;
+}
+.word-of-day-date {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+.word-of-day-content {
+  display: flex;
+  padding: 2rem;
+}
+.word-of-day-left {
+  flex: 2;
+  padding-right: 2rem;
+  border-right: 1px solid #eee;
+}
+.word-of-day-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 2rem;
+}
+.word-of-day-word {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+.word-of-day-phonetic {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.word-of-day-pos,
+.accent-badge {
+  display: inline-block;
+  background: #f2f0ff;
+  color: #6c5ce7;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+.word-of-day-pos {
+  margin: 0 1rem;
+}
+.difficulty-badge {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.difficulty-beginner {
+  background: #e6f7ec;
+  color: #18794e;
+}
+.difficulty-intermediate {
+  background: #fef3c7;
+  color: #92400e;
+}
+.difficulty-advanced {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.difficulty-default {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+.word-of-day-definition {
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+.word-of-day-example {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #eee;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+.listen-button {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 200px;
+  font-size: 1rem;
+}
+.listen-button:hover {
+  background: #5649c0;
+  transform: translateY(-2px);
+}
+.accent-container {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+}
+.accent-title {
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+.accent-options {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+.word-of-day-loading,
+.word-of-day-error,
+.word-of-day-empty {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+.word-of-day-error {
+  color: #ef4444;
+}
+.word-of-day-empty {
+  color: #6b7280;
+}
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid rgba(108, 92, 231, 0.1);
+  border-top-color: #6c5ce7;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .footer {
   background-color: var(--bg-primary);
   border-top: 1px solid var(--border-color);
@@ -688,8 +879,8 @@ body.dark .synonym-chip {
   height: 1.25rem;
 }
 .icon-lg {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   animation: pulse 2s ease-in-out infinite;
   color: var(--primary);
 }
@@ -832,6 +1023,22 @@ body.dark .synonym-chip {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     width: calc(100% - 1rem);
+  }
+  .word-of-day-container {
+    margin: 1rem 0.5rem;
+  }
+  .word-of-day-content {
+    flex-direction: column;
+  }
+  .word-of-day-left {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .word-of-day-right {
+    padding-left: 0;
   }
 }
 @media (min-width: 768px) {
