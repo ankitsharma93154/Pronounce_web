@@ -55,6 +55,7 @@ const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
 ));
 
 // Main App component
+// Main App component
 const App = () => {
   // Use useState for state management with initial state object
   const [state, setState] = useState({
@@ -70,6 +71,9 @@ const App = () => {
     isFavorite: false,
     synonyms: [],
     synonymStatus: { loading: false, error: null },
+    antonyms: [], // Added for word relations toggle
+    antonymStatus: { loading: false, error: null }, // Added for word relations toggle
+    showSynonyms: true, // Added to track which relation type to show
   });
 
   // Create refs
@@ -77,6 +81,8 @@ const App = () => {
   const cacheRef = useRef({});
   const synonymCacheRef = useRef(new Map());
   const synonymAbortControllerRef = useRef(null);
+  const antonymCacheRef = useRef(new Map()); // Added for antonyms
+  const antonymAbortControllerRef = useRef(null); // Added for antonyms
 
   // Destructure state for cleaner code
   const {
@@ -92,6 +98,8 @@ const App = () => {
     isFavorite,
     synonyms,
     synonymStatus,
+    antonyms,
+    antonymStatus,
   } = state;
 
   // Unified state updater
@@ -102,67 +110,100 @@ const App = () => {
   // Add a flag to control when pronunciation should be triggered
   const [shouldPronounce, setShouldPronounce] = useState(false);
 
-  // Function to fetch synonyms
-  const fetchSynonyms = useCallback(async () => {
-    if (!word?.trim()) return;
+  // Function to fetch word relations (synonyms and antonyms)
+  const fetchWordRelations = useCallback(
+    async (relationType) => {
+      if (!word?.trim()) return;
 
-    // Check cache first
-    const cacheKey = word.toLowerCase();
-    if (synonymCacheRef.current.has(cacheKey)) {
-      updateState({ synonyms: synonymCacheRef.current.get(cacheKey) });
-      return;
-    }
+      const isAntonym = relationType === "antonyms";
+      const apiRelType = isAntonym ? "rel_ant" : "rel_syn";
+      const cacheRef = isAntonym ? antonymCacheRef : synonymCacheRef;
+      const abortControllerRef = isAntonym
+        ? antonymAbortControllerRef
+        : synonymAbortControllerRef;
+      const statusKey = isAntonym ? "antonymStatus" : "synonymStatus";
+      const resultKey = isAntonym ? "antonyms" : "synonyms";
 
-    // Cancel previous request if it exists
-    if (synonymAbortControllerRef.current) {
-      synonymAbortControllerRef.current.abort();
-    }
-
-    // Create new abort controller for this request
-    synonymAbortControllerRef.current = new AbortController();
-
-    updateState({ synonymStatus: { loading: true, error: null } });
-
-    try {
-      const response = await fetch(
-        `https://api.datamuse.com/words?rel_syn=${encodeURIComponent(
-          word
-        )}&max=10`,
-        { signal: synonymAbortControllerRef.current.signal }
-      );
-
-      if (!response.ok) {
-        throw new Error(`API responded with status: ${response.status}`);
+      // Check cache first
+      const cacheKey = word.toLowerCase();
+      if (cacheRef.current.has(cacheKey)) {
+        updateState({ [resultKey]: cacheRef.current.get(cacheKey) });
+        return;
       }
 
-      const data = await response.json();
-      const wordList = data.slice(0, 5).map((item) => item.word);
+      // Cancel previous request if it exists
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
 
-      // Update cache
-      synonymCacheRef.current.set(cacheKey, wordList);
-      updateState({ synonyms: wordList });
-    } catch (err) {
-      // Only set error if not aborted
-      if (err.name !== "AbortError") {
-        updateState({
-          synonymStatus: {
-            loading: false,
-            error: "Failed to fetch synonyms. Please try again later.",
-          },
-        });
+      // Create new abort controller for this request
+      abortControllerRef.current = new AbortController();
+
+      updateState({ [statusKey]: { loading: true, error: null } });
+
+      try {
+        const response = await fetch(
+          `https://api.datamuse.com/words?${apiRelType}=${encodeURIComponent(
+            word
+          )}&max=10`,
+          { signal: abortControllerRef.current.signal }
+        );
+
+        if (!response.ok) {
+          throw new Error(`API responded with status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const wordList = data.slice(0, 5).map((item) => item.word);
+
+        // Update cache
+        cacheRef.current.set(cacheKey, wordList);
+        updateState({ [resultKey]: wordList });
+      } catch (err) {
+        // Only set error if not aborted
+        if (err.name !== "AbortError") {
+          updateState({
+            [statusKey]: {
+              loading: false,
+              error: `Failed to fetch ${
+                isAntonym ? "antonyms" : "synonyms"
+              }. Please try again later.`,
+            },
+          });
+        }
+      } finally {
+        if (abortControllerRef.current?.signal.aborted === false) {
+          updateState({ [statusKey]: { loading: false, error: null } });
+        }
       }
-    } finally {
-      if (synonymAbortControllerRef.current?.signal.aborted === false) {
-        updateState({ synonymStatus: { loading: false, error: null } });
-      }
-    }
-  }, [word, updateState]);
+    },
+    [word, updateState]
+  );
+
+  // Helper functions for specific relation types
+  const fetchSynonyms = useCallback(() => {
+    fetchWordRelations("synonyms");
+  }, [fetchWordRelations]);
+
+  const fetchAntonyms = useCallback(() => {
+    fetchWordRelations("antonyms");
+  }, [fetchWordRelations]);
+
+  // Function to handle toggle between synonyms and antonyms
+  const handleRelationToggle = useCallback(
+    (type) => {
+      updateState({ showSynonyms: type === "synonyms" });
+    },
+    [updateState]
+  );
 
   // Function to get pronunciation with caching
   const getPronunciation = useCallback(async () => {
     if (!word.trim()) return;
 
+    // Fetch both synonyms and antonyms
     fetchSynonyms();
+    fetchAntonyms();
 
     // Create cache key
     const cacheKey = `${word.trim()}-${accent}-${isMale}`;
@@ -251,7 +292,7 @@ const App = () => {
     } finally {
       updateState({ isLoading: false });
     }
-  }, [word, accent, isMale, updateState, fetchSynonyms]);
+  }, [word, accent, isMale, updateState, fetchSynonyms, fetchAntonyms]);
 
   useEffect(() => {
     if (word && shouldPronounce) {
@@ -402,6 +443,9 @@ const App = () => {
             hasPronounced={hasPronounced}
             synonyms={synonyms}
             synonymStatus={synonymStatus}
+            antonyms={antonyms}
+            antonymStatus={antonymStatus}
+            handleRelationToggle={handleRelationToggle}
           />
 
           <ResultsCard

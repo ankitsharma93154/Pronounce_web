@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { ChevronDown, Play, Globe } from "lucide-react";
-import WordSynonyms from "./wordSynonyms";
+import WordRelations from "./WordRelations";
 
 // Move static data outside the component
 const accentMap = {
@@ -27,6 +27,9 @@ const InputCard = memo(
     hasPronounced,
     synonyms,
     synonymStatus,
+    antonyms,
+    antonymStatus,
+    handleRelationToggle,
   }) => (
     <div className="card">
       <div className="input-group">
@@ -122,7 +125,13 @@ const InputCard = memo(
           </div>
         </div>
         {hasPronounced && (
-          <WordSynonyms synonyms={synonyms} status={synonymStatus} />
+          <WordRelations
+            synonyms={synonyms}
+            antonyms={antonyms}
+            synonymStatus={synonymStatus}
+            antonymStatus={antonymStatus}
+            onToggle={handleRelationToggle}
+          />
         )}
       </div>
     </div>
