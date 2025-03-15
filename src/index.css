@@ -659,6 +659,9 @@ body.dark .relation-chip {
   position: relative;
   background: var(--bg-primary);
 }
+.word-main {
+  padding: 1rem 0;
+}
 .word-of-day-badge {
   position: absolute;
   top: 0;
@@ -735,6 +738,7 @@ body.dark .relation-chip {
 }
 .word-of-day-pos {
   margin: 0 1rem;
+  padding-bottom: 0.25rem;
 }
 .difficulty-badge {
   font-size: 0.85rem;
@@ -910,11 +914,6 @@ body.dark .relation-chip {
 .about-page-icon-link:hover .about-page-icon {
   color: #fff;
 }
-.synonyms-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text);
-}
 .relations-container {
   background: var(--bg-secondary);
   color: var(--text-primary);
@@ -942,19 +941,16 @@ body.dark .relation-chip {
   font-size: 1rem;
   display: inline-block;
 }
-.synonyms-loading,
-.synonyms-error {
+.relations-loading,
+.relations-error {
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-secondary);
   margin-top: 0.5rem;
 }
 @media (max-width: 480px) {
-  .synonyms-container {
+  .relations-container {
     padding: 1rem;
-  }
-  .synonyms-title {
-    font-size: 1.1rem;
   }
   .relation-chip {
     font-size: 0.9rem;
@@ -1026,6 +1022,14 @@ body.dark .relation-chip {
   }
   .word-of-day-container {
     margin: 1rem 0.5rem;
+  }
+  .word-of-day-word {
+    padding-right: 0.5rem;
+    display: block;
+  }
+  .word-of-day-pos {
+    margin: 0;
+    margin-right: 1rem;
   }
   .word-of-day-content {
     flex-direction: column;
