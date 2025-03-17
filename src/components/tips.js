@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import "../QuickPronounceTips.css";
 
 const QuickPronounceTips = () => {
   const [activeTab, setActiveTab] = useState("getting-started");
   const [expandedSubsections, setExpandedSubsections] = useState({});
+  const tabsContainerRef = useRef(null);
+  const activeTabRef = useRef(null);
 
   const toggleSubsection = (sectionId) => {
     setExpandedSubsections((prev) => ({
@@ -10,6 +13,25 @@ const QuickPronounceTips = () => {
       [sectionId]: !prev[sectionId],
     }));
   };
+
+  useEffect(() => {
+    if (tabsContainerRef.current && activeTabRef.current) {
+      const container = tabsContainerRef.current;
+      const activeTabElement = activeTabRef.current;
+
+      // Calculate the scroll position to center the active tab
+      const scrollPosition =
+        activeTabElement.offsetLeft -
+        container.offsetWidth / 2 +
+        activeTabElement.offsetWidth / 2;
+
+      // Scroll smoothly to the active tab
+      container.scrollTo({
+        left: Math.max(0, scrollPosition),
+        behavior: "smooth",
+      });
+    }
+  }, [activeTab]);
 
   const sections = [
     {
@@ -298,31 +320,28 @@ const QuickPronounceTips = () => {
   ];
 
   return (
-    <div className="tips-container bg-gray-50 min-h-screen p-6">
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-        <div className="p-6">
-          <h1 className="text-3xl font-bold text-center text-indigo-700 mb-2">
-            Master QuickPronounce
-          </h1>
-          <p className="text-center text-gray-600 mb-8">
+    <div className="tips-container">
+      <div className="tips-wrapper">
+        <div className="tips-content">
+          <h1 className="tips-title">Get the Most Out of QuickPronounce</h1>
+          <p className="tips-subtitle">
             Your complete guide to mastering word pronunciation across different
             English accents
           </p>
 
           {/* Tab Navigation */}
-          <div className="flex overflow-x-auto pb-2 mb-6 scrollbar-hide">
-            <div className="flex space-x-2">
+          <div className="tabs-container" ref={tabsContainerRef}>
+            <div className="tabs-wrapper">
               {sections.map((section) => (
                 <button
                   key={section.id}
+                  ref={activeTab === section.id ? activeTabRef : null}
                   onClick={() => setActiveTab(section.id)}
-                  className={`flex items-center px-4 py-2 rounded-full whitespace-nowrap transition-all ${
-                    activeTab === section.id
-                      ? "bg-indigo-600 text-white font-medium"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  className={`tab-button ${
+                    activeTab === section.id ? "active" : ""
                   }`}
                 >
-                  <span className="mr-2">{section.icon}</span>
+                  <span className="tab-icon">{section.icon}</span>
                   {section.title}
                 </button>
               ))}
@@ -330,35 +349,34 @@ const QuickPronounceTips = () => {
           </div>
 
           {/* Content Area */}
-          <div className="bg-gray-50 rounded-lg p-6">
+          <div className="content-area">
             {sections.map((section) => (
               <div
                 key={section.id}
-                className={`${activeTab === section.id ? "block" : "hidden"}`}
+                className={`content-section ${
+                  activeTab === section.id ? "visible" : "hidden"
+                }`}
               >
-                <h2 className="text-2xl font-bold text-indigo-700 mb-4 flex items-center">
-                  <span className="mr-2">{section.icon}</span>
+                <h2 className="section-title">
+                  <span className="section-icon">{section.icon}</span>
                   {section.title}
                 </h2>
 
                 {section.subsections ? (
-                  <div className="space-y-4">
+                  <div className="subsections-container">
                     {section.subsections.map((subsection) => (
-                      <div
-                        key={subsection.id}
-                        className="bg-white rounded-lg shadow-sm overflow-hidden"
-                      >
+                      <div key={subsection.id} className="subsection-item">
                         <button
                           onClick={() => toggleSubsection(subsection.id)}
-                          className="w-full flex justify-between items-center p-4 text-left font-medium hover:bg-gray-50"
+                          className="subsection-toggle"
                         >
                           <span>{subsection.title}</span>
-                          <span className="text-indigo-600">
+                          <span className="toggle-icon">
                             {expandedSubsections[subsection.id] ? "−" : "+"}
                           </span>
                         </button>
                         {expandedSubsections[subsection.id] && (
-                          <div className="p-4 border-t border-gray-100">
+                          <div className="subsection-content">
                             {subsection.content}
                           </div>
                         )}
@@ -366,7 +384,7 @@ const QuickPronounceTips = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="bg-white rounded-lg shadow-sm p-4">
+                  <div className="section-content-wrapper">
                     {section.content}
                   </div>
                 )}
@@ -375,12 +393,12 @@ const QuickPronounceTips = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="mt-8 text-center">
-            <p className="text-gray-600 mb-2">
+          <div className="cta-section">
+            <p className="cta-text">
               We're constantly improving QuickPronounce to enhance your learning
               experience.
             </p>
-            <p className="text-indigo-600 font-medium">Happy learning!</p>
+            <p className="cta-highlight">Happy learning!</p>
           </div>
         </div>
       </div>

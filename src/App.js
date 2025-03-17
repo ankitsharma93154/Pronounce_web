@@ -485,9 +485,9 @@ const App = () => {
         <MispronouncedWords pronounce={pronounce} />
       </Suspense>
       <div className="about-page-divider"></div>
-      {/* <Suspense>
+      <Suspense>
         <QuickPronounceTips />
-      </Suspense> */}
+      </Suspense>
 
       <Suspense
         fallback={
