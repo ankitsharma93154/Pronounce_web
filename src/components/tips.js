@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import "../QuickPronounceTips.css";
 
 const QuickPronounceTips = () => {
   const [activeTab, setActiveTab] = useState("getting-started");
@@ -89,7 +88,7 @@ const QuickPronounceTips = () => {
                   pronunciation
                 </li>
               </ul>
-              <p className="pro-tip">
+              <p className="meaning-item">
                 <strong>Pro Tip:</strong> Compare pronunciations across
                 different accents to train your ear for global communication.
               </p>
@@ -111,7 +110,7 @@ const QuickPronounceTips = () => {
                   catch subtle variations
                 </li>
               </ul>
-              <p className="pro-tip">
+              <p className="meaning-item">
                 <strong>Pro Tip:</strong> Some learners find certain voice types
                 easier to understand or mimic.
               </p>
@@ -218,7 +217,7 @@ const QuickPronounceTips = () => {
               represented by the same symbols, helping you recognize patterns.
             </li>
           </ol>
-          <p className="pro-tip">
+          <p className="meaning-item">
             <strong>Pro Tip:</strong> Understanding IPA can help you pronounce
             words correctly even without hearing them!
           </p>
@@ -337,7 +336,7 @@ const QuickPronounceTips = () => {
                   key={section.id}
                   ref={activeTab === section.id ? activeTabRef : null}
                   onClick={() => setActiveTab(section.id)}
-                  className={`tab-button ${
+                  className={`listen-button ${
                     activeTab === section.id ? "active" : ""
                   }`}
                 >
