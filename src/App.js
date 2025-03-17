@@ -22,6 +22,7 @@ const MispronouncedWords = lazy(() => import("./components/mispronounce"));
 const ContactPage = lazy(() => import("./components/contact"));
 const Footer = lazy(() => import("./components/footer"));
 const WordOfDay = lazy(() => import("./components/wordOfDay"));
+const QuickPronounceTips = lazy(() => import("./components/tips"));
 
 // Lazy load analytics components
 const Analytics =
@@ -327,12 +328,13 @@ const App = () => {
 
   // API warm-up effect
   useEffect(() => {
-    const idleCallbackId = requestIdleCallback
-      ? requestIdleCallback(() => warmUpAPI())
-      : setTimeout(() => warmUpAPI(), 2000);
+    const idleCallbackId =
+      typeof window !== "undefined" && "requestIdleCallback" in window
+        ? requestIdleCallback(() => warmUpAPI())
+        : setTimeout(() => warmUpAPI(), 2000);
 
     return () => {
-      if (requestIdleCallback) {
+      if (typeof window !== "undefined" && "cancelIdleCallback" in window) {
         cancelIdleCallback(idleCallbackId);
       } else {
         clearTimeout(idleCallbackId);
@@ -483,6 +485,9 @@ const App = () => {
         <MispronouncedWords pronounce={pronounce} />
       </Suspense>
       <div className="about-page-divider"></div>
+      {/* <Suspense>
+        <QuickPronounceTips />
+      </Suspense> */}
 
       <Suspense
         fallback={
