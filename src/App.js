@@ -23,6 +23,7 @@ const ContactPage = lazy(() => import("./components/contact"));
 const Footer = lazy(() => import("./components/footer"));
 const WordOfDay = lazy(() => import("./components/wordOfDay"));
 const QuickPronounceTips = lazy(() => import("./components/tips"));
+const ExamplesList = lazy(() => import("./components/exampleList"));
 
 // Lazy load analytics components
 const Analytics =
@@ -67,6 +68,7 @@ const App = () => {
     hasPronounced: false,
     isLoading: false,
     meanings: [],
+    examples: [],
     isDarkMode: false,
     isMobileMenuOpen: false,
     isFavorite: false,
@@ -94,6 +96,7 @@ const App = () => {
     hasPronounced,
     isLoading,
     meanings,
+    examples,
     isDarkMode,
     isMobileMenuOpen,
     isFavorite,
@@ -218,6 +221,7 @@ const App = () => {
         updateState({
           phonetic: cachedData.phonetic,
           meanings: cachedData.meanings,
+          examples: cachedData.examples, // Add examples from cache
           hasPronounced: true,
           isLoading: false,
         });
@@ -262,6 +266,12 @@ const App = () => {
               }Hmm... we couldn't find a meaning for this word. Try another word!`,
             ];
 
+      // Extract examples or set default message
+      const examples =
+        Array.isArray(data.examples) && data.examples.length > 0
+          ? data.examples
+          : [{ text: "No examples available for this word." }];
+
       let audioUrl = null;
 
       if (data.audioContent) {
@@ -280,12 +290,13 @@ const App = () => {
         }
       }
 
-      // Cache the results
-      cacheRef.current[cacheKey] = { phonetic, meanings, audioUrl };
+      // Cache the results including examples
+      cacheRef.current[cacheKey] = { phonetic, meanings, examples, audioUrl };
 
       updateState({
         phonetic,
         meanings,
+        examples, // Add examples to state update
         hasPronounced: true,
       });
     } catch (error) {
@@ -468,6 +479,9 @@ const App = () => {
           word={word}
         />
       </main>
+      <Suspense fallback={null}>
+        {hasPronounced && <ExamplesList examples={examples} />}
+      </Suspense>
 
       {/* Lazy loaded components with placeholders */}
       <Suspense fallback={null}>
@@ -485,7 +499,14 @@ const App = () => {
         <MispronouncedWords pronounce={pronounce} />
       </Suspense>
       <div className="about-page-divider"></div>
-      <Suspense>
+      <Suspense
+        fallback={
+          <div
+            className="loading-placeholder"
+            style={{ height: "300px" }}
+          ></div>
+        }
+      >
         <QuickPronounceTips />
       </Suspense>
 
