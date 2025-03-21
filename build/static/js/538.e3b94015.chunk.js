@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[538],{538:(e,r,n)=>{n.r(r),n.d(r,{default:()=>o});var c=n(43),s=n(579);const o=(0,c.memo)((()=>(0,s.jsx)("footer",{className:"footer",children:(0,s.jsx)("div",{className:"container",children:(0,s.jsxs)("p",{children:["\xa9 ",(new Date).getFullYear()," QuickPronounce. All rights reserved."]})})})))}}]);
+//# sourceMappingURL=538.e3b94015.chunk.js.map

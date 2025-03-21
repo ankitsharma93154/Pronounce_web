@@ -8,6 +8,7 @@ import React, {
   memo,
 } from "react";
 import { Volume2 } from "lucide-react";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Keep critical components for initial render
 import Header from "./components/header";
@@ -15,6 +16,7 @@ import MobileMenu from "./components/mobileMenu";
 import Hero from "./components/hero";
 import InputCard from "./components/inputCard";
 import ResultsCard from "./components/resultCard";
+import ExamplesList from "./components/exampleList";
 
 // Lazy load all components that aren't needed for initial render
 const FeaturesPage = lazy(() => import("./components/features"));
@@ -23,7 +25,6 @@ const ContactPage = lazy(() => import("./components/contact"));
 const Footer = lazy(() => import("./components/footer"));
 const WordOfDay = lazy(() => import("./components/wordOfDay"));
 const QuickPronounceTips = lazy(() => import("./components/tips"));
-const ExamplesList = lazy(() => import("./components/exampleList"));
 
 // Lazy load analytics components
 const Analytics =
@@ -532,6 +533,14 @@ const App = () => {
       >
         <ContactPage id="contact" />
       </Suspense>
+
+      {/* <Router>
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/articles" element={<ArticlesPage />} />
+          <Route path="/articles/:slug" element={<ArticleDetail />} />
+        </Routes>
+      </Router> */}
 
       <Suspense
         fallback={

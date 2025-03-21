@@ -30,6 +30,7 @@ body {
   color: var(--text-primary);
   transition: background-color 0.3s, color 0.3s;
   min-height: 100vh;
+  font-display: swap;
 }
 html {
   scroll-behavior: smooth;
@@ -731,7 +732,7 @@ body.dark .relation-chip {
 .accent-badge {
   display: inline-block;
   background: #f2f0ff;
-  color: #6c5ce7;
+  color: var(--primary);
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.85rem;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback, memo } from "react";
 import { Volume2 } from "lucide-react";
-import axios from "axios";
 
 const API_URL = "https://word-of-day.vercel.app/";
 
@@ -57,15 +56,22 @@ const WordOfDay = memo(({ pronounce }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Memoized API call
+  // Memoized API call using fetch instead of axios
   const fetchWordOfDay = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${API_URL}get-wordofday`);
-      setWordData(response.data);
+      const response = await fetch(`${API_URL}get-wordofday`);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setWordData(data);
       setError(null);
     } catch (err) {
       setError("Failed to load word of the day");
+      console.error("Error fetching word of the day:", err);
     } finally {
       setLoading(false);
     }
