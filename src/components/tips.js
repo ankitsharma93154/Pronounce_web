@@ -428,7 +428,7 @@ const QuickPronounceTips = memo(() => {
     <div className="tips-container">
       <div className="tips-wrapper">
         <div className="tips-content">
-          <h1 className="tips-title">Get the Most Out of QuickPronounce</h1>
+          <h2 className="tips-title">Get the Most Out of QuickPronounce</h2>
           <p className="tips-subtitle">
             Your complete guide to mastering word pronunciation across different
             English accents

@@ -4,9 +4,9 @@ import { AudioWaveform, Globe, Book, Headphones } from "lucide-react";
 const FeaturesPage = () => (
   <section id="features" className="pronunciation-tools-section">
     <div className="page-content">
-      <h1 className="page-title">
+      <h2 className="page-title">
         Improve Your English Pronunciation & Accent Clarity
-      </h1>
+      </h2>
       <p className="feature-subtitle">
         Master correct pronunciation with clear audio examples, phonetic
         transcriptions, and multiple accent options.

@@ -509,7 +509,7 @@ const App = () => {
       >
         <QuickPronounceTips />
       </Suspense>
-
+      <div className="about-page-divider"></div>
       <Suspense
         fallback={
           <div
