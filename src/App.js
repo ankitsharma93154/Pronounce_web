@@ -58,7 +58,6 @@ const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
 ));
 
 // Main App component
-// Main App component
 const App = () => {
   // Use useState for state management with initial state object
   const [state, setState] = useState({
