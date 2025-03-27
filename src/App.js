@@ -65,6 +65,7 @@ const App = () => {
     accent: "en-US",
     isMale: true,
     phonetic: "",
+    speed: "normal", // Add speed with default value
     hasPronounced: false,
     isLoading: false,
     meanings: [],
@@ -93,6 +94,7 @@ const App = () => {
     accent,
     isMale,
     phonetic,
+    speed, // Add speed to destructured variables
     hasPronounced,
     isLoading,
     meanings,
@@ -209,8 +211,8 @@ const App = () => {
     fetchSynonyms();
     fetchAntonyms();
 
-    // Create cache key
-    const cacheKey = `${word.trim()}-${accent}-${isMale}`;
+    // Create cache key - include speed in cache key
+    const cacheKey = `${word.trim()}-${accent}-${isMale}-${speed}`;
 
     try {
       updateState({ isLoading: true });
@@ -242,7 +244,12 @@ const App = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ word: word.trim(), accent, isMale }),
+          body: JSON.stringify({
+            word: word.trim(),
+            accent,
+            isMale,
+            speed, // Include speed in the request
+          }),
           signal: controller.signal,
         }
       );
@@ -304,14 +311,14 @@ const App = () => {
     } finally {
       updateState({ isLoading: false });
     }
-  }, [word, accent, isMale, updateState, fetchSynonyms, fetchAntonyms]);
+  }, [word, accent, isMale, speed, updateState, fetchSynonyms, fetchAntonyms]);
 
   useEffect(() => {
     if (word && shouldPronounce) {
       getPronunciation();
       setShouldPronounce(false);
     }
-  }, [word, shouldPronounce, getPronunciation]);
+  }, [word, shouldPronounce, hasPronounced, getPronunciation]);
 
   const pronounce = useCallback(
     (selectedWord) => {
@@ -324,18 +331,23 @@ const App = () => {
     [updateState]
   );
 
-  // Warm up the API
+  // Warm up the API - update to include speed
   const warmUpAPI = useCallback(async () => {
     try {
       await fetch("https://backend-8isq.vercel.app/get-pronunciation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ word: "hello", accent, isMale }),
+        body: JSON.stringify({
+          word: "hello",
+          accent,
+          isMale,
+          speed,
+        }),
       });
     } catch (error) {
       console.error("API warm-up failed:", error);
     }
-  }, [accent, isMale]);
+  }, [accent, isMale, speed]);
 
   // API warm-up effect
   useEffect(() => {
@@ -448,11 +460,14 @@ const App = () => {
             setWord={(word) => updateState({ word })}
             handleKeyDown={handleKeyDown}
             getPronunciation={getPronunciation}
+            pronounce={pronounce}
             isLoading={isLoading}
             accent={accent}
             setAccent={(accent) => updateState({ accent })}
             isMale={isMale}
             setIsMale={(isMale) => updateState({ isMale })}
+            speed={speed}
+            setSpeed={(speed) => updateState({ speed })}
             hasPronounced={hasPronounced}
             synonyms={synonyms}
             synonymStatus={synonymStatus}
