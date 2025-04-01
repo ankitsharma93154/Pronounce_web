@@ -573,6 +573,8 @@ body.dark .relation-chip {
   font-size: 0.875rem;
 }
 .features-cta {
+  max-width: 64rem;
+  margin: 0 auto;
   margin-top: 4rem;
   text-align: center;
 }
@@ -1168,50 +1170,6 @@ button:focus-visible {
 }
 .dark .example-item:hover {
   background-color: rgba(110, 69, 226, 0.15);
-}
-.scroll-indicator {
-  position: fixed;
-  bottom: 0.2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: opacity 0.3s ease-in-out;
-  cursor: pointer;
-  z-index: 10;
-}
-.scroll-indicator.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-.scroll-indicator.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-.scroll-indicator-button {
-  padding: 0.5rem;
-  animation: bounce 2s infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* Ensure the icon is more prominent */
-.scroll-indicator-button svg {
-  display: block;
-  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.5));
-}
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
 }
 @media (max-width: 480px) {
   .relations-container {

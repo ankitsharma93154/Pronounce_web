@@ -17,7 +17,6 @@ import Hero from "./components/hero";
 import InputCard from "./components/inputCard";
 import ResultsCard from "./components/resultCard";
 import ExamplesList from "./components/exampleList";
-import ScrollIndicator from "./components/ScrollIndicator";
 
 // Lazy load all components that aren't needed for initial render
 const FeaturesPage = lazy(() => import("./components/features"));
@@ -487,8 +486,6 @@ const App = () => {
             isFavorite={isFavorite}
           />
         </div>
-
-        <ScrollIndicator />
 
         <FloatButton
           onClick={getPronunciation}
