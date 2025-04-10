@@ -49,6 +49,13 @@ const InputCard = memo(
       }
     };
 
+    const handleAccentChange = (e) => {
+      setAccent(e.target.value);
+      if (word) {
+        pronounce(word);
+      }
+    };
+
     return (
       <div className="card">
         <div className="input-group">
@@ -89,7 +96,7 @@ const InputCard = memo(
             <div className="select-wrapper">
               <select
                 value={accent}
-                onChange={(e) => setAccent(e.target.value)}
+                onChange={handleAccentChange}
                 className="accent-select"
               >
                 {Object.entries(accentMap).map(([value, label]) => (
