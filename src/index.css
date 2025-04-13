@@ -477,7 +477,7 @@ body.dark {
 .about-page-divider {
   max-width: 64rem;
   width: 100%;
-  margin: 40px auto;
+  margin: 35px auto;
   border: none;
   height: 2px;
 }
@@ -1235,7 +1235,7 @@ button:focus-visible {
     margin: 1rem 0.5rem;
   }
   .about-page-container {
-    padding-top: 5rem;
+    padding-top: 2rem;
   }
   .about-page-section {
     padding: 1.5rem;

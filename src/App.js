@@ -25,6 +25,7 @@ const ContactPage = lazy(() => import("./components/contact"));
 const Footer = lazy(() => import("./components/footer"));
 const WordOfDay = lazy(() => import("./components/wordOfDay"));
 const QuickPronounceTips = lazy(() => import("./components/tips"));
+const FAQPage = lazy(() => import("./components/faqs"));
 
 // Lazy load analytics components
 const Analytics =
@@ -522,7 +523,7 @@ const App = () => {
           ></div>
         }
       >
-        <QuickPronounceTips />
+        <FeaturesPage id="features" />
       </Suspense>
       <div className="about-page-divider"></div>
       <Suspense
@@ -533,7 +534,11 @@ const App = () => {
           ></div>
         }
       >
-        <FeaturesPage id="features" />
+        <QuickPronounceTips />
+      </Suspense>
+      <div className="about-page-divider"></div>
+      <Suspense fallback={<div>Loading FAQ...</div>}>
+        <FAQPage id="faq" />
       </Suspense>
       <div className="about-page-divider"></div>
 
