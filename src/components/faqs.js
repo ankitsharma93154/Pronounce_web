@@ -174,7 +174,7 @@ const FAQPage = () => {
   return (
     <div className="faq-container">
       <Helmet>
-        <title>
+        {/* <title>
           Frequently Asked Questions | QuickPronounce - English Pronunciation
           Guide
         </title>
@@ -185,7 +185,7 @@ const FAQPage = () => {
         <meta
           name="keywords"
           content="pronunciation FAQ, English accents, phonetic guide, pronunciation help, language learning, ESL, pronunciation tips"
-        />
+        /> */}
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
