@@ -1,70 +1,135 @@
 import React from "react";
-import { Mail, LucideInstagram } from "lucide-react";
+import { Mail, Linkedin, Twitter } from "lucide-react";
+import "./AboutPage.css";
 
-const ContactPage = () => {
+const AboutPage = () => {
   return (
     <div className="about-page-container" id="about">
-      <section className="about-page-section">
-        <h2 className="about-page-section-title">About Us</h2>
-        <div className="about-page-content">
-          <p className="about-page-text">
-            Welcome to QuickPronounce! We're on a mission to help people around
-            the world master pronunciation with simple, effective learning
-            tools.
-          </p>
-          <p className="about-page-text">
-            QuickPronounce was founded by a language enthusiast who understands
-            the challenges of pronouncing unfamiliar words. Whether you're
-            learning a new language or just want to improve your pronunciation,
-            we're here to support your journey.
-          </p>
-        </div>
-      </section>
-
-      <div className="about-page-divider"></div>
-
-      <section className="about-page-section" id="contact">
-        <h2 className="about-page-section-title">Stay Connected</h2>
-        <div className="about-page-content">
-          <p className="about-page-text">
-            Got questions? Wanna say hi? Hit us up through email or Instagram—
-            we’re always around!
-          </p>
-          <p className="about-page-text">
-            Whether you have feedback, feature requests, or just want to share
-            how QuickPronounce has helped you, we'd love to hear from you. Our
-            inbox and DMs are always open—so don’t be a stranger!
-          </p>
-          <p className="about-page-text">
-            Follow us on Instagram to stay updated with the latest features,
-            tips, and updates. We’re building something awesome, and you’re a
-            part of it!
-          </p>
-
-          <div className="about-page-contact-icons">
-            <a
-              href="mailto:hello.quickpronounce@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="about-page-icon-link"
-              aria-label="Email us at hello.quickpronounce@gmail.com"
-            >
-              <Mail size={32} className="about-page-icon" />
-            </a>
-            <a
-              href="https://www.instagram.com/quickpronounce/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="about-page-icon-link"
-              aria-label="Visit our Instagram page"
-            >
-              <LucideInstagram size={32} className="about-page-icon" />
-            </a>
+      <div className="about-page-inner">
+        {/* About Us Section */}
+        <section className="about-page-section">
+          <h2 className="about-page-section-title">About Us</h2>
+          <div className="about-page-content">
+            <p className="about-page-text">
+              Welcome to <strong>QuickPronounce</strong> — your go-to tool for
+              mastering English pronunciation in seconds. Our mission is to
+              simplify the way people around the world learn how to pronounce
+              English words correctly.
+            </p>
+            <p className="about-page-text">
+              Built by a passionate solo dev from India, this platform was born
+              out of frustration. I struggled to quickly find how words were
+              pronounced online — so I created a tool that solves that, not just
+              for me, but for anyone who's ever felt the same.
+            </p>
+            <p className="about-page-text">
+              Whether you're an ESL learner, a curious native speaker, a
+              teacher, or just a pronunciation nerd — QuickPronounce is designed
+              to be fast, reliable, and super easy to use.
+            </p>
           </div>
+        </section>
+
+        {/* Features Section */}
+        <div className="about-page-features-grid">
+          {/* What We Do */}
+          <section className="about-page-feature">
+            <h3 className="about-page-feature-title">
+              What QuickPronounce Offers
+            </h3>
+            <div className="about-page-feature-content">
+              <ul className="about-page-feature-list">
+                <li>Hear real-time pronunciation of English words</li>
+                <li>Learn phonetics and common mispronunciations</li>
+                <li>Explore daily word highlights and pronunciation tips</li>
+                <li>Improve your speaking skills and build confidence</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Why It Matters */}
+          <section className="about-page-feature">
+            <h3 className="about-page-feature-title">
+              Why Pronunciation Matters
+            </h3>
+            <div className="about-page-feature-content">
+              <p className="about-page-text">
+                Good pronunciation builds confidence and helps you communicate
+                clearly. Whether you're preparing for a presentation, a job
+                interview, or just everyday conversation, getting it right makes
+                a big difference. QuickPronounce makes it simple and accessible.
+              </p>
+            </div>
+          </section>
+
+          {/* How It's Made */}
+          <section className="about-page-feature">
+            <h3 className="about-page-feature-title">How It's Built</h3>
+            <div className="about-page-feature-content">
+              <p className="about-page-text">
+                QuickPronounce is built using modern web technologies like{" "}
+                <strong>React</strong> and powered by speech APIs to deliver
+                clear audio instantly. It's fully responsive, optimized for
+                mobile, and created with a love for smooth, fast design.
+              </p>
+            </div>
+          </section>
         </div>
-      </section>
+
+        <div className="about-page-divider"></div>
+
+        {/* Contact Section */}
+        <section className="about-page-section" id="contact">
+          <h2 className="about-page-section-title">Stay Connected</h2>
+          <div className="about-page-content">
+            <p className="about-page-text">
+              Got questions? Wanna say hi? Hit me up through email, X, or
+              LinkedIn—I'm always around!
+            </p>
+            <p className="about-page-text">
+              Whether you have feedback, feature requests, or just want to share
+              how QuickPronounce has helped you, I'd love to hear from you. My
+              inbox and DMs are always open—so don't be a stranger!
+            </p>
+            <p className="about-page-text">
+              Follow me on social media to stay updated with new features,
+              pronunciation tips, and language learning content.
+            </p>
+
+            <div className="about-page-contact-icons">
+              <a
+                href="mailto:hello.quickpronounce@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="about-page-icon-link"
+                aria-label="Email us at hello.quickpronounce@gmail.com"
+              >
+                <Mail size={32} className="about-page-icon" />
+              </a>
+              <a
+                href="https://x.com/AnkitKumar11451"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="about-page-icon-link"
+                aria-label="Visit our X (formerly Twitter) page"
+              >
+                <Twitter size={32} className="about-page-icon" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ankit-kumar-sharma-99698028a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="about-page-icon-link"
+                aria-label="Visit our LinkedIn page"
+              >
+                <Linkedin size={32} className="about-page-icon" />
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 };
 
-export default ContactPage;
+export default AboutPage;
