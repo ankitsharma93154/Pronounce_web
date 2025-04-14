@@ -180,6 +180,7 @@
 @media (max-width: 768px) {
   .faq-container {
     padding: 1.5rem;
+    padding-top: 6rem;
   }
 
   .faq-header h1 {

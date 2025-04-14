@@ -154,7 +154,7 @@ body.dark {
   background-color: var(--bg-secondary);
 }
 .main {
-  padding: 4.5rem 1rem 2rem;
+  padding: 5rem 1rem 2rem;
   width: 100%;
   min-height: calc(90vh - 70px);
 }
@@ -593,7 +593,6 @@ body.dark .relation-chip {
   background-color: var(--primary-dark, #1e40af);
 }
 .about-page-container {
-  padding: 1.5rem 1rem 2rem;
   width: 100%;
   min-height: calc(90vh - 70px);
   background-color: var(--bg-secondary);
