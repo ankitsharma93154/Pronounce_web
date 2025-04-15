@@ -50,7 +50,7 @@ const Header = () => {
           <Link to="/" className="nav-link">
             Home
           </Link>
-          <Link to="/about" className="nav-link">
+          <Link to="/contact" className="nav-link">
             Contact
           </Link>
           <Link to="/faq" className="nav-link">
@@ -83,7 +83,7 @@ const Header = () => {
               Home
             </Link>
             <Link
-              to="/about"
+              to="/contact"
               className="mobile-nav-link"
               onClick={toggleMobileMenu}
             >

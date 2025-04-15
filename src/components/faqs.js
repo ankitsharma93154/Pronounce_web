@@ -175,18 +175,15 @@ const FAQPage = () => {
   return (
     <div className="faq-container">
       <Helmet>
-        {/* <title>
-          Frequently Asked Questions | QuickPronounce - English Pronunciation
-          Guide
-        </title>
+        <title>FAQ | QuickPronounce</title>
         <meta
           name="description"
-          content="Get answers to common questions about English pronunciation, accents, phonetics, and using QuickPronounce to improve your speaking skills."
+          content="Find answers to frequently asked questions about QuickPronounce – pronunciation tips, usage, and features."
         />
         <meta
           name="keywords"
-          content="pronunciation FAQ, English accents, phonetic guide, pronunciation help, language learning, ESL, pronunciation tips"
-        /> */}
+          content="QuickPronounce FAQ, pronunciation help, app guide, how to use QuickPronounce"
+        />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 

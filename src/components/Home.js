@@ -8,6 +8,7 @@ import React, {
   memo,
 } from "react";
 import { Volume2 } from "lucide-react";
+import { Helmet } from "react-helmet";
 
 // Keep critical components for initial render
 // Header is now removed as it's handled by App.js
@@ -419,6 +420,10 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>QuickPronounce | American & British Pronunciation Tool</title>
+      </Helmet>
+
       {process.env.NODE_ENV === "production" && (
         <Suspense fallback={null}>
           <Analytics />

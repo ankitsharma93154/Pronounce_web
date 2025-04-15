@@ -1,10 +1,22 @@
 import React from "react";
 import { Mail, Linkedin, Twitter } from "lucide-react";
 import "./AboutPage.css";
+import { Helmet } from "react-helmet";
 
 const AboutPage = () => {
   return (
     <div className="about-page-container" id="about">
+      <Helmet>
+        <title>Contact Us | QuickPronounce</title>
+        <meta
+          name="description"
+          content="Get in touch with the QuickPronounce team. We’d love to hear your feedback or questions!"
+        />
+        <meta
+          name="keywords"
+          content="QuickPronounce contact, pronunciation app support, reach QuickPronounce"
+        />
+      </Helmet>
       <div className="about-page-inner">
         {/* About Us Section */}
         <section className="about-page-section">
