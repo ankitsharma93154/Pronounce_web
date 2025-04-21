@@ -12,17 +12,17 @@ import { Helmet } from "react-helmet";
 
 // Keep critical components for initial render
 // Header is now removed as it's handled by App.js
-import MobileMenu from "./mobileMenu";
-import Hero from "./hero";
-import InputCard from "./inputCard";
-import ResultsCard from "./resultCard";
-import ExamplesList from "./exampleList";
+import MobileMenu from "../components/mobileMenu";
+import Hero from "../components/hero";
+import InputCard from "../components/inputCard";
+import ResultsCard from "../components/resultCard";
+import ExamplesList from "../components/exampleList";
 
 // Lazy load all components that aren't needed for initial render
-const FeaturesPage = lazy(() => import("./features"));
-const MispronouncedWords = lazy(() => import("./mispronounce"));
-const WordOfDay = lazy(() => import("./wordOfDay"));
-const QuickPronounceTips = lazy(() => import("./tips"));
+const FeaturesPage = lazy(() => import("../components/features"));
+const MispronouncedWords = lazy(() => import("../components/mispronounce"));
+const WordOfDay = lazy(() => import("../components/wordOfDay"));
+const QuickPronounceTips = lazy(() => import("../components/tips"));
 
 // Lazy load analytics components
 const Analytics =

@@ -1,11 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import FAQPage from "./components/faqs";
-import AboutPage from "./components/contact"; // this includes contact section
+import Home from "./pages/Home";
+import FAQPage from "./pages/faqs";
+import AboutPage from "./pages/contact"; // this includes contact section
 import Header from "./components/header";
 import Footer from "./components/footer";
-import NotFound from "./components/NotFound"; // 404 page
+import NotFound from "./pages/NotFound"; // 404 page
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 const App = () => {
   return (
@@ -20,6 +22,9 @@ const App = () => {
           <Route path="/contact" element={<AboutPage />} />
           {/* Catch-all route for 404 */}
           <Route path="*" element={<NotFound />} />
+          {/* Blog routes */}
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
 
         <Footer />

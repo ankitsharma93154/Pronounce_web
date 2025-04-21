@@ -5,9 +5,8 @@ const Hero = memo(() => (
       Master Pronunciation with American & British Accents
     </h1>
     <p className="hero-subtitle">
-      Get accurate, high-quality word pronunciations in American and British
-      English. Perfect for language learners, professionals, and anyone looking
-      to improve pronunciation effortlessly.
+      Free tool to pronounce words in American and British English. Great for
+      pronunciation practice and learning correct English pronunciation.
     </p>
   </div>
 ));

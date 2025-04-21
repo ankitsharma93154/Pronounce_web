@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
       <loc>https://www.quickpronounce.site/</loc>
-      <lastmod>2025-04-16</lastmod>
+      <lastmod>2025-04-21</lastmod>
       <priority>1.0</priority>
    </url>
    <url>
@@ -19,5 +19,15 @@
       <loc>https://www.quickpronounce.site/contact</loc>
       <lastmod>2025-04-16</lastmod>
       <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.quickpronounce.site/blog</loc>
+      <lastmod>2025-04-21</lastmod>
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>https://www.quickpronounce.site/blog/english-pronunciation-tips</loc>
+      <lastmod>2025-04-21</lastmod>
+      <priority>0.6</priority>
    </url>
 </urlset>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import "./NotFound.css";
+import "./Css/NotFound.css";
 
 const NotFound = () => {
   return (

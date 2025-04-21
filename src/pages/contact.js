@@ -1,6 +1,6 @@
 import React from "react";
 import { Mail, Linkedin, Twitter } from "lucide-react";
-import "./AboutPage.css";
+import "./Css/AboutPage.css";
 import { Helmet } from "react-helmet";
 
 const AboutPage = () => {

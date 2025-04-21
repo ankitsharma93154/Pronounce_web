@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Helmet } from "react-helmet";
-import "./FaqPage.css"; // Assuming you have a CSS file for styling
+import "./Css/FaqPage.css"; // Assuming you have a CSS file for styling
 
 // FAQ Component with two-column layout and visual indicators
 const FAQPage = () => {
