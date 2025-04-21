@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
+
+import EnglishPronunciationTips from "../BlogPosts/pronunciation-tips";
 
 const blogMap = {
-  "english-pronunciation-tips": lazy(() =>
-    import("../BlogPosts/pronunciation-tips")
-  ),
+  "english-pronunciation-tips": EnglishPronunciationTips,
 };
 
 const BlogPost = () => {
