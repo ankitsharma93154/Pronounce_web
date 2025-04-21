@@ -26,7 +26,7 @@ const PronunciationBlog = () => {
       actionable:
         "Start with basic phonetic charts and focus on sounds like /æ/ (cat), /ʌ/ (cup), and /θ/ (think). Using phonetic transcriptions can help reinforce these sounds. Good pronunciation resources will provide audio examples of these fundamental sounds to help train your ear.",
       hasImage: true,
-      image: tip1Image,
+      image: tip6Image,
     },
     {
       id: 2,
@@ -56,7 +56,7 @@ const PronunciationBlog = () => {
       actionable:
         "Try mimicking what you hear in English movies, podcasts, or videos. Focus on the rhythm, stress, and intonation of native speakers. Pronunciation practice becomes much more effective when you have authentic examples to follow. Consider using resources that let you hear words pronounced in different regional accents.",
       hasImage: true,
-      image: tip6Image,
+      image: tip1Image,
     },
     {
       id: 5,
