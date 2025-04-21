@@ -6,9 +6,7 @@ import AboutPage from "./pages/contact"; // this includes contact section
 import Header from "./components/header";
 import Footer from "./components/footer";
 import NotFound from "./pages/NotFound"; // 404 page
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import PronunciationBlog from "./BlogPosts/pronunciation-tips"; // Example blog post
+import PronunciationBlog from "./pages/pronunciation-tips"; // Example blog post
 
 const App = () => {
   return (

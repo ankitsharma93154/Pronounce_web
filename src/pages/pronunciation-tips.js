@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Blog.css";
+import "./Css/Blog.css";
 
 // Assuming your images are stored in an 'images' folder
 // You would need to import each image you want to use
