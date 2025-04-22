@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import "./Css/Blog.css";
 
 // Assuming your images are stored in an 'images' folder
@@ -120,6 +121,19 @@ const PronunciationBlog = () => {
 
   return (
     <div className="pronunciation-blog">
+      <Helmet>
+        <title>
+          10 Tips to Perfect Your English Pronunciation | QuickPronounce
+        </title>
+        <meta
+          name="description"
+          content="Improve your English pronunciation with 10 actionable tips on phonetics, intonation, and stress patterns. Start mastering your speaking skills today!"
+        />
+        <meta
+          name="keywords"
+          content="English pronunciation, pronunciation tips, language learning, phonetics, speaking skills, ESL"
+        />
+      </Helmet>
       <div className="blog-header">
         <div className="container">
           <h1>10 Proven Tips to Perfect Your English Pronunciation</h1>
