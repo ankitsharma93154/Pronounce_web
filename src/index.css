@@ -81,16 +81,7 @@ body.dark {
 }
 .logo-icon {
   position: relative;
-  padding-top: 5px;
-}
-.logo-dot {
-  position: absolute;
-  top: -1px;
-  right: -2px;
-  width: 8px;
-  height: 8px;
-  background-color: var(--primary);
-  border-radius: 50%;
+  padding-top: 10px;
 }
 .logo-text,
 .hero-title {

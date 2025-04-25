@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Volume2, Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
+import logo from "../images/favicon-32x32.png"; // Adjust the path as necessary
 
 const Header = () => {
   // State management
@@ -40,8 +41,7 @@ const Header = () => {
       <div className="container header-content">
         <Link to="/" className="logo">
           <div className="logo-icon">
-            <Volume2 size={24} color="#2563eb" />
-            <div className="logo-dot"></div>
+            <img src={logo} alt="Logo" />
           </div>
           <span className="logo-text">QuickPronounce</span>
         </Link>
