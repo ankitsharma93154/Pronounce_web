@@ -6,7 +6,6 @@
   background-color: var(--bg-secondary);
   padding: 2rem;
 }
-
 .not-found-container {
   text-align: center;
   background: var(--bg-primary);
@@ -15,19 +14,16 @@
   box-shadow: var(--shadow-lg);
   transition: var(--transition);
 }
-
 .not-found-container h1 {
   font-size: 6rem;
   color: var(--primary);
   margin-bottom: 1rem;
 }
-
 .not-found-container .message {
   font-size: 1.25rem;
   color: var(--text-secondary);
   margin-bottom: 2rem;
 }
-
 .not-found-container .home-link {
   text-decoration: none;
   background: var(--primary-gradient);
@@ -38,7 +34,6 @@
   transition: var(--transition);
   box-shadow: var(--shadow-md);
 }
-
 .not-found-container .home-link:hover {
   background: var(--primary-gradient-hover);
 }

@@ -1,31 +1,45 @@
-import React from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import FAQPage from "./pages/faqs";
-import AboutPage from "./pages/contact"; // this includes contact section
 import Header from "./components/header";
 import Footer from "./components/footer";
-import NotFound from "./pages/NotFound"; // 404 page
-import PronunciationBlog from "./pages/pronunciation-tips"; // Example blog post
+import Home from "./pages/Home"; // Direct import for Home
+
+// Lazy load only secondary pages
+const FAQPage = lazy(() => import("./pages/faqs"));
+const AboutPage = lazy(() => import("./pages/contact"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const PronunciationBlog = lazy(() => import("./pages/pronunciation-tips"));
+
+// Loading component
+const Loading = () => <div className="loading">Loading...</div>;
 
 const App = () => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Preload commonly accessed pages
+      import("./pages/contact");
+      import("./pages/faqs");
+      import("./pages/pronunciation-tips");
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Router>
       <div className="app">
         <Header />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/faq" element={<FAQPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<AboutPage />} />
-          {/* Catch-all route for 404 */}
-          <Route path="*" element={<NotFound />} />
-          {/* Blog routes */}
-          {/* <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} /> */}
-          <Route path="/blog" element={<PronunciationBlog />} />
-        </Routes>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<AboutPage />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/blog" element={<PronunciationBlog />} />
+          </Routes>
+        </Suspense>
 
         <Footer />
       </div>

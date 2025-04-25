@@ -23,16 +23,6 @@ const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString(undefined, options);
 };
 
-// Memoized accent badges component
-const AccentBadges = memo(() => (
-  <div className="accent-options">
-    <span className="accent-badge">US 🇺🇸</span>
-    <span className="accent-badge">UK 🇬🇧</span>
-    <span className="accent-badge">AU 🇦🇺</span>
-    <span className="accent-badge">IN 🇮🇳</span>
-  </div>
-));
-
 // Memoized loading component
 const LoadingSpinner = memo(() => (
   <div className="word-of-day-loading">
@@ -139,10 +129,6 @@ const WordOfDay = memo(({ pronounce }) => {
             <Volume2 className="icon" />
             <span>Listen</span>
           </button>
-          <div className="accent-container">
-            <div className="accent-title">Available in:</div>
-            <AccentBadges />
-          </div>
         </div>
       </div>
     </div>
