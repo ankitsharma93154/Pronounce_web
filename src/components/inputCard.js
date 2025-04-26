@@ -67,21 +67,24 @@ const InputCard = memo(
             onKeyDown={handleKeyDown}
             placeholder="Enter text ..."
           />
-          <button
-            onClick={getPronunciation}
-            disabled={isLoading}
-            className="pronounce-button"
-          >
-            {isLoading ? (
-              <span>Loading...</span>
-            ) : (
-              <>
-                <Play size={16} />
-                <span>Pronounce</span>
-              </>
-            )}
-          </button>
+          {/* Pronounce button moved out of the input group */}
         </div>
+
+        {/* Pronounce button now below the input with full width */}
+        <button
+          onClick={getPronunciation}
+          disabled={isLoading}
+          className="pronounce-button"
+        >
+          {isLoading ? (
+            <span>Loading...</span>
+          ) : (
+            <>
+              <Play size={16} />
+              <span>Pronounce</span>
+            </>
+          )}
+        </button>
 
         <div className="controls-section">
           {/* Accent selection remains the same */}
