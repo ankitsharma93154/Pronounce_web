@@ -1,23 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import "./Css/Blog.css";
 
-// Assuming your images are stored in an 'images' folder
-// You would need to import each image you want to use
-import headerImage from "../images/header.jpg"; // Update path as needed
-
-// Import tip images - just examples, update paths to match your actual file structure
-import tip1Image from "../images/tip1.jpg";
-import tip2Image from "../images/tip2.jpg";
-import tip3Image from "../images/tip3.jpg";
-import tip4Image from "../images/tip4.png";
-import tip5Image from "../images/tip5.jpg";
-import tip6Image from "../images/tip6.jpg";
-import tip7Image from "../images/tip7.jpg";
-import tip8Image from "../images/tip8.jpg";
+// Only import the header image upfront since it's above the fold
+import headerImage from "../images/header.jpg";
 
 const PronunciationBlog = () => {
+  // State to store dynamically loaded images
+  const [tipImages, setTipImages] = useState({});
+
+  // Define tips data
   const tips = [
     {
       id: 1,
@@ -27,7 +22,7 @@ const PronunciationBlog = () => {
       actionable:
         "Start with basic phonetic charts and focus on sounds like /æ/ (cat), /ʌ/ (cup), and /θ/ (think). Using phonetic transcriptions can help reinforce these sounds. Good pronunciation resources will provide audio examples of these fundamental sounds to help train your ear.",
       hasImage: true,
-      image: tip6Image,
+      imagePath: "tip6.jpg",
     },
     {
       id: 2,
@@ -37,7 +32,7 @@ const PronunciationBlog = () => {
       actionable:
         "Practice stressing the right syllables in words, such as 'photograph' vs. 'photographer.' Listen carefully to how native speakers emphasize different parts of words and try to mimic their patterns. Many pronunciation guides will highlight which syllables should be stressed in multi-syllable words.",
       hasImage: true,
-      image: tip2Image,
+      imagePath: "tip2.jpg",
     },
     {
       id: 3,
@@ -47,7 +42,7 @@ const PronunciationBlog = () => {
       actionable:
         "Start familiarizing yourself with IPA symbols for common English sounds. Use a dictionary with IPA symbols or a pronunciation resource that shows phonetic transcriptions to see how words are pronounced. Understanding these symbols will give you a visual representation of sounds that can be difficult to describe in writing.",
       hasImage: true,
-      image: tip4Image,
+      imagePath: "tip4.png",
     },
     {
       id: 4,
@@ -57,7 +52,7 @@ const PronunciationBlog = () => {
       actionable:
         "Try mimicking what you hear in English movies, podcasts, or videos. Focus on the rhythm, stress, and intonation of native speakers. Pronunciation practice becomes much more effective when you have authentic examples to follow. Consider using resources that let you hear words pronounced in different regional accents.",
       hasImage: true,
-      image: tip1Image,
+      imagePath: "tip1.jpg",
     },
     {
       id: 5,
@@ -67,7 +62,7 @@ const PronunciationBlog = () => {
       actionable:
         "Use your phone or computer to record your speech. Then, listen carefully and compare your pronunciation to native speakers, paying attention to differences. This self-assessment technique helps you become more aware of your speech patterns and identify specific sounds or words that need more practice.",
       hasImage: true,
-      image: tip5Image,
+      imagePath: "tip5.jpg",
     },
     {
       id: 6,
@@ -77,7 +72,7 @@ const PronunciationBlog = () => {
       actionable:
         "Join a language exchange group or find a speaking partner online. Practicing with a native or fluent speaker is invaluable for improving your pronunciation. They can point out errors that you might not notice yourself, and provide immediate corrections that help you adjust your speech patterns.",
       hasImage: true,
-      image: tip3Image,
+      imagePath: "tip3.jpg",
     },
     {
       id: 7,
@@ -87,7 +82,7 @@ const PronunciationBlog = () => {
       actionable:
         "Try to understand and mimic the regional variations in pronunciation. If you're learning American English, practice listening to American speakers regularly. Being exposed to different accents improves your overall comprehension skills and helps you communicate more effectively with a wider range of English speakers.",
       hasImage: true,
-      image: tip8Image,
+      imagePath: "tip8.jpg",
     },
     {
       id: 8,
@@ -115,9 +110,68 @@ const PronunciationBlog = () => {
       actionable:
         "Set small, achievable pronunciation goals (e.g., mastering 10 new words a week) and track your progress. Remember that even native speakers have different accents, so aim for clarity rather than perfection. Regular practice with good resources and feedback is the key to continuous improvement.",
       hasImage: true,
-      image: tip7Image,
+      imagePath: "tip7.jpg",
     },
   ];
+
+  // Use intersection observer to load images as they come into view
+  useEffect(() => {
+    // Create an intersection observer
+    const loadImages = () => {
+      // Dynamically import images only when needed
+      const importImage = async (path) => {
+        try {
+          // Using dynamic import for each image
+          const imageModule = await import(`../images/${path}`);
+          setTipImages((prev) => ({
+            ...prev,
+            [path]: imageModule.default,
+          }));
+        } catch (error) {
+          console.error(`Failed to load image: ${path}`, error);
+        }
+      };
+
+      // Get all tips with images
+      const tipsWithImages = tips.filter((tip) => tip.hasImage);
+
+      // Create observers for each tip section
+      tipsWithImages.forEach((tip) => {
+        const tipElement = document.getElementById(`tip-${tip.id}`);
+
+        if (tipElement) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                // When tip section comes into view, load its image
+                if (entry.isIntersecting && !tipImages[tip.imagePath]) {
+                  importImage(tip.imagePath);
+                  // Stop observing after loading
+                  observer.unobserve(tipElement);
+                }
+              });
+            },
+            { rootMargin: "200px" } // Start loading when within 200px of viewport
+          );
+
+          observer.observe(tipElement);
+        }
+      });
+
+      // Cleanup function to disconnect observers
+      return () => {
+        tipsWithImages.forEach((tip) => {
+          const tipElement = document.getElementById(`tip-${tip.id}`);
+          if (tipElement) {
+            const observer = new IntersectionObserver(() => {});
+            observer.unobserve(tipElement);
+          }
+        });
+      };
+    };
+
+    loadImages();
+  });
 
   return (
     <div className="pronunciation-blog">
@@ -192,10 +246,23 @@ const PronunciationBlog = () => {
                   </div>
 
                   <div className="tip-illustration">
-                    <img
-                      src={tip.image}
-                      alt={`Illustration for ${tip.title}`}
-                    />
+                    {tipImages[tip.imagePath] ? (
+                      <LazyLoadImage
+                        src={tipImages[tip.imagePath]}
+                        alt={`Illustration for ${tip.title}`}
+                        effect="blur"
+                        threshold={100}
+                        placeholder={
+                          <div className="image-placeholder">
+                            <div className="loading-spinner"></div>
+                          </div>
+                        }
+                      />
+                    ) : (
+                      <div className="image-placeholder">
+                        <div className="loading-spinner"></div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ) : (

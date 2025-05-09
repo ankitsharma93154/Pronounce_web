@@ -7,11 +7,14 @@
   margin: 0 auto;
   padding: 40px 30px;
 }
+.about-page-section {
+  background: var(--primary-gradient);
+}
 .about-page-section-title {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 20px;
-  color: var(--text-primary);
+  color: white;
   position: relative;
 }
 .about-page-section-title::after {
@@ -21,7 +24,7 @@
   bottom: -8px;
   width: 60px;
   height: 3px;
-  background: var(--primary-gradient);
+  background: black;
   border-radius: 2px;
 }
 .about-page-content {
@@ -32,11 +35,20 @@
   margin-bottom: 16px;
   line-height: 1.6;
 }
+.about-page-section-text {
+  color: white;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
 .about-page-text:last-child {
   margin-bottom: 0;
 }
 .about-page-text strong {
-  color: var(--primary);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.about-page-section-text strong {
+  color: black;
   font-weight: 600;
 }
 .about-page-features-grid {

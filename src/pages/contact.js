@@ -22,19 +22,19 @@ const AboutPage = () => {
         <section className="about-page-section">
           <h2 className="about-page-section-title">About Us</h2>
           <div className="about-page-content">
-            <p className="about-page-text">
+            <p className="about-page-section-text">
               Welcome to <strong>QuickPronounce</strong> — your go-to tool for
               mastering English pronunciation in seconds. Our mission is to
               simplify the way people around the world learn how to pronounce
               English words correctly.
             </p>
-            <p className="about-page-text">
+            <p className="about-page-section-text">
               Built by a passionate solo dev from India, this platform was born
               out of frustration. I struggled to quickly find how words were
               pronounced online — so I created a tool that solves that, not just
               for me, but for anyone who's ever felt the same.
             </p>
-            <p className="about-page-text">
+            <p className="about-page-section-text">
               Whether you're an ESL learner, a curious native speaker, a
               teacher, or just a pronunciation nerd — QuickPronounce is designed
               to be fast, reliable, and super easy to use.
@@ -94,16 +94,16 @@ const AboutPage = () => {
         <section className="about-page-section" id="contact">
           <h2 className="about-page-section-title">Stay Connected</h2>
           <div className="about-page-content">
-            <p className="about-page-text">
+            <p className="about-page-section-text">
               Got questions? Wanna say hi? Hit me up through email, X, or
               LinkedIn—I'm always around!
             </p>
-            <p className="about-page-text">
+            <p className="about-page-section-text">
               Whether you have feedback, feature requests, or just want to share
               how QuickPronounce has helped you, I'd love to hear from you. My
               inbox and DMs are always open—so don't be a stranger!
             </p>
-            <p className="about-page-text">
+            <p className="about-page-section-text">
               Follow me on social media to stay updated with new features,
               pronunciation tips, and language learning content.
             </p>
