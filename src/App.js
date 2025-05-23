@@ -9,7 +9,8 @@ const FAQPage = lazy(() => import("./pages/faqs"));
 const AboutPage = lazy(() => import("./pages/contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const PronunciationBlog = lazy(() => import("./pages/pronunciation-tips"));
-
+const PronunciationGuide = lazy(() => import("./pages/pronunciation-guide"));
+const BlogPosts = lazy(() => import("./pages/Blogposts"));
 // Loading component
 const Loading = () => <div className="loading">Loading...</div>;
 
@@ -37,7 +38,17 @@ const App = () => {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<AboutPage />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/blog" element={<PronunciationBlog />} />
+            <Route path="/blog" element={<BlogPosts />} />
+            <Route
+              path="/blog/pronunciation-guide"
+              element={<PronunciationGuide />}
+            />
+            <Route
+              path="/blog/pronunciation-tips"
+              element={<PronunciationBlog />}
+            />
+            {/* <Route path="/blog" element={<PronunciationBlog />} />
+            <Route path="/blog2" element={<PronunciationGuide />} /> */}
           </Routes>
         </Suspense>
 

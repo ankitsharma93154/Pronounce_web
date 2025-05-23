@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { LazyLoadImage } from "react-lazy-load-image-component";

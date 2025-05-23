@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState, useEffect, useRef } from "react";
 import { ChevronDown, Play, Globe, Zap } from "lucide-react";
 import WordRelations from "./WordRelations";
 
@@ -34,6 +34,158 @@ const InputCard = memo(
     antonymStatus,
     handleRelationToggle,
   }) => {
+    // State for auto-suggestions
+    const [suggestions, setSuggestions] = useState([]);
+    const [wordList, setWordList] = useState({});
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    const [isLoadingDict, setIsLoadingDict] = useState(false);
+    const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
+    const [justSelected, setJustSelected] = useState(false);
+    const suggestionsRef = useRef(null);
+    const inputRef = useRef(null);
+
+    // Fetch the dictionary on component mount
+    useEffect(() => {
+      const fetchDictionary = async () => {
+        setIsLoadingDict(true);
+        try {
+          const response = await fetch(
+            "https://phonetic-transcriptions.vercel.app/ipa_transcriptions.min.json"
+          );
+          const data = await response.json();
+          setWordList(data);
+        } catch (error) {
+          console.error("Error fetching dictionary:", error);
+        } finally {
+          setIsLoadingDict(false);
+        }
+      };
+
+      fetchDictionary();
+    }, []);
+
+    // Generate suggestions based on input
+    useEffect(() => {
+      if (justSelected) {
+        setJustSelected(false);
+        return;
+      }
+
+      if (word && word.trim() !== "") {
+        const inputValue = word.toLowerCase();
+        const matchedWords = Object.keys(wordList)
+          .filter((w) => w.toLowerCase().startsWith(inputValue))
+          .slice(0, 5); // Limit to 5 suggestions
+
+        setSuggestions(matchedWords);
+
+        // Only show suggestions if:
+        // 1. We have matches
+        // 2. The input is focused
+        // 3. The input doesn't exactly match any of the suggestions (prevents showing after selection)
+        const exactMatch = matchedWords.some(
+          (w) => w.toLowerCase() === inputValue
+        );
+
+        if (
+          matchedWords.length > 0 &&
+          document.activeElement === inputRef.current &&
+          !exactMatch
+        ) {
+          setShowSuggestions(true);
+        } else {
+          setShowSuggestions(false);
+        }
+      } else {
+        setSuggestions([]);
+        setShowSuggestions(false);
+      }
+      setSelectedSuggestionIndex(-1);
+    }, [word, wordList, justSelected]);
+
+    // Handle clicking outside to close suggestions
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        // Check if click is outside both the input and suggestions
+        if (
+          showSuggestions &&
+          suggestionsRef.current &&
+          !suggestionsRef.current.contains(event.target) &&
+          inputRef.current &&
+          !inputRef.current.contains(event.target)
+        ) {
+          setShowSuggestions(false);
+        }
+      };
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [showSuggestions]);
+
+    // Handle suggestion selection with keyboard
+    const handleSuggestionKeyDown = (e) => {
+      // Original key handling logic
+      if (handleKeyDown) {
+        handleKeyDown(e);
+      }
+
+      // Autosuggest navigation
+      if (showSuggestions && suggestions.length > 0) {
+        switch (e.key) {
+          case "ArrowDown":
+            e.preventDefault();
+            setSelectedSuggestionIndex((prev) =>
+              prev < suggestions.length - 1 ? prev + 1 : prev
+            );
+            break;
+          case "ArrowUp":
+            e.preventDefault();
+            setSelectedSuggestionIndex((prev) => (prev > 0 ? prev - 1 : -1));
+            break;
+          case "Enter":
+            e.preventDefault();
+            if (selectedSuggestionIndex >= 0) {
+              handleSelectSuggestion(suggestions[selectedSuggestionIndex]);
+            }
+            break;
+          case "Escape":
+            setShowSuggestions(false);
+            break;
+          default:
+            break;
+        }
+      }
+    };
+
+    // Select a suggestion - Fixed version
+    const handleSelectSuggestion = (suggestion) => {
+      // Set flag to prevent suggestions from showing again immediately
+      setJustSelected(true);
+
+      // Hide suggestions first
+      setShowSuggestions(false);
+      setSelectedSuggestionIndex(-1);
+
+      // Set the word
+      setWord(suggestion);
+
+      // Maintain focus on the input field
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }, 0);
+
+      // Pronounce the word if the function is available
+      if (pronounce) {
+        setTimeout(() => {
+          pronounce(suggestion);
+        }, 100);
+      }
+    };
+
     // Modify toggle functions to trigger pronunciation
     const handleToggleGender = () => {
       setIsMale(!isMale);
@@ -58,16 +210,77 @@ const InputCard = memo(
 
     return (
       <div className="card">
-        <div className="input-group">
+        <div className="input-group" style={{ position: "relative" }}>
           <input
+            ref={inputRef}
             type="text"
             className="word-input"
             value={word}
             onChange={(e) => setWord(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Enter text ..."
+            onKeyDown={handleSuggestionKeyDown}
+            onFocus={() => {
+              if (word && suggestions.length > 0) {
+                // Only show suggestions if the word doesn't exactly match any suggestion
+                const exactMatch = suggestions.some(
+                  (s) => s.toLowerCase() === word.toLowerCase()
+                );
+                if (!exactMatch) {
+                  setShowSuggestions(true);
+                }
+              }
+            }}
+            placeholder={
+              isLoadingDict ? "Loading dictionary..." : "Enter text ..."
+            }
+            disabled={isLoadingDict}
           />
-          {/* Pronounce button moved out of the input group */}
+
+          {/* Suggestions dropdown */}
+          {showSuggestions && suggestions.length > 0 && (
+            <div
+              ref={suggestionsRef}
+              className="suggestions-dropdown"
+              style={{
+                position: "absolute",
+                top: "100%",
+                left: 0,
+                width: "100%",
+                maxHeight: "200px",
+                overflowY: "auto",
+                zIndex: 10,
+                backgroundColor: "white",
+                border: "1px solid #ddd",
+                borderRadius: "4px",
+                boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+              }}
+            >
+              {suggestions.map((suggestion, index) => (
+                <div
+                  key={suggestion}
+                  className={`suggestion-item ${
+                    selectedSuggestionIndex === index ? "selected" : ""
+                  }`}
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleSelectSuggestion(suggestion);
+                  }}
+                  onMouseEnter={() => setSelectedSuggestionIndex(index)}
+                  style={{
+                    padding: "8px 12px",
+                    cursor: "pointer",
+                    backgroundColor:
+                      selectedSuggestionIndex === index
+                        ? "#f0f0f0"
+                        : "transparent",
+                    transition: "background-color 0.2s",
+                  }}
+                >
+                  {suggestion}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Pronounce button now below the input with full width */}

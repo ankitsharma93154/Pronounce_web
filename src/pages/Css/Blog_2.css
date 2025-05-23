@@ -1,0 +1,311 @@
+.pronunciation-guide {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+.guide-header {
+  position: relative;
+  padding: 4rem 0 3rem;
+  text-align: center;
+  overflow: hidden;
+  background-color: var(--primary);
+  background-image: var(--primary-gradient);
+  color: #fff;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+}
+.guide-header h1 {
+  font-size: 2.8rem;
+  margin: 2rem auto 1rem;
+  line-height: 1.2;
+  max-width: 64rem;
+}
+.guide-header .subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.guide-content {
+  padding: 2rem 1rem;
+  max-width: 64rem;
+}
+.intro-section p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+}
+.intro-section p strong {
+  color: var(--text-primary);
+}
+.seo-rich-box,
+.tip-box {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+.seo-rich-box h3 {
+  color: var(--primary);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.seo-rich-box ul {
+  list-style: none;
+  padding: 0;
+}
+.seo-rich-box li {
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 1.5rem;
+}
+.seo-rich-box li::before {
+  content: "✔️";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+.tip-box .tip-icon {
+  font-size: 1.8rem;
+  margin-right: 0.75rem;
+  vertical-align: middle;
+  color: var(--primary);
+}
+.tip-box p {
+  display: inline;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+.words-section {
+  margin-bottom: 3rem;
+}
+.section-title {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+.section-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.words-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.word-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.word-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+.word-card h3 {
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.pronunciation-box {
+  margin-bottom: 1rem;
+}
+.pronunciation {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.pronunciation .icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.pronunciation.correct .icon {
+  color: #28a745;
+}
+.pronunciation.wrong .icon {
+  color: #dc3545;
+}
+.pronunciation label {
+  font-weight: bold;
+  color: var(--text-primary);
+  min-width: 80px;
+}
+.pronunciation span {
+  font-family: "Consolas", "Monaco", monospace;
+  background-color: var(--bg-secondary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: var(--text-primary);
+}
+.word-card .tip-box {
+  background: var(--primary-gradient);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+}
+body.dark .word-card .tip-box {
+  background-color: var(--bg-dark-secondary);
+  border-color: var(--border-dark);
+}
+.word-card .tip-box .tip-icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  color: #1890ff;
+}
+body.dark .word-card .tip-box .tip-icon {
+  color: var(--primary);
+}
+.word-card .tip-box span {
+  font-size: 0.95rem;
+  color: #fff;
+}
+.example {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+.audio-button {
+  background-image: var(--primary-gradient);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-image var(--transition);
+}
+.audio-button:hover {
+  background-image: var(--primary-gradient-hover);
+  box-shadow: var(--shadow-md);
+}
+.conclusion-section {
+  margin-top: 3rem;
+  text-align: center;
+}
+.conclusion-section h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+.conclusion-section p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.tips-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+.tip-card h4 {
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.tip-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.cta-box {
+  background: var(--primary-gradient);
+  color: #fff;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  margin-top: 3rem;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+.cta-box h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.cta-box p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  color: #fff;
+}
+.cta-button {
+  background-color: #fff;
+  color: var(--primary);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition),
+    transform var(--transition);
+}
+.cta-button:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+.cta-box .seo-text {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 1.5rem;
+}
+@media (max-width: 768px) {
+  .guide-header h1 {
+    font-size: 2rem;
+  }
+  .guide-header .subtitle {
+    font-size: 1rem;
+  }
+  .guide-content {
+    padding: 1.5rem 0.75rem;
+  }
+  .section-title {
+    font-size: 1.75rem;
+  }
+  .words-grid {
+    grid-template-columns: 1fr;
+  }
+  .cta-box h3 {
+    font-size: 1.5rem;
+  }
+  .cta-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
