@@ -1,5 +1,7 @@
 {
-  "rewrites": [
+   "rewrites": [
+    { "source": "/manifest.json", "destination": "/manifest.json" },
+    { "source": "/static/:path*", "destination": "/static/:path*" },
     { "source": "/(.*)", "destination": "/" }
   ],
   "headers": [
