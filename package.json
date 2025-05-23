@@ -2,7 +2,7 @@
   "name": "quick-word-pronunciation-helper",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "/",
   "dependencies": {
     "@mui/icons-material": "^6.4.4",
     "@mui/material": "^6.4.4",
