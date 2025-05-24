@@ -19,10 +19,6 @@ const PronunciationGuide = () => {
           name="keywords"
           content="pronunciation guide, mispronounced words, English pronunciation, common pronunciation mistakes, learn English, improve English, how to say words"
         />
-        <link
-          rel="canonical"
-          href="https://www.yourwebsite.com/blog/pronunciation-guide"
-        />
         {/* Open Graph / Facebook */}
         <meta
           property="og:title"
