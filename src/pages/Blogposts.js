@@ -38,7 +38,6 @@ const BlogPosts = () => {
           name="description"
           content="Explore our latest blog posts on self-improvement, technology, health, finance, and more. Find insightful guides and tips to enhance your knowledge."
         />
-        <link rel="canonical" href="https://www.yourwebsite.com/blog" />
         <meta
           property="og:title"
           content="Our Blog - Discover Insights & Guides"
