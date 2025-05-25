@@ -52,6 +52,8 @@ body {
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --accent-bg: rgba(37, 99, 235, 0.2);
+  --accent-fg: #1e3a8a;
 }
 * {
   margin: 0;
@@ -75,6 +77,8 @@ body.dark {
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
   --border-color: var(--border-dark);
+  --accent-bg: rgba(147, 197, 253, 0.2);
+  --accent-fg: #93c5fd;
 }
 .container {
   width: 100%;
@@ -560,8 +564,8 @@ body.dark {
 }
 .accent-tag,
 .relation-chip {
-  background-color: rgba(37, 99, 235, 0.2);
-  color: var(--primary);
+  background-color: var(--accent-bg);
+  color: var(--accent-fg);
   border-radius: 9999px;
   font-weight: 600;
 }
