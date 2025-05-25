@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Moon, Sun, Menu, X } from "lucide-react";
-import logo from "../images/favicon-32x32.png"; // Adjust the path as necessary
+import logo from "../images/letter_q_logo.png"; // Adjust the path as necessary
 
 const Header = () => {
   // State management
