@@ -14,7 +14,7 @@
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 20px;
-  color: white;
+  color: #fff;
   position: relative;
 }
 .about-page-section-title::after {
@@ -24,7 +24,7 @@
   bottom: -8px;
   width: 60px;
   height: 3px;
-  background: black;
+  background: #000;
   border-radius: 2px;
 }
 .about-page-content {
@@ -36,19 +36,21 @@
   line-height: 1.6;
 }
 .about-page-section-text {
-  color: white;
+  color: #fff;
   margin-bottom: 16px;
   line-height: 1.6;
 }
+.about-page-feature-title,
+.about-page-text strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.about-page-feature-list li:last-child,
 .about-page-text:last-child {
   margin-bottom: 0;
 }
-.about-page-text strong {
-  color: var(--text-primary);
-  font-weight: 600;
-}
 .about-page-section-text strong {
-  color: black;
+  color: #000;
   font-weight: 600;
 }
 .about-page-features-grid {
@@ -71,9 +73,7 @@
 }
 .about-page-feature-title {
   font-size: 1.25rem;
-  font-weight: 600;
   margin-bottom: 16px;
-  color: var(--text-primary);
 }
 .about-page-feature-list {
   color: var(--text-secondary);
@@ -82,9 +82,6 @@
 }
 .about-page-feature-list li {
   margin-bottom: 8px;
-}
-.about-page-feature-list li:last-child {
-  margin-bottom: 0;
 }
 .about-page-divider {
   height: 1px;

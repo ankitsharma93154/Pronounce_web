@@ -1,3 +1,7 @@
+.blog-card-image,
+.blog-header {
+  border-bottom: 1px solid var(--border-color);
+}
 .blog-posts-page {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
@@ -5,20 +9,22 @@
   display: flex;
   flex-direction: column;
 }
+.blog-card,
 .blog-header {
   background-color: var(--bg-primary);
+}
+.blog-header {
   padding: 4rem 1rem 3rem;
   text-align: center;
-  border-bottom: 1px solid var(--border-color);
 }
 .blog-header h1 {
   font-size: 2.8rem;
   margin-bottom: 1rem;
-  color: white;
+  color: #fff;
 }
 .blog-header .subtitle {
   font-size: 1.25rem;
-  color: white;
+  color: #fff;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -39,7 +45,6 @@
 .blog-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
@@ -57,7 +62,10 @@
   height: 200px;
   background-size: cover;
   background-position: center;
-  border-bottom: 1px solid var(--border-color);
+}
+body.dark .blog-card-image,
+body.dark .blog-header {
+  border-bottom-color: var(--border-dark);
 }
 .blog-card-content {
   padding: 1.5rem;
@@ -76,16 +84,19 @@
 }
 .blog-card-category {
   background-color: var(--primary);
-  color: white;
+  color: #fff;
   padding: 0.3em 0.8em;
   border-radius: 4px;
-  font-weight: bold;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+.blog-card-title,
+body.dark .blog-card-title {
+  color: var(--text-primary);
+}
 .blog-card-title {
   font-size: 1.5rem;
-  color: var(--text-primary);
   margin-bottom: 0.75rem;
   line-height: 1.3;
 }
@@ -99,29 +110,22 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.blog-card-read-time,
+body.dark .blog-header h1 {
+  color: var(--primary);
+}
 .blog-card-read-time {
   font-size: 0.9rem;
-  color: var(--primary);
-  font-weight: bold;
+  font-weight: 700;
   text-align: right;
   margin-top: 1rem;
 }
 body.dark .blog-header {
   background-color: var(--bg-dark-secondary);
-  border-bottom-color: var(--border-dark);
-}
-body.dark .blog-header h1 {
-  color: var(--primary);
 }
 body.dark .blog-card {
   background-color: var(--bg-dark);
   border-color: var(--border-dark);
-}
-body.dark .blog-card-image {
-  border-bottom-color: var(--border-dark);
-}
-body.dark .blog-card-title {
-  color: var(--text-primary);
 }
 @media (max-width: 768px) {
   .blog-header h1 {

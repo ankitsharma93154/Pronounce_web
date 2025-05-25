@@ -1,8 +1,11 @@
+.faq-question.active,
+.faq-question:hover {
+  background-color: var(--bg-secondary);
+}
 .faq-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
-  padding-top: 6rem;
+  padding: 6rem 2rem 2rem;
   color: var(--text-primary);
 }
 .faq-header {
@@ -51,12 +54,16 @@
   transition: transform var(--transition), box-shadow var(--transition);
   border: 1px solid var(--border-color);
 }
+.faq-icon-indicator,
+.faq-question {
+  display: flex;
+  transition: background-color var(--transition);
+}
 .faq-item:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
 .faq-question {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -65,7 +72,6 @@
   background: var(--bg-primary);
   border: none;
   cursor: pointer;
-  transition: background-color var(--transition);
   color: var(--text-primary);
 }
 .question-content {
@@ -76,17 +82,12 @@
 }
 .faq-icon-indicator {
   font-size: 1.3rem;
-  display: flex;
   align-items: center;
   justify-content: center;
   min-width: 36px;
   height: 36px;
   background: var(--bg-secondary);
   border-radius: 50%;
-  transition: background-color var(--transition);
-}
-.faq-question:hover {
-  background-color: var(--bg-secondary);
 }
 .faq-question h2 {
   margin: 0;
@@ -95,7 +96,6 @@
   color: var(--text-primary);
 }
 .faq-question.active {
-  background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
 }
 .indicator-arrow {
@@ -105,6 +105,10 @@
   stroke: var(--primary);
   transition: transform var(--transition);
 }
+.cta-button,
+.faq-answer {
+  transition: all var(--transition);
+}
 .arrow-icon.rotated {
   transform: rotate(180deg);
 }
@@ -112,7 +116,6 @@
   max-height: 0;
   padding: 0 1.2rem 0 3.7rem;
   overflow: hidden;
-  transition: all var(--transition);
   background-color: var(--bg-primary);
 }
 .faq-answer.open {
@@ -144,7 +147,6 @@
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--transition);
   box-shadow: var(--shadow-sm);
 }
 .cta-button:hover {
@@ -154,8 +156,7 @@
 }
 @media (max-width: 768px) {
   .faq-container {
-    padding: 1.5rem;
-    padding-top: 6rem;
+    padding: 6rem 1.5rem 1.5rem;
   }
   .faq-header h1 {
     font-size: 2rem;
