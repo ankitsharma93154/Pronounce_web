@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Linkedin, Twitter } from "lucide-react";
+import { Mail, Linkedin, Twitter, Palette, Type } from "lucide-react";
 import "./Css/AboutPage.css";
 import { Helmet } from "react-helmet";
 import { ExternalLink } from "lucide-react";
@@ -111,6 +111,7 @@ const AboutPage = () => {
                   rel="noopener noreferrer"
                   className="project-link"
                 >
+                  <Palette size={20} />
                   ColorCura
                   <ExternalLink size={18} />
                 </a>
@@ -133,6 +134,7 @@ const AboutPage = () => {
                   rel="noopener noreferrer"
                   className="project-link"
                 >
+                  <Type size={20} />
                   LushFonts
                   <ExternalLink size={18} />
                 </a>
