@@ -129,3 +129,39 @@
     font-size: 1.15rem;
   }
 }
+/* Add these styles to your AboutPage.css file */
+
+/* Project link styling */
+.project-link {
+  color: #2563eb;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+
+.project-link:hover {
+  color: #1d4ed8;
+}
+
+.project-link:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Ensure consistent spacing for the projects section */
+.about-page-section .about-page-features-grid {
+  margin-top: 2rem;
+}
+
+/* Optional: Add some visual enhancement for project cards */
+.about-page-feature:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+.about-page-feature {
+  transition: transform 0.2s ease;
+}

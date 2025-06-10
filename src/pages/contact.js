@@ -2,6 +2,7 @@ import React from "react";
 import { Mail, Linkedin, Twitter } from "lucide-react";
 import "./Css/AboutPage.css";
 import { Helmet } from "react-helmet";
+import { ExternalLink } from "lucide-react";
 
 const AboutPage = () => {
   return (
@@ -10,7 +11,7 @@ const AboutPage = () => {
         <title>Contact Us | QuickPronounce</title>
         <meta
           name="description"
-          content="Get in touch with the QuickPronounce team. We’d love to hear your feedback or questions!"
+          content="Get in touch with the QuickPronounce team. We'd love to hear your feedback or questions!"
         />
         <meta
           name="keywords"
@@ -89,6 +90,63 @@ const AboutPage = () => {
         </div>
 
         <div className="about-page-divider"></div>
+
+        {/* Other Projects Section */}
+        <section className="about-page-section">
+          <h2 className="about-page-section-title">Other Projects by Me</h2>
+          <div className="about-page-content">
+            <p className="about-page-section-text">
+              Check out my other web tools designed to make your creative and
+              professional work easier!
+            </p>
+          </div>
+
+          <div className="about-page-features-grid">
+            {/* ColorCura Project */}
+            <section className="about-page-feature">
+              <h3 className="about-page-feature-title">
+                <a
+                  href="https://colorcura.site"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  ColorCura
+                  <ExternalLink size={18} />
+                </a>
+              </h3>
+              <div className="about-page-feature-content">
+                <p className="about-page-text">
+                  Hundreds of color palettes with live UI mockup previews to
+                  visualize colors in context, plus one-click gradient generator
+                  for designers and developers.
+                </p>
+              </div>
+            </section>
+
+            {/* LushFonts Project */}
+            <section className="about-page-feature">
+              <h3 className="about-page-feature-title">
+                <a
+                  href="https://lushfonts.site"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  LushFonts
+                  <ExternalLink size={18} />
+                </a>
+              </h3>
+              <div className="about-page-feature-content">
+                <p className="about-page-text">
+                  Generate fancy text in various font styles instantly with
+                  customizable borders and themed emojis - perfect for social
+                  media and creative design projects.
+                </p>
+              </div>
+            </section>
+          </div>
+        </section>
 
         {/* Contact Section */}
         <section className="about-page-section" id="contact">
