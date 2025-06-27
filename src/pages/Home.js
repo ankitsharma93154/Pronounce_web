@@ -421,7 +421,60 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>QuickPronounce | American & British Pronunciation Tool</title>
+        <title>
+          QuickPronounce – Free English Pronunciation Tool | American & British
+          Accents
+        </title>
+        <meta
+          name="description"
+          content="Master English pronunciation with QuickPronounce. Instantly hear any word in American or British accent, get phonetic transcriptions, and improve your spoken English for free."
+        />
+        <meta
+          name="keywords"
+          content="English pronunciation, pronunciation tool, American accent, British accent, phonetic transcription, speak English, pronunciation app, language learning, ESL, QuickPronounce"
+        />
+        <link rel="canonical" href="https://www.quickpronounce.site/" />
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="QuickPronounce – Free English Pronunciation Tool | American & British Accents"
+        />
+        <meta
+          property="og:description"
+          content="Master English pronunciation with QuickPronounce. Instantly hear any word in American or British accent, get phonetic transcriptions, and improve your spoken English for free."
+        />
+        <meta
+          property="og:image"
+          content="https://www.quickpronounce.site/og-preview.png"
+        />
+        <meta property="og:url" content="https://www.quickpronounce.site/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="QuickPronounce" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="QuickPronounce – Free English Pronunciation Tool | American & British Accents"
+        />
+        <meta
+          name="twitter:description"
+          content="Master English pronunciation with QuickPronounce. Instantly hear any word in American or British accent, get phonetic transcriptions, and improve your spoken English for free."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
+        />
+        <meta name="twitter:site" content="@quickpronounce" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            url: "https://www.quickpronounce.site/",
+            name: "QuickPronounce",
+            description:
+              "QuickPronounce helps you master American and British English pronunciation instantly. Type any word and hear it pronounced correctly!",
+          })}
+        </script>
       </Helmet>
 
       {process.env.NODE_ENV === "production" && (

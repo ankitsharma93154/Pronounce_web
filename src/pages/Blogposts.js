@@ -33,25 +33,62 @@ const BlogPosts = () => {
   return (
     <div className="blog-posts-page">
       <Helmet>
-        <title>Our Blog - Discover Insights & Guides</title>
+        <title>
+          Pronunciation Blog – Tips, Guides & English Learning | QuickPronounce
+        </title>
         <meta
           name="description"
-          content="Explore our latest blog posts on self-improvement, technology, health, finance, and more. Find insightful guides and tips to enhance your knowledge."
+          content="Read expert blog posts on English pronunciation, language learning, and tips to improve your accent. Discover guides, pronunciation tricks, and resources from QuickPronounce."
         />
         <meta
+          name="keywords"
+          content="pronunciation blog, English pronunciation, language learning, pronunciation tips, accent improvement, QuickPronounce blog, pronunciation guides, English speaking, phonetics, pronunciation resources"
+        />
+        <link rel="canonical" href="https://www.quickpronounce.site/blog" />
+        {/* Open Graph */}
+        <meta
           property="og:title"
-          content="Our Blog - Discover Insights & Guides"
+          content="Pronunciation Blog – Tips, Guides & English Learning | QuickPronounce"
         />
         <meta
           property="og:description"
-          content="Explore our latest blog posts on self-improvement, technology, health, finance, and more. Find insightful guides and tips to enhance your knowledge."
+          content="Read expert blog posts on English pronunciation, language learning, and tips to improve your accent. Discover guides, pronunciation tricks, and resources from QuickPronounce."
         />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.yourwebsite.com/blog" />
         <meta
           property="og:image"
-          content="https://www.yourwebsite.com/images/blog-banner.jpg"
+          content="https://www.quickpronounce.site/og-preview.png"
         />
+        <meta
+          property="og:url"
+          content="https://www.quickpronounce.site/blog"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="QuickPronounce" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Pronunciation Blog – Tips, Guides & English Learning | QuickPronounce"
+        />
+        <meta
+          name="twitter:description"
+          content="Read expert blog posts on English pronunciation, language learning, and tips to improve your accent. Discover guides, pronunciation tricks, and resources from QuickPronounce."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
+        />
+        <meta name="twitter:site" content="@quickpronounce" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            url: "https://www.quickpronounce.site/blog",
+            name: "QuickPronounce Blog",
+            description:
+              "Read expert blog posts on English pronunciation, language learning, and tips to improve your accent. Discover guides, pronunciation tricks, and resources from QuickPronounce.",
+          })}
+        </script>
       </Helmet>
 
       <header className="blog-header">

@@ -175,15 +175,49 @@ const FAQPage = () => {
   return (
     <div className="faq-container">
       <Helmet>
-        <title>FAQ | QuickPronounce</title>
+        <title>
+          FAQ – English Pronunciation Help & App Guide | QuickPronounce
+        </title>
         <meta
           name="description"
-          content="Find answers to frequently asked questions about QuickPronounce – pronunciation tips, usage, and features."
+          content="Find answers to common questions about using QuickPronounce, English pronunciation tips, accent selection, and language learning support. Get help with pronunciation and app features."
         />
         <meta
           name="keywords"
-          content="QuickPronounce FAQ, pronunciation help, app guide, how to use QuickPronounce"
+          content="pronunciation FAQ, English pronunciation help, QuickPronounce questions, accent selection, language learning, pronunciation app, ESL, pronunciation support, app guide"
         />
+        <link rel="canonical" href="https://www.quickpronounce.site/faq" />
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="FAQ – English Pronunciation Help & App Guide | QuickPronounce"
+        />
+        <meta
+          property="og:description"
+          content="Find answers to common questions about using QuickPronounce, English pronunciation tips, accent selection, and language learning support. Get help with pronunciation and app features."
+        />
+        <meta
+          property="og:image"
+          content="https://www.quickpronounce.site/og-preview.png"
+        />
+        <meta property="og:url" content="https://www.quickpronounce.site/faq" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="QuickPronounce" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="FAQ – English Pronunciation Help & App Guide | QuickPronounce"
+        />
+        <meta
+          name="twitter:description"
+          content="Find answers to common questions about using QuickPronounce, English pronunciation tips, accent selection, and language learning support. Get help with pronunciation and app features."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
+        />
+        <meta name="twitter:site" content="@quickpronounce" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 

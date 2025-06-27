@@ -177,16 +177,66 @@ const PronunciationBlog = () => {
     <div className="pronunciation-blog">
       <Helmet>
         <title>
-          10 Tips to Perfect Your English Pronunciation | QuickPronounce
+          10 Proven Tips to Improve Your English Pronunciation | QuickPronounce
         </title>
         <meta
           name="description"
-          content="Improve your English pronunciation with 10 actionable tips on phonetics, intonation, and stress patterns. Start mastering your speaking skills today!"
+          content="Discover 10 actionable tips to improve your English pronunciation, master accent, and speak more clearly. Learn phonetics, intonation, and stress patterns with QuickPronounce."
         />
         <meta
           name="keywords"
-          content="English pronunciation, pronunciation tips, language learning, phonetics, speaking skills, ESL"
+          content="English pronunciation tips, improve accent, pronunciation guide, phonetics, intonation, stress patterns, speak English, language learning, QuickPronounce, pronunciation improvement"
         />
+        <link
+          rel="canonical"
+          href="https://www.quickpronounce.site/blog/pronunciation-tips"
+        />
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="10 Proven Tips to Improve Your English Pronunciation | QuickPronounce"
+        />
+        <meta
+          property="og:description"
+          content="Discover 10 actionable tips to improve your English pronunciation, master accent, and speak more clearly. Learn phonetics, intonation, and stress patterns with QuickPronounce."
+        />
+        <meta
+          property="og:image"
+          content="https://www.quickpronounce.site/og-preview.png"
+        />
+        <meta
+          property="og:url"
+          content="https://www.quickpronounce.site/blog/pronunciation-tips"
+        />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="QuickPronounce" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="10 Proven Tips to Improve Your English Pronunciation | QuickPronounce"
+        />
+        <meta
+          name="twitter:description"
+          content="Discover 10 actionable tips to improve your English pronunciation, master accent, and speak more clearly. Learn phonetics, intonation, and stress patterns with QuickPronounce."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
+        />
+        <meta name="twitter:site" content="@quickpronounce" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: "10 Tips to Perfect Your English Pronunciation",
+            description:
+              "Improve your English pronunciation with 10 actionable tips on phonetics, intonation, and stress patterns. Start mastering your speaking skills today!",
+            url: "https://www.quickpronounce.site/blog/pronunciation-tips",
+            author: { "@type": "Person", name: "QuickPronounce Team" },
+            publisher: { "@type": "Organization", name: "QuickPronounce" },
+          })}
+        </script>
       </Helmet>
       <div className="blog-header">
         <div className="container">

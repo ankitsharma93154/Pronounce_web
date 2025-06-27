@@ -8,15 +8,60 @@ const AboutPage = () => {
   return (
     <div className="about-page-container" id="about">
       <Helmet>
-        <title>Contact Us | QuickPronounce</title>
+        <title>Contact QuickPronounce – Feedback & Pronunciation Support</title>
         <meta
           name="description"
-          content="Get in touch with the QuickPronounce team. We'd love to hear your feedback or questions!"
+          content="Contact QuickPronounce for pronunciation support, feedback, or questions about our English pronunciation tool. We're here to help you improve your spoken English!"
         />
         <meta
           name="keywords"
-          content="QuickPronounce contact, pronunciation app support, reach QuickPronounce"
+          content="contact QuickPronounce, pronunciation support, feedback, English pronunciation help, contact app team, language learning support, pronunciation questions, ESL"
         />
+        <link rel="canonical" href="https://www.quickpronounce.site/contact" />
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="Contact QuickPronounce – Feedback & Pronunciation Support"
+        />
+        <meta
+          property="og:description"
+          content="Contact QuickPronounce for pronunciation support, feedback, or questions about our English pronunciation tool. We're here to help you improve your spoken English!"
+        />
+        <meta
+          property="og:image"
+          content="https://www.quickpronounce.site/og-preview.png"
+        />
+        <meta
+          property="og:url"
+          content="https://www.quickpronounce.site/contact"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="QuickPronounce" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Contact QuickPronounce – Feedback & Pronunciation Support"
+        />
+        <meta
+          name="twitter:description"
+          content="Contact QuickPronounce for pronunciation support, feedback, or questions about our English pronunciation tool. We're here to help you improve your spoken English!"
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
+        />
+        <meta name="twitter:site" content="@quickpronounce" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            url: "https://www.quickpronounce.site/contact",
+            name: "Contact Us",
+            description:
+              "Get in touch with the QuickPronounce team. We'd love to hear your feedback or questions!",
+          })}
+        </script>
       </Helmet>
       <div className="about-page-inner">
         {/* About Us Section */}

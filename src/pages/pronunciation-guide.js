@@ -9,16 +9,67 @@ const PronunciationGuide = () => {
         {/* SEO Meta Tags */}
         <title>
           How to Pronounce the 50 Most Mispronounced English Words |
-          Pronunciation Guide
+          QuickPronounce
         </title>
         <meta
           name="description"
-          content="Master the pronunciation of the 50 most commonly mispronounced English words with this comprehensive guide. Includes phonetic spellings, common errors, and memory tricks."
+          content="Master the pronunciation of the 50 most commonly mispronounced English words. Get phonetic spellings, common errors, and memory tricks to improve your English with QuickPronounce."
         />
         <meta
           name="keywords"
-          content="pronunciation guide, mispronounced words, English pronunciation, common pronunciation mistakes, learn English, improve English, how to say words"
+          content="mispronounced words, English pronunciation, pronunciation guide, common mistakes, phonetic spelling, language learning, QuickPronounce, accent, pronunciation tips"
         />
+        <link
+          rel="canonical"
+          href="https://www.quickpronounce.site/blog/pronunciation-guide"
+        />
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="How to Pronounce the 50 Most Mispronounced English Words | QuickPronounce"
+        />
+        <meta
+          property="og:description"
+          content="Master the pronunciation of the 50 most commonly mispronounced English words. Get phonetic spellings, common errors, and memory tricks to improve your English with QuickPronounce."
+        />
+        <meta
+          property="og:image"
+          content="https://www.quickpronounce.site/og-preview.png"
+        />
+        <meta
+          property="og:url"
+          content="https://www.quickpronounce.site/blog/pronunciation-guide"
+        />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="QuickPronounce" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="How to Pronounce the 50 Most Mispronounced English Words | QuickPronounce"
+        />
+        <meta
+          name="twitter:description"
+          content="Master the pronunciation of the 50 most commonly mispronounced English words. Get phonetic spellings, common errors, and memory tricks to improve your English with QuickPronounce."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
+        />
+        <meta name="twitter:site" content="@quickpronounce" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline:
+              "How to Pronounce the 50 Most Mispronounced English Words",
+            description:
+              "Master the pronunciation of the 50 most commonly mispronounced English words with this comprehensive guide. Includes phonetic spellings, common errors, and memory tricks.",
+            url: "https://www.quickpronounce.site/blog/pronunciation-guide",
+            author: { "@type": "Person", name: "QuickPronounce Team" },
+            publisher: { "@type": "Organization", name: "QuickPronounce" },
+          })}
+        </script>
         {/* Open Graph / Facebook */}
         <meta
           property="og:title"
