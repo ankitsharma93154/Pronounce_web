@@ -34,29 +34,34 @@ const BlogPosts = () => {
     <div className="blog-posts-page">
       <Helmet>
         <title>
-          Pronunciation Blog – Tips, Guides & English Learning | QuickPronounce
+          QuickPronounce Blog: Pronunciation Tips, Accent Hacks & English
+          Learning Guides
         </title>
+
         <meta
           name="description"
-          content="Read expert blog posts on English pronunciation, language learning, and tips to improve your accent. Discover guides, pronunciation tricks, and resources from QuickPronounce."
+          content="Improve your English with expert pronunciation tips, accent tricks, phonetics guides, and language learning resources. Explore must-read blog posts on QuickPronounce."
         />
+
         <meta
           name="keywords"
-          content="pronunciation blog, English pronunciation, language learning, pronunciation tips, accent improvement, QuickPronounce blog, pronunciation guides, English speaking, phonetics, pronunciation resources"
+          content="English pronunciation blog, pronunciation tips, accent improvement, how to speak English, learn phonetics, language learning resources, ESL blog, QuickPronounce"
         />
+
         <link rel="canonical" href="https://www.quickpronounce.site/blog" />
+
         {/* Open Graph */}
         <meta
           property="og:title"
-          content="Pronunciation Blog – Tips, Guides & English Learning | QuickPronounce"
+          content="QuickPronounce Blog: Pronunciation Tips & Accent Hacks for Clearer English"
         />
         <meta
           property="og:description"
-          content="Read expert blog posts on English pronunciation, language learning, and tips to improve your accent. Discover guides, pronunciation tricks, and resources from QuickPronounce."
+          content="Want to speak English clearly? Explore expert blog posts on pronunciation, accent hacks, and phonetics tips — only on QuickPronounce."
         />
         <meta
           property="og:image"
-          content="https://www.quickpronounce.site/og-preview.png"
+          content="https://www.quickpronounce.site/images/quickpronounce-blog-banner.jpg"
         />
         <meta
           property="og:url"
@@ -64,21 +69,24 @@ const BlogPosts = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="QuickPronounce" />
+
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Pronunciation Blog – Tips, Guides & English Learning | QuickPronounce"
+          content="QuickPronounce Blog: Pronunciation Tips & Accent Hacks"
         />
         <meta
           name="twitter:description"
-          content="Read expert blog posts on English pronunciation, language learning, and tips to improve your accent. Discover guides, pronunciation tricks, and resources from QuickPronounce."
+          content="Learn how to pronounce English better. Read top tips, expert guides, and accent improvement blogs at QuickPronounce."
         />
         <meta
           name="twitter:image"
-          content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
+          content="https://www.quickpronounce.site/images/quickpronounce-blog-banner.jpg"
         />
         <meta name="twitter:site" content="@quickpronounce" />
+
+        {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -86,7 +94,7 @@ const BlogPosts = () => {
             url: "https://www.quickpronounce.site/blog",
             name: "QuickPronounce Blog",
             description:
-              "Read expert blog posts on English pronunciation, language learning, and tips to improve your accent. Discover guides, pronunciation tricks, and resources from QuickPronounce.",
+              "The QuickPronounce Blog offers pronunciation tips, accent improvement guides, phonetics explanations, and ESL resources to help you speak English more clearly and confidently.",
           })}
         </script>
       </Helmet>

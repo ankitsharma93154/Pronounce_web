@@ -6,35 +6,38 @@ const PronunciationGuide = () => {
   return (
     <div className="pronunciation-guide">
       <Helmet>
-        {/* SEO Meta Tags */}
         <title>
-          How to Pronounce the 50 Most Mispronounced English Words |
+          50 Most Mispronounced English Words (and How to Say Them Right) |
           QuickPronounce
         </title>
+
         <meta
           name="description"
-          content="Master the pronunciation of the 50 most commonly mispronounced English words. Get phonetic spellings, common errors, and memory tricks to improve your English with QuickPronounce."
+          content="Are you saying these words wrong? Discover the 50 most mispronounced English words with phonetic tips, memory tricks, and common mistakes to fix your accent fast."
         />
+
         <meta
           name="keywords"
-          content="mispronounced words, English pronunciation, pronunciation guide, common mistakes, phonetic spelling, language learning, QuickPronounce, accent, pronunciation tips"
+          content="most mispronounced English words, pronunciation mistakes, how to pronounce, English accent, fix pronunciation, phonetic guide, language learning, QuickPronounce blog"
         />
+
         <link
           rel="canonical"
           href="https://www.quickpronounce.site/blog/pronunciation-guide"
         />
+
         {/* Open Graph */}
         <meta
           property="og:title"
-          content="How to Pronounce the 50 Most Mispronounced English Words | QuickPronounce"
+          content="50 Most Mispronounced English Words (and How to Say Them Right)"
         />
         <meta
           property="og:description"
-          content="Master the pronunciation of the 50 most commonly mispronounced English words. Get phonetic spellings, common errors, and memory tricks to improve your English with QuickPronounce."
+          content="Think you're pronouncing these words right? Learn the correct way with phonetic tips, common errors, and clever memory tricks — only on QuickPronounce."
         />
         <meta
           property="og:image"
-          content="https://www.quickpronounce.site/og-preview.png"
+          content="https://www.quickpronounce.site/images/pronunciation-guide-banner.jpg"
         />
         <meta
           property="og:url"
@@ -42,68 +45,43 @@ const PronunciationGuide = () => {
         />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="QuickPronounce" />
+
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="How to Pronounce the 50 Most Mispronounced English Words | QuickPronounce"
+          content="50 Most Mispronounced English Words (and How to Fix Them)"
         />
         <meta
           name="twitter:description"
-          content="Master the pronunciation of the 50 most commonly mispronounced English words. Get phonetic spellings, common errors, and memory tricks to improve your English with QuickPronounce."
+          content="Are you sure you're saying these words right? Learn how to pronounce them correctly with phonetic tips and accent hacks."
         />
         <meta
           name="twitter:image"
-          content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
+          content="https://www.quickpronounce.site/images/pronunciation-guide-banner.jpg"
         />
         <meta name="twitter:site" content="@quickpronounce" />
+
+        {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
             headline:
-              "How to Pronounce the 50 Most Mispronounced English Words",
+              "50 Most Mispronounced English Words (and How to Say Them Right)",
             description:
-              "Master the pronunciation of the 50 most commonly mispronounced English words with this comprehensive guide. Includes phonetic spellings, common errors, and memory tricks.",
+              "Are you saying these common English words wrong? This expert guide covers the 50 most mispronounced words with tips, phonetics, and memory tricks to speak clearly.",
             url: "https://www.quickpronounce.site/blog/pronunciation-guide",
-            author: { "@type": "Person", name: "QuickPronounce Team" },
-            publisher: { "@type": "Organization", name: "QuickPronounce" },
+            author: {
+              "@type": "Person",
+              name: "QuickPronounce Team",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "QuickPronounce",
+            },
           })}
         </script>
-        {/* Open Graph / Facebook */}
-        <meta
-          property="og:title"
-          content="How to Pronounce the 50 Most Mispronounced English Words"
-        />
-        <meta
-          property="og:description"
-          content="Master the pronunciation of the 50 most commonly mispronounced English words with this comprehensive guide. Includes phonetic spellings, common errors, and memory tricks."
-        />
-        <meta property="og:type" content="article" />
-        <meta
-          property="og:url"
-          content="https://www.yourwebsite.com/blog/pronunciation-guide"
-        />
-        <meta
-          property="og:image"
-          content="https://www.yourwebsite.com/images/pronunciation-guide-banner.jpg"
-        />{" "}
-        {/* Replace with your actual image */}
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="How to Pronounce the 50 Most Mispronounced English Words"
-        />
-        <meta
-          name="twitter:description"
-          content="Master the pronunciation of the 50 most commonly mispronounced English words with this comprehensive guide. Includes phonetic spellings, common errors, and memory tricks."
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.yourwebsite.com/images/pronunciation-guide-banner.jpg"
-        />{" "}
-        {/* Replace with your actual image */}
       </Helmet>
 
       <header className="guide-header">

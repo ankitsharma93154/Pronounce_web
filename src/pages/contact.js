@@ -8,28 +8,34 @@ const AboutPage = () => {
   return (
     <div className="about-page-container" id="about">
       <Helmet>
-        <title>Contact QuickPronounce – Feedback & Pronunciation Support</title>
+        <title>
+          Contact Us – QuickPronounce Support & Feedback | We're Here to Help
+        </title>
+
         <meta
           name="description"
-          content="Contact QuickPronounce for pronunciation support, feedback, or questions about our English pronunciation tool. We're here to help you improve your spoken English!"
+          content="Need help with pronunciation or have feedback? Contact the QuickPronounce team for support, questions, or suggestions. We're here to help you speak English more confidently!"
         />
+
         <meta
           name="keywords"
-          content="contact QuickPronounce, pronunciation support, feedback, English pronunciation help, contact app team, language learning support, pronunciation questions, ESL"
+          content="contact QuickPronounce, English pronunciation help, feedback form, support team, ESL support, pronunciation questions, language learning, accent tool support"
         />
+
         <link rel="canonical" href="https://www.quickpronounce.site/contact" />
+
         {/* Open Graph */}
         <meta
           property="og:title"
-          content="Contact QuickPronounce – Feedback & Pronunciation Support"
+          content="Contact QuickPronounce – Get Support, Ask Questions & Share Feedback"
         />
         <meta
           property="og:description"
-          content="Contact QuickPronounce for pronunciation support, feedback, or questions about our English pronunciation tool. We're here to help you improve your spoken English!"
+          content="Reach out to QuickPronounce for pronunciation help, app support, or general feedback. We're ready to assist with your English learning journey."
         />
         <meta
           property="og:image"
-          content="https://www.quickpronounce.site/og-preview.png"
+          content="https://www.quickpronounce.site/images/quickpronounce-contact-banner.jpg"
         />
         <meta
           property="og:url"
@@ -37,32 +43,36 @@ const AboutPage = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="QuickPronounce" />
+
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Contact QuickPronounce – Feedback & Pronunciation Support"
+          content="Contact QuickPronounce – Get Help & Give Feedback"
         />
         <meta
           name="twitter:description"
-          content="Contact QuickPronounce for pronunciation support, feedback, or questions about our English pronunciation tool. We're here to help you improve your spoken English!"
+          content="Have questions or suggestions? Contact QuickPronounce for support with pronunciation, app feedback, and more."
         />
         <meta
           name="twitter:image"
-          content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
+          content="https://www.quickpronounce.site/images/quickpronounce-contact-banner.jpg"
         />
         <meta name="twitter:site" content="@quickpronounce" />
+
+        {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ContactPage",
             url: "https://www.quickpronounce.site/contact",
-            name: "Contact Us",
+            name: "Contact QuickPronounce",
             description:
-              "Get in touch with the QuickPronounce team. We'd love to hear your feedback or questions!",
+              "Reach out to QuickPronounce for pronunciation support, feedback, or general inquiries. We're here to help improve your English learning experience.",
           })}
         </script>
       </Helmet>
+
       <div className="about-page-inner">
         {/* About Us Section */}
         <section className="about-page-section">

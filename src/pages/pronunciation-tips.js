@@ -177,28 +177,33 @@ const PronunciationBlog = () => {
     <div className="pronunciation-blog">
       <Helmet>
         <title>
-          10 Proven Tips to Improve Your English Pronunciation | QuickPronounce
+          10 Powerful Tips to Instantly Improve Your English Pronunciation |
+          QuickPronounce
         </title>
+
         <meta
           name="description"
-          content="Discover 10 actionable tips to improve your English pronunciation, master accent, and speak more clearly. Learn phonetics, intonation, and stress patterns with QuickPronounce."
+          content="Want to sound more fluent? These 10 expert-backed pronunciation tips will help you speak English clearly, reduce your accent, and boost confidence — fast!"
         />
+
         <meta
           name="keywords"
-          content="English pronunciation tips, improve accent, pronunciation guide, phonetics, intonation, stress patterns, speak English, language learning, QuickPronounce, pronunciation improvement"
+          content="improve English pronunciation, speak English fluently, reduce accent, phonetics tips, intonation, stress patterns, pronunciation guide, ESL speaking, QuickPronounce blog"
         />
+
         <link
           rel="canonical"
           href="https://www.quickpronounce.site/blog/pronunciation-tips"
         />
+
         {/* Open Graph */}
         <meta
           property="og:title"
-          content="10 Proven Tips to Improve Your English Pronunciation | QuickPronounce"
+          content="10 Powerful Tips to Instantly Improve Your English Pronunciation"
         />
         <meta
           property="og:description"
-          content="Discover 10 actionable tips to improve your English pronunciation, master accent, and speak more clearly. Learn phonetics, intonation, and stress patterns with QuickPronounce."
+          content="Struggling to sound fluent? Learn how to reduce your accent, master phonetics, and speak English clearly with these 10 expert tips."
         />
         <meta
           property="og:image"
@@ -210,34 +215,45 @@ const PronunciationBlog = () => {
         />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="QuickPronounce" />
+
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="10 Proven Tips to Improve Your English Pronunciation | QuickPronounce"
+          content="10 Tips to Instantly Improve Your English Pronunciation"
         />
         <meta
           name="twitter:description"
-          content="Discover 10 actionable tips to improve your English pronunciation, master accent, and speak more clearly. Learn phonetics, intonation, and stress patterns with QuickPronounce."
+          content="Want to speak more clearly? These 10 powerful tips will help you fix pronunciation mistakes and sound fluent in English fast."
         />
         <meta
           name="twitter:image"
           content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
         />
         <meta name="twitter:site" content="@quickpronounce" />
+
+        {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            headline: "10 Tips to Perfect Your English Pronunciation",
+            headline:
+              "10 Powerful Tips to Instantly Improve Your English Pronunciation",
             description:
-              "Improve your English pronunciation with 10 actionable tips on phonetics, intonation, and stress patterns. Start mastering your speaking skills today!",
+              "Boost your English speaking skills with 10 actionable tips to reduce your accent, master phonetics, and speak clearly and confidently.",
             url: "https://www.quickpronounce.site/blog/pronunciation-tips",
-            author: { "@type": "Person", name: "QuickPronounce Team" },
-            publisher: { "@type": "Organization", name: "QuickPronounce" },
+            author: {
+              "@type": "Person",
+              name: "QuickPronounce Team",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "QuickPronounce",
+            },
           })}
         </script>
       </Helmet>
+
       <div className="blog-header">
         <div className="container">
           <h1>10 Proven Tips to Perfect Your English Pronunciation</h1>

@@ -422,26 +422,29 @@ const Home = () => {
     <>
       <Helmet>
         <title>
-          QuickPronounce – Free English Pronunciation Tool | American & British
-          Accents
+          QuickPronounce: Free American & British English Pronunciation Tool
         </title>
+
         <meta
           name="description"
-          content="Master English pronunciation with QuickPronounce. Instantly hear any word in American or British accent, get phonetic transcriptions, and improve your spoken English for free."
+          content="Instantly hear any English word in American or British accent. Free, fast, and accurate pronunciation with phonetic transcription—perfect for ESL learners."
         />
+
         <meta
           name="keywords"
-          content="English pronunciation, pronunciation tool, American accent, British accent, phonetic transcription, speak English, pronunciation app, language learning, ESL, QuickPronounce"
+          content="English pronunciation, hear English words, American accent, British accent, phonetic transcription, speak English, language learning, ESL, QuickPronounce"
         />
+
         <link rel="canonical" href="https://www.quickpronounce.site/" />
+
         {/* Open Graph */}
         <meta
           property="og:title"
-          content="QuickPronounce – Free English Pronunciation Tool | American & British Accents"
+          content="QuickPronounce: Free American & British English Pronunciation Tool"
         />
         <meta
           property="og:description"
-          content="Master English pronunciation with QuickPronounce. Instantly hear any word in American or British accent, get phonetic transcriptions, and improve your spoken English for free."
+          content="Instantly hear any English word in American or British accent. Free, fast, and accurate pronunciation with phonetic transcription—perfect for ESL learners."
         />
         <meta
           property="og:image"
@@ -450,21 +453,24 @@ const Home = () => {
         <meta property="og:url" content="https://www.quickpronounce.site/" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="QuickPronounce" />
+
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="QuickPronounce – Free English Pronunciation Tool | American & British Accents"
+          content="QuickPronounce: Free American & British English Pronunciation Tool"
         />
         <meta
           name="twitter:description"
-          content="Master English pronunciation with QuickPronounce. Instantly hear any word in American or British accent, get phonetic transcriptions, and improve your spoken English for free."
+          content="Instantly hear any English word in American or British accent. Free, fast, and accurate pronunciation with phonetic transcription—perfect for ESL learners."
         />
         <meta
           name="twitter:image"
           content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
         />
         <meta name="twitter:site" content="@quickpronounce" />
+
+        {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -472,7 +478,13 @@ const Home = () => {
             url: "https://www.quickpronounce.site/",
             name: "QuickPronounce",
             description:
-              "QuickPronounce helps you master American and British English pronunciation instantly. Type any word and hear it pronounced correctly!",
+              "QuickPronounce helps you hear American and British English words instantly. Just type any word and hear it spoken with phonetic transcription.",
+            potentialAction: {
+              "@type": "SearchAction",
+              target:
+                "https://www.quickpronounce.site/search?q={search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
           })}
         </script>
       </Helmet>
