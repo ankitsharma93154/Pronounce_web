@@ -492,7 +492,7 @@ body.dark {
   color: transparent;
 }
 .about-page-divider {
-  max-width: 64rem;
+  max-width: 100rem;
   width: 100%;
   margin: 35px auto;
   border: none;
