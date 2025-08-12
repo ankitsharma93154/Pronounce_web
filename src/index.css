@@ -316,7 +316,7 @@ body.dark {
 }
 .word-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1rem;
   width: 100%;
 }
@@ -1208,7 +1208,7 @@ button:focus-visible {
     max-width: 90%;
   }
   .word-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 0.5rem;
   }
   .word-box {
@@ -1285,5 +1285,53 @@ button:focus-visible {
 @media (max-width: 1024px) {
   .examples-container {
     margin: 1rem 0.5rem;
+  }
+}
+.mispronounced-container h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1 rem;
+}
+
+.mispronounced-container .subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.word-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* text left, icon right */
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  gap: 8px;
+  text-align: left;
+}
+
+.word-text {
+  flex: 1;
+  white-space: nowrap; /* keep in single line */
+  overflow: hidden; /* hide overflow */
+  text-overflow: ellipsis; /* show ... */
+}
+
+.word-icon {
+  flex-shrink: 0; /* don’t let icon get squished */
+  color: var(--primary);
+  transition: transform 0.2s ease;
+}
+
+.word-box:hover .word-icon {
+  transform: scale(1.2);
+}
+@media (max-width: 600px) {
+  .word-grid .word-box:nth-child(n + 11) {
+    display: none;
   }
 }
