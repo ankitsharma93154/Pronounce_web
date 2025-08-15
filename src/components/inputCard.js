@@ -331,7 +331,7 @@ const InputCard = memo(
             <div className="voice-buttons">
               <button
                 onClick={handleToggleGender}
-                className={`voice-button ${isMale ? "active" : ""}`}
+                className={`voice-button ${isMale ? "male-active" : ""}`}
               >
                 <svg
                   className="icon-sm"
@@ -350,7 +350,7 @@ const InputCard = memo(
               </button>
               <button
                 onClick={handleToggleGender}
-                className={`voice-button ${!isMale ? "active" : ""}`}
+                className={`voice-button ${!isMale ? "female-active" : ""}`}
               >
                 <svg
                   className="icon-sm"
@@ -379,7 +379,9 @@ const InputCard = memo(
             <div className="voice-buttons">
               <button
                 onClick={() => handleToggleSpeed("slow")}
-                className={`voice-button ${speed === "slow" ? "active" : ""}`}
+                className={`voice-button ${
+                  speed === "slow" ? "slow-active" : ""
+                }`}
               >
                 <svg
                   className="icon-sm"
@@ -409,7 +411,9 @@ const InputCard = memo(
               </button>
               <button
                 onClick={() => handleToggleSpeed("normal")}
-                className={`voice-button ${speed === "normal" ? "active" : ""}`}
+                className={`voice-button ${
+                  speed === "normal" ? "normal-active" : ""
+                }`}
               >
                 <svg
                   className="icon-sm"
@@ -429,7 +433,9 @@ const InputCard = memo(
               </button>
               <button
                 onClick={() => handleToggleSpeed("fast")}
-                className={`voice-button ${speed === "fast" ? "active" : ""}`}
+                className={`voice-button ${
+                  speed === "fast" ? "fast-active" : ""
+                }`}
               >
                 <svg
                   className="icon-sm"

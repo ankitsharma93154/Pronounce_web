@@ -253,8 +253,7 @@ body.dark {
 }
 .float-button,
 .pronounce-button,
-.try-button,
-.voice-button.active {
+.try-button {
   background: var(--primary-gradient);
   color: #fff;
   border: none;
@@ -304,7 +303,6 @@ body.dark {
   height: 3px;
   background: var(--primary-gradient);
 }
-.voice-button:not(.active),
 .word-box {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
@@ -401,14 +399,57 @@ body.dark {
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
 }
+.voice-button.male-active {
+  background-color: #2563eb;
+  color: white;
+}
+.voice-button.female-active {
+  background-color: #db2777;
+  color: white;
+}
+.voice-button.slow-active {
+  background-color: #0891b2;
+  color: white;
+}
+.voice-button.normal-active {
+  background-color: #16a34a;
+  color: white;
+}
+.voice-button.fast-active {
+  background-color: #dc2626;
+  color: white;
+}
+.voice-button.synonyms-active {
+  background-color: #0ea5e9;
+  color: white;
+}
+.voice-button.antonyms-active {
+  background-color: #f43f5e;
+  color: white;
+}
 .voice-button.active {
   font-size: 1rem;
 }
 .voice-button:not(.active) {
   font-size: 0.9rem;
 }
+.results-empty .cta-text {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.results-empty .social-cred-subtle {
+  font-size: 0.9rem;
+  color: var(--text-secondary); /* soft gray */
+  margin-top: 0.2rem;
+  max-width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
 .results-empty {
-  height: 16rem;
+  text-align: center;
+  height: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -898,8 +939,8 @@ body.dark .accent-tag {
   height: 1.25rem;
 }
 .icon-lg {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
   animation: 2s ease-in-out infinite pulse;
   color: var(--primary);
 }
@@ -1092,8 +1133,8 @@ body.dark .accent-tag {
 }
 button:focus,
 button:focus-visible {
-  outline: #4f46e5 solid 2px;
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
 }
 .examples-container {
   padding: 1.5rem;

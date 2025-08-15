@@ -11,8 +11,7 @@ const ResultsCard = memo(
     getPronunciation,
     toggleFavorite,
     isFavorite,
-    isPlaying, // NEW PROP
-    pronounce, // NEW PROP
+    isPlaying,
   }) => (
     <div className="card">
       {isLoading ? (
@@ -22,8 +21,14 @@ const ResultsCard = memo(
         </div>
       ) : !hasPronounced ? (
         <div className="results-empty">
-          <Volume2 className="icon-lg" />
-          <p>Enter a word and click Pronounce to hear the pronunciation</p>
+          <Volume2 className="icon-lg main-icon" />
+          <p className="cta-text">
+            Enter a word and click Pronounce to hear it.
+          </p>
+          <div className="social-cred-subtle">
+            🌍 Over <strong>1,000 learners</strong> from 40+ countries improved
+            their pronunciation here last month.
+          </div>
         </div>
       ) : (
         <ResultsContent
@@ -32,7 +37,7 @@ const ResultsCard = memo(
           getPronunciation={getPronunciation}
           toggleFavorite={toggleFavorite}
           isFavorite={isFavorite}
-          isPlaying={isPlaying} // PASS DOWN
+          isPlaying={isPlaying}
         />
       )}
     </div>

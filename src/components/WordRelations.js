@@ -50,7 +50,7 @@ const WordRelations = ({
         <div className="voice-buttons">
           <button
             onClick={() => handleToggle(true)}
-            className={`voice-button ${showSynonyms ? "active" : ""}`}
+            className={`voice-button ${showSynonyms ? "synonyms-active" : ""}`}
           >
             <svg
               className="icon-sm"
@@ -68,7 +68,7 @@ const WordRelations = ({
           </button>
           <button
             onClick={() => handleToggle(false)}
-            className={`voice-button ${!showSynonyms ? "active" : ""}`}
+            className={`voice-button ${!showSynonyms ? "antonyms-active" : ""}`}
           >
             <svg
               className="icon-sm"
