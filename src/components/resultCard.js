@@ -11,6 +11,8 @@ const ResultsCard = memo(
     getPronunciation,
     toggleFavorite,
     isFavorite,
+    isPlaying, // NEW PROP
+    pronounce, // NEW PROP
   }) => (
     <div className="card">
       {isLoading ? (
@@ -30,6 +32,7 @@ const ResultsCard = memo(
           getPronunciation={getPronunciation}
           toggleFavorite={toggleFavorite}
           isFavorite={isFavorite}
+          isPlaying={isPlaying} // PASS DOWN
         />
       )}
     </div>

@@ -71,7 +71,7 @@ const Header = () => {
           </button>
           <button
             onClick={toggleMobileMenu}
-            className="icon-button"
+            className="icon-button mobile-menu-toggle"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}

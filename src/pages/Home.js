@@ -114,6 +114,9 @@ const Home = () => {
   // Add a flag to control when pronunciation should be triggered
   const [shouldPronounce, setShouldPronounce] = useState(false);
 
+  // New state for animation
+  const [isPlaying, setIsPlaying] = useState(false);
+
   // Function to fetch word relations (synonyms and antonyms)
   const fetchWordRelations = useCallback(
     async (relationType) => {
@@ -214,6 +217,7 @@ const Home = () => {
 
     try {
       updateState({ isLoading: true });
+      setIsPlaying(true); // Start animation
 
       // Check cache first
       if (cacheRef.current[cacheKey]) {
@@ -229,6 +233,9 @@ const Home = () => {
         if (cachedData.audioUrl) {
           audioRef.current.src = cachedData.audioUrl;
           audioRef.current.play();
+          audioRef.current.onended = () => setIsPlaying(false); // Stop animation
+        } else {
+          setIsPlaying(false);
         }
         return;
       }
@@ -290,9 +297,13 @@ const Home = () => {
           audioRef.current.src = audioUrl;
           audioRef.current.preload = "auto";
           audioRef.current.oncanplaythrough = () => audioRef.current.play();
+          audioRef.current.onended = () => setIsPlaying(false); // Stop animation
         } catch (audioError) {
+          setIsPlaying(false);
           console.error("Error processing audio:", audioError);
         }
+      } else {
+        setIsPlaying(false);
       }
 
       // Cache the results including examples
@@ -305,6 +316,7 @@ const Home = () => {
         hasPronounced: true,
       });
     } catch (error) {
+      setIsPlaying(false);
       console.error("Error fetching pronunciation:", error);
     } finally {
       updateState({ isLoading: false });
@@ -533,6 +545,7 @@ const Home = () => {
             getPronunciation={getPronunciation}
             toggleFavorite={togglers.favorite}
             isFavorite={isFavorite}
+            isPlaying={isPlaying} // PASS DOWN
           />
         </div>
 

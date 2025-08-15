@@ -467,6 +467,7 @@ const InputCard = memo(
               synonymStatus={synonymStatus}
               antonymStatus={antonymStatus}
               onToggle={handleRelationToggle}
+              pronounce={pronounce} // Pass down the pronounce function
             />
           )}
         </div>

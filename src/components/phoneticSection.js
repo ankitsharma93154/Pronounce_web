@@ -1,31 +1,40 @@
 import React, { memo } from "react";
-import { AudioWaveform, Heart, Share2 } from "lucide-react";
+import { AudioWaveform } from "lucide-react";
+
+const isValidPhonetic = (phonetic) => {
+  if (!phonetic) return false;
+  const trimmed = phonetic.trim();
+  return (
+    trimmed &&
+    trimmed !== "/ _ /" &&
+    trimmed !== "Phonetic transcription not available."
+  );
+};
 
 const PhoneticSection = memo(
-  ({ phonetic, getPronunciation, toggleFavorite, isFavorite }) => (
-    <div className="phonetic-section">
-      <div className="section-header">
-        <h3 className="section-title">Phonetic Transcription</h3>
-        <div className="header-actions">
-          <button onClick={toggleFavorite} className="icon-button">
-            <Heart
-              className="icon-sm"
-              fill={isFavorite ? "currentColor" : "none"}
-            />
+  ({ phonetic, getPronunciation, toggleFavorite, isFavorite, isPlaying }) => {
+    const animate = isPlaying && isValidPhonetic(phonetic);
+    return (
+      <div className="phonetic-section">
+        <div className="section-header">
+          <h3 className="section-title">Phonetic Transcription</h3>
+        </div>
+        <div className="phonetic-display">
+          <button
+            onClick={getPronunciation}
+            className={`icon-button audio-waveform-btn${
+              animate ? " playing" : ""
+            }`}
+          >
+            <AudioWaveform className="icon" />
           </button>
-          <button className="icon-button">
-            <Share2 className="icon-sm" />
-          </button>
+          <span className={`phonetic-text${animate ? " playing" : ""}`}>
+            {phonetic || "/ _ /"}
+          </span>
         </div>
       </div>
-      <div className="phonetic-display">
-        <button onClick={getPronunciation} className="icon-button">
-          <AudioWaveform className="icon" />
-        </button>
-        <span className="phonetic-text">{phonetic || "/ _ /"}</span>
-      </div>
-    </div>
-  )
+    );
+  }
 );
 
 export default PhoneticSection;

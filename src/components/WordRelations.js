@@ -6,6 +6,7 @@ const WordRelations = ({
   synonymStatus,
   antonymStatus,
   onToggle,
+  pronounce,
 }) => {
   const [showSynonyms, setShowSynonyms] = useState(true);
 
@@ -30,7 +31,11 @@ const WordRelations = ({
     return (
       <div className="relations-list">
         {words.map((word) => (
-          <span key={word} className="relation-chip">
+          <span
+            key={word}
+            className="relation-chip"
+            onClick={() => pronounce(word)}
+          >
             {word}
           </span>
         ))}
