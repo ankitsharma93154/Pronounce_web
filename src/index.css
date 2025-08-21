@@ -977,23 +977,20 @@ body.dark .accent-tag {
   margin: 0 auto;
   border-radius: 0.5rem;
 }
+.relations-list .word-box {
+  background-color: var(--bg-primary) !important;
+}
+.word-box.synonym {
+  border: 1px solid #0ea5e9;
+}
+.word-box.antonym {
+  border: 1px solid #ff4d4d;
+}
 .relations-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.6rem;
-}
-.relation-chip {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  border-right: 3px solid var(--primary);
-  border-left: 3px solid var(--primary);
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  will-change: transform, box-shadow;
 }
 .relations-error,
 .relations-loading {

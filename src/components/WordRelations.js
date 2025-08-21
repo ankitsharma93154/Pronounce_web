@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Volume2 } from "lucide-react";
 
 const WordRelations = ({
   synonyms,
@@ -30,14 +31,18 @@ const WordRelations = ({
 
     return (
       <div className="relations-list">
-        {words.map((word) => (
-          <span
-            key={word}
-            className="relation-chip"
+        {words.map((word, index) => (
+          <div
+            key={index}
+            className={`word-box ${showSynonyms ? "synonym" : "antonym"}`}
+            aria-label={`Hear pronunciation of ${word}`}
             onClick={() => pronounce(word)}
+            title="Click to hear pronunciation"
           >
-            {word}
-          </span>
+            <span className="word-text">{word}</span>
+            <Volume2 className="word-icon" size={16} />
+            <div className="word-box-overlay"></div>
+          </div>
         ))}
       </div>
     );

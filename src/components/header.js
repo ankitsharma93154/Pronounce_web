@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Moon, Sun, Menu, X } from "lucide-react";
-import logo from "../images/favicon-32x32.png"; // Adjust the path as necessary
+import logo from "../images/Logo_icon.png"; // Adjust the path as necessary
 
 const Header = () => {
   // State management
@@ -41,7 +41,7 @@ const Header = () => {
       <div className="container header-content">
         <Link to="/" className="logo">
           <div className="logo-icon">
-            <img src={logo} alt="Logo" height={28} width="auto" />
+            <img src={logo} alt="Logo" height={40} width="auto" />
           </div>
           <span className="logo-text">QuickPronounce</span>
         </Link>
