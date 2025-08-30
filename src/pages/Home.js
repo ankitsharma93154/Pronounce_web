@@ -72,19 +72,13 @@ const Home = () => {
     isMobileMenuOpen: false,
     isFavorite: false,
     synonyms: [],
-    synonymStatus: { loading: false, error: null },
-    antonyms: [], // Added for word relations toggle
-    antonymStatus: { loading: false, error: null }, // Added for word relations toggle
-    showSynonyms: true, // Added to track which relation type to show
+    antonyms: [],
+    showSynonyms: true,
   });
 
   // Create refs
   const audioRef = useRef(new Audio());
   const cacheRef = useRef({});
-  const synonymCacheRef = useRef(new Map());
-  const synonymAbortControllerRef = useRef(null);
-  const antonymCacheRef = useRef(new Map()); // Added for antonyms
-  const antonymAbortControllerRef = useRef(null); // Added for antonyms
 
   // Destructure state for cleaner code
   const {
@@ -92,7 +86,7 @@ const Home = () => {
     accent,
     isMale,
     phonetic,
-    speed, // Add speed to destructured variables
+    speed,
     hasPronounced,
     isLoading,
     meanings,
@@ -101,9 +95,7 @@ const Home = () => {
     isMobileMenuOpen,
     isFavorite,
     synonyms,
-    synonymStatus,
     antonyms,
-    antonymStatus,
   } = state;
 
   // Unified state updater
@@ -117,85 +109,6 @@ const Home = () => {
   // New state for animation
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Function to fetch word relations (synonyms and antonyms)
-  const fetchWordRelations = useCallback(
-    async (relationType) => {
-      if (!word?.trim()) return;
-
-      const isAntonym = relationType === "antonyms";
-      const apiRelType = isAntonym ? "rel_ant" : "rel_syn";
-      const cacheRef = isAntonym ? antonymCacheRef : synonymCacheRef;
-      const abortControllerRef = isAntonym
-        ? antonymAbortControllerRef
-        : synonymAbortControllerRef;
-      const statusKey = isAntonym ? "antonymStatus" : "synonymStatus";
-      const resultKey = isAntonym ? "antonyms" : "synonyms";
-
-      // Check cache first
-      const cacheKey = word.toLowerCase();
-      if (cacheRef.current.has(cacheKey)) {
-        updateState({ [resultKey]: cacheRef.current.get(cacheKey) });
-        return;
-      }
-
-      // Cancel previous request if it exists
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
-      }
-
-      // Create new abort controller for this request
-      abortControllerRef.current = new AbortController();
-
-      updateState({ [statusKey]: { loading: true, error: null } });
-
-      try {
-        const response = await fetch(
-          `https://api.datamuse.com/words?${apiRelType}=${encodeURIComponent(
-            word
-          )}&max=10`,
-          { signal: abortControllerRef.current.signal }
-        );
-
-        if (!response.ok) {
-          throw new Error(`API responded with status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        const wordList = data.slice(0, 5).map((item) => item.word);
-
-        // Update cache
-        cacheRef.current.set(cacheKey, wordList);
-        updateState({ [resultKey]: wordList });
-      } catch (err) {
-        // Only set error if not aborted
-        if (err.name !== "AbortError") {
-          updateState({
-            [statusKey]: {
-              loading: false,
-              error: `Failed to fetch ${
-                isAntonym ? "antonyms" : "synonyms"
-              }. Please try again later.`,
-            },
-          });
-        }
-      } finally {
-        if (abortControllerRef.current?.signal.aborted === false) {
-          updateState({ [statusKey]: { loading: false, error: null } });
-        }
-      }
-    },
-    [word, updateState]
-  );
-
-  // Helper functions for specific relation types
-  const fetchSynonyms = useCallback(() => {
-    fetchWordRelations("synonyms");
-  }, [fetchWordRelations]);
-
-  const fetchAntonyms = useCallback(() => {
-    fetchWordRelations("antonyms");
-  }, [fetchWordRelations]);
-
   // Function to handle toggle between synonyms and antonyms
   const handleRelationToggle = useCallback(
     (type) => {
@@ -204,20 +117,15 @@ const Home = () => {
     [updateState]
   );
 
-  // Function to get pronunciation with caching
+  // Function to get pronunciation and all word data from backend
   const getPronunciation = useCallback(async () => {
     if (!word.trim()) return;
 
-    // Fetch both synonyms and antonyms
-    fetchSynonyms();
-    fetchAntonyms();
-
-    // Create cache key - include speed in cache key
     const cacheKey = `${word.trim()}-${accent}-${isMale}-${speed}`;
 
     try {
       updateState({ isLoading: true });
-      setIsPlaying(true); // Start animation
+      setIsPlaying(true);
 
       // Check cache first
       if (cacheRef.current[cacheKey]) {
@@ -225,7 +133,9 @@ const Home = () => {
         updateState({
           phonetic: cachedData.phonetic,
           meanings: cachedData.meanings,
-          examples: cachedData.examples, // Add examples from cache
+          examples: cachedData.examples,
+          synonyms: cachedData.synonyms,
+          antonyms: cachedData.antonyms,
           hasPronounced: true,
           isLoading: false,
         });
@@ -233,7 +143,7 @@ const Home = () => {
         if (cachedData.audioUrl) {
           audioRef.current.src = cachedData.audioUrl;
           audioRef.current.play();
-          audioRef.current.onended = () => setIsPlaying(false); // Stop animation
+          audioRef.current.onended = () => setIsPlaying(false);
         } else {
           setIsPlaying(false);
         }
@@ -253,7 +163,7 @@ const Home = () => {
             word: word.trim(),
             accent,
             isMale,
-            speed, // Include speed in the request
+            speed,
           }),
           signal: controller.signal,
         }
@@ -277,15 +187,14 @@ const Home = () => {
                 /^[A-Z][a-z]+$/.test(word) ? "This looks like a name! " : ""
               }Hmm... we couldn't find a meaning for this word. Try another word!`,
             ];
-
-      // Extract examples or set default message
       const examples =
         Array.isArray(data.examples) && data.examples.length > 0
           ? data.examples
           : [{ text: "No examples available for this word." }];
+      const synonyms = Array.isArray(data.synonyms) ? data.synonyms : [];
+      const antonyms = Array.isArray(data.antonyms) ? data.antonyms : [];
 
       let audioUrl = null;
-
       if (data.audioContent) {
         try {
           const byteArray = Uint8Array.from(atob(data.audioContent), (c) =>
@@ -293,11 +202,10 @@ const Home = () => {
           );
           const audioBlob = new Blob([byteArray], { type: "audio/mp3" });
           audioUrl = URL.createObjectURL(audioBlob);
-
           audioRef.current.src = audioUrl;
           audioRef.current.preload = "auto";
           audioRef.current.oncanplaythrough = () => audioRef.current.play();
-          audioRef.current.onended = () => setIsPlaying(false); // Stop animation
+          audioRef.current.onended = () => setIsPlaying(false);
         } catch (audioError) {
           setIsPlaying(false);
           console.error("Error processing audio:", audioError);
@@ -306,13 +214,22 @@ const Home = () => {
         setIsPlaying(false);
       }
 
-      // Cache the results including examples
-      cacheRef.current[cacheKey] = { phonetic, meanings, examples, audioUrl };
+      // Cache the results
+      cacheRef.current[cacheKey] = {
+        phonetic,
+        meanings,
+        examples,
+        synonyms,
+        antonyms,
+        audioUrl,
+      };
 
       updateState({
         phonetic,
         meanings,
-        examples, // Add examples to state update
+        examples,
+        synonyms,
+        antonyms,
         hasPronounced: true,
       });
     } catch (error) {
@@ -321,7 +238,7 @@ const Home = () => {
     } finally {
       updateState({ isLoading: false });
     }
-  }, [word, accent, isMale, speed, updateState, fetchSynonyms, fetchAntonyms]);
+  }, [word, accent, isMale, speed, updateState]);
 
   useEffect(() => {
     if (word && shouldPronounce) {
@@ -531,9 +448,7 @@ const Home = () => {
             setSpeed={(speed) => updateState({ speed })}
             hasPronounced={hasPronounced}
             synonyms={synonyms}
-            synonymStatus={synonymStatus}
             antonyms={antonyms}
-            antonymStatus={antonymStatus}
             handleRelationToggle={handleRelationToggle}
           />
 

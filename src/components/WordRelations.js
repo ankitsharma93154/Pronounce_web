@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { Volume2 } from "lucide-react";
 
-const WordRelations = ({
-  synonyms,
-  antonyms,
-  synonymStatus,
-  antonymStatus,
-  onToggle,
-  pronounce,
-}) => {
+const WordRelations = ({ synonyms, antonyms, onToggle, pronounce }) => {
   const [showSynonyms, setShowSynonyms] = useState(true);
 
   const handleToggle = (isSynonym) => {
@@ -20,15 +13,10 @@ const WordRelations = ({
 
   const renderContent = () => {
     const words = showSynonyms ? synonyms : antonyms;
-    const status = showSynonyms ? synonymStatus : antonymStatus;
     const type = showSynonyms ? "synonyms" : "antonyms";
-
-    if (status.loading)
-      return <p className="relations-loading">Loading {type}...</p>;
-    if (status.error) return <p className="relations-error">{status.error}</p>;
-    if (words.length === 0)
+    if (!words || words.length === 0) {
       return <p className="relations-loading">No direct {type} found.</p>;
-
+    }
     return (
       <div className="relations-list">
         {words.map((word, index) => (

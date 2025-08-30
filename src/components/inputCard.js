@@ -29,40 +29,19 @@ const InputCard = memo(
     setSpeed,
     hasPronounced,
     synonyms,
-    synonymStatus,
     antonyms,
-    antonymStatus,
     handleRelationToggle,
   }) => {
     // State for auto-suggestions
     const [suggestions, setSuggestions] = useState([]);
     const [wordList, setWordList] = useState({});
-    const [showSuggestions, setShowSuggestions] = useState(false);
+    const [lastLoadedLetter, setLastLoadedLetter] = useState("");
     const [isLoadingDict, setIsLoadingDict] = useState(false);
+    const [showSuggestions, setShowSuggestions] = useState(false);
     const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
     const [justSelected, setJustSelected] = useState(false);
     const suggestionsRef = useRef(null);
     const inputRef = useRef(null);
-
-    // Fetch the dictionary on component mount
-    useEffect(() => {
-      const fetchDictionary = async () => {
-        setIsLoadingDict(true);
-        try {
-          const response = await fetch(
-            "https://phonetic-transcriptions.vercel.app/ipa_transcriptions.min.json"
-          );
-          const data = await response.json();
-          setWordList(data);
-        } catch (error) {
-          console.error("Error fetching dictionary:", error);
-        } finally {
-          setIsLoadingDict(false);
-        }
-      };
-
-      fetchDictionary();
-    }, []);
 
     // Generate suggestions based on input
     useEffect(() => {
@@ -71,22 +50,59 @@ const InputCard = memo(
         return;
       }
 
-      if (word && word.trim() !== "") {
-        const inputValue = word.toLowerCase();
+      const inputValue = word.trim().toLowerCase();
+      if (!inputValue) {
+        setSuggestions([]);
+        setShowSuggestions(false);
+        setSelectedSuggestionIndex(-1);
+        return;
+      }
+
+      const firstLetter = inputValue[0];
+      if (firstLetter !== lastLoadedLetter) {
+        setIsLoadingDict(true);
+        fetch(
+          `https://dictionary-gamma-tan.vercel.app/data/${firstLetter}.json`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            setWordList(data);
+            setLastLoadedLetter(firstLetter);
+            // After loading, filter suggestions
+            const matchedWords = Object.keys(data)
+              .filter((w) => w.toLowerCase().startsWith(inputValue))
+              .slice(0, 5);
+            setSuggestions(matchedWords);
+            const exactMatch = matchedWords.some(
+              (w) => w.toLowerCase() === inputValue
+            );
+            if (
+              matchedWords.length > 0 &&
+              document.activeElement === inputRef.current &&
+              !exactMatch
+            ) {
+              setShowSuggestions(true);
+            } else {
+              setShowSuggestions(false);
+            }
+            setSelectedSuggestionIndex(-1);
+          })
+          .catch(() => {
+            setWordList({});
+            setSuggestions([]);
+            setShowSuggestions(false);
+            setSelectedSuggestionIndex(-1);
+          })
+          .finally(() => setIsLoadingDict(false));
+      } else {
+        // Use already loaded wordList
         const matchedWords = Object.keys(wordList)
           .filter((w) => w.toLowerCase().startsWith(inputValue))
-          .slice(0, 5); // Limit to 5 suggestions
-
+          .slice(0, 5);
         setSuggestions(matchedWords);
-
-        // Only show suggestions if:
-        // 1. We have matches
-        // 2. The input is focused
-        // 3. The input doesn't exactly match any of the suggestions (prevents showing after selection)
         const exactMatch = matchedWords.some(
           (w) => w.toLowerCase() === inputValue
         );
-
         if (
           matchedWords.length > 0 &&
           document.activeElement === inputRef.current &&
@@ -96,12 +112,9 @@ const InputCard = memo(
         } else {
           setShowSuggestions(false);
         }
-      } else {
-        setSuggestions([]);
-        setShowSuggestions(false);
+        setSelectedSuggestionIndex(-1);
       }
-      setSelectedSuggestionIndex(-1);
-    }, [word, wordList, justSelected]);
+    }, [word, wordList, justSelected, lastLoadedLetter]);
 
     // Handle clicking outside to close suggestions
     useEffect(() => {
@@ -470,10 +483,8 @@ const InputCard = memo(
             <WordRelations
               synonyms={synonyms}
               antonyms={antonyms}
-              synonymStatus={synonymStatus}
-              antonymStatus={antonymStatus}
               onToggle={handleRelationToggle}
-              pronounce={pronounce} // Pass down the pronounce function
+              pronounce={pronounce}
             />
           )}
         </div>
