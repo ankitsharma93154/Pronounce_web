@@ -61,14 +61,13 @@ const InputCard = memo(
       const firstLetter = inputValue[0];
       if (firstLetter !== lastLoadedLetter) {
         setIsLoadingDict(true);
-        fetch(
-          `https://dictionary-gamma-tan.vercel.app/data/${firstLetter}.json`
-        )
-          .then((res) => res.json())
-          .then((data) => {
+        const storageKey = `qp_dict_${firstLetter}`;
+        const cached = localStorage.getItem(storageKey);
+        if (cached) {
+          try {
+            const data = JSON.parse(cached);
             setWordList(data);
             setLastLoadedLetter(firstLetter);
-            // After loading, filter suggestions
             const matchedWords = Object.keys(data)
               .filter((w) => w.toLowerCase().startsWith(inputValue))
               .slice(0, 5);
@@ -86,14 +85,49 @@ const InputCard = memo(
               setShowSuggestions(false);
             }
             setSelectedSuggestionIndex(-1);
-          })
-          .catch(() => {
-            setWordList({});
-            setSuggestions([]);
-            setShowSuggestions(false);
-            setSelectedSuggestionIndex(-1);
-          })
-          .finally(() => setIsLoadingDict(false));
+          } catch (e) {
+            localStorage.removeItem(storageKey);
+          } finally {
+            setIsLoadingDict(false);
+          }
+        } else {
+          // fetch from our server proxy which sets strong cache headers
+          fetch(`/data/${firstLetter}.json`)
+            .then((res) => res.json())
+            .then((data) => {
+              setWordList(data);
+              try {
+                localStorage.setItem(storageKey, JSON.stringify(data));
+              } catch (e) {
+                // ignore localStorage write errors (quota, private mode)
+              }
+              setLastLoadedLetter(firstLetter);
+              const matchedWords = Object.keys(data)
+                .filter((w) => w.toLowerCase().startsWith(inputValue))
+                .slice(0, 5);
+              setSuggestions(matchedWords);
+              const exactMatch = matchedWords.some(
+                (w) => w.toLowerCase() === inputValue
+              );
+              if (
+                matchedWords.length > 0 &&
+                document.activeElement === inputRef.current &&
+                !exactMatch
+              ) {
+                setShowSuggestions(true);
+              } else {
+                setShowSuggestions(false);
+              }
+              setSelectedSuggestionIndex(-1);
+            })
+            .catch(() => {
+              setWordList({});
+              setSuggestions([]);
+              setShowSuggestions(false);
+              setSelectedSuggestionIndex(-1);
+            })
+            .finally(() => setIsLoadingDict(false));
+        }
       } else {
         // Use already loaded wordList
         const matchedWords = Object.keys(wordList)

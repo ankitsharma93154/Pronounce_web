@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { registerServiceWorker } from "./serviceWorkerRegistration";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,3 +16,11 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// Register a lightweight service worker to cache /data/*.json for faster suggestions
+if (process.env.NODE_ENV === "production") {
+  registerServiceWorker();
+} else {
+  // In development we still register to aid local testing, but avoid noisy logs
+  registerServiceWorker();
+}
