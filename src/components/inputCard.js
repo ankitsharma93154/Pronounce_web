@@ -279,7 +279,7 @@ const InputCard = memo(
             placeholder={
               isLoadingDict ? "Loading dictionary..." : "Enter text ..."
             }
-            disabled={isLoadingDict}
+            aria-busy={isLoadingDict}
           />
 
           {/* Suggestions dropdown */}
