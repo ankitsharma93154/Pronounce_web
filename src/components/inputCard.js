@@ -61,9 +61,8 @@ const InputCard = memo(
       const firstLetter = inputValue[0];
       if (firstLetter !== lastLoadedLetter) {
         setIsLoadingDict(true);
-        fetch(
-          `https://dictionary-gamma-tan.vercel.app/data/${firstLetter}.json`
-        )
+        // UPDATED: Now fetches from local server instead of external Vercel URL
+        fetch(`/data/${firstLetter}.json`)
           .then((res) => res.json())
           .then((data) => {
             setWordList(data);
@@ -245,7 +244,7 @@ const InputCard = memo(
             placeholder={
               isLoadingDict ? "Loading dictionary..." : "Enter text ..."
             }
-            disabled={isLoadingDict}
+            // FIXED: Removed disabled={isLoadingDict} - This was causing the input to disable
           />
 
           {/* Suggestions dropdown */}
