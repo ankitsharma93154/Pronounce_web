@@ -312,20 +312,8 @@ const InputCard = memo(
                       index === suggestions.length - 1
                         ? "none"
                         : "1px solid var(--border-color)",
-                    fontSize: "1.05rem", // Increased from 0.95rem
-                    fontWeight: "500", // Made text bolder
-                  }}
-                  onMouseOver={(e) => {
-                    if (selectedSuggestionIndex === index) {
-                      e.target.style.backgroundColor = "var(--primary)";
-                      e.target.style.color = "white";
-                    }
-                  }}
-                  onMouseOut={(e) => {
-                    if (selectedSuggestionIndex === index) {
-                      e.target.style.backgroundColor = "var(--bg-secondary)";
-                      e.target.style.color = "var(--text-primary)";
-                    }
+                    fontSize: "0.95rem", // Increased from 0.95rem
+                    fontWeight: "400", // Made text bolder
                   }}
                 >
                   {suggestion}
