@@ -1,14 +1,15 @@
-import React, { memo, useState, useEffect, useRef, useCallback } from "react";
+import React, { memo, useState, useEffect, useRef } from "react";
 import { ChevronDown, Play, Globe, Zap } from "lucide-react";
 import WordRelations from "./WordRelations";
 
-// Static accent map
+// Static accent mapping
 const accentMap = {
   "en-US": "American English",
   "en-GB": "British English",
   "en-AU": "Australian English",
   "en-IN": "Indian English",
 };
+
 const ACCENT_COUNT = Object.keys(accentMap).length;
 
 const InputCard = memo(
@@ -33,6 +34,7 @@ const InputCard = memo(
     const [suggestions, setSuggestions] = useState([]);
     const [wordList, setWordList] = useState({});
     const [lastLoadedLetter, setLastLoadedLetter] = useState("");
+    const [isLoadingDict, setIsLoadingDict] = useState(false);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
     const [justSelected, setJustSelected] = useState(false);
@@ -40,68 +42,66 @@ const InputCard = memo(
     const suggestionsRef = useRef(null);
     const inputRef = useRef(null);
 
-    // Debounced suggestions loader
-    const loadSuggestions = useCallback(
-      async (inputValue) => {
-        if (!inputValue) {
-          setSuggestions([]);
-          setShowSuggestions(false);
-          setSelectedSuggestionIndex(-1);
-          return;
-        }
-
-        const firstLetter = inputValue[0].toLowerCase();
-        try {
-          let data = wordList;
-          if (firstLetter !== lastLoadedLetter) {
-            const res = await fetch(`/data/${firstLetter}.json`);
-            data = await res.json();
-            setWordList(data);
-            setLastLoadedLetter(firstLetter);
-          }
-
-          const matchedWords = Object.keys(data)
-            .filter((w) => w.toLowerCase().startsWith(inputValue))
-            .slice(0, 5);
-
-          setSuggestions(matchedWords);
-
-          const exactMatch = matchedWords.some(
-            (w) => w.toLowerCase() === inputValue
-          );
-
-          setShowSuggestions(matchedWords.length > 0 && !exactMatch);
-          setSelectedSuggestionIndex(-1);
-        } catch (err) {
-          console.error("Error loading suggestions:", err);
-          setSuggestions([]);
-          setShowSuggestions(false);
-          setSelectedSuggestionIndex(-1);
-        }
-      },
-      [lastLoadedLetter, wordList]
-    );
-
-    // Effect: watch `word` changes, but skip if just selected
+    // Load suggestions
     useEffect(() => {
       if (justSelected) {
         setJustSelected(false);
         return;
       }
-      const inputValue = word.trim().toLowerCase();
-      const timeout = setTimeout(() => loadSuggestions(inputValue), 150);
-      return () => clearTimeout(timeout);
-    }, [word, justSelected, loadSuggestions]);
 
-    // Close suggestions when clicking outside
+      const inputValue = word.trim().toLowerCase();
+      if (!inputValue) {
+        setSuggestions([]);
+        setShowSuggestions(false);
+        setSelectedSuggestionIndex(-1);
+        return;
+      }
+
+      const firstLetter = inputValue[0];
+      const loadAndFilter = (data) => {
+        setWordList(data);
+        setLastLoadedLetter(firstLetter);
+        const matchedWords = Object.keys(data)
+          .filter((w) => w.toLowerCase().startsWith(inputValue))
+          .slice(0, 5);
+        setSuggestions(matchedWords);
+        const exactMatch = matchedWords.some(
+          (w) => w.toLowerCase() === inputValue
+        );
+        setShowSuggestions(
+          matchedWords.length > 0 &&
+            document.activeElement === inputRef.current &&
+            !exactMatch
+        );
+        setSelectedSuggestionIndex(-1);
+      };
+
+      if (firstLetter !== lastLoadedLetter) {
+        setIsLoadingDict(true);
+        fetch(`/data/${firstLetter}.json`)
+          .then((res) => res.json())
+          .then(loadAndFilter)
+          .catch(() => {
+            setWordList({});
+            setSuggestions([]);
+            setShowSuggestions(false);
+            setSelectedSuggestionIndex(-1);
+          })
+          .finally(() => setIsLoadingDict(false));
+      } else {
+        loadAndFilter(wordList);
+      }
+    }, [word, wordList, justSelected, lastLoadedLetter]);
+
+    // Close suggestions on outside click
     useEffect(() => {
-      const handleClickOutside = (event) => {
+      const handleClickOutside = (e) => {
         if (
           showSuggestions &&
           suggestionsRef.current &&
-          !suggestionsRef.current.contains(event.target) &&
+          !suggestionsRef.current.contains(e.target) &&
           inputRef.current &&
-          !inputRef.current.contains(event.target)
+          !inputRef.current.contains(e.target)
         ) {
           setShowSuggestions(false);
         }
@@ -119,12 +119,12 @@ const InputCard = memo(
           case "ArrowDown":
             e.preventDefault();
             setSelectedSuggestionIndex((prev) =>
-              prev < suggestions.length - 1 ? prev + 1 : prev
+              Math.min(prev + 1, suggestions.length - 1)
             );
             break;
           case "ArrowUp":
             e.preventDefault();
-            setSelectedSuggestionIndex((prev) => (prev > 0 ? prev - 1 : -1));
+            setSelectedSuggestionIndex((prev) => Math.max(prev - 1, -1));
             break;
           case "Enter":
             e.preventDefault();
@@ -142,13 +142,10 @@ const InputCard = memo(
 
     const handleSelectSuggestion = (suggestion) => {
       setJustSelected(true);
-      setWord(suggestion);
       setShowSuggestions(false);
       setSelectedSuggestionIndex(-1);
-
-      // Keep focus on input
+      setWord(suggestion);
       setTimeout(() => inputRef.current?.focus(), 0);
-
       if (pronounce) setTimeout(() => pronounce(suggestion), 100);
     };
 
@@ -178,12 +175,19 @@ const InputCard = memo(
             onChange={(e) => setWord(e.target.value)}
             onKeyDown={handleSuggestionKeyDown}
             onFocus={() => {
-              if (word && suggestions.length > 0) setShowSuggestions(true);
+              if (word && suggestions.length > 0) {
+                const exactMatch = suggestions.some(
+                  (s) => s.toLowerCase() === word.toLowerCase()
+                );
+                if (!exactMatch) setShowSuggestions(true);
+              }
             }}
-            placeholder="Enter text ..."
+            placeholder={
+              isLoadingDict ? "Loading dictionary..." : "Enter text ..."
+            }
+            disabled={isLoadingDict}
           />
-
-          {/* Suggestions dropdown */}
+          {/* Suggestions Dropdown */}
           {showSuggestions && suggestions.length > 0 && (
             <div
               ref={suggestionsRef}
@@ -202,25 +206,24 @@ const InputCard = memo(
                 boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
               }}
             >
-              {suggestions.map((s, idx) => (
+              {suggestions.map((s, i) => (
                 <div
                   key={s}
                   className={`suggestion-item ${
-                    selectedSuggestionIndex === idx ? "selected" : ""
+                    selectedSuggestionIndex === i ? "selected" : ""
                   }`}
                   onMouseDown={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     handleSelectSuggestion(s);
                   }}
-                  onMouseEnter={() => setSelectedSuggestionIndex(idx)}
+                  onMouseEnter={() => setSelectedSuggestionIndex(i)}
                   style={{
                     padding: "8px 12px",
                     cursor: "pointer",
                     backgroundColor:
-                      selectedSuggestionIndex === idx
-                        ? "#f0f0f0"
-                        : "transparent",
+                      selectedSuggestionIndex === i ? "#f0f0f0" : "transparent",
+                    transition: "background-color 0.2s",
                   }}
                 >
                   {s}
@@ -236,17 +239,17 @@ const InputCard = memo(
           className="pronounce-button"
         >
           {isLoading ? (
-            "Loading..."
+            <span>Loading...</span>
           ) : (
             <>
-              {" "}
-              <Play size={16} /> Pronounce{" "}
+              <Play size={16} />
+              <span>Pronounce</span>
             </>
           )}
         </button>
 
         <div className="controls-section">
-          {/* Accent */}
+          {/* Accent Selection */}
           <div className="control-group">
             <label className="control-label">
               <span>Accent</span>
@@ -256,20 +259,24 @@ const InputCard = memo(
               </span>
             </label>
             <div className="select-wrapper">
-              <select value={accent} onChange={handleAccentChange}>
-                {Object.entries(accentMap).map(([val, label]) => (
-                  <option key={val} value={val}>
+              <select
+                value={accent}
+                onChange={handleAccentChange}
+                className="accent-select"
+              >
+                {Object.entries(accentMap).map(([value, label]) => (
+                  <option key={value} value={value}>
                     {label}
                   </option>
                 ))}
               </select>
-              <ChevronDown size={16} />
+              <ChevronDown className="select-icon" size={16} />
             </div>
           </div>
 
-          {/* Gender */}
+          {/* Voice Gender */}
           <div className="control-group">
-            <label>Voice Gender</label>
+            <label className="control-label">Voice Gender</label>
             <div className="voice-buttons">
               <button
                 onClick={handleToggleGender}
@@ -286,15 +293,18 @@ const InputCard = memo(
             </div>
           </div>
 
-          {/* Speed */}
+          {/* Speech Speed */}
           <div className="control-group">
-            <label>Speech Speed</label>
+            <label className="control-label">
+              <span>Speech Speed</span>
+              <Zap size={16} />
+            </label>
             <div className="voice-buttons">
               {["slow", "normal", "fast"].map((s) => (
                 <button
                   key={s}
                   onClick={() => handleToggleSpeed(s)}
-                  className={`voice-button ${speed === s ? s + "-active" : ""}`}
+                  className={`voice-button ${speed === s ? `${s}-active` : ""}`}
                 >
                   <span>{s.charAt(0).toUpperCase() + s.slice(1)}</span>
                 </button>
