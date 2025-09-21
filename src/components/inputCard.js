@@ -62,15 +62,27 @@ const InputCard = memo(
       if (firstLetter !== lastLoadedLetter) {
         setIsLoadingDict(true);
         // UPDATED: Now fetches from local server instead of external Vercel URL
-        fetch(`/data/${firstLetter}.json`)
-          .then((res) => res.json())
+        fetch(`https://backend-8isq.vercel.app/data/${firstLetter}.json`)
+          .then((res) => {
+            console.log("Fetch response status:", res.status);
+            if (!res.ok) {
+              throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+          })
           .then((data) => {
+            console.log(
+              `Loaded data for letter ${firstLetter}:`,
+              Object.keys(data).length,
+              "words"
+            );
             setWordList(data);
             setLastLoadedLetter(firstLetter);
             // After loading, filter suggestions
             const matchedWords = Object.keys(data)
               .filter((w) => w.toLowerCase().startsWith(inputValue))
-              .slice(0, 5);
+              .slice(0, 4); // Changed back to 4 suggestions
+            console.log("Matched words:", matchedWords);
             setSuggestions(matchedWords);
             const exactMatch = matchedWords.some(
               (w) => w.toLowerCase() === inputValue
@@ -80,13 +92,21 @@ const InputCard = memo(
               document.activeElement === inputRef.current &&
               !exactMatch
             ) {
+              console.log("Showing suggestions:", matchedWords);
               setShowSuggestions(true);
             } else {
+              console.log(
+                "Not showing suggestions - exactMatch:",
+                exactMatch,
+                "matchedWords.length:",
+                matchedWords.length
+              );
               setShowSuggestions(false);
             }
             setSelectedSuggestionIndex(-1);
           })
-          .catch(() => {
+          .catch((error) => {
+            console.error("Error fetching dictionary data:", error);
             setWordList({});
             setSuggestions([]);
             setShowSuggestions(false);
@@ -97,7 +117,7 @@ const InputCard = memo(
         // Use already loaded wordList
         const matchedWords = Object.keys(wordList)
           .filter((w) => w.toLowerCase().startsWith(inputValue))
-          .slice(0, 5);
+          .slice(0, 4); // Changed back to 4 suggestions
         setSuggestions(matchedWords);
         const exactMatch = matchedWords.some(
           (w) => w.toLowerCase() === inputValue
@@ -247,7 +267,7 @@ const InputCard = memo(
             // FIXED: Removed disabled={isLoadingDict} - This was causing the input to disable
           />
 
-          {/* Suggestions dropdown */}
+          {/* Suggestions dropdown - better positioned */}
           {showSuggestions && suggestions.length > 0 && (
             <div
               ref={suggestionsRef}
@@ -256,22 +276,23 @@ const InputCard = memo(
                 position: "absolute",
                 top: "100%",
                 left: 0,
-                width: "100%",
-                maxHeight: "200px",
+                right: 0,
+                maxHeight: "150px", // Reduced height for fewer suggestions
                 overflowY: "auto",
-                zIndex: 10,
-                backgroundColor: "white",
-                border: "1px solid #ddd",
-                borderRadius: "4px",
-                boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+                zIndex: 1000,
+                backgroundColor: "var(--bg-primary)",
+                border: "1px solid var(--border-color)",
+                borderTop: "none",
+                borderRadius: "0 0 0.5rem 0.5rem",
+                boxShadow:
+                  "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+                marginTop: "-1px",
               }}
             >
               {suggestions.map((suggestion, index) => (
                 <div
                   key={suggestion}
-                  className={`suggestion-item ${
-                    selectedSuggestionIndex === index ? "selected" : ""
-                  }`}
+                  className="suggestion-item"
                   onMouseDown={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -279,13 +300,32 @@ const InputCard = memo(
                   }}
                   onMouseEnter={() => setSelectedSuggestionIndex(index)}
                   style={{
-                    padding: "8px 12px",
+                    padding: "0.875rem 1rem", // Increased padding
                     cursor: "pointer",
                     backgroundColor:
                       selectedSuggestionIndex === index
-                        ? "#f0f0f0"
+                        ? "var(--bg-secondary)"
                         : "transparent",
-                    transition: "background-color 0.2s",
+                    color: "var(--text-primary)",
+                    transition: "background-color 0.15s ease",
+                    borderBottom:
+                      index === suggestions.length - 1
+                        ? "none"
+                        : "1px solid var(--border-color)",
+                    fontSize: "1.05rem", // Increased from 0.95rem
+                    fontWeight: "500", // Made text bolder
+                  }}
+                  onMouseOver={(e) => {
+                    if (selectedSuggestionIndex === index) {
+                      e.target.style.backgroundColor = "var(--primary)";
+                      e.target.style.color = "white";
+                    }
+                  }}
+                  onMouseOut={(e) => {
+                    if (selectedSuggestionIndex === index) {
+                      e.target.style.backgroundColor = "var(--bg-secondary)";
+                      e.target.style.color = "var(--text-primary)";
+                    }
                   }}
                 >
                   {suggestion}
