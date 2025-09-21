@@ -61,9 +61,7 @@ const InputCard = memo(
       const firstLetter = inputValue[0];
       if (firstLetter !== lastLoadedLetter) {
         setIsLoadingDict(true);
-        fetch(
-          `https://dictionary-gamma-tan.vercel.app/data/${firstLetter}.json`
-        )
+        fetch(`/data/${firstLetter}.json`)
           .then((res) => res.json())
           .then((data) => {
             setWordList(data);
