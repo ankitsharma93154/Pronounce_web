@@ -36,36 +36,34 @@ const InputCard = memo(
     const [suggestions, setSuggestions] = useState([]);
     const [wordList, setWordList] = useState([]);
     const [isLoadingDict, setIsLoadingDict] = useState(false);
+    const [wordListLoaded, setWordListLoaded] = useState(false);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
     const [justSelected, setJustSelected] = useState(false);
     const suggestionsRef = useRef(null);
     const inputRef = useRef(null);
 
-    // Load wordlist once on component mount
-    useEffect(() => {
-      const loadWordList = async () => {
-        try {
-          setIsLoadingDict(true);
-          const response = await fetch("/wordlist.txt");
-          const text = await response.text();
-          const words = text
-            .split("\n")
-            .map((word) => word.trim().toLowerCase())
-            .filter((word) => word);
-          setWordList(words);
-        } catch (error) {
-          console.error("Failed to load wordlist:", error);
-          setWordList([]);
-        } finally {
-          setIsLoadingDict(false);
-        }
-      };
+    // Load wordlist lazily - only when needed
+    const loadWordList = async () => {
+      if (wordListLoaded || isLoadingDict) return;
 
-      if (wordList.length === 0) {
-        loadWordList();
+      try {
+        setIsLoadingDict(true);
+        const response = await fetch("/wordlist.txt");
+        const text = await response.text();
+        const words = text
+          .split("\n")
+          .map((word) => word.trim().toLowerCase())
+          .filter((word) => word);
+        setWordList(words);
+        setWordListLoaded(true);
+      } catch (error) {
+        console.error("Failed to load wordlist:", error);
+        setWordList([]);
+      } finally {
+        setIsLoadingDict(false);
       }
-    }, [wordList.length]);
+    };
 
     // Generate suggestions based on input - now using local wordlist
     useEffect(() => {
@@ -218,6 +216,11 @@ const InputCard = memo(
             onChange={(e) => setWord(e.target.value)}
             onKeyDown={handleSuggestionKeyDown}
             onFocus={() => {
+              // Lazy load wordlist on first focus
+              if (!wordListLoaded && !isLoadingDict) {
+                loadWordList();
+              }
+
               if (word && suggestions.length > 0) {
                 // Only show suggestions if the word doesn't exactly match any suggestion
                 const exactMatch = suggestions.some(
