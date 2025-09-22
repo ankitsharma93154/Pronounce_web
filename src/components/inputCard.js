@@ -34,8 +34,7 @@ const InputCard = memo(
   }) => {
     // State for auto-suggestions
     const [suggestions, setSuggestions] = useState([]);
-    const [wordList, setWordList] = useState({});
-    const [lastLoadedLetter, setLastLoadedLetter] = useState("");
+    const [wordList, setWordList] = useState([]);
     const [isLoadingDict, setIsLoadingDict] = useState(false);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
@@ -43,7 +42,32 @@ const InputCard = memo(
     const suggestionsRef = useRef(null);
     const inputRef = useRef(null);
 
-    // Generate suggestions based on input
+    // Load wordlist once on component mount
+    useEffect(() => {
+      const loadWordList = async () => {
+        try {
+          setIsLoadingDict(true);
+          const response = await fetch("/wordlist.txt");
+          const text = await response.text();
+          const words = text
+            .split("\n")
+            .map((word) => word.trim().toLowerCase())
+            .filter((word) => word);
+          setWordList(words);
+        } catch (error) {
+          console.error("Failed to load wordlist:", error);
+          setWordList([]);
+        } finally {
+          setIsLoadingDict(false);
+        }
+      };
+
+      if (wordList.length === 0) {
+        loadWordList();
+      }
+    }, [wordList.length]);
+
+    // Generate suggestions based on input - now using local wordlist
     useEffect(() => {
       if (justSelected) {
         setJustSelected(false);
@@ -51,89 +75,32 @@ const InputCard = memo(
       }
 
       const inputValue = word.trim().toLowerCase();
-      if (!inputValue) {
+      if (!inputValue || wordList.length === 0) {
         setSuggestions([]);
         setShowSuggestions(false);
         setSelectedSuggestionIndex(-1);
         return;
       }
 
-      const firstLetter = inputValue[0];
-      if (firstLetter !== lastLoadedLetter) {
-        setIsLoadingDict(true);
-        // UPDATED: Now fetches from local server instead of external Vercel URL
-        fetch(`https://backend-8isq.vercel.app/data/${firstLetter}.json`)
-          .then((res) => {
-            console.log("Fetch response status:", res.status);
-            if (!res.ok) {
-              throw new Error(`HTTP error! status: ${res.status}`);
-            }
-            return res.json();
-          })
-          .then((data) => {
-            console.log(
-              `Loaded data for letter ${firstLetter}:`,
-              Object.keys(data).length,
-              "words"
-            );
-            setWordList(data);
-            setLastLoadedLetter(firstLetter);
-            // After loading, filter suggestions
-            const matchedWords = Object.keys(data)
-              .filter((w) => w.toLowerCase().startsWith(inputValue))
-              .slice(0, 4); // Changed back to 4 suggestions
-            console.log("Matched words:", matchedWords);
-            setSuggestions(matchedWords);
-            const exactMatch = matchedWords.some(
-              (w) => w.toLowerCase() === inputValue
-            );
-            if (
-              matchedWords.length > 0 &&
-              document.activeElement === inputRef.current &&
-              !exactMatch
-            ) {
-              console.log("Showing suggestions:", matchedWords);
-              setShowSuggestions(true);
-            } else {
-              console.log(
-                "Not showing suggestions - exactMatch:",
-                exactMatch,
-                "matchedWords.length:",
-                matchedWords.length
-              );
-              setShowSuggestions(false);
-            }
-            setSelectedSuggestionIndex(-1);
-          })
-          .catch((error) => {
-            console.error("Error fetching dictionary data:", error);
-            setWordList({});
-            setSuggestions([]);
-            setShowSuggestions(false);
-            setSelectedSuggestionIndex(-1);
-          })
-          .finally(() => setIsLoadingDict(false));
+      // Filter words locally - much faster and no backend requests!
+      const matchedWords = wordList
+        .filter((w) => w.startsWith(inputValue))
+        .slice(0, 4); // Limit to 4 suggestions
+
+      setSuggestions(matchedWords);
+      const exactMatch = matchedWords.some((w) => w === inputValue);
+
+      if (
+        matchedWords.length > 0 &&
+        document.activeElement === inputRef.current &&
+        !exactMatch
+      ) {
+        setShowSuggestions(true);
       } else {
-        // Use already loaded wordList
-        const matchedWords = Object.keys(wordList)
-          .filter((w) => w.toLowerCase().startsWith(inputValue))
-          .slice(0, 4); // Changed back to 4 suggestions
-        setSuggestions(matchedWords);
-        const exactMatch = matchedWords.some(
-          (w) => w.toLowerCase() === inputValue
-        );
-        if (
-          matchedWords.length > 0 &&
-          document.activeElement === inputRef.current &&
-          !exactMatch
-        ) {
-          setShowSuggestions(true);
-        } else {
-          setShowSuggestions(false);
-        }
-        setSelectedSuggestionIndex(-1);
+        setShowSuggestions(false);
       }
-    }, [word, wordList, justSelected, lastLoadedLetter]);
+      setSelectedSuggestionIndex(-1);
+    }, [word, wordList, justSelected]);
 
     // Handle clicking outside to close suggestions
     useEffect(() => {
@@ -264,10 +231,9 @@ const InputCard = memo(
             placeholder={
               isLoadingDict ? "Loading dictionary..." : "Enter text ..."
             }
-            // FIXED: Removed disabled={isLoadingDict} - This was causing the input to disable
           />
 
-          {/* Suggestions dropdown - better positioned */}
+          {/* Suggestions dropdown */}
           {showSuggestions && suggestions.length > 0 && (
             <div
               ref={suggestionsRef}
@@ -277,7 +243,7 @@ const InputCard = memo(
                 top: "100%",
                 left: 0,
                 right: 0,
-                maxHeight: "150px", // Reduced height for fewer suggestions
+                maxHeight: "150px",
                 overflowY: "auto",
                 zIndex: 1000,
                 backgroundColor: "var(--bg-primary)",
@@ -300,7 +266,7 @@ const InputCard = memo(
                   }}
                   onMouseEnter={() => setSelectedSuggestionIndex(index)}
                   style={{
-                    padding: "0.875rem 1rem", // Increased padding
+                    padding: "0.75rem 1rem",
                     cursor: "pointer",
                     backgroundColor:
                       selectedSuggestionIndex === index
@@ -312,8 +278,8 @@ const InputCard = memo(
                       index === suggestions.length - 1
                         ? "none"
                         : "1px solid var(--border-color)",
-                    fontSize: "0.95rem", // Increased from 0.95rem
-                    fontWeight: "400", // Made text bolder
+                    fontSize: "0.95rem",
+                    fontWeight: "400",
                   }}
                 >
                   {suggestion}
