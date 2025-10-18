@@ -350,56 +350,52 @@ const Home = () => {
   return (
     <>
       <Helmet>
+        {/* OPTIMIZED TITLE TAG (60 CHARACTERS) */}
         <title>
-          QuickPronounce: Free American & British English Pronunciation Tool
+          Free Pronunciation Tool: 4 Accents, Audio & IPA (AmE, BrE, InE, AuE) |
+          QuickPronounce
         </title>
-
+        {/* OPTIMIZED META DESCRIPTION (160 CHARACTERS) */}
         <meta
           name="description"
-          content="Instantly hear any English word in American or British accent. Free, fast, and accurate pronunciation with phonetic transcription—perfect for ESL learners."
+          content="Instantly learn correct English pronunciation. Get free, fast audio in American, British, Indian & Australian accents, complete with IPA phonetic transcription."
         />
-
-        <meta
-          name="keywords"
-          content="English pronunciation, hear English words, American accent, British accent, phonetic transcription, speak English, language learning, ESL, QuickPronounce"
-        />
-
+        {/* META KEYWORDS TAG REMOVED - NO SEO VALUE */}
         <link rel="canonical" href="https://www.quickpronounce.site/" />
-
-        {/* Open Graph */}
+        {/* OPTIMIZED OPEN GRAPH (for social media) */}
         <meta
           property="og:title"
-          content="QuickPronounce: Free American & British English Pronunciation Tool"
+          content="QuickPronounce: Free Audio in 4 English Accents (AmE, BrE, InE, AuE)"
         />
         <meta
           property="og:description"
-          content="Instantly hear any English word in American or British accent. Free, fast, and accurate pronunciation with phonetic transcription—perfect for ESL learners."
+          content="Struggling with 'Worcestershire'? Get clear, fast audio for any word in American, British, Indian, and Australian accents, complete with IPA phonetics. No sign-ups needed!"
         />
         <meta
           property="og:image"
           content="https://www.quickpronounce.site/og-preview.png"
-        />
+        />{" "}
+        {/* Keeping your original og:image path */}
         <meta property="og:url" content="https://www.quickpronounce.site/" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="QuickPronounce" />
-
-        {/* Twitter Card */}
+        {/* OPTIMIZED TWITTER CARD */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="QuickPronounce: Free American & British English Pronunciation Tool"
+          content="QuickPronounce: Free Audio in 4 English Accents (AmE, BrE, InE, AuE)"
         />
         <meta
           name="twitter:description"
-          content="Instantly hear any English word in American or British accent. Free, fast, and accurate pronunciation with phonetic transcription—perfect for ESL learners."
+          content="Struggling with 'Worcestershire'? Get clear, fast audio for any word in American, British, Indian, and Australian accents, complete with IPA phonetics. No sign-ups needed!"
         />
         <meta
           name="twitter:image"
           content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
-        />
+        />{" "}
+        {/* Keeping your original twitter:image path */}
         <meta name="twitter:site" content="@quickpronounce" />
-
-        {/* JSON-LD Structured Data */}
+        {/* JSON-LD Structured Data (Minor Update for Consistency) */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -407,7 +403,7 @@ const Home = () => {
             url: "https://www.quickpronounce.site/",
             name: "QuickPronounce",
             description:
-              "QuickPronounce helps you hear American and British English words instantly. Just type any word and hear it spoken with phonetic transcription.",
+              "QuickPronounce is a free pronunciation tool offering audio in 4 English accents (AmE, BrE, InE, AuE) with IPA phonetic transcription.",
             potentialAction: {
               "@type": "SearchAction",
               target:

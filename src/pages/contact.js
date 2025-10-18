@@ -8,30 +8,27 @@ const AboutPage = () => {
   return (
     <div className="about-page-container" id="about">
       <Helmet>
-        <title>
-          Contact Us – QuickPronounce Support & Feedback | We're Here to Help
-        </title>
+        {/* OPTIMIZED TITLE TAG (56 CHARACTERS) */}
+        <title>Contact QuickPronounce: Support, Feedback & Our Mission</title>
 
+        {/* OPTIMIZED META DESCRIPTION (158 CHARACTERS) */}
         <meta
           name="description"
-          content="Need help with pronunciation or have feedback? Contact the QuickPronounce team for support, questions, or suggestions. We're here to help you speak English more confidently!"
+          content="Need help or have feedback? Contact the QuickPronounce team for support with 4 accents, IPA, or app suggestions. Read about our mission to improve global English fluency."
         />
 
-        <meta
-          name="keywords"
-          content="contact QuickPronounce, English pronunciation help, feedback form, support team, ESL support, pronunciation questions, language learning, accent tool support"
-        />
+        {/* META KEYWORDS TAG REMOVED - NO SEO VALUE */}
 
         <link rel="canonical" href="https://www.quickpronounce.site/contact" />
 
-        {/* Open Graph */}
+        {/* OPTIMIZED OPEN GRAPH (for social media) */}
         <meta
           property="og:title"
-          content="Contact QuickPronounce – Get Support, Ask Questions & Share Feedback"
+          content="Contact QuickPronounce: Support, Feedback & Our Mission"
         />
         <meta
           property="og:description"
-          content="Reach out to QuickPronounce for pronunciation help, app support, or general feedback. We're ready to assist with your English learning journey."
+          content="Reach out to QuickPronounce for support with 4 accents, app features, or to share feedback. We're here to help you speak English confidently."
         />
         <meta
           property="og:image"
@@ -44,15 +41,15 @@ const AboutPage = () => {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="QuickPronounce" />
 
-        {/* Twitter Card */}
+        {/* OPTIMIZED TWITTER CARD */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Contact QuickPronounce – Get Help & Give Feedback"
+          content="Contact QuickPronounce: Support, Feedback & Our Mission"
         />
         <meta
           name="twitter:description"
-          content="Have questions or suggestions? Contact QuickPronounce for support with pronunciation, app feedback, and more."
+          content="Reach out to QuickPronounce for support with 4 accents, app features, or to share feedback. We're here to help you speak English confidently."
         />
         <meta
           name="twitter:image"
@@ -68,7 +65,7 @@ const AboutPage = () => {
             url: "https://www.quickpronounce.site/contact",
             name: "Contact QuickPronounce",
             description:
-              "Reach out to QuickPronounce for pronunciation support, feedback, or general inquiries. We're here to help improve your English learning experience.",
+              "Contact the QuickPronounce team for support, feedback, or questions about our 4-accent English pronunciation tool and mission.",
           })}
         </script>
       </Helmet>

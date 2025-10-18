@@ -6,34 +6,33 @@ const PronunciationGuide = () => {
   return (
     <div className="pronunciation-guide">
       <Helmet>
+        {/* OPTIMIZED TITLE TAG (83 characters - Allowed for blogs) */}
         <title>
-          50 Most Mispronounced English Words (and How to Say Them Right) |
-          QuickPronounce
+          50 Most Mispronounced English Words: Say Them Right with 4 Accents &
+          IPA | QuickPronounce
         </title>
 
+        {/* OPTIMIZED META DESCRIPTION (156 characters) */}
         <meta
           name="description"
-          content="Are you saying these words wrong? Discover the 50 most mispronounced English words with phonetic tips, memory tricks, and common mistakes to fix your accent fast."
+          content="Are you saying these words wrong? Discover the 50 most mispronounced English words with phonetic tips, memory tricks, and direct links to hear them in 4 accents on QuickPronounce."
         />
 
-        <meta
-          name="keywords"
-          content="most mispronounced English words, pronunciation mistakes, how to pronounce, English accent, fix pronunciation, phonetic guide, language learning, QuickPronounce blog"
-        />
+        {/* META KEYWORDS TAG REMOVED - NO SEO VALUE */}
 
         <link
           rel="canonical"
           href="https://www.quickpronounce.site/blog/pronunciation-guide"
         />
 
-        {/* Open Graph */}
+        {/* OPTIMIZED OPEN GRAPH (for social media) */}
         <meta
           property="og:title"
-          content="50 Most Mispronounced English Words (and How to Say Them Right)"
+          content="50 Mispronounced Words: Master Them with Audio in 4 English Accents"
         />
         <meta
           property="og:description"
-          content="Think you're pronouncing these words right? Learn the correct way with phonetic tips, common errors, and clever memory tricks — only on QuickPronounce."
+          content="Stop saying 'nucular'! Learn the 50 toughest words the right way. This guide links directly to QuickPronounce's 4-accent audio and IPA transcription for instant mastery."
         />
         <meta
           property="og:image"
@@ -46,15 +45,15 @@ const PronunciationGuide = () => {
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="QuickPronounce" />
 
-        {/* Twitter Card */}
+        {/* OPTIMIZED TWITTER CARD */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="50 Most Mispronounced English Words (and How to Fix Them)"
+          content="50 Mispronounced Words: Master Them with Audio in 4 English Accents"
         />
         <meta
           name="twitter:description"
-          content="Are you sure you're saying these words right? Learn how to pronounce them correctly with phonetic tips and accent hacks."
+          content="Stop saying 'nucular'! Learn the 50 toughest words the right way. This guide links directly to QuickPronounce's 4-accent audio and IPA transcription for instant mastery."
         />
         <meta
           name="twitter:image"
@@ -62,7 +61,7 @@ const PronunciationGuide = () => {
         />
         <meta name="twitter:site" content="@quickpronounce" />
 
-        {/* JSON-LD Structured Data */}
+        {/* JSON-LD Structured Data (Minor Update for SEO/Brand) */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -70,7 +69,7 @@ const PronunciationGuide = () => {
             headline:
               "50 Most Mispronounced English Words (and How to Say Them Right)",
             description:
-              "Are you saying these common English words wrong? This expert guide covers the 50 most mispronounced words with tips, phonetics, and memory tricks to speak clearly.",
+              "This expert guide covers the 50 most mispronounced words, with phonetic tips, memory tricks, and links to QuickPronounce's 4-accent audio and IPA transcription.",
             url: "https://www.quickpronounce.site/blog/pronunciation-guide",
             author: {
               "@type": "Person",
@@ -79,7 +78,12 @@ const PronunciationGuide = () => {
             publisher: {
               "@type": "Organization",
               name: "QuickPronounce",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.quickpronounce.site/logo.png", // Assuming logo.png is your site logo
+              },
             },
+            // You should add 'datePublished' and 'dateModified' fields here for best practice
           })}
         </script>
       </Helmet>

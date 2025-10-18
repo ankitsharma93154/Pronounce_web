@@ -175,31 +175,29 @@ const FAQPage = () => {
   return (
     <div className="faq-container">
       <Helmet>
+        {/* OPTIMIZED TITLE TAG (70 CHARACTERS) */}
         <title>
-          FAQ – Quick Answers About Pronunciation, Accents & App Features |
-          QuickPronounce
+          FAQ – QuickPronounce: Answers on 4 Accents, IPA & Pronunciation Help
         </title>
 
+        {/* OPTIMIZED META DESCRIPTION (160 CHARACTERS) */}
         <meta
           name="description"
-          content="Have questions about using QuickPronounce? Get instant answers on pronunciation tips, accent selection, app functionality, and more. Start speaking confidently today!"
+          content="Have questions about QuickPronounce? Get instant answers on our 4 English accents (AmE, BrE, InE, AuE), IPA usage, app features, and how to master correct pronunciation."
         />
 
-        <meta
-          name="keywords"
-          content="QuickPronounce FAQ, pronunciation help, accent selection, app support, how to use pronunciation app, language learning support, English speaking, ESL pronunciation tips"
-        />
+        {/* META KEYWORDS TAG REMOVED - NO SEO VALUE */}
 
         <link rel="canonical" href="https://www.quickpronounce.site/faq" />
 
-        {/* Open Graph */}
+        {/* OPTIMIZED OPEN GRAPH (for social media) */}
         <meta
           property="og:title"
-          content="QuickPronounce FAQ – Get Help with Pronunciation, Accents & the App"
+          content="QuickPronounce FAQ: Answers on 4 Accents, IPA & Pronunciation Help"
         />
         <meta
           property="og:description"
-          content="Find answers to the most common questions about QuickPronounce. Learn how to choose accents, use the app effectively, and improve your English pronunciation."
+          content="Find answers to common questions about QuickPronounce. Learn how to use all 4 accents (AmE, BrE, InE, AuE), understand IPA, and get tips to improve your English pronunciation."
         />
         <meta
           property="og:image"
@@ -209,15 +207,15 @@ const FAQPage = () => {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="QuickPronounce" />
 
-        {/* Twitter Card */}
+        {/* OPTIMIZED TWITTER CARD */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="QuickPronounce FAQ – Answers About Pronunciation & the App"
+          content="QuickPronounce FAQ: Answers on 4 Accents, IPA & Pronunciation Help"
         />
         <meta
           name="twitter:description"
-          content="Need help with QuickPronounce? Check our FAQ for tips on using the app, selecting accents, and improving your English pronunciation fast."
+          content="Need help with QuickPronounce? Check our FAQ for tips on using the app, selecting all 4 accents, and improving your English pronunciation fast."
         />
         <meta
           name="twitter:image"
@@ -225,7 +223,7 @@ const FAQPage = () => {
         />
         <meta name="twitter:site" content="@quickpronounce" />
 
-        {/* JSON-LD Structured Data (assuming `faqSchema` is defined above) */}
+        {/* JSON-LD Structured Data (assuming `faqSchema` is correctly defined elsewhere) */}
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
