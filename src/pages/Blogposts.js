@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import "./Css/BlogPosts.css";
 import mispronouncedWordsImage from "../images/mispronounced-image.jpg";
 import tenTipsImage from "../images/header.jpg";
+import AmeVsBreIMG from "../images/AmeVsBre_thumbnail.webp";
 
 const blogPostsData = [
   {
@@ -26,6 +27,18 @@ const blogPostsData = [
     category: "Language Learning",
     readTime: "7 min read",
     link: "/blog/pronunciation-tips",
+  },
+  {
+    id: 3,
+    title:
+      "American vs. British Pronunciation: The 4 Sound Rules That Explain Everything",
+    description:
+      "Master the 4 fundamental sound differences between American and British English. Complete guide with IPA, audio examples, and practice strategies for learners.",
+    imageUrl: AmeVsBreIMG,
+    date: "October 28, 2025",
+    category: "Accent Training",
+    readTime: "12 min read",
+    link: "/blog/american-vs-british",
   },
 ];
 
