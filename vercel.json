@@ -1,16 +1,16 @@
 {
   "redirects": [
     {
-      "source": "/ads.txt",
-      "destination": "https://srv.adstxtmanager.com/19390/quickpronounce.site",
-      "permanent": true
-    },
-    {
       "source": "/:path*",
       "has": [
         { "type": "host", "value": "quickpronounce.site" }
       ],
       "destination": "https://www.quickpronounce.site/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/ads.txt",
+      "destination": "https://srv.adstxtmanager.com/19390/quickpronounce.site",
       "permanent": true
     }
   ],
