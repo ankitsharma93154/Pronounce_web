@@ -4,8 +4,19 @@
       "source": "/ads.txt",
       "destination": "https://srv.adstxtmanager.com/19390/quickpronounce.site",
       "permanent": true
+    },
+    {
+      "source": "http://quickpronounce.site/(.*)",
+      "destination": "https://www.quickpronounce.site/$1",
+      "permanent": true
+    },
+    {
+      "source": "https://quickpronounce.site/(.*)",
+      "destination": "https://www.quickpronounce.site/$1",
+      "permanent": true
     }
   ],
+
 
   "rewrites": [
     { "source": "/manifest.json", "destination": "/manifest.json" },
