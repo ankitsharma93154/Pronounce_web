@@ -1,9 +1,18 @@
 {
+  "redirects": [
+    {
+      "source": "/ads.txt",
+      "destination": "https://srv.adstxtmanager.com/19390/quickpronounce.site",
+      "permanent": true
+    }
+  ],
+
   "rewrites": [
     { "source": "/manifest.json", "destination": "/manifest.json" },
     { "source": "/static/:path*", "destination": "/static/:path*" },
     { "source": "/(.*)", "destination": "/" }
   ],
+
   "headers": [
     {
       "source": "/404.html",
