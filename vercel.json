@@ -6,6 +6,11 @@
       "permanent": true
     },
     {
+      "source": "http://quickpronounce.site/(.*)",
+      "destination": "https://www.quickpronounce.site/$1",
+      "permanent": true
+    },
+    {
       "source": "https://quickpronounce.site/(.*)",
       "destination": "https://www.quickpronounce.site/$1",
       "permanent": true
