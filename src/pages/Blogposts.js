@@ -4,6 +4,7 @@ import "./Css/BlogPosts.css";
 import mispronouncedWordsImage from "../images/mispronounced-image.jpg";
 import tenTipsImage from "../images/header.jpg";
 import AmeVsBreIMG from "../images/AmeVsBre_thumbnail.webp";
+import IPA_img from "../images/IPA_GUIDE_img.webp";
 
 const blogPostsData = [
   {
@@ -39,6 +40,18 @@ const blogPostsData = [
     category: "Accent Training",
     readTime: "12 min read",
     link: "/blog/american-vs-british",
+  },
+  {
+    id: 4,
+    title:
+      "The Ultimate Guide to IPA: Read Phonetic Transcriptions & Master English Pronunciation",
+    description:
+      "Decode the International Phonetic Alphabet (IPA) for English. Learn the key symbols, master vowel and consonant sounds, and use QuickPronounce to instantly check any word's IPA.",
+    imageUrl: IPA_img,
+    date: "December 14, 2025",
+    category: "IPA Guide",
+    readTime: "8 min read",
+    link: "/blog/IPA-guide",
   },
 ];
 

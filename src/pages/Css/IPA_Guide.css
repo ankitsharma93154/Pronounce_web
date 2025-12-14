@@ -1,0 +1,337 @@
+/* ==========================================================================
+   IPA Guide Blog Post Styles (Scoped with ipa- prefix)
+   ========================================================================== */
+
+.ipa-guide {
+  /* Main container for the blog post */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* --- Header Section --- */
+.ipa-guide-header {
+  padding: 4rem 0 2rem;
+  background: var(--primary-gradient);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ipa-guide-header h1 {
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.ipa-subtitle {
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* --- Content Sections --- */
+.ipa-guide-content {
+  padding: 2rem 1rem;
+  max-width: 64rem;
+}
+
+.ipa-guide-content h2 {
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.ipa-guide-content h3 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary);
+}
+
+.ipa-guide-content p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* --- Rich Box (Why IPA Matters) --- */
+.ipa-rich-box {
+  background-color: var(--accent-bg);
+  border-left: 5px solid var(--primary);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+}
+
+.ipa-rich-box h3 {
+  color: var(--accent-fg);
+  margin-top: 0;
+}
+
+.ipa-rich-box ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.ipa-rich-box li {
+  margin-bottom: 0.5rem;
+}
+
+/* --- IPA Symbol Grid (Consonants & Vowels) --- */
+.ipa-symbol-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.ipa-symbol-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.ipa-symbol-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.ipa-symbol {
+  display: block;
+  font-size: 2.5rem;
+  font-family: "Lucida Sans Unicode", "Arial Unicode MS", sans-serif; /* Ensure IPA symbols render */
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.ipa-example {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.ipa-description {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* --- Schwa Explanation --- */
+.ipa-schwa-explanation {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--accent-bg);
+  border-radius: 8px;
+}
+
+.ipa-schwa-explanation h4 {
+  color: var(--accent-fg);
+  margin-top: 0;
+}
+
+/* --- Accent Spotlight (New Section for Visual Appeal) --- */
+.ipa-accent-spotlight {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--border-color));
+  border-radius: 12px;
+  text-align: center;
+}
+
+.ipa-accent-spotlight h3 {
+  color: var(--primary);
+  margin-top: 0;
+}
+
+.ipa-accent-comparison {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.ipa-accent-card {
+  flex: 1;
+  max-width: 300px;
+  padding: 1.5rem;
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+}
+
+.ipa-accent-card h4 {
+  margin-top: 0;
+  color: var(--text-primary);
+}
+
+.ipa-transcription {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-hover);
+  margin-bottom: 0.5rem;
+}
+
+.ipa-accent-link {
+  margin-top: 1rem;
+}
+
+.ipa-link-text {
+  color: var(--primary);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.ipa-link-text:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* --- Stress Table --- */
+.ipa-stress-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+.ipa-stress-table th,
+.ipa-stress-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.ipa-stress-table th {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.ipa-stress-table td {
+  color: var(--text-secondary);
+}
+
+/* --- Practice Steps Grid --- */
+.ipa-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.ipa-step-card {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.ipa-step-card h4 {
+  color: var(--primary);
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.ipa-step-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* --- Call to Action (CTA) Box --- */
+.ipa-cta-box {
+  text-align: center;
+  padding: 2rem;
+  margin: 3rem 0;
+  background: var(--primary-gradient);
+  border-radius: 12px;
+  color: #fff; /* Text color for the gradient background */
+}
+
+.ipa-cta-box h3 {
+  color: #fff;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.ipa-cta-box p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.ipa-cta-button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: #fff;
+  color: var(--primary);
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+}
+
+.ipa-cta-button:hover {
+  background-color: var(--bg-secondary);
+  color: var(--primary-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+/* --- Image Placeholder --- */
+/* --- Image Styles --- */
+.ipa-guide-content img {
+  max-width: 100%; /* Ensures images are responsive and don't overflow */
+  height: auto; /* Maintains aspect ratio */
+  display: block; /* Removes extra space below the image */
+  margin: 2rem auto; /* Centers the image and provides vertical spacing */
+  border-radius: 8px; /* Softens the edges */
+  box-shadow: var(--shadow-md); /* Adds a subtle lift */
+}
+
+/* Specific style for images that are meant to be a feature (like the IPA vs Spelling graphic) */
+.ipa-content-image {
+  border: 1px solid var(--border-color); /* Optional: adds a light border */
+}
+
+/* Style for the placeholder box until the image is added */
+.ipa-image-placeholder {
+  text-align: center;
+  border-radius: 8px;
+  margin: 2rem auto; /* Center the placeholder */
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary); /* Give it a light background */
+  max-width: 60rem; /* Limit width for better visual flow */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .ipa-guide-header h1 {
+    font-size: 2rem;
+  }
+  .ipa-guide-content {
+    padding: 1rem;
+  }
+  .ipa-symbol-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+  .ipa-accent-comparison {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .ipa-accent-card {
+    max-width: 100%;
+  }
+}
