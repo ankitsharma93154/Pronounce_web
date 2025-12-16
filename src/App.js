@@ -11,6 +11,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const PronunciationBlog = lazy(() => import("./pages/pronunciation-tips"));
 const PronunciationGuide = lazy(() => import("./pages/pronunciation-guide"));
 const PronunciationComparison = lazy(() => import("./pages/AmericanVsBritish"));
+const SilentKillers = lazy(() => import("./pages/SilentLetters"));
 const IPA_GUIDE = lazy(() => import("./pages/IPA_Guide"));
 const BlogPosts = lazy(() => import("./pages/Blogposts"));
 // Loading component
@@ -54,8 +55,7 @@ const App = () => {
               element={<PronunciationComparison />}
             />
             <Route path="/blog/IPA-guide" element={<IPA_GUIDE />} />
-            {/* <Route path="/blog" element={<PronunciationBlog />} />
-            <Route path="/blog2" element={<PronunciationGuide />} /> */}
+            <Route path="/blog/SilentLetters" element={<SilentKillers />} />
           </Routes>
         </Suspense>
 

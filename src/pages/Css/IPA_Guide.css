@@ -54,10 +54,28 @@
   color: var(--primary);
 }
 
+.ipa-guide-content h4 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
 .ipa-guide-content p {
   margin-bottom: 1rem;
   line-height: 1.7;
   color: var(--text-secondary);
+}
+
+.ipa-guide-content ul {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  color: var(--text-secondary);
+}
+
+.ipa-guide-content ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
 }
 
 /* --- Rich Box (Why IPA Matters) --- */
@@ -110,7 +128,7 @@
 .ipa-symbol {
   display: block;
   font-size: 2.5rem;
-  font-family: "Lucida Sans Unicode", "Arial Unicode MS", sans-serif; /* Ensure IPA symbols render */
+  font-family: "Lucida Sans Unicode", "Arial Unicode MS", sans-serif;
   color: var(--primary);
   margin-bottom: 0.25rem;
 }
@@ -142,7 +160,110 @@
   margin-top: 0;
 }
 
-/* --- Accent Spotlight (New Section for Visual Appeal) --- */
+/* --- Diphthongs Section --- */
+.ipa-diphthongs {
+  margin-top: 2.5rem;
+}
+
+/* --- Common Mistakes Section --- */
+.ipa-mistakes-section {
+  margin: 3rem 0;
+}
+
+.ipa-mistake-card {
+  background-color: var(--bg-secondary);
+  border-left: 4px solid #ff6b6b;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.ipa-mistake-card h4 {
+  color: #ff6b6b;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.ipa-mistake-card p {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.ipa-mistake-card strong {
+  color: var(--text-primary);
+}
+
+/* --- Mouth Position Guide Section --- */
+.ipa-mouth-position {
+  margin: 3rem 0;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+}
+
+.ipa-position-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.ipa-position-card {
+  background-color: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.ipa-position-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.ipa-position-card h4 {
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.5rem;
+}
+
+.position-description p {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.position-description strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* --- Tip Box Styles --- */
+.ipa-tip-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  box-shadow: var(--shadow-md);
+}
+
+.ipa-tip-box p {
+  margin: 0;
+  color: white;
+  line-height: 1.7;
+}
+
+.ipa-tip-box strong {
+  color: #ffd700;
+}
+
+/* --- Accent Spotlight --- */
 .ipa-accent-spotlight {
   margin: 3rem 0;
   padding: 2rem;
@@ -183,6 +304,7 @@
   font-weight: bold;
   color: var(--primary-hover);
   margin-bottom: 0.5rem;
+  font-family: "Lucida Sans Unicode", "Arial Unicode MS", sans-serif;
 }
 
 .ipa-accent-link {
@@ -198,6 +320,128 @@
 .ipa-link-text:hover {
   color: var(--primary-hover);
   text-decoration: underline;
+}
+
+/* --- Connected Speech Section --- */
+.ipa-connected-speech {
+  margin: 3rem 0;
+}
+
+.ipa-connected-card {
+  background-color: var(--bg-secondary);
+  border-left: 4px solid var(--primary);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+}
+
+.ipa-connected-card h4 {
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.example-box {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+}
+
+.example-box p {
+  margin: 0.5rem 0;
+  font-family: "Courier New", monospace;
+  font-size: 0.95rem;
+}
+
+.example-box strong {
+  color: var(--primary);
+}
+
+/* --- Language Tips Section --- */
+.ipa-language-tips {
+  margin: 3rem 0;
+}
+
+.ipa-language-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.ipa-language-card {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.ipa-language-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.ipa-language-card h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.5rem;
+}
+
+.challenges p {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.challenges strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.challenges ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.challenges li {
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/* --- FAQ Section --- */
+.ipa-faq-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+}
+
+.ipa-faq-item {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.ipa-faq-item h4 {
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.ipa-faq-item p {
+  margin-bottom: 0;
+  line-height: 1.7;
 }
 
 /* --- Stress Table --- */
@@ -238,6 +482,13 @@
   border: 1px solid var(--border-color);
   border-radius: 8px;
   box-shadow: var(--shadow-sm);
+  background-color: var(--bg-secondary);
+  transition: var(--transition);
+}
+
+.ipa-step-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .ipa-step-card h4 {
@@ -258,7 +509,7 @@
   margin: 3rem 0;
   background: var(--primary-gradient);
   border-radius: 12px;
-  color: #fff; /* Text color for the gradient background */
+  color: #fff;
 }
 
 .ipa-cta-box h3 {
@@ -288,32 +539,44 @@
   background-color: var(--bg-secondary);
   color: var(--primary-hover);
   box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
-/* --- Image Placeholder --- */
 /* --- Image Styles --- */
 .ipa-guide-content img {
-  max-width: 100%; /* Ensures images are responsive and don't overflow */
-  height: auto; /* Maintains aspect ratio */
-  display: block; /* Removes extra space below the image */
-  margin: 2rem auto; /* Centers the image and provides vertical spacing */
-  border-radius: 8px; /* Softens the edges */
-  box-shadow: var(--shadow-md); /* Adds a subtle lift */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2rem auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
 }
 
-/* Specific style for images that are meant to be a feature (like the IPA vs Spelling graphic) */
 .ipa-content-image {
-  border: 1px solid var(--border-color); /* Optional: adds a light border */
+  border: 1px solid var(--border-color);
 }
 
-/* Style for the placeholder box until the image is added */
 .ipa-image-placeholder {
   text-align: center;
   border-radius: 8px;
-  margin: 2rem auto; /* Center the placeholder */
+  margin: 2rem auto;
   color: var(--text-secondary);
-  background-color: var(--bg-secondary); /* Give it a light background */
-  max-width: 60rem; /* Limit width for better visual flow */
+  background-color: var(--bg-secondary);
+  max-width: 60rem;
+}
+
+/* --- Conclusion Section --- */
+.ipa-conclusion {
+  margin: 3rem 0;
+  padding: 2rem;
+  background-color: var(--accent-bg);
+  border-radius: 12px;
+  border-left: 5px solid var(--primary);
+}
+
+.ipa-conclusion h2 {
+  color: var(--primary);
+  margin-top: 0;
 }
 
 /* --- Responsive Adjustments --- */
@@ -321,17 +584,71 @@
   .ipa-guide-header h1 {
     font-size: 2rem;
   }
+
+  .ipa-subtitle {
+    font-size: 1rem;
+  }
+
   .ipa-guide-content {
     padding: 1rem;
   }
+
+  .ipa-guide-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .ipa-guide-content h3 {
+    font-size: 1.3rem;
+  }
+
   .ipa-symbol-grid {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
+
   .ipa-accent-comparison {
     flex-direction: column;
     gap: 1rem;
   }
+
   .ipa-accent-card {
     max-width: 100%;
+  }
+
+  .ipa-position-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ipa-language-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ipa-steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ipa-symbol {
+    font-size: 2rem;
+  }
+
+  .ipa-transcription {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ipa-guide-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .ipa-guide-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .ipa-cta-box h3 {
+    font-size: 1.3rem;
+  }
+
+  .ipa-symbol-grid {
+    grid-template-columns: 1fr;
   }
 }
