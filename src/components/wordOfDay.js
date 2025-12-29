@@ -58,6 +58,7 @@ const WordOfDay = memo(({ pronounce }) => {
 
       const data = await response.json();
       setWordData(data);
+      console.log("Fetched word data:", data);
       setError(null);
     } catch (err) {
       setError("Failed to load word of the day");
@@ -118,6 +119,23 @@ const WordOfDay = memo(({ pronounce }) => {
           <div className="word-of-day-example">
             "{wordData.example_sentence}"
           </div>
+          {(() => {
+            const synonyms = Array.isArray(wordData.synonyms)
+              ? wordData.synonyms
+              : typeof wordData.synonyms === "string"
+              ? wordData.synonyms
+                  .split(",")
+                  .map((s) => s.trim())
+                  .filter((s) => s)
+              : [];
+            return (
+              synonyms.length > 0 && (
+                <div className="word-of-day-synonyms">
+                  <strong>Synonyms:</strong> {synonyms.join(", ")}
+                </div>
+              )
+            );
+          })()}
         </div>
 
         <div className="word-of-day-right">

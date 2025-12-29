@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[989],{9989:(e,a,c)=>{e.exports=c.p+"static/media/AmeVsBre_thumbnail.d44ad0cacb7aa8d37ca6.webp"}}]);

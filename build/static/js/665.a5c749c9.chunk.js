@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[665],{665:(e,i,p)=>{e.exports=p.p+"static/media/mispronounced-image.4631b4f9d2fff7f5a884.jpg"}}]);

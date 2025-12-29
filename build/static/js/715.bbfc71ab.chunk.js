@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[715],{715:(e,p,i)=>{e.exports=i.p+"static/media/tip5.29e64b54ae70b313fe23.jpg"}}]);

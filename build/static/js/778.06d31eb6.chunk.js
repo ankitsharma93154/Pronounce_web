@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[778],{3778:(e,i,p)=>{e.exports=p.p+"static/media/IPA_GUIDE_img.e1dd4e2df9632ed1c69f.webp"}}]);
