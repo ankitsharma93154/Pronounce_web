@@ -5,6 +5,7 @@ import mispronouncedWordsImage from "../images/mispronounced-image.jpg";
 import tenTipsImage from "../images/header.jpg";
 import AmeVsBreIMG from "../images/AmeVsBre_thumbnail.webp";
 import IPA_img from "../images/IPA_GUIDE_img.webp";
+import silentLettersImage from "../images/silent_letters_intro.webp";
 
 const blogPostsData = [
   {
@@ -52,6 +53,18 @@ const blogPostsData = [
     category: "IPA Guide",
     readTime: "8 min read",
     link: "/blog/IPA-guide",
+  },
+  {
+    id: 5,
+    title:
+      "Silent Letters in English: Complete Pronunciation Guide for Learners & Native Speakers",
+    description:
+      "Master 50+ commonly mispronounced words with silent letters. Learn pronunciation rules backed by IPA (International Phonetic Alphabet) and speak with confidence.",
+    imageUrl: silentLettersImage,
+    date: "January 9, 2026",
+    category: "Pronunciation Guide",
+    readTime: "10 min read",
+    link: "/blog/SilentLetters",
   },
 ];
 

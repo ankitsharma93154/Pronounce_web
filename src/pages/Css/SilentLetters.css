@@ -1,97 +1,324 @@
-.silent-killers-guide {
-  /* Main container for the blog post */
+/* Silent Killers Blog - Enhanced Styles with sk- prefix to avoid conflicts */
+
+.sk-silent-killers-guide {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  min-height: 100vh;
 }
 
 /* --- Header Section --- */
-.silent-guide-header {
+.sk-silent-guide-header {
   padding: 4rem 0 2rem;
-  background-color: var(--bg-secondary);
+  background: var(--primary-gradient);
+  color: white;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-.silent-guide-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--primary);
+.sk-silent-guide-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+  line-height: 1.2;
+  max-width: 70rem;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.silent-subtitle {
+.sk-silent-subtitle {
   font-size: 1.25rem;
-  color: var(--text-secondary);
-  max-width: 700px;
+  color: white;
+  opacity: 0.9;
+  max-width: 800px;
   margin: 0 auto;
+  line-height: 1.6;
+}
+
+.sk-silent-header-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-gradient);
+}
+
+/* --- Table of Contents --- */
+.sk-toc-section {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.sk-toc-section h2 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: none;
+}
+
+.sk-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sk-toc-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.sk-toc-list li:last-child {
+  border-bottom: none;
+}
+
+.sk-toc-list a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: var(--transition);
+  display: block;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.sk-toc-list a:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  transition: var(--transition);
+}
+
+.sk-toc-list a:hover {
+  color: var(--primary);
+  padding-left: 2rem;
+}
+
+.sk-toc-list a:hover:before {
+  left: 0.5rem;
 }
 
 /* --- Content Sections --- */
-.silent-guide-content {
-  padding: 2rem 1rem;
-  max-width: 900px;
+.sk-silent-guide-content {
+  padding: 3rem 1rem;
+  max-width: 1000px;
 }
 
-.silent-guide-content h2 {
+.sk-silent-guide-content h2 {
   font-size: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 0.75rem;
+  color: var(--text-primary);
+  scroll-margin-top: 2rem;
+}
+
+.sk-silent-guide-content h3 {
+  font-size: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 0.5rem;
-  color: var(--text-primary);
-}
-
-.silent-guide-content h3 {
-  font-size: 1.5rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
   color: var(--primary);
 }
 
-.silent-guide-content p {
-  margin-bottom: 1rem;
-  line-height: 1.7;
+.sk-silent-guide-content h4 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.sk-silent-guide-content p {
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.sk-silent-guide-content ul,
+.sk-silent-guide-content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 2rem;
+  line-height: 1.8;
+}
+
+.sk-silent-guide-content li {
+  margin-bottom: 0.5rem;
   color: var(--text-secondary);
 }
 
-/* --- History Box --- */
-.silent-history-box {
+/* --- Images --- */
+.sk-intro-image,
+.sk-vowel-shift-image,
+.sk-silent-rules-image,
+.sk-pronunciation-image,
+.sk-quickpronounce-image {
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  margin: 2rem 0;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Intro image - medium size */
+.sk-intro-image {
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Vowel shift image - full width */
+.sk-vowel-shift-image {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Silent rules image - full width */
+.sk-silent-rules-image {
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Pronunciation image - medium size */
+.sk-pronunciation-image {
+  width: 100%;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* QuickPronounce screenshot - larger size */
+.sk-quickpronounce-image {
+  width: 100%;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Hover effect for all images */
+.sk-intro-image:hover,
+.sk-vowel-shift-image:hover,
+.sk-silent-rules-image:hover,
+.sk-pronunciation-image:hover,
+.sk-quickpronounce-image:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* --- Highlight Box --- */
+.sk-highlight-box {
   background-color: var(--accent-bg);
   border-left: 5px solid var(--primary);
   padding: 1.5rem;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
   border-radius: 8px;
 }
 
-.silent-history-box h4 {
+.sk-highlight-box h4 {
   color: var(--accent-fg);
   margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.sk-highlight-box ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.sk-highlight-box li {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* --- History Box --- */
+.sk-silent-history-box {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--primary);
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sk-silent-history-box h3 {
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.sk-history-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sk-history-list li {
+  padding: 0.75rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.sk-history-list li:before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* --- Key Takeaway Box --- */
+.sk-key-takeaway {
+  background: var(--primary-gradient);
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: var(--shadow-md);
+}
+
+.sk-key-takeaway strong {
+  font-size: 1.1rem;
+  display: block;
   margin-bottom: 0.5rem;
 }
 
 /* --- Silent Letter Card Grid --- */
-.silent-letter-card-grid {
+.sk-silent-letter-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  margin: 2rem 0;
+  margin: 2.5rem 0;
 }
 
-.silent-letter-card {
+.sk-silent-letter-card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 1.5rem;
+  border-radius: 12px;
+  padding: 1.75rem;
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
 }
 
-.silent-letter-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+.sk-silent-letter-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--primary);
 }
 
-.silent-letter-card h3 {
+.sk-silent-letter-card h3 {
   margin-top: 0;
   font-size: 1.75rem;
   color: var(--primary);
@@ -99,87 +326,219 @@
   padding-bottom: 0.5rem;
 }
 
-.silent-rule {
+.sk-silent-rule {
   font-style: italic;
   color: var(--text-secondary);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.silent-word-list {
-  margin-top: 1rem;
+.sk-silent-word-list {
+  margin-top: 1.25rem;
 }
 
-.silent-word-item {
+.sk-silent-word-item {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 0;
+  align-items: center;
+  padding: 0.75rem 0;
   border-bottom: 1px dashed var(--border-color);
 }
 
-.silent-word-item:last-child {
+.sk-silent-word-item:last-child {
   border-bottom: none;
 }
 
-.silent-word-item .word {
-  font-weight: bold;
+.sk-silent-word-item .sk-word {
+  font-weight: 600;
   color: var(--text-primary);
+  font-size: 1.05rem;
 }
 
-.silent-word-item .ipa {
+.sk-silent-word-item .sk-ipa {
   font-family: "Lucida Sans Unicode", "Arial Unicode MS", sans-serif;
   color: var(--text-secondary);
+  font-size: 0.95rem;
+  background-color: var(--accent-bg);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
 }
 
-/* --- Practice Steps Grid --- */
-.silent-steps-grid {
+/* --- Pro Tip Box --- */
+.sk-pro-tip-box {
+  background: linear-gradient(
+    135deg,
+    rgba(110, 69, 226, 0.1) 0%,
+    rgba(58, 92, 231, 0.1) 100%
+  );
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2.5rem 0;
+}
+
+.sk-pro-tip-box h3 {
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.sk-pro-tip-box ul {
+  margin-bottom: 0;
+}
+
+/* --- Common Mistakes Section --- */
+.sk-mistakes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2.5rem 0;
 }
 
-.silent-step-card {
-  padding: 1.5rem;
+.sk-mistake-card {
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 12px;
+  padding: 1.75rem;
   box-shadow: var(--shadow-sm);
 }
 
-.silent-step-card h4 {
-  color: var(--primary);
+.sk-mistake-card h4 {
   margin-top: 0;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+  text-align: center;
 }
 
-.silent-step-card p {
+.sk-mistake-comparison {
+  margin: 1.5rem 0;
+}
+
+.sk-wrong,
+.sk-correct {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.sk-wrong {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-left: 4px solid #ef4444;
+}
+
+.sk-correct {
+  background-color: rgba(34, 197, 94, 0.1);
+  border-left: 4px solid #22c55e;
+}
+
+.sk-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.sk-pronunciation {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-left: 0.5rem;
+}
+
+.sk-tip {
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+}
+
+/* --- Practice Steps Grid --- */
+.sk-silent-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+
+.sk-silent-step-card {
+  padding: 2rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  background-color: var(--bg-secondary);
+  transition: var(--transition);
+}
+
+.sk-silent-step-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.sk-step-number {
+  position: absolute;
+  top: -1rem;
+  left: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--primary-gradient);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+  box-shadow: var(--shadow-md);
+}
+
+.sk-silent-step-card h4 {
+  color: var(--primary);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.sk-silent-step-card p {
   color: var(--text-secondary);
   font-size: 0.95rem;
+  margin-bottom: 0;
 }
 
 /* --- Call to Action (CTA) Box --- */
-.silent-cta-box {
+.sk-silent-cta-box {
   text-align: center;
-  padding: 2rem;
-  margin: 3rem 0;
+  padding: 3rem 2rem;
+  margin: 3.5rem 0;
   background: var(--primary-gradient);
-  border-radius: 12px;
-  color: #fff; /* Text color for the gradient background */
-}
-
-.silent-cta-box h3 {
+  border-radius: 16px;
   color: #fff;
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
+  box-shadow: var(--shadow-lg);
 }
 
-.silent-cta-box p {
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 1.5rem;
+.sk-silent-cta-box h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
 }
 
-.silent-cta-button {
+.sk-silent-cta-box p {
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sk-silent-cta-button {
   display: inline-block;
-  padding: 0.75rem 2rem;
+  padding: 1rem 2.5rem;
   background-color: #fff;
   color: var(--primary);
   font-weight: bold;
@@ -187,23 +546,249 @@
   border-radius: 50px;
   transition: var(--transition);
   box-shadow: var(--shadow-md);
+  font-size: 1.05rem;
 }
 
-.silent-cta-button:hover {
+.sk-silent-cta-button:hover {
   background-color: var(--bg-secondary);
   color: var(--primary-hover);
   box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* --- Practice Tips Section --- */
+.sk-tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+
+.sk-tip-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.sk-tip-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.sk-tip-card h4 {
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.sk-tip-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* --- Resources Section --- */
+.sk-resource-box {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.sk-resource-box h4 {
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.sk-resource-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sk-resource-list li {
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  position: relative;
+  border-bottom: 1px dashed var(--border-color);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.sk-resource-list li:last-child {
+  border-bottom: none;
+}
+
+.sk-resource-list li:before {
+  content: "📖";
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+.sk-resource-list a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.25rem;
+}
+
+.sk-resource-list a:hover {
+  color: var(--primary-hover);
+  border-bottom: 2px solid var(--primary);
+}
+
+/* --- Conclusion Section --- */
+.sk-silent-conclusion {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 3px solid var(--primary);
+}
+
+.sk-next-steps-box {
+  background-color: var(--accent-bg);
+  border-left: 5px solid var(--primary);
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 8px;
+}
+
+.sk-next-steps-box h3 {
+  color: var(--accent-fg);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.sk-next-steps-list {
+  margin: 0;
+  padding-left: 2rem;
+}
+
+.sk-next-steps-list li {
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.sk-closing {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-top: 2rem;
+}
+
+.sk-final-cta {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.sk-final-cta p {
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
 }
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
-  .silent-guide-header h1 {
-    font-size: 2rem;
+  .sk-silent-guide-header h1 {
+    font-size: 1.75rem;
+    padding: 0 1rem;
   }
-  .silent-guide-content {
-    padding: 1rem;
+
+  .sk-silent-subtitle {
+    font-size: 1.05rem;
+    padding: 0 1rem;
   }
-  .silent-letter-card-grid {
+
+  .sk-silent-guide-content {
+    padding: 2rem 1rem;
+  }
+
+  .sk-silent-guide-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .sk-silent-letter-card-grid,
+  .sk-mistakes-grid,
+  .sk-silent-steps-grid,
+  .sk-tips-grid {
     grid-template-columns: 1fr;
+  }
+
+  .sk-toc-section {
+    padding: 1.5rem;
+  }
+
+  .sk-silent-cta-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .sk-silent-cta-box h3 {
+    font-size: 1.5rem;
+  }
+
+  .sk-step-number {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+
+  .sk-silent-step-card {
+    padding: 1.5rem;
+  }
+
+  /* Responsive image sizes for tablet */
+  .sk-intro-image {
+    max-width: 100%;
+  }
+
+  .sk-vowel-shift-image {
+    max-width: 100%;
+  }
+
+  .sk-silent-rules-image {
+    max-width: 100%;
+  }
+
+  .sk-pronunciation-image {
+    max-width: 100%;
+  }
+
+  .sk-quickpronounce-image {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sk-silent-guide-header {
+    padding: 3rem 0 1.5rem;
+  }
+
+  .sk-silent-guide-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .sk-silent-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .sk-silent-guide-content h2 {
+    font-size: 1.35rem;
+    margin-top: 2rem;
+  }
+
+  .sk-silent-cta-button {
+    padding: 0.875rem 2rem;
+    font-size: 0.95rem;
   }
 }
