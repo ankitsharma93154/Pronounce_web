@@ -6,85 +6,88 @@ const PronunciationGuide = () => {
   return (
     <div className="pronunciation-guide">
       <Helmet>
-        {/* OPTIMIZED TITLE TAG (83 characters - Allowed for blogs) */}
+        {/* OPTIMIZED TITLE: Focuses on 'How to Pronounce' and 'Words' categories */}
         <title>
-          50 Most Mispronounced English Words: Say Them Right with 4 Accents &
-          IPA | QuickPronounce
+          How to Pronounce the 50 Most Mispronounced English Words Correctly
         </title>
 
-        {/* OPTIMIZED META DESCRIPTION (156 characters) */}
+        {/* OPTIMIZED DESCRIPTION: Uses high-CTR 'Audio' (3.44%) and 'Correct' intent */}
         <meta
           name="description"
-          content="Are you saying these words wrong? Discover the 50 most mispronounced English words with phonetic tips, memory tricks, and direct links to hear them in 4 accents on QuickPronounce."
+          content="Learn how to pronounce the 50 most mispronounced English words with audio. Master tricky words like 'Worcestershire' using IPA phonetics and memory tricks."
         />
-
-        {/* META KEYWORDS TAG REMOVED - NO SEO VALUE */}
 
         <link
           rel="canonical"
           href="https://www.quickpronounce.site/blog/pronunciation-guide"
         />
 
-        {/* OPTIMIZED OPEN GRAPH (for social media) */}
+        {/* OPEN GRAPH: Enhanced for high social engagement */}
         <meta
           property="og:title"
           content="50 Mispronounced Words: Master Them with Audio in 4 English Accents"
         />
         <meta
           property="og:description"
-          content="Stop saying 'nucular'! Learn the 50 toughest words the right way. This guide links directly to QuickPronounce's 4-accent audio and IPA transcription for instant mastery."
-        />
-        <meta
-          property="og:image"
-          content="https://www.quickpronounce.site/images/pronunciation-guide-banner.jpg"
+          content="Stop saying 'nucular'! Master the 50 toughest words in American, British, Indian, and Australian accents with IPA phonetic guides."
         />
         <meta
           property="og:url"
           content="https://www.quickpronounce.site/blog/pronunciation-guide"
         />
         <meta property="og:type" content="article" />
-        <meta property="og:site_name" content="QuickPronounce" />
-
-        {/* OPTIMIZED TWITTER CARD */}
-        <meta name="twitter:card" content="summary_large_image" />
         <meta
-          name="twitter:title"
-          content="50 Mispronounced Words: Master Them with Audio in 4 English Accents"
-        />
-        <meta
-          name="twitter:description"
-          content="Stop saying 'nucular'! Learn the 50 toughest words the right way. This guide links directly to QuickPronounce's 4-accent audio and IPA transcription for instant mastery."
-        />
-        <meta
-          name="twitter:image"
+          property="og:image"
           content="https://www.quickpronounce.site/images/pronunciation-guide-banner.jpg"
         />
-        <meta name="twitter:site" content="@quickpronounce" />
 
-        {/* JSON-LD Structured Data (Minor Update for SEO/Brand) */}
+        {/* JSON-LD ARTICLE & HOW-TO SCHEMA: Combined for maximum reach */}
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline:
-              "50 Most Mispronounced English Words (and How to Say Them Right)",
-            description:
-              "This expert guide covers the 50 most mispronounced words, with phonetic tips, memory tricks, and links to QuickPronounce's 4-accent audio and IPA transcription.",
-            url: "https://www.quickpronounce.site/blog/pronunciation-guide",
-            author: {
-              "@type": "Person",
-              name: "QuickPronounce Team",
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "QuickPronounce",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://www.quickpronounce.site/logo.png", // Assuming logo.png is your site logo
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline:
+                "50 Most Mispronounced English Words (and How to Say Them Right)",
+              description:
+                "An expert guide to correcting the 50 most common pronunciation errors in English using audio and IPA.",
+              author: {
+                "@type": "Person",
+                name: "Amit Kumar Sharma",
               },
+              publisher: {
+                "@type": "Organization",
+                name: "QuickPronounce",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://www.quickpronounce.site/logo.png",
+                },
+              },
+              datePublished: "2025-04-25",
             },
-            // You should add 'datePublished' and 'dateModified' fields here for best practice
-          })}
+            {
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              name: "How to Improve Your English Pronunciation",
+              step: [
+                {
+                  "@type": "HowToStep",
+                  text: "Listen to native audio for the word on QuickPronounce.",
+                  name: "Listen",
+                },
+                {
+                  "@type": "HowToStep",
+                  text: "Identify the primary stress mark in the IPA transcription.",
+                  name: "Analyze IPA",
+                },
+                {
+                  "@type": "HowToStep",
+                  text: "Shadow the speaker by repeating the word exactly as heard.",
+                  name: "Repeat & Shadow",
+                },
+              ],
+            },
+          ])}
         </script>
       </Helmet>
 

@@ -264,22 +264,73 @@ const PronunciationComparison = () => {
   return (
     <div className="avb-comparison-blog">
       <Helmet>
+        {/* OPTIMIZED TITLE: Targets 'Audio' (3.4% CTR) and 'Accent' categories */}
         <title>
-          American vs. British Pronunciation: 4 Key Differences + 25 Confusing
-          Words
+          American vs British Pronunciation Audio: 4 Sound Rules & IPA Guide
         </title>
+
+        {/* OPTIMIZED DESCRIPTION: Uses high-impression 'How to' and 'Phonetic' keywords */}
         <meta
           name="description"
-          content="Master the 4 fundamental sound differences between American and British English. Complete guide with IPA, audio examples, and practice strategies for learners."
+          content="Compare American vs British accent audio side-by-side. Master the 4 fundamental phonetic rules, IPA symbols, and hear correct pronunciations for confusing words."
         />
+
         <link
           rel="canonical"
           href="https://www.quickpronounce.site/blog/american-vs-british"
         />
+
+        {/* OPEN GRAPH: Enhanced for better social media click-through */}
         <meta
           property="og:title"
+          content="American vs. British Pronunciation: Audio Guide to 4 Key Rules"
+        />
+        <meta
+          property="og:description"
+          content="Struggling to hear the difference? Master these 4 English pronunciation audio rules to distinguish between American and British accents instantly."
+        />
+        <meta
+          property="og:image"
+          content="https://www.quickpronounce.site/images/AmeVsBre_thumbnail.webp"
+        />
+        <meta property="og:type" content="article" />
+
+        {/* TWITTER CARD */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
           content="AmE vs. BrE Pronunciation: Master the 4 Key Differences"
         />
+        <meta
+          name="twitter:description"
+          content="Master English accents with real audio examples and IPA phonetic guides."
+        />
+
+        {/* FAQ SCHEMA: Helps capture 'People Also Ask' search real estate */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What is the main difference between American and British pronunciation?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "The most recognizable difference is rhoticity. American English is rhotic (pronounces the 'r' after vowels), while standard British English is non-rhotic (drops the 'r' sound unless followed by a vowel).",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What is the TRAP-BATH split in English accents?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "The TRAP-BATH split is a vowel difference where words like 'bath' or 'dance' use a short /æ/ in American English but a broad /ɑː/ in standard British English.",
+                },
+              },
+            ],
+          })}
+        </script>
       </Helmet>
 
       <header className="avb-header">

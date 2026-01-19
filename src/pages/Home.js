@@ -11,7 +11,6 @@ import { Volume2 } from "lucide-react";
 import { Helmet } from "react-helmet";
 
 // Keep critical components for initial render
-// Header is now removed as it's handled by App.js
 import MobileMenu from "../components/mobileMenu";
 import Hero from "../components/hero";
 import InputCard from "../components/inputCard";
@@ -30,7 +29,7 @@ const Analytics =
     ? lazy(() =>
         import("@vercel/analytics/react").then((mod) => ({
           default: mod.Analytics,
-        }))
+        })),
       )
     : () => null;
 
@@ -39,7 +38,7 @@ const SpeedInsights =
     ? lazy(() =>
         import("@vercel/speed-insights/react").then((mod) => ({
           default: mod.SpeedInsights,
-        }))
+        })),
       )
     : () => null;
 
@@ -49,21 +48,20 @@ const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
     onClick={onClick}
     disabled={isLoading || !word.trim()}
     className="float-button"
-    aria-label="Pronounce word"
+    aria-label="Listen to audio pronunciation" // SEO: Matches high-CTR 'Audio' and 'Listen' keywords
+    title="Hear pronunciation"
   >
     <Volume2 className="icon" />
   </button>
 ));
 
-// Main Home component
 const Home = () => {
-  // Use useState for state management with initial state object
   const [state, setState] = useState({
     word: "",
     accent: "en-US",
     isMale: true,
     phonetic: "",
-    speed: "normal", // Add speed with default value
+    speed: "normal",
     hasPronounced: false,
     isLoading: false,
     meanings: [],
@@ -76,11 +74,9 @@ const Home = () => {
     showSynonyms: true,
   });
 
-  // Create refs
   const audioRef = useRef(new Audio());
   const cacheRef = useRef({});
 
-  // Destructure state for cleaner code
   const {
     word,
     accent,
@@ -98,26 +94,20 @@ const Home = () => {
     antonyms,
   } = state;
 
-  // Unified state updater
   const updateState = useCallback((updates) => {
     setState((prev) => ({ ...prev, ...updates }));
   }, []);
 
-  // Add a flag to control when pronunciation should be triggered
   const [shouldPronounce, setShouldPronounce] = useState(false);
-
-  // New state for animation
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Function to handle toggle between synonyms and antonyms
   const handleRelationToggle = useCallback(
     (type) => {
       updateState({ showSynonyms: type === "synonyms" });
     },
-    [updateState]
+    [updateState],
   );
 
-  // Function to get pronunciation and all word data from backend
   const getPronunciation = useCallback(async () => {
     if (!word.trim()) return;
 
@@ -127,7 +117,6 @@ const Home = () => {
       updateState({ isLoading: true });
       setIsPlaying(true);
 
-      // Check cache first
       if (cacheRef.current[cacheKey]) {
         const cachedData = cacheRef.current[cacheKey];
         updateState({
@@ -150,7 +139,6 @@ const Home = () => {
         return;
       }
 
-      // Use AbortController for fetch timeout
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000);
 
@@ -166,15 +154,13 @@ const Home = () => {
             speed,
           }),
           signal: controller.signal,
-        }
+        },
       );
 
       clearTimeout(timeoutId);
 
       if (!response.ok) {
-        throw new Error(
-          `Server error: ${response.status} - ${response.statusText}`
-        );
+        throw new Error(`Server error: ${response.status}`);
       }
 
       const data = await response.json();
@@ -198,7 +184,7 @@ const Home = () => {
       if (data.audioContent) {
         try {
           const byteArray = Uint8Array.from(atob(data.audioContent), (c) =>
-            c.charCodeAt(0)
+            c.charCodeAt(0),
           );
           const audioBlob = new Blob([byteArray], { type: "audio/mp3" });
           audioUrl = URL.createObjectURL(audioBlob);
@@ -214,7 +200,6 @@ const Home = () => {
         setIsPlaying(false);
       }
 
-      // Cache the results
       cacheRef.current[cacheKey] = {
         phonetic,
         meanings,
@@ -245,20 +230,19 @@ const Home = () => {
       getPronunciation();
       setShouldPronounce(false);
     }
-  }, [word, shouldPronounce, hasPronounced, getPronunciation]);
+  }, [word, shouldPronounce, getPronunciation]);
 
   const pronounce = useCallback(
     (selectedWord) => {
       updateState({ word: selectedWord });
       setShouldPronounce(true);
       requestAnimationFrame(() =>
-        window.scrollTo({ top: 0, behavior: "smooth" })
+        window.scrollTo({ top: 0, behavior: "smooth" }),
       );
     },
-    [updateState]
+    [updateState],
   );
 
-  // Warm up the API - update to include speed
   const warmUpAPI = useCallback(async () => {
     try {
       await fetch("https://backend-8isq.vercel.app/get-pronunciation", {
@@ -276,7 +260,6 @@ const Home = () => {
     }
   }, [accent, isMale, speed]);
 
-  // API warm-up effect
   useEffect(() => {
     const idleCallbackId =
       typeof window !== "undefined" && "requestIdleCallback" in window
@@ -292,49 +275,43 @@ const Home = () => {
     };
   }, [warmUpAPI]);
 
-  // Event handlers
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === "Enter") getPronunciation();
     },
-    [getPronunciation]
+    [getPronunciation],
   );
 
-  // Toggle functions
   const togglers = {
     darkMode: useCallback(
       () => updateState({ isDarkMode: !isDarkMode }),
-      [updateState, isDarkMode]
+      [updateState, isDarkMode],
     ),
     mobileMenu: useCallback(
       () => updateState({ isMobileMenuOpen: !isMobileMenuOpen }),
-      [updateState, isMobileMenuOpen]
+      [updateState, isMobileMenuOpen],
     ),
     favorite: useCallback(
       () => updateState({ isFavorite: !isFavorite }),
-      [updateState, isFavorite]
+      [updateState, isFavorite],
     ),
   };
 
-  // Mobile menu is still handled within Home.js if needed
   useEffect(() => {
-    // Set dimensions to prevent layout shifts
     const handleResize = () => {
       document.documentElement.style.setProperty(
         "--app-height",
-        `${window.innerHeight}px`
+        `${window.innerHeight}px`,
       );
     };
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Only preconnect to API (removed problematic preload)
     const link = document.createElement("link");
     link.rel = "preconnect";
     link.href = "https://backend-8isq.vercel.app";
     document.head.appendChild(link);
 
-    // Immediately fetch a small request to warm up connection instead of using preload
     setTimeout(() => {
       warmUpAPI();
     }, 300);
@@ -350,67 +327,62 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        {/* OPTIMIZED TITLE TAG (60 CHARACTERS) */}
+        {/* SEO TARGET: Primary Keywords first */}
         <title>
-          Free Pronunciation Tool: 4 Accents, Audio & IPA (AmE, BrE, InE, AuE) |
-          QuickPronounce
+          Free Audio Pronunciation Tool: American, British & Indian Accents
         </title>
-        {/* OPTIMIZED META DESCRIPTION (160 CHARACTERS) */}
         <meta
           name="description"
-          content="Instantly learn correct English pronunciation. Get free, fast audio in American, British, Indian & Australian accents, complete with IPA phonetic transcription."
+          content="Listen to clear audio pronunciation in American, British, Australian, and Indian accents. Get free IPA phonetic transcription for any English word instantly."
         />
-        {/* META KEYWORDS TAG REMOVED - NO SEO VALUE */}
         <link rel="canonical" href="https://www.quickpronounce.site/" />
-        {/* OPTIMIZED OPEN GRAPH (for social media) */}
+
+        {/* OPEN GRAPH (SOCIALS) */}
         <meta
           property="og:title"
-          content="QuickPronounce: Free Audio in 4 English Accents (AmE, BrE, InE, AuE)"
+          content="QuickPronounce: Free Audio in 4 English Accents"
         />
         <meta
           property="og:description"
-          content="Struggling with 'Worcestershire'? Get clear, fast audio for any word in American, British, Indian, and Australian accents, complete with IPA phonetics. No sign-ups needed!"
+          content="Instant audio pronunciation for any word. Compare American, British, Indian, and Australian accents for free with IPA phonetics."
         />
+        <meta property="og:url" content="https://www.quickpronounce.site/" />
+        <meta property="og:type" content="website" />
         <meta
           property="og:image"
           content="https://www.quickpronounce.site/og-preview.png"
-        />{" "}
-        {/* Keeping your original og:image path */}
-        <meta property="og:url" content="https://www.quickpronounce.site/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="QuickPronounce" />
-        {/* OPTIMIZED TWITTER CARD */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="QuickPronounce: Free Audio in 4 English Accents (AmE, BrE, InE, AuE)"
         />
-        <meta
-          name="twitter:description"
-          content="Struggling with 'Worcestershire'? Get clear, fast audio for any word in American, British, Indian, and Australian accents, complete with IPA phonetics. No sign-ups needed!"
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
-        />{" "}
-        {/* Keeping your original twitter:image path */}
-        <meta name="twitter:site" content="@quickpronounce" />
-        {/* JSON-LD Structured Data (Minor Update for Consistency) */}
+
+        {/* JSON-LD: Added SoftwareApplication to target high-CTR "Tool" queries */}
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            url: "https://www.quickpronounce.site/",
-            name: "QuickPronounce",
-            description:
-              "QuickPronounce is a free pronunciation tool offering audio in 4 English accents (AmE, BrE, InE, AuE) with IPA phonetic transcription.",
-            potentialAction: {
-              "@type": "SearchAction",
-              target:
-                "https://www.quickpronounce.site/search?q={search_term_string}",
-              "query-input": "required name=search_term_string",
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              url: "https://www.quickpronounce.site/",
+              name: "QuickPronounce",
+              potentialAction: {
+                "@type": "SearchAction",
+                target:
+                  "https://www.quickpronounce.site/search?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
             },
-          })}
+            {
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "QuickPronounce",
+              operatingSystem: "Any",
+              applicationCategory: "EducationalApplication",
+              featureList:
+                "Audio pronunciation, Multiple accents (AmE, BrE, InE, AuE), IPA Phonetics",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+              },
+            },
+          ])}
         </script>
       </Helmet>
 
@@ -420,8 +392,6 @@ const Home = () => {
           <SpeedInsights />
         </Suspense>
       )}
-
-      {/* Header removed - now in App.js */}
 
       {isMobileMenuOpen && <MobileMenu />}
 
@@ -456,7 +426,7 @@ const Home = () => {
             getPronunciation={getPronunciation}
             toggleFavorite={togglers.favorite}
             isFavorite={isFavorite}
-            isPlaying={isPlaying} // PASS DOWN
+            isPlaying={isPlaying}
           />
         </div>
 
@@ -467,11 +437,27 @@ const Home = () => {
           word={word}
         />
       </main>
+
+      {/* SEO BOOST: Visible keyword anchors for high-impression accent queries */}
+      <div
+        className="accent-seo-anchor"
+        style={{
+          textAlign: "center",
+          marginTop: "1rem",
+          marginBottom: "2rem",
+          fontSize: "0.95rem",
+          opacity: 0.7,
+        }}
+      >
+        Learn how to pronounce in <strong>American English</strong>,{" "}
+        <strong>British English</strong>, <strong>Indian English</strong>, and{" "}
+        <strong>Australian accents</strong>.
+      </div>
+
       <Suspense fallback={null}>
         {hasPronounced && <ExamplesList examples={examples} />}
       </Suspense>
 
-      {/* Lazy loaded components with placeholders */}
       <Suspense fallback={null}>
         <WordOfDay pronounce={pronounce} />
       </Suspense>
@@ -486,7 +472,9 @@ const Home = () => {
       >
         <MispronouncedWords pronounce={pronounce} />
       </Suspense>
+
       <div className="about-page-divider"></div>
+
       <Suspense
         fallback={
           <div
@@ -497,7 +485,9 @@ const Home = () => {
       >
         <QuickPronounceTips />
       </Suspense>
+
       <div className="about-page-divider"></div>
+
       <Suspense
         fallback={
           <div

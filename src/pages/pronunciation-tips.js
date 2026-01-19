@@ -151,7 +151,7 @@ const PronunciationBlog = () => {
                 }
               });
             },
-            { rootMargin: "200px" } // Start loading when within 200px of viewport
+            { rootMargin: "200px" }, // Start loading when within 200px of viewport
           );
 
           observer.observe(tipElement);
@@ -176,33 +176,27 @@ const PronunciationBlog = () => {
   return (
     <div className="pronunciation-blog">
       <Helmet>
-        {/* OPTIMIZED TITLE TAG (87 characters - Allowed for blogs) */}
+        {/* PRIMARY SEO METADATA */}
         <title>
-          10 Powerful Tips to Instantly Improve English Pronunciation (4 Accents
-          & IPA) | QuickPronounce
+          10 English Pronunciation Tips: Master Accents & Audio Clarity Fast
         </title>
-
-        {/* OPTIMIZED META DESCRIPTION (159 characters) */}
         <meta
           name="description"
-          content="Want to speak more clearly? These 10 expert-backed tips, including using IPA and understanding 4 accents, will help you fix mistakes, reduce your accent, and boost confidence—fast!"
+          content="Improve your English pronunciation with 10 actionable tips. Learn how to use IPA, master word stress, and compare 4 accents with our free audio tool."
         />
-
-        {/* META KEYWORDS TAG REMOVED - NO SEO VALUE */}
-
         <link
           rel="canonical"
           href="https://www.quickpronounce.site/blog/pronunciation-tips"
         />
 
-        {/* OPTIMIZED OPEN GRAPH (for social media) */}
+        {/* OPEN GRAPH */}
         <meta
           property="og:title"
           content="10 Tips to Instantly Improve English Pronunciation (4 Accents & IPA)"
         />
         <meta
           property="og:description"
-          content="Master phonetics, stress patterns, and linking sounds! This guide covers 10 steps, emphasizing the use of 4 accents (AmE, BrE, InE, AuE) and IPA for faster results."
+          content="Want to speak clearly? Master phonetics, stress patterns, and linking sounds with our 10-step guide and interactive audio tools."
         />
         <meta
           property="og:image"
@@ -213,25 +207,42 @@ const PronunciationBlog = () => {
           content="https://www.quickpronounce.site/blog/pronunciation-tips"
         />
         <meta property="og:type" content="article" />
-        <meta property="og:site_name" content="QuickPronounce" />
 
-        {/* OPTIMIZED TWITTER CARD */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="10 Tips to Instantly Improve English Pronunciation (4 Accents & IPA)"
-        />
-        <meta
-          name="twitter:description"
-          content="Fix pronunciation mistakes and sound fluent in English fast! See 10 powerful tips, focusing on IPA and practicing all 4 English accents."
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.quickpronounce.site/images/quickpronounce-twitter.jpg"
-        />
-        <meta name="twitter:site" content="@quickpronounce" />
+        {/* FAQ SCHEMA: Optimized for 'How-to' Reach */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "How can I improve my English pronunciation fast?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "To improve quickly, focus on mastering the IPA (phonetic alphabet), practicing word stress, and using an audio tool to compare your speech with native accents like American or British.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What is the best tool to check English pronunciation online?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "QuickPronounce is a free tool that provides instant audio in multiple accents and IPA transcriptions to help you verify the correct pronunciation of any word.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How do I know if I'm pronouncing a word correctly?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "The most effective method is to record yourself and compare it against native audio. Paying attention to the IPA phonetic symbols will also guide you on the exact mouth movements and stress patterns required.",
+                },
+              },
+            ],
+          })}
+        </script>
 
-        {/* JSON-LD Structured Data (Minor Update for SEO/Brand) */}
+        {/* ARTICLE SCHEMA */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -239,17 +250,16 @@ const PronunciationBlog = () => {
             headline:
               "10 Powerful Tips to Instantly Improve Your English Pronunciation",
             description:
-              "Boost your English speaking skills with 10 actionable tips, focusing on IPA, stress patterns, and learning the 4 main global accents.",
-            url: "https://www.quickpronounce.site/blog/pronunciation-tips",
+              "A comprehensive guide to mastering English sounds using IPA, native audio comparison, and accent training.",
             author: {
               "@type": "Person",
-              name: "QuickPronounce Team",
+              name: "Amit Kumar Sharma",
             },
             publisher: {
               "@type": "Organization",
               name: "QuickPronounce",
             },
-            // Ensure datePublished and dateModified are included here if available
+            datePublished: "2025-05-20",
           })}
         </script>
       </Helmet>

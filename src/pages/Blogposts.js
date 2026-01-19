@@ -12,30 +12,29 @@ const blogPostsData = [
     id: 1,
     title: "How to Pronounce the 50 Most Mispronounced English Words",
     description:
-      'Master tricky pronunciations with our expert guide and never say "nucular" again!',
+      "Master tricky English pronunciation with our expert audio guide. Learn to say difficult words correctly and never make common mistakes again!",
     imageUrl: mispronouncedWordsImage,
     date: "April 25, 2025",
-    category: "Language Learning",
+    category: "Pronunciation Guide",
     readTime: "8 min read",
     link: "/blog/pronunciation-guide",
   },
   {
     id: 2,
-    title: "10 Proven Tips to Perfect Your English Pronunciation",
+    title: "10 Tips to Perfect Your English Pronunciation & Audio Clarity",
     description:
-      "Improve your English pronunciation with 10 actionable tips on phonetics, intonation, and stress patterns. Start mastering your speaking skills today!",
+      "Improve your speaking skills with 10 actionable tips on phonetics, word stress, and intonation. Perfect for ESL learners wanting to sound more natural.",
     imageUrl: tenTipsImage,
     date: "May 20, 2025",
-    category: "Language Learning",
+    category: "Learning Tips",
     readTime: "7 min read",
     link: "/blog/pronunciation-tips",
   },
   {
     id: 3,
-    title:
-      "American vs. British Pronunciation: The 4 Sound Rules That Explain Everything",
+    title: "American vs. British Pronunciation: Audio & Accent Sound Rules",
     description:
-      "Master the 4 fundamental sound differences between American and British English. Complete guide with IPA, audio examples, and practice strategies for learners.",
+      "Compare American vs. British accent differences with real audio examples. Master the 4 fundamental rules of rhoticity and vowel shifts.",
     imageUrl: AmeVsBreIMG,
     date: "October 28, 2025",
     category: "Accent Training",
@@ -44,22 +43,20 @@ const blogPostsData = [
   },
   {
     id: 4,
-    title:
-      "The Ultimate Guide to IPA: Read Phonetic Transcriptions & Master English Pronunciation",
+    title: "The Ultimate IPA Guide: Master Phonetic Pronunciation Symbols",
     description:
-      "Decode the International Phonetic Alphabet (IPA) for English. Learn the key symbols, master vowel and consonant sounds, and use QuickPronounce to instantly check any word's IPA.",
+      "Learn to read the International Phonetic Alphabet (IPA). Decode phonetic transcriptions and use QuickPronounce to check the IPA of any English word.",
     imageUrl: IPA_img,
     date: "December 14, 2025",
-    category: "IPA Guide",
+    category: "Phonetics",
     readTime: "8 min read",
     link: "/blog/IPA-guide",
   },
   {
     id: 5,
-    title:
-      "Silent Letters in English: Complete Pronunciation Guide for Learners & Native Speakers",
+    title: "Silent Letters in English: Audio Pronunciation Rules for Learners",
     description:
-      "Master 50+ commonly mispronounced words with silent letters. Learn pronunciation rules backed by IPA (International Phonetic Alphabet) and speak with confidence.",
+      "Master 50+ words with silent letters. Learn the pronunciation rules for silent 'K', 'B', and 'T' backed by IPA phonetic guides.",
     imageUrl: silentLettersImage,
     date: "January 9, 2026",
     category: "Pronunciation Guide",
@@ -69,79 +66,67 @@ const blogPostsData = [
 ];
 
 const BlogPosts = () => {
+  // ITEMLIST SCHEMA: Helps Google see this as a list of high-value articles
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: blogPostsData.map((post, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `https://www.quickpronounce.site${post.link}`,
+      name: post.title,
+    })),
+  };
+
   return (
     <div className="blog-posts-page">
       <Helmet>
-        {/* OPTIMIZED TITLE TAG (87 characters) */}
         <title>
-          QuickPronounce Blog: Pronunciation Tips, 4 Accents, IPA Guides & ESL
-          Help
+          QuickPronounce Blog: English Pronunciation Guides & Accent Tips
         </title>
-
-        {/* OPTIMIZED META DESCRIPTION (159 characters) */}
         <meta
           name="description"
-          content="Improve your English with expert pronunciation tips, accent guides (AmE, BrE, InE, AuE), phonetics tutorials, and free ESL resources. Explore must-read blogs on QuickPronounce."
+          content="Expert blog posts on American vs British accents, IPA phonetic guides, and audio pronunciation tips. Improve your English speaking skills with QuickPronounce."
         />
-
-        {/* META KEYWORDS TAG REMOVED - NO SEO VALUE */}
-
         <link rel="canonical" href="https://www.quickpronounce.site/blog" />
 
-        {/* OPTIMIZED OPEN GRAPH (for social media) */}
+        {/* OPEN GRAPH */}
         <meta
           property="og:title"
-          content="QuickPronounce Blog: Pronunciation Tips & Accent Hacks for Clearer English"
+          content="QuickPronounce Blog: Accent Hacks & Audio Guides"
         />
         <meta
           property="og:description"
-          content="Want to speak English clearly? Explore expert blog posts on pronunciation, 4-accent hacks, and IPA phonetics tips — only on QuickPronounce."
-        />
-        <meta
-          property="og:image"
-          content="https://www.quickpronounce.site/images/quickpronounce-blog-banner.jpg"
+          content="Master English sounds with our deep-dive guides on phonetics, silent letters, and regional accents."
         />
         <meta
           property="og:url"
           content="https://www.quickpronounce.site/blog"
         />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="QuickPronounce" />
+        <meta property="og:type" content="blog" />
 
-        {/* OPTIMIZED TWITTER CARD */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="QuickPronounce Blog: Pronunciation Tips & Accent Hacks"
-        />
-        <meta
-          name="twitter:description"
-          content="Learn how to pronounce English better. Read top tips, expert guides, and accent improvement blogs at QuickPronounce."
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.quickpronounce.site/images/quickpronounce-blog-banner.jpg"
-        />
-        <meta name="twitter:site" content="@quickpronounce" />
-
-        {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            url: "https://www.quickpronounce.site/blog",
-            name: "QuickPronounce Blog: Pronunciation Tips, 4 Accents, IPA Guides & ESL Help",
-            description:
-              "The QuickPronounce Blog offers pronunciation tips, 4-accent improvement guides, phonetics explanations, and ESL resources to help you speak English more clearly and confidently.",
-          })}
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Blog",
+              name: "QuickPronounce Pronunciation Blog",
+              description:
+                "Guides and tips for mastering English accents and phonetics.",
+              url: "https://www.quickpronounce.site/blog",
+            },
+            itemListSchema,
+          ])}
         </script>
       </Helmet>
 
       <header className="blog-header">
         <div className="container">
-          <h1>Our Latest Blog Posts</h1>
+          <h1>English Pronunciation & Accent Blog</h1>
           <p className="subtitle">
-            Stay updated with our expert insights and helpful guides.
+            Master <strong>phonetic transcription</strong>, explore{" "}
+            <strong>American vs British audio</strong>, and perfect your
+            speaking skills.
           </p>
         </div>
       </header>
@@ -150,10 +135,17 @@ const BlogPosts = () => {
         <section className="blog-grid-section">
           <div className="blog-grid">
             {blogPostsData.map((post) => (
-              <a href={post.link} key={post.id} className="blog-card">
+              <a
+                href={post.link}
+                key={post.id}
+                className="blog-card"
+                aria-label={`Read more about ${post.title}`}
+              >
                 <div
                   className="blog-card-image"
                   style={{ backgroundImage: `url(${post.imageUrl})` }}
+                  role="img"
+                  aria-label={post.title}
                 ></div>
                 <div className="blog-card-content">
                   <div className="blog-card-meta">
