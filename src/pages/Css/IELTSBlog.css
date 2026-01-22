@@ -1,0 +1,203 @@
+/* IELTSBlog.css - Scoped with 'ib-' prefix to avoid conflicts */
+
+.ib-page-wrapper {
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  color: var(--text-primary);
+}
+
+.ib-article-container {
+  max-width: 64rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  background-color: var(--bg-primary);
+  padding: 4rem;
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+}
+
+.ib-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.ib-category {
+  display: inline-block;
+  background: var(--primary-gradient);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ib-main-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.ib-meta {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.ib-placeholder-img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  margin: 2.5rem 0;
+  display: block;
+}
+
+.ib-section {
+  margin-bottom: 3.5rem;
+}
+
+.ib-section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.ib-sub-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--text-primary);
+}
+
+.ib-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.ib-highlight-box {
+  background-color: var(--accent-bg);
+  border-left: 5px solid var(--primary);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  margin: 2.5rem 0;
+}
+
+.ib-highlight-title {
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.ib-word-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.ib-word-card {
+  background-color: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.ib-word-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.ib-word-term {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.ib-word-ipa {
+  font-family: monospace;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.ib-list {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.ib-list-item {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.ib-cta-box {
+  background: var(--primary-gradient);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  color: white;
+  margin-top: 5rem;
+}
+
+.ib-cta-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.ib-cta-btn {
+  display: inline-block;
+  background-color: white;
+  color: var(--primary);
+  padding: 1rem 2.5rem;
+  border-radius: 3rem;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 1.5rem;
+  transition: var(--transition);
+}
+
+.ib-cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 768px) {
+  .ib-article-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .ib-main-title {
+    font-size: 2rem;
+  }
+
+  .ib-section-title {
+    font-size: 1.6rem;
+  }
+
+  .ib-placeholder-img {
+    max-height: 250px;
+  }
+}
+.ib-section p strong {
+  color: var(--text-primary);
+}

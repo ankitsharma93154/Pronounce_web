@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[390],{3390:(e,p,i)=>{e.exports=i.p+"static/media/IELTS_header.263fef7d8b674304203e.webp"}}]);

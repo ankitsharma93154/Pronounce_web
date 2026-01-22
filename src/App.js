@@ -14,6 +14,8 @@ const PronunciationComparison = lazy(() => import("./pages/AmericanVsBritish"));
 const SilentKillers = lazy(() => import("./pages/SilentLetters"));
 const IPA_GUIDE = lazy(() => import("./pages/IPA_Guide"));
 const BlogPosts = lazy(() => import("./pages/Blogposts"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const IELTSBlog = lazy(() => import("./pages/IELTSBlog.js"));
 // Loading component
 const Loading = () => <div className="loading">Loading...</div>;
 
@@ -40,6 +42,7 @@ const App = () => {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<AboutPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/blog" element={<BlogPosts />} />
             <Route
@@ -56,6 +59,7 @@ const App = () => {
             />
             <Route path="/blog/IPA-guide" element={<IPA_GUIDE />} />
             <Route path="/blog/SilentLetters" element={<SilentKillers />} />
+            <Route path="/blog/ielts" element={<IELTSBlog />} />
           </Routes>
         </Suspense>
 

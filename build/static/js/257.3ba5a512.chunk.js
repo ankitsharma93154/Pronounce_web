@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[257],{9257:(e,c,i)=>{e.exports=i.p+"static/media/IELTS_stress_reduction.3a4e5be6444c50213e11.webp"}}]);

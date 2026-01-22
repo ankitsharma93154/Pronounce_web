@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[915],{8915:(e,c,i)=>{e.exports=i.p+"static/media/vowel_shift.fce73c394a4b15e1b6f6.webp"}}]);

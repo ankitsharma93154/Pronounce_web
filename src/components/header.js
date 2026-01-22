@@ -30,7 +30,7 @@ const Header = () => {
     if (metaThemeColor) {
       metaThemeColor.setAttribute(
         "content",
-        isDarkMode ? "#1a1a1a" : "#ffffff"
+        isDarkMode ? "#1a1a1a" : "#ffffff",
       );
     }
     return () => document.body.classList.remove("dark");
@@ -58,6 +58,9 @@ const Header = () => {
           </Link>
           <Link to="/blog" className="nav-link">
             Blog
+          </Link>
+          <Link to="/privacy-policy" className="nav-link">
+            Privacy Policy
           </Link>
         </nav>
 

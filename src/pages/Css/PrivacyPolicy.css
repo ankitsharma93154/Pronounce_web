@@ -1,0 +1,120 @@
+/* PrivacyPolicy.css - Scoped with distinct classes to avoid conflicts */
+
+.pp-page-wrapper {
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  color: var(--text-primary);
+}
+
+.pp-content-container {
+  max-width: 64rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  background-color: var(--bg-primary);
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+}
+
+.pp-main-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.pp-last-updated {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 3rem;
+  display: block;
+}
+
+.pp-section {
+  margin-bottom: 2.5rem;
+}
+
+.pp-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pp-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.pp-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.pp-list-item {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.pp-list-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.pp-highlight-box {
+  background-color: var(--accent-bg);
+  border-left: 4px solid var(--primary);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.pp-highlight-text {
+  color: var(--accent-fg);
+  font-weight: 500;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.pp-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.pp-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .pp-page-wrapper {
+    padding: 2rem 1rem;
+  }
+
+  .pp-content-container {
+    padding: 1.5rem;
+  }
+
+  .pp-main-title {
+    font-size: 1.8rem;
+  }
+}

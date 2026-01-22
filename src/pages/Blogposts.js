@@ -6,6 +6,7 @@ import tenTipsImage from "../images/header.jpg";
 import AmeVsBreIMG from "../images/AmeVsBre_thumbnail.webp";
 import IPA_img from "../images/IPA_GUIDE_img.webp";
 import silentLettersImage from "../images/silent_letters_intro.webp";
+import IELTS_header from "../images/IELTS_header.webp";
 
 const blogPostsData = [
   {
@@ -62,6 +63,18 @@ const blogPostsData = [
     category: "Pronunciation Guide",
     readTime: "10 min read",
     link: "/blog/SilentLetters",
+  },
+  {
+    id: 6,
+    title:
+      "Mastering IELTS Speaking Pronunciation: How to Reach a Band 9 Without Sounding 'Fake'",
+    description:
+      "Achieve Band 9 in IELTS Speaking with expert pronunciation tips. Learn clarity, stress, and connected speech techniques for natural fluency.",
+    imageUrl: IELTS_header,
+    date: "January 22, 2026",
+    category: "Exam Preparation",
+    readTime: "12–14 min read",
+    link: "/blog/ielts",
   },
 ];
 

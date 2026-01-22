@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[240],{240:(e,i,p)=>{e.exports=p.p+"static/media/silent_letters_rules.335d7b0e0caadad7be05.webp"}}]);
