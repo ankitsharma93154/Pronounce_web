@@ -22,6 +22,7 @@ const FeaturesPage = lazy(() => import("../components/features"));
 const MispronouncedWords = lazy(() => import("../components/mispronounce"));
 const WordOfDay = lazy(() => import("../components/wordOfDay"));
 const QuickPronounceTips = lazy(() => import("../components/tips"));
+const SupportBanner = lazy(() => import("../components/SupportBanner"));
 
 // Lazy load analytics components
 const Analytics =
@@ -397,6 +398,7 @@ const Home = () => {
 
       <main className="main container" id="home">
         {!hasPronounced && <Hero />}
+        {hasPronounced && <SupportBanner show={true} />}
 
         <div className="interface-grid">
           <InputCard

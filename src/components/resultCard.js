@@ -26,7 +26,7 @@ const ResultsCard = memo(
             Enter a word and click Pronounce to hear it.
           </p>
           <div className="social-cred-subtle">
-            🌍 Over <strong>5,000 learners</strong> from 80+ countries improved
+            🌍 Over <strong>10,000 learners</strong> from 80+ countries improved
             their pronunciation here last month.
           </div>
         </div>
@@ -41,7 +41,7 @@ const ResultsCard = memo(
         />
       )}
     </div>
-  )
+  ),
 );
 
 export default ResultsCard;
