@@ -4,7 +4,8 @@ const DISMISS_DAYS = 7;
 const DISMISS_KEY = "supportBannerDismissedAt";
 
 const SupportBanner = ({ show }) => {
-  const [visible, setVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     if (!show) return;
@@ -15,23 +16,29 @@ const SupportBanner = ({ show }) => {
       const daysPassed =
         (Date.now() - Number(dismissedAt)) / (1000 * 60 * 60 * 24);
 
-      if (daysPassed < DISMISS_DAYS) {
-        return;
-      }
+      if (daysPassed < DISMISS_DAYS) return;
     }
 
-    setVisible(true);
-  }, [show]);
+    setMounted(true);
 
-  if (!visible) return null;
+    // allow DOM paint, then animate
+    requestAnimationFrame(() => {
+      setAnimate(true);
+    });
+  }, [show]);
 
   const handleClose = () => {
     localStorage.setItem(DISMISS_KEY, Date.now().toString());
-    setVisible(false);
+    setAnimate(false);
+
+    // wait for exit animation
+    setTimeout(() => setMounted(false), 1000);
   };
 
+  if (!mounted) return null;
+
   return (
-    <div className="support-banner">
+    <div className={`support-banner ${animate ? "is-visible" : ""}`}>
       <div className="support-banner__content">
         <span className="support-banner__icon">❤️</span>
         <span className="support-banner__text">
