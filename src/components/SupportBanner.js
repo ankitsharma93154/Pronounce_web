@@ -55,6 +55,11 @@ const SupportBanner = ({ show }) => {
           target="_blank"
           rel="noopener noreferrer"
           className="support-banner__button"
+          onClick={() => {
+            if (window.umami) {
+              window.umami.track("support_button_click");
+            }
+          }}
         >
           Support
         </a>
