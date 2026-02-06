@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const DISMISS_DAYS = 7;
 const DISMISS_KEY = "supportBannerDismissedAt";
@@ -6,6 +6,9 @@ const DISMISS_KEY = "supportBannerDismissedAt";
 const SupportBanner = ({ show }) => {
   const [mounted, setMounted] = useState(false);
   const [animate, setAnimate] = useState(false);
+
+  // prevents double-counting views
+  const hasTrackedView = useRef(false);
 
   useEffect(() => {
     if (!show) return;
@@ -21,9 +24,16 @@ const SupportBanner = ({ show }) => {
 
     setMounted(true);
 
-    // allow DOM paint, then animate
+    // allow DOM paint, then animate + track view
     requestAnimationFrame(() => {
       setAnimate(true);
+
+      if (!hasTrackedView.current && window.umami) {
+        window.umami.track("support_banner_view", {
+          location: "support_banner",
+        });
+        hasTrackedView.current = true;
+      }
     });
   }, [show]);
 
@@ -57,7 +67,9 @@ const SupportBanner = ({ show }) => {
           className="support-banner__button"
           onClick={() => {
             if (window.umami) {
-              window.umami.track("support_button_click");
+              window.umami.track("support_button_click", {
+                location: "support_banner",
+              });
             }
           }}
         >
