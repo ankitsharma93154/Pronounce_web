@@ -10,6 +10,7 @@ const ResultsContent = memo(
     toggleFavorite,
     isFavorite,
     isPlaying,
+    syllables,
   }) => (
     <div className="results-content">
       <PhoneticSection
@@ -18,10 +19,11 @@ const ResultsContent = memo(
         toggleFavorite={toggleFavorite}
         isFavorite={isFavorite}
         isPlaying={isPlaying}
+        syllables={syllables}
       />
       <MeaningsSection meanings={meanings} />
     </div>
-  )
+  ),
 );
 
 export default ResultsContent;

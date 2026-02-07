@@ -73,6 +73,7 @@ const Home = () => {
     synonyms: [],
     antonyms: [],
     showSynonyms: true,
+    syllables: [],
   });
 
   const audioRef = useRef(new Audio());
@@ -93,6 +94,7 @@ const Home = () => {
     isFavorite,
     synonyms,
     antonyms,
+    syllables,
   } = state;
 
   const updateState = useCallback((updates) => {
@@ -126,6 +128,7 @@ const Home = () => {
           examples: cachedData.examples,
           synonyms: cachedData.synonyms,
           antonyms: cachedData.antonyms,
+          syllables: cachedData.syllables,
           hasPronounced: true,
           isLoading: false,
         });
@@ -180,6 +183,7 @@ const Home = () => {
           : [{ text: "No examples available for this word." }];
       const synonyms = Array.isArray(data.synonyms) ? data.synonyms : [];
       const antonyms = Array.isArray(data.antonyms) ? data.antonyms : [];
+      const syllables = Array.isArray(data.syllables) ? data.syllables : [];
 
       let audioUrl = null;
       if (data.audioContent) {
@@ -207,6 +211,7 @@ const Home = () => {
         examples,
         synonyms,
         antonyms,
+        syllables,
         audioUrl,
       };
 
@@ -216,6 +221,7 @@ const Home = () => {
         examples,
         synonyms,
         antonyms,
+        syllables,
         hasPronounced: true,
       });
     } catch (error) {
@@ -429,6 +435,7 @@ const Home = () => {
             toggleFavorite={togglers.favorite}
             isFavorite={isFavorite}
             isPlaying={isPlaying}
+            syllables={syllables}
           />
         </div>
 

@@ -480,6 +480,46 @@ body.dark {
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--border-color);
 }
+/* Syllables */
+.syllable-display {
+  margin-top: 0.75rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+.syllables-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+.syllables-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.syllable {
+  transition:
+    color var(--transition),
+    font-weight var(--transition);
+}
+.syllable.stress-0 {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+.syllable.stress-2 {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.syllable.stress-1 {
+  color: var(--primary);
+  font-weight: 700;
+}
+.syllable-separator {
+  margin: 0 0.2rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+}
 .meaning-item,
 .phonetic-display {
   padding: 1rem;
@@ -489,7 +529,6 @@ body.dark {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
 }
 .section-title {
   color: var(--text);
