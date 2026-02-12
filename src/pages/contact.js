@@ -122,8 +122,8 @@ const AboutPage = () => {
               <p className="about-page-text">
                 Clear communication relies on understanding regional variations.
                 Comparing
-                <strong>American, British, Indian, and Australian</strong> audio
-                helps learners adapt to global standards and builds
+                <strong> American, British, Indian, and Australian</strong>{" "}
+                audio helps learners adapt to global standards and builds
                 conversational confidence in any professional setting.
               </p>
             </div>

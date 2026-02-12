@@ -54,7 +54,8 @@ const SupportBanner = ({ show }) => {
         <span className="support-banner__text">
           <strong>Support QuickPronounce</strong>
           <span className="support-banner__sub">
-            Free and ad-free. Support helps cover hosting and maintenance.
+            QuickPronounce stays free, independent, and ad-free. If it helped
+            you today, consider supporting.
           </span>
         </span>
       </div>
