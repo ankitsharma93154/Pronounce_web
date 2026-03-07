@@ -1,0 +1,120 @@
+/* TermsAndConditions.css - Scoped with distinct classes to avoid conflicts */
+
+.tc-page-wrapper {
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  color: var(--text-primary);
+}
+
+.tc-content-container {
+  max-width: 64rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  background-color: var(--bg-primary);
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+}
+
+.tc-main-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.tc-last-updated {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 3rem;
+  display: block;
+}
+
+.tc-section {
+  margin-bottom: 2.5rem;
+}
+
+.tc-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tc-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.tc-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.tc-list-item {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.tc-list-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.tc-highlight-box {
+  background-color: var(--accent-bg);
+  border-left: 4px solid var(--primary);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.tc-highlight-text {
+  color: var(--accent-fg);
+  font-weight: 500;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.tc-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.tc-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .tc-page-wrapper {
+    padding: 2rem 1rem;
+  }
+
+  .tc-content-container {
+    padding: 1.5rem;
+  }
+
+  .tc-main-title {
+    font-size: 1.8rem;
+  }
+}

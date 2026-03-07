@@ -6,7 +6,8 @@ import Home from "./pages/Home"; // Direct import for Home
 
 // Lazy load only secondary pages
 const FAQPage = lazy(() => import("./pages/faqs"));
-const AboutPage = lazy(() => import("./pages/contact"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Contact = lazy(() => import("./pages/contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const PronunciationBlog = lazy(() => import("./pages/pronunciation-tips"));
 const PronunciationGuide = lazy(() => import("./pages/pronunciation-guide"));
@@ -15,6 +16,7 @@ const SilentKillers = lazy(() => import("./pages/SilentLetters"));
 const IPA_GUIDE = lazy(() => import("./pages/IPA_Guide"));
 const BlogPosts = lazy(() => import("./pages/Blogposts"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
 const IELTSBlog = lazy(() => import("./pages/IELTSBlog.js"));
 // Loading component
 const Loading = () => <div className="loading">Loading...</div>;
@@ -40,9 +42,13 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/faq" element={<FAQPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<AboutPage />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route
+              path="/terms-and-conditions"
+              element={<TermsAndConditions />}
+            />
             <Route path="*" element={<NotFound />} />
             <Route path="/blog" element={<BlogPosts />} />
             <Route

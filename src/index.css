@@ -961,11 +961,48 @@ body.dark .accent-tag {
 }
 .footer .container {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;
   padding: 0 1rem;
+  gap: 2rem;
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-separator {
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+.footer-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.footer-link:hover {
+  color: var(--primary);
+}
+.footer-copyright {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.footer-links a:hover {
+  color: var(--primary);
 }
 @keyframes spin {
   to {

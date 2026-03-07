@@ -50,6 +50,9 @@ const Header = () => {
           <Link to="/" className="nav-link">
             Home
           </Link>
+          <Link to="/about" className="nav-link">
+            About
+          </Link>
           <Link to="/contact" className="nav-link">
             Contact
           </Link>
@@ -58,9 +61,6 @@ const Header = () => {
           </Link>
           <Link to="/blog" className="nav-link">
             Blog
-          </Link>
-          <Link to="/privacy-policy" className="nav-link">
-            Privacy Policy
           </Link>
         </nav>
 
@@ -87,6 +87,13 @@ const Header = () => {
           <nav className="mobile-nav">
             <Link to="/" className="mobile-nav-link" onClick={toggleMobileMenu}>
               Home
+            </Link>
+            <Link
+              to="/about"
+              className="mobile-nav-link"
+              onClick={toggleMobileMenu}
+            >
+              About
             </Link>
             <Link
               to="/contact"

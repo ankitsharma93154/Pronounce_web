@@ -134,7 +134,7 @@ const InputCard = memo(
           case "ArrowDown":
             e.preventDefault();
             setSelectedSuggestionIndex((prev) =>
-              prev < suggestions.length - 1 ? prev + 1 : prev
+              prev < suggestions.length - 1 ? prev + 1 : prev,
             );
             break;
           case "ArrowUp":
@@ -224,7 +224,7 @@ const InputCard = memo(
               if (word && suggestions.length > 0) {
                 // Only show suggestions if the word doesn't exactly match any suggestion
                 const exactMatch = suggestions.some(
-                  (s) => s.toLowerCase() === word.toLowerCase()
+                  (s) => s.toLowerCase() === word.toLowerCase(),
                 );
                 if (!exactMatch) {
                   setShowSuggestions(true);
@@ -486,7 +486,7 @@ const InputCard = memo(
         </div>
       </div>
     );
-  }
+  },
 );
 
 export default InputCard;

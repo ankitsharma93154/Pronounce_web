@@ -1,26 +1,19 @@
 import React from "react";
-import {
-  Mail,
-  Linkedin,
-  Twitter,
-  Palette,
-  Type,
-  ExternalLink,
-} from "lucide-react";
+import { Mail, Linkedin, Twitter } from "lucide-react";
 import "./Css/AboutPage.css";
 import { Helmet } from "react-helmet";
 
-const AboutPage = () => {
+const Contact = () => {
   return (
-    <div className="about-page-container" id="about">
+    <div className="about-page-container" id="contact-page">
       <Helmet>
-        {/* OPTIMIZED TITLE TAG (Targeting 'Support' and 'Accents' keywords) */}
-        <title>Contact QuickPronounce: English Accent Support & Feedback</title>
+        {/* OPTIMIZED TITLE TAG */}
+        <title>Contact QuickPronounce | Support & English Accent Help</title>
 
-        {/* OPTIMIZED META DESCRIPTION (Including keywords: Audio, IPA, Accents) */}
+        {/* OPTIMIZED META DESCRIPTION */}
         <meta
           name="description"
-          content="Get support for our English pronunciation tool. Contact us regarding audio in 4 accents, IPA transcriptions, or feedback on how to improve your fluency."
+          content="Reach QuickPronounce for help with English pronunciation, audio accents, or IPA tips. Free support for learners worldwide."
         />
 
         <link rel="canonical" href="https://www.quickpronounce.site/contact" />
@@ -39,13 +32,17 @@ const AboutPage = () => {
           content="https://www.quickpronounce.site/images/quickpronounce-contact-banner.jpg"
         />
         <meta
+          property="og:image:alt"
+          content="QuickPronounce contact support page banner"
+        />
+        <meta
           property="og:url"
           content="https://www.quickpronounce.site/contact"
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="QuickPronounce" />
 
-        {/* JSON-LD Structured Data: Expanded to help Google understand the contact purpose */}
+        {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -57,165 +54,39 @@ const AboutPage = () => {
             mainEntity: {
               "@type": "Organization",
               name: "QuickPronounce",
+              url: "https://www.quickpronounce.site",
               email: "hello.quickpronounce@gmail.com",
+              contactType: "customer support",
+              sameAs: [
+                "https://twitter.com/AnkitKumar11451",
+                "https://www.linkedin.com/in/ankit-kumar-sharma-99698028a/",
+              ],
             },
           })}
         </script>
       </Helmet>
 
       <div className="about-page-inner">
-        {/* About Us Section */}
-        <section className="about-page-section">
-          <h2 className="about-page-section-title">
-            About Our Pronunciation Tool
-          </h2>
-          <div className="about-page-content">
-            <p className="about-page-section-text">
-              Welcome to <strong>QuickPronounce</strong> — a specialized web
-              tool designed for mastering{" "}
-              <strong>English pronunciation audio</strong> in seconds. Our
-              mission is to simplify the way global learners hear and understand
-              how to pronounce English words correctly across different regions.
-            </p>
-            <p className="about-page-section-text">
-              Built by a solo developer from India, this project addresses a
-              common gap: the need for instant{" "}
-              <strong>American vs. British accent comparison</strong>. We
-              provide clear audio and{" "}
-              <strong>IPA phonetic transcriptions</strong> to help you visualize
-              sounds before you speak.
-            </p>
-            <p className="about-page-section-text">
-              Whether you are an ESL student, a teacher, or a professional
-              preparing for an interview, QuickPronounce offers a fast,
-              reliable, and mobile-friendly solution to pronunciation
-              challenges.
-            </p>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <div className="about-page-features-grid">
-          {/* SEO Optimized List */}
-          <section className="about-page-feature">
-            <h3 className="about-page-feature-title">Pronunciation Features</h3>
-            <div className="about-page-feature-content">
-              <ul className="about-page-feature-list">
-                <li>
-                  Instant audio in <strong>4 major English accents</strong>
-                </li>
-                <li>
-                  Accurate <strong>IPA (Phonetic) transcriptions</strong>
-                </li>
-                <li>Daily common mispronounced words highlights</li>
-                <li>Free online dictionary with meanings and examples</li>
-              </ul>
-            </div>
-          </section>
-
-          {/* Why It Matters */}
-          <section className="about-page-feature">
-            <h3 className="about-page-feature-title">
-              Why Audio Accents Matter
-            </h3>
-            <div className="about-page-feature-content">
-              <p className="about-page-text">
-                Clear communication relies on understanding regional variations.
-                Comparing
-                <strong> American, British, Indian, and Australian</strong>{" "}
-                audio helps learners adapt to global standards and builds
-                conversational confidence in any professional setting.
-              </p>
-            </div>
-          </section>
-
-          {/* How It's Made */}
-          <section className="about-page-feature">
-            <h3 className="about-page-feature-title">Modern Technology</h3>
-            <div className="about-page-feature-content">
-              <p className="about-page-text">
-                QuickPronounce is a high-performance{" "}
-                <strong>React application</strong>. It utilizes advanced Speech
-                Synthesis APIs to deliver high-fidelity audio, optimized for
-                <strong>fast loading speeds</strong> even on slow mobile
-                networks.
-              </p>
-            </div>
-          </section>
-        </div>
-
-        <div className="about-page-divider"></div>
-
-        {/* Other Projects Section */}
-        <section className="about-page-section">
-          <h2 className="about-page-section-title">More Developer Tools</h2>
-          <div className="about-page-content">
-            <p className="about-page-section-text">
-              I build web tools designed to solve specific creative and
-              technical problems. Explore my other projects:
-            </p>
-          </div>
-
-          <div className="about-page-features-grid">
-            {/* ColorCura Project */}
-            <section className="about-page-feature">
-              <h3 className="about-page-feature-title">
-                <a
-                  href="https://colorcura.site"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link"
-                >
-                  <Palette size={20} />
-                  ColorCura
-                  <ExternalLink size={18} />
-                </a>
-              </h3>
-              <div className="about-page-feature-content">
-                <p className="about-page-text">
-                  A visual color palette generator with live UI previews and
-                  gradient tools for designers and MERN stack developers.
-                </p>
-              </div>
-            </section>
-
-            {/* LushFonts Project */}
-            <section className="about-page-feature">
-              <h3 className="about-page-feature-title">
-                <a
-                  href="https://lushfonts.site"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link"
-                >
-                  <Type size={20} />
-                  LushFonts
-                  <ExternalLink size={18} />
-                </a>
-              </h3>
-              <div className="about-page-feature-content">
-                <p className="about-page-text">
-                  Instantly generate fancy text and font styles for social media
-                  bios and creative design layouts.
-                </p>
-              </div>
-            </section>
-          </div>
-        </section>
-
         {/* Contact Section */}
         <section className="about-page-section" id="contact">
-          <h2 className="about-page-section-title">Contact & Support</h2>
+          <h1 className="about-page-section-title">Contact QuickPronounce</h1>
           <div className="about-page-content">
             <p className="about-page-section-text">
-              Have a feature request or need help with a specific pronunciation?
-              I am always looking for ways to improve the tool for the
-              community.
+              I’m always looking for ways to improve QuickPronounce for the
+              learning community. Have a feature request or need help with a
+              specific pronunciation? Reach out—I typically respond within 24
+              hours.
             </p>
             <p className="about-page-section-text">
-              Reach out via email or social media—I typically respond within 24
-              hours. Your feedback helps make QuickPronounce the best free
-              resource for English learners.
+              Your feedback helps make QuickPronounce the best free resource for
+              English learners worldwide.
+            </p>
+            <p className="about-page-section-text">
+              Have other questions? Check out our{" "}
+              <a href="/faq" className="faq-page-link">
+                FAQ page
+              </a>{" "}
+              for quick answers before reaching out.
             </p>
 
             <div className="about-page-contact-icons">
@@ -249,9 +120,43 @@ const AboutPage = () => {
             </div>
           </div>
         </section>
+
+        {/* Support Section */}
+        <section className="about-page-section" id="support">
+          <h2 className="about-page-section-title">Support QuickPronounce</h2>
+          <div className="about-page-content">
+            <p className="about-page-section-text">
+              QuickPronounce is a free tool built with passion for English
+              learners worldwide. Your support helps us maintain and improve the
+              service for everyone.
+            </p>
+            <p className="about-page-section-text">
+              If you find this tool helpful, consider supporting us through
+              Ko-fi. Every contribution, no matter how small, helps us continue
+              developing new features and maintaining the platform.
+            </p>
+
+            <div className="kofi-support-container">
+              <a
+                href="https://ko-fi.com/quickpronounce"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="kofi-support-link"
+                aria-label="Support QuickPronounce on Ko-fi"
+              >
+                <img
+                  src="https://storage.ko-fi.com/cdn/cup-border.png"
+                  alt="Ko-fi"
+                  className="kofi-image"
+                />
+                <span className="kofi-text">Support on Ko-fi</span>
+              </a>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
 };
 
-export default AboutPage;
+export default Contact;
