@@ -7,9 +7,9 @@ import AmeVsBreIMG from "../../images/AmeVsBre_thumbnail.webp";
 import IPA_img from "../../images/IPA_GUIDE_img.webp";
 import silentLettersImage from "../../images/silent_letters_intro.webp";
 import IELTS_header from "../../images/IELTS_header.webp";
-
-const placeholderThumb =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' fill='%23475569' font-size='42' text-anchor='middle' dominant-baseline='middle'%3EImage Placeholder%3C/text%3E%3C/svg%3E";
+import schwaThumb from "../../images/schwa_sound_infographic.webp";
+import edEndingsThumb from "../../images/ed_endings_decision_chart_high_res.webp";
+import connectedSpeechThumb from "../../images/connected_speech_infographic.webp";
 
 const blogPostsData = [
   {
@@ -85,7 +85,7 @@ const blogPostsData = [
       "Schwa Sound in English: The Relaxed Vowel That Makes You Sound Natural",
     description:
       "Learn the most common English vowel sound with practical examples, analogies, and a 5-minute daily drill.",
-    imageUrl: placeholderThumb,
+    imageUrl: schwaThumb,
     date: "March 9, 2026",
     category: "Pronunciation Guide",
     readTime: "9 min read",
@@ -96,7 +96,7 @@ const blogPostsData = [
     title: "How to Pronounce -ed Endings Without Guessing",
     description:
       "Master /t/, /d/, and /id/ past-tense endings with a simple rule system and quick speaking drills.",
-    imageUrl: placeholderThumb,
+    imageUrl: edEndingsThumb,
     date: "March 9, 2026",
     category: "Grammar + Pronunciation",
     readTime: "8 min read",
@@ -108,7 +108,7 @@ const blogPostsData = [
       "Connected Speech: Why Native English Sounds Fast and How to Train It",
     description:
       "Understand linking, elision, and assimilation with examples, analogies, and a repeatable 7-minute drill.",
-    imageUrl: placeholderThumb,
+    imageUrl: connectedSpeechThumb,
     date: "March 9, 2026",
     category: "Fluency Training",
     readTime: "11 min read",
@@ -116,12 +116,17 @@ const blogPostsData = [
   },
 ];
 
+const sortedBlogPostsData = [...blogPostsData].sort((a, b) => {
+  const dateDiff = new Date(b.date) - new Date(a.date);
+  return dateDiff !== 0 ? dateDiff : b.id - a.id;
+});
+
 const BlogPosts = () => {
   // ITEMLIST SCHEMA: Helps Google see this as a list of high-value articles
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    itemListElement: blogPostsData.map((post, index) => ({
+    itemListElement: sortedBlogPostsData.map((post, index) => ({
       "@type": "ListItem",
       position: index + 1,
       url: `https://www.quickpronounce.site${post.link}`,
@@ -185,19 +190,19 @@ const BlogPosts = () => {
       <main className="container blog-content">
         <section className="blog-grid-section">
           <div className="blog-grid">
-            {blogPostsData.map((post) => (
+            {sortedBlogPostsData.map((post) => (
               <a
                 href={post.link}
                 key={post.id}
                 className="blog-card"
                 aria-label={`Read more about ${post.title}`}
               >
-                <div
+                <img
                   className="blog-card-image"
-                  style={{ backgroundImage: `url(${post.imageUrl})` }}
-                  role="img"
-                  aria-label={post.title}
-                ></div>
+                  src={post.imageUrl}
+                  alt={post.title}
+                  loading="lazy"
+                />
                 <div className="blog-card-content">
                   <div className="blog-card-meta">
                     <span className="blog-card-category">{post.category}</span>

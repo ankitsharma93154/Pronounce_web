@@ -2,13 +2,24 @@ import React from "react";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
+import schwaInfographic from "../../images/schwa_sound_infographic.webp";
+import schwaRhythm from "../../images/schwa_sound_rythmn.webp";
 
-const placeholderStyle = {
-  padding: "14px",
-  border: "1px dashed #9aa4b2",
-  borderRadius: "10px",
-  background: "#f8fafc",
-  color: "#334155",
+const blogImageStyle = {
+  width: "100%",
+  maxWidth: "736px",
+  borderRadius: "16px",
+  display: "block",
+  margin: "16px auto",
+  border: "1px solid #e2e8f0",
+  boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
+  objectFit: "cover",
+};
+
+const imageCaptionStyle = {
+  textAlign: "center",
+  color: "#475569",
+  fontSize: "0.95rem",
   margin: "16px 0",
 };
 
@@ -22,6 +33,8 @@ const SchwaSoundGuide = () => {
     ogTitle: "Schwa Sound in English: Speak More Naturally",
     ogDescription:
       "Learn where schwa appears, why it matters, and how to practice it with short daily drills.",
+    ogImage:
+      "https://www.quickpronounce.site/images/schwa_sound_infographic.webp",
     ogType: "article",
     structuredData: {
       "@context": "https://schema.org",
@@ -86,11 +99,16 @@ const SchwaSoundGuide = () => {
         </p>
       </BlogSection>
 
-      <BlogSection title="Image Placeholder">
-        <div style={placeholderStyle}>
-          [Placeholder image: Mouth position for schwa / timeline graphic
-          showing stressed vs unstressed syllables]
-        </div>
+      <BlogSection title="Schwa Mouth and Stress Visual">
+        <img
+          src={schwaInfographic}
+          alt="Schwa mouth position and stressed versus unstressed syllable timeline"
+          style={blogImageStyle}
+          loading="lazy"
+        />
+        <p style={imageCaptionStyle}>
+          Schwa appears in unstressed syllables where the mouth stays relaxed.
+        </p>
       </BlogSection>
 
       <BlogSection title="What Schwa Sounds Like in Real Words">
@@ -212,10 +230,42 @@ const SchwaSoundGuide = () => {
         </p>
       </BlogSection>
 
-      <BlogSection title="Image Placeholder">
-        <div style={placeholderStyle}>
-          [Placeholder image: 20-word schwa practice table with stress marks and
-          audio icons]
+      <BlogSection title="20-Word Schwa Practice List">
+        <p>
+          Stress guide: <strong>CAPS</strong> = stressed syllable, and
+          <strong> (uh-)</strong> marks a schwa in an unstressed syllable.
+        </p>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, minmax(220px, 1fr))",
+            gap: "16px",
+          }}
+        >
+          <ul>
+            <li>(uh)-BOUT</li>
+            <li>(suh)-PORT</li>
+            <li>PROB-(uh)m</li>
+            <li>FAM-(uh)-lee</li>
+            <li>buh-NA-nuh</li>
+            <li>(tuh)-DAY</li>
+            <li>(uh)-CEPT</li>
+            <li>suh-GEST</li>
+            <li>(kuh)-NECT</li>
+            <li>(uh)-ROUND</li>
+          </ul>
+          <ul>
+            <li>(uh)-WAY</li>
+            <li>(uh)-BOVE</li>
+            <li>SYS-(tuh)m</li>
+            <li>EYE-(tuh)m</li>
+            <li>LES-(uh)n</li>
+            <li>CAM-(uh)-ruh</li>
+            <li>MEM-(uh)-ree</li>
+            <li>(uh)-GO</li>
+            <li>PHO-(tuh)-graph</li>
+            <li>CHOC-(uh)-lit</li>
+          </ul>
         </div>
       </BlogSection>
 
@@ -270,11 +320,17 @@ const SchwaSoundGuide = () => {
         </p>
       </BlogSection>
 
-      <BlogSection title="Image Placeholder">
-        <div style={placeholderStyle}>
-          [Placeholder image: sentence rhythm waveform showing stressed peaks
-          and reduced schwa valleys]
-        </div>
+      <BlogSection title="Rhythm Waveform Visual">
+        <img
+          src={schwaRhythm}
+          alt="Sentence rhythm waveform with stressed peaks and schwa valleys"
+          style={blogImageStyle}
+          loading="lazy"
+        />
+        <p style={imageCaptionStyle}>
+          Strong syllables form peaks, while reduced schwa syllables form
+          valleys.
+        </p>
       </BlogSection>
 
       <BlogSection title="Quick Diagnostic: Are You Using Schwa Enough?">

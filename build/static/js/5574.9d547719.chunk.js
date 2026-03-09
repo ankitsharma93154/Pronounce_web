@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[5574],{5574:(e,c,p)=>{e.exports=p.p+"static/media/connected_speech_infographic.28f62de0275bb1f928b0.webp"}}]);

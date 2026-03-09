@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[4736],{4736:(e,i,p)=>{e.exports=p.p+"static/media/schwa_sound_infographic.ed664d0eb92859aea7db.webp"}}]);

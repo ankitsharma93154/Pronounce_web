@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[1161],{1161:(e,i,c)=>{e.exports=c.p+"static/media/ed_endings_decision_chart_high_res.d4dd50cb3aa0b557b53e.webp"}}]);

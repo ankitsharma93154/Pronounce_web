@@ -2,13 +2,24 @@ import React from "react";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
+import edDecisionChart from "../../images/ed_endings_decision_chart_high_res.webp";
+import edReferenceTable from "../../images/ed_pronunciation_reference_table.webp";
 
-const placeholderStyle = {
-  padding: "14px",
-  border: "1px dashed #9aa4b2",
-  borderRadius: "10px",
-  background: "#f8fafc",
-  color: "#334155",
+const blogImageStyle = {
+  width: "100%",
+  maxWidth: "736px",
+  borderRadius: "16px",
+  display: "block",
+  margin: "16px auto",
+  border: "1px solid #e2e8f0",
+  boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
+  objectFit: "cover",
+};
+
+const imageCaptionStyle = {
+  textAlign: "center",
+  color: "#475569",
+  fontSize: "0.95rem",
   margin: "16px 0",
 };
 
@@ -22,6 +33,8 @@ const EdEndingsPronunciation = () => {
     ogTitle: "How to Pronounce -ed Endings Correctly",
     ogDescription:
       "Learn the /t/, /d/, and /id/ rules with clear examples and simple memory tricks.",
+    ogImage:
+      "https://www.quickpronounce.site/images/ed_endings_decision_chart_high_res.webp",
     ogType: "article",
     structuredData: {
       "@context": "https://schema.org",
@@ -73,11 +86,16 @@ const EdEndingsPronunciation = () => {
         </p>
       </BlogSection>
 
-      <BlogSection title="Image Placeholder">
-        <div style={placeholderStyle}>
-          [Placeholder image: 3-door decision chart for -ed endings (/t/, /d/,
-          /id/)]
-        </div>
+      <BlogSection title="-ed Decision Chart">
+        <img
+          src={edDecisionChart}
+          alt="Three-door decision chart for -ed endings /t/, /d/, and /id/"
+          style={blogImageStyle}
+          loading="lazy"
+        />
+        <p style={imageCaptionStyle}>
+          Use the final sound of the base verb to choose /t/, /d/, or /id/.
+        </p>
       </BlogSection>
 
       <BlogSection title="Rule With Examples">
@@ -125,11 +143,16 @@ const EdEndingsPronunciation = () => {
         </p>
       </BlogSection>
 
-      <BlogSection title="Image Placeholder">
-        <div style={placeholderStyle}>
-          [Placeholder image: color-coded table of voiceless and voiced final
-          consonants with sample verbs]
-        </div>
+      <BlogSection title="Reference Sound Table">
+        <img
+          src={edReferenceTable}
+          alt="Color-coded -ed pronunciation table with voiceless and voiced final sounds"
+          style={blogImageStyle}
+          loading="lazy"
+        />
+        <p style={imageCaptionStyle}>
+          Quick reference for voiceless, voiced, and /t/ /d/ ending categories.
+        </p>
       </BlogSection>
 
       <BlogSection title="Detailed Sound Map (With Common Verbs)">
@@ -244,13 +267,6 @@ const EdEndingsPronunciation = () => {
           <li>Repeat the weak category from your recording twice more.</li>
           <li>Use three verbs in a real story from your day.</li>
         </ol>
-      </BlogSection>
-
-      <BlogSection title="Image Placeholder">
-        <div style={placeholderStyle}>
-          [Placeholder image: 14-day practice calendar with checkboxes and daily
-          targets]
-        </div>
       </BlogSection>
 
       <BlogSection title="Micro Test">

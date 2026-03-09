@@ -2,13 +2,25 @@ import React from "react";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
+import connectedSpeechInfographic from "../../images/connected_speech_infographic.webp";
+import connectedSpeechComparison from "../../images/connected_speech_comparison.webp";
+import connectedSpeechRoutine from "../../images/connected_speech_routine.webp";
 
-const placeholderStyle = {
-  padding: "14px",
-  border: "1px dashed #9aa4b2",
-  borderRadius: "10px",
-  background: "#f8fafc",
-  color: "#334155",
+const blogImageStyle = {
+  width: "100%",
+  maxWidth: "736px",
+  borderRadius: "16px",
+  display: "block",
+  margin: "16px auto",
+  border: "1px solid #e2e8f0",
+  boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
+  objectFit: "cover",
+};
+
+const imageCaptionStyle = {
+  textAlign: "center",
+  color: "#475569",
+  fontSize: "0.95rem",
   margin: "16px 0",
 };
 
@@ -22,6 +34,8 @@ const ConnectedSpeechGuide = () => {
     ogTitle: "Connected Speech Guide for Natural English",
     ogDescription:
       "Practical connected speech training with examples, analogies, and speaking drills.",
+    ogImage:
+      "https://www.quickpronounce.site/images/connected_speech_infographic.webp",
     ogType: "article",
     structuredData: {
       "@context": "https://schema.org",
@@ -74,11 +88,16 @@ const ConnectedSpeechGuide = () => {
         </p>
       </BlogSection>
 
-      <BlogSection title="Image Placeholder">
-        <div style={placeholderStyle}>
-          [Placeholder image: train-car analogy diagram + arrows for linking,
-          elision, assimilation]
-        </div>
+      <BlogSection title="Connected Speech Visual Map">
+        <img
+          src={connectedSpeechInfographic}
+          alt="Connected speech train-car analogy showing linking, elision, and assimilation"
+          style={blogImageStyle}
+          loading="lazy"
+        />
+        <p style={imageCaptionStyle}>
+          Train-car analogy: words link, compress, and shift in natural speech.
+        </p>
       </BlogSection>
 
       <BlogSection title="1) Linking">
@@ -153,11 +172,16 @@ const ConnectedSpeechGuide = () => {
         </p>
       </BlogSection>
 
-      <BlogSection title="Image Placeholder">
-        <div style={placeholderStyle}>
-          [Placeholder image: before-vs-after transcript with connected speech
-          highlights in color]
-        </div>
+      <BlogSection title="Before vs After Example">
+        <img
+          src={connectedSpeechComparison}
+          alt="Before and after transcript with connected speech highlights"
+          style={blogImageStyle}
+          loading="lazy"
+        />
+        <p style={imageCaptionStyle}>
+          Compare careful speech and natural connected speech side by side.
+        </p>
       </BlogSection>
 
       <BlogSection title="High-Frequency Phrase Examples">
@@ -253,11 +277,16 @@ const ConnectedSpeechGuide = () => {
         </ol>
       </BlogSection>
 
-      <BlogSection title="Image Placeholder">
-        <div style={placeholderStyle}>
-          [Placeholder image: 7-minute connected speech routine card for mobile
-          screenshot]
-        </div>
+      <BlogSection title="7-Minute Routine Card">
+        <img
+          src={connectedSpeechRoutine}
+          alt="7-minute connected speech daily routine card"
+          style={blogImageStyle}
+          loading="lazy"
+        />
+        <p style={imageCaptionStyle}>
+          Use this quick routine daily to build smoother linking and rhythm.
+        </p>
       </BlogSection>
 
       <BlogSection title="Advanced 20-Minute Practice (Twice a Week)">
