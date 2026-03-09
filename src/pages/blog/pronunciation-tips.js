@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import "./Css/Blog.css";
-import BlogArticleTemplate from "../components/BlogArticleTemplate";
+import "../Css/Blog.css";
+import BlogArticleTemplate from "../../components/BlogArticleTemplate";
 
 // Only import the header image upfront since it's above the fold
-import headerImage from "../images/header.jpg";
+import headerImage from "../../images/header.jpg";
 
 const PronunciationBlog = () => {
   // State to store dynamically loaded images
@@ -121,7 +121,7 @@ const PronunciationBlog = () => {
       const importImage = async (path) => {
         try {
           // Using dynamic import for each image
-          const imageModule = await import(`../images/${path}`);
+          const imageModule = await import(`../../images/${path}`);
           setTipImages((prev) => ({
             ...prev,
             [path]: imageModule.default,

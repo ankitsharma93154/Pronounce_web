@@ -1,10 +1,10 @@
 import React from "react";
-import "./Css/Blog_3.css";
-import BlogArticleTemplate from "../components/BlogArticleTemplate";
-import im1 from "../images/im1.webp";
-import im2 from "../images/im2.webp";
-import im3 from "../images/im3.webp";
-import im4 from "../images/im4.webp";
+import "../Css/Blog_3.css";
+import BlogArticleTemplate from "../../components/BlogArticleTemplate";
+import im1 from "../../images/im1.webp";
+import im2 from "../../images/im2.webp";
+import im3 from "../../images/im3.webp";
+import im4 from "../../images/im4.webp";
 
 const imageMap = {
   "rhotic_vs_nonrhotic.webp": im1,

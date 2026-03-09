@@ -1,5 +1,5 @@
-import "./Css/Blog_2.css";
-import BlogArticleTemplate from "../components/BlogArticleTemplate";
+import "../Css/Blog_2.css";
+import BlogArticleTemplate from "../../components/BlogArticleTemplate";
 
 const PronunciationGuide = () => {
   const articleSchema = {
