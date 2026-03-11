@@ -29,11 +29,11 @@ const soundDifferences = [
     id: 1,
     title: "The /r/ Sound: Rhotic vs. Non-Rhotic",
     overview:
-      "American English is 'rhotic'—the /r/ sound is always pronounced after vowels. British English (especially RP and Southern dialects) is 'non-rhotic'—the /r/ is dropped unless followed by a vowel. This single difference affects hundreds of common words and is the most recognizable distinction between the accents.",
+      "American English is 'rhotic' and the /r/ sound is always pronounced after vowels. British English (especially RP and Southern dialects) is 'non-rhotic'and the /r/ is dropped unless followed by a vowel. This single difference affects hundreds of common words and it is one of the most recognizable distinction between the accents.",
     ipa: "AmE: /kɑːr/ vs. BrE: /kɑː/",
     imageSrc: "rhotic_vs_nonrhotic.webp",
     practicalNote:
-      "In connected speech, BrE speakers add a linking 'r' when the next word starts with a vowel: 'car engine' /kɑːr ˈendʒɪn/",
+      "In connected speech, BrE speakers add a linking 'r' when the next word starts with a vowel, for example: 'car engine' /kɑːr ˈendʒɪn/",
     words: [
       {
         word: "Car",
@@ -65,7 +65,7 @@ const soundDifferences = [
     id: 2,
     title: "The /æ/ vs /ɑː/ Sound: The 'Bath' Split",
     overview:
-      "This is called the 'TRAP-BATH split' in linguistics. Before certain consonants (f, s, th, n, m), American English keeps the short /æ/ sound, while British RP uses the broad /ɑː/. This split occurred in Southern British English in the 17th-18th centuries and never reached America.",
+      "This is known as the 'TRAP-BATH split' in linguistics. American English keeps the short /æ/ sound before certain consonants (f, s, th, n, m), while British RP uses the broad /ɑː/. This split occurred in Southern British English in the 17th-18th centuries and never reached America.",
     ipa: "AmE: /bæθ/ vs. BrE: /bɑːθ/",
     imageSrc: "short_vs_broad_a.webp",
     practicalNote:
@@ -102,7 +102,7 @@ const soundDifferences = [
     id: 3,
     title: "The /t/ Sound: Flapping vs. Full Release",
     overview:
-      "In American English, /t/ between vowels becomes a 'flap' or 'tap'—essentially a very quick /d/ sound. This is called 'intervocalic alveolar flapping.' British English maintains a crisp /t/ in most positions. This affects speech rhythm significantly—American English flows faster in casual speech.",
+      "In American English, /t/ between vowels becomes a 'flap' or 'tap',it is essentially a very quick /d/ sound. This is called 'intervocalic alveolar flapping.' British English maintains a crisp /t/ in most positions. This affects speech rhythm significantly and that's why American English flows faster in casual speech.",
     ipa: "AmE: /ˈwɑːdər/ vs. BrE: /ˈwɒtə/",
     imageSrc: "flap_t_vs_true_t.webp",
     practicalNote:
@@ -138,11 +138,11 @@ const soundDifferences = [
     id: 4,
     title: "The /ɒ/ vs /ɑː/ Sound: The 'LOT-CLOTH' Split",
     overview:
-      "British English has a distinct rounded back vowel /ɒ/ in words like 'hot,' 'top,' and 'dog.' American English merged this with /ɑː/, creating a more open, unrounded sound. This affects hundreds of everyday words and makes American speech sound 'flatter' to British ears.",
+      "British English has a distinct rounded back vowel /ɒ/ in words like 'hot,' 'top,' and 'dog.' American English merged this with /ɑː/, creating a more open and unrounded sound. This difference affects hundreds of everyday words and makes American speech sound 'flatter' to British ears.",
     ipa: "AmE: /hɑːt/ vs. BrE: /hɒt/",
     imageSrc: "lot_cloth_vowel.webp",
     practicalNote:
-      "In BrE, your lips should be rounded for /ɒ/. In AmE, they remain neutral.",
+      "In BrE, your lips should be rounded for /ɒ/ while In AmE, they remain neutral.",
     words: [
       {
         word: "Hot",
@@ -177,7 +177,7 @@ const confusingWords = [
     word: "Aluminum/Aluminium",
     am: "ə-ˈluː-mə-nəm",
     br: "ˌæl-jə-ˈmɪn-i-əm",
-    tip: "Different spelling AND pronunciation—BrE has extra syllable",
+    tip: "Different spelling AND pronunciation, BrE has extra syllable",
     category: "Different words",
   },
   {
@@ -205,7 +205,7 @@ const confusingWords = [
     word: "Route",
     am: "ruːt / raʊt",
     br: "ruːt",
-    tip: "AmE has two pronunciations; BrE uses only one",
+    tip: "AmE has two pronunciations; BrE only uses one",
     category: "Vowel quality",
   },
   {
@@ -254,7 +254,7 @@ const confusingWords = [
     word: "Vase",
     am: "veɪs",
     br: "vɑːz",
-    tip: "Completely different—long 'a' sound vs 'ah' with 'z'",
+    tip: "Completely different: long 'a' sound vs 'ah' with 'z'",
     category: "Different words",
   },
 ];
@@ -330,26 +330,33 @@ const PronunciationComparison = () => {
         <main className="container avb-content">
           <section className="avb-intro-section">
             <p>
-              If you've ever been confused by why the same English word sounds
-              completely different in American and British accents, you're not
-              alone. The differences aren't random—they follow predictable
+              I would not be wrong to assume that we all non-native speakers
+              have experienced the confusion of hearing the same English words
+              pronounced differently in American and British accents. Those
+              differences aren't random. Instead they follow predictable
               phonetic patterns that emerged over centuries of linguistic
-              evolution.
+              evolution. In this article, we will break down the 4 fundamental
+              sound differences that account for approximately 90% of the
+              pronunciation variations between these two accents. After
+              understading these rules, you'll be able to predict how thousands
+              of words differ between American and British English, and you'll
+              have be equipped with the tools to master both accents with ease.
             </p>
             <p>
               This guide focuses on <strong>standard pronunciations</strong>:
               General American (GenAm) and Received Pronunciation (RP) British
-              English. These are the accents you'll hear in international
-              business, news media, and educational content.
+              English. These are the accents that you'll hear typically in
+              international business, news media, and educational content.
             </p>
 
             <div className="avb-tip-box">
               <span className="avb-tip-icon">🎯</span>
               <p>
-                <strong>Learning Strategy:</strong> Don't try to memorize
-                individual words. Instead, learn the 4 sound rules below. Once
-                you understand these patterns, you'll be able to predict how
-                thousands of words differ between accents.
+                <strong>Learning Strategy:</strong> Do not try to cram
+                individual words and their sounds. Instead, Understand and learn
+                the 4 sound rules below. Once you understand these patterns,
+                you'll be able to predict how thousands of words differ between
+                accents.
               </p>
             </div>
           </section>
@@ -359,9 +366,10 @@ const PronunciationComparison = () => {
               🗣️ The 4 Fundamental Sound Differences
             </h2>
             <p className="avb-section-description">
-              These four phonetic rules account for approximately 90% of the
-              pronunciation differences between American and British English.
-              Master these, and you'll understand both accents.
+              Appoximately 90% of the pronunciation differences between American
+              and British English can be explained by just 4 sound rules.
+              Mastering these will give you a solid foundation to understand and
+              produce both accents with confidence.
             </p>
 
             <div className="avb-differences-grid">
@@ -409,9 +417,10 @@ const PronunciationComparison = () => {
               📚 12 Words That Change Dramatically
             </h2>
             <p className="section-description">
-              These common words demonstrate multiple sound differences at once,
-              making them particularly challenging for learners. They're
-              organized by the type of change for easier pattern recognition.
+              These common words below demonstrate multiple sound differences at
+              once, which makes them particularly challenging for learners.
+              They're organized by the type of change for easier pattern
+              recognition.
             </p>
 
             <div className="confusing-words-table">
@@ -439,28 +448,30 @@ const PronunciationComparison = () => {
               <div className="practice-tip-card">
                 <h4>Step 1: Focus on One Sound Rule</h4>
                 <p>
-                  Don't try to learn everything at once. Spend a week focusing
-                  only on the rhotic 'r' difference. Listen to 20-30 words with
-                  this pattern daily using QuickPronounce. Your brain will start
-                  to recognize the pattern automatically.
+                  Don't try to learn everything at once. Spend about a week
+                  focusing only on the rhotic 'r' difference. Listen to 20-30
+                  words with this pattern daily using QuickPronounce. Daily
+                  repetition will help your brain recognize the pattern
+                  automatically.
                 </p>
               </div>
               <div className="practice-tip-card">
                 <h4>Step 2: Use Minimal Pairs</h4>
                 <p>
-                  Practice words that only differ in one sound. Compare "car" in
-                  both accents repeatedly. This trains your ear to hear subtle
-                  distinctions. Create flashcards with IPA transcriptions to see
-                  the exact difference visually.
+                  Practicing words that only differ in one sound is also a great
+                  exercise. Compare specific words in both accents repeatedly.
+                  This trains your ear to hear subtle distinctions. You can also
+                  create flashcards with IPA transcriptions to see the exact
+                  difference visually.
                 </p>
               </div>
               <div className="practice-tip-card">
                 <h4>Step 3: Shadow Native Speakers</h4>
                 <p>
                   Play a native speaker audio, then immediately repeat what you
-                  heard. This technique, called "shadowing," helps you
+                  heard. This technique is called "shadowing" and it helps you
                   internalize rhythm, intonation, and sound patterns
-                  simultaneously. Do this for 10 minutes daily.
+                  simultaneously. Try this out for 10 minutes daily.
                 </p>
               </div>
               <div className="practice-tip-card">
@@ -468,8 +479,8 @@ const PronunciationComparison = () => {
                 <p>
                   Record yourself saying challenging words like "water,"
                   "better," and "schedule" in both accents. Compare your
-                  recording to native speakers on QuickPronounce. This reveals
-                  exactly where you need improvement.
+                  recording to native speakers on QuickPronounce. Comparing
+                  would reveal exactly where you need improvement.
                 </p>
               </div>
             </div>
@@ -488,9 +499,11 @@ const PronunciationComparison = () => {
           <section className="avb-regional-section">
             <h2 className="avb-section-title">🌍 Beyond Standard Accents</h2>
             <p className="avb-section-description">
-              Both American and British English have rich regional variations.
-              While this guide focuses on standard pronunciations, understanding
-              regional diversity is important for real-world communication.
+              We see regional variations in all almost all popular languages and
+              English is no exception. Both American and British English have
+              rich regional variations. While this guide focuses on standard
+              pronunciations, one must also know about the regional diversity to
+              save unexpected surprises.
             </p>
 
             <div className="avb-regional-grid">
@@ -547,8 +560,8 @@ const PronunciationComparison = () => {
               <span className="avb-tip-icon">📖</span>
               <p>
                 <strong>For Learners:</strong> Start with General American or RP
-                British—they're widely understood internationally. Once you're
-                comfortable with one standard accent, exploring regional
+                British as they're widely understood internationally. Once
+                you're comfortable with one standard accent, exploring regional
                 variations becomes much easier because you'll have a reference
                 point.
               </p>
@@ -572,9 +585,9 @@ const PronunciationComparison = () => {
               <h4>Can I mix American and British pronunciation?</h4>
               <p>
                 While it's common for learners to mix accents, consistency helps
-                with clarity. Native speakers generally don't mix—an American
-                won't suddenly use British 'r'-dropping. Aim for consistency
-                within your chosen accent to sound more natural.
+                with clarity. Native speakers generally don't mix accents, an
+                American won't suddenly use British 'r'-dropping. Aim for
+                consistency within your chosen accent to sound more natural.
               </p>
             </div>
 
