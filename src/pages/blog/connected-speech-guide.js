@@ -79,12 +79,12 @@ const ConnectedSpeechGuide = () => {
           one chain.
         </p>
         <p>
-          Many learners can pronounce individual words correctly, but still feel
-          lost in fast listening or unnatural in fast speaking. That gap often
-          comes from connected speech patterns. Native speakers are not speaking
-          "sloppily" by accident. They are using efficient sound transitions.
-          Once you train those transitions, your listening improves and your
-          speaking starts to sound smoother immediately.
+          Many learners pronounce individual words correctly, but they can still
+          feel lost in fast listening or unnatural in fast speaking. That gap
+          often comes from connected speech patterns. Native speakers are not
+          speaking "sloppily" by accident. They are using efficient sound
+          transitions. Once you train those transitions, your listening improves
+          and your speaking starts to sound smoother immediately.
         </p>
       </BlogSection>
 

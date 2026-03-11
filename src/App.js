@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -33,17 +33,6 @@ const ConnectedSpeechGuide = lazy(
 const Loading = () => <div className="loading">Loading...</div>;
 
 const App = () => {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      // Preload commonly accessed pages
-      import("./pages/contact");
-      import("./pages/faqs");
-      import("./pages/blog/pronunciation-tips");
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <Router>
       <div className="app">

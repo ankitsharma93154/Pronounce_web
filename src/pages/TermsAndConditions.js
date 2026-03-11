@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import "./Css/TermsAndConditions.css";
 
@@ -192,9 +193,9 @@ const TermsAndConditions = () => {
           </p>
           <p className="tc-text">
             You can also reach us through our{" "}
-            <a href="/contact" className="tc-link">
+            <Link to="/contact" className="tc-link">
               contact page
-            </a>
+            </Link>
             .
           </p>
         </section>

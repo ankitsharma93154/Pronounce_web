@@ -46,8 +46,22 @@ const WordOfDay = memo(({ pronounce }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Memoized API call using fetch instead of axios
+  // Cache key is today's date — automatically invalidates at midnight
   const fetchWordOfDay = useCallback(async () => {
+    const todayKey = `wod_${new Date().toISOString().slice(0, 10)}`;
+
+    // Serve from localStorage if we already fetched today
+    try {
+      const cached = localStorage.getItem(todayKey);
+      if (cached) {
+        setWordData(JSON.parse(cached));
+        setLoading(false);
+        return;
+      }
+    } catch (_) {
+      /* ignore parse / storage errors */
+    }
+
     try {
       setLoading(true);
       const response = await fetch(`${API_URL}get-wordofday`);
@@ -58,8 +72,13 @@ const WordOfDay = memo(({ pronounce }) => {
 
       const data = await response.json();
       setWordData(data);
-      console.log("Fetched word data:", data);
       setError(null);
+
+      try {
+        localStorage.setItem(todayKey, JSON.stringify(data));
+      } catch (_) {
+        /* ignore storage quota errors */
+      }
     } catch (err) {
       setError("Failed to load word of the day");
       console.error("Error fetching word of the day:", err);
@@ -123,11 +142,11 @@ const WordOfDay = memo(({ pronounce }) => {
             const synonyms = Array.isArray(wordData.synonyms)
               ? wordData.synonyms
               : typeof wordData.synonyms === "string"
-              ? wordData.synonyms
-                  .split(",")
-                  .map((s) => s.trim())
-                  .filter((s) => s)
-              : [];
+                ? wordData.synonyms
+                    .split(",")
+                    .map((s) => s.trim())
+                    .filter((s) => s)
+                : [];
             return (
               synonyms.length > 0 && (
                 <div className="word-of-day-synonyms">

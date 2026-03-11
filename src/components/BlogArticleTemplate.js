@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import "./Css/BlogArticleTemplate.css";
 
@@ -125,9 +126,9 @@ const BlogArticleTemplate = ({
             <h2 className="bt-cta-title">{ctaData.title}</h2>
             {ctaData.description ? <p>{ctaData.description}</p> : null}
             {ctaData.buttonHref ? (
-              <a href={ctaData.buttonHref} className="bt-cta-btn">
+              <Link to={ctaData.buttonHref} className="bt-cta-btn">
                 {ctaData.buttonLabel || "Read More"}
-              </a>
+              </Link>
             ) : null}
           </div>
         ) : null}

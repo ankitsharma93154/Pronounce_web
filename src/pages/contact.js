@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Mail, Linkedin, Twitter } from "lucide-react";
 import "./Css/AboutPage.css";
 import { Helmet } from "react-helmet";
@@ -83,9 +84,9 @@ const Contact = () => {
             </p>
             <p className="about-page-section-text">
               Have other questions? Check out our{" "}
-              <a href="/faq" className="faq-page-link">
+              <Link to="/faq" className="faq-page-link">
                 FAQ page
-              </a>{" "}
+              </Link>{" "}
               for quick answers before reaching out.
             </p>
 

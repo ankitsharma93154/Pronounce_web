@@ -103,6 +103,8 @@ const Home = () => {
 
   const [shouldPronounce, setShouldPronounce] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isBelowFoldVisible, setIsBelowFoldVisible] = useState(false);
+  const belowFoldRef = useRef(null);
 
   const handleRelationToggle = useCallback(
     (type) => {
@@ -250,37 +252,25 @@ const Home = () => {
     [updateState],
   );
 
-  const warmUpAPI = useCallback(async () => {
-    try {
-      await fetch("https://backend-8isq.vercel.app/get-pronunciation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          word: "hello",
-          accent,
-          isMale,
-          speed,
-        }),
-      });
-    } catch (error) {
-      console.error("API warm-up failed:", error);
-    }
-  }, [accent, isMale, speed]);
-
   useEffect(() => {
-    const idleCallbackId =
-      typeof window !== "undefined" && "requestIdleCallback" in window
-        ? requestIdleCallback(() => warmUpAPI())
-        : setTimeout(() => warmUpAPI(), 2000);
-
-    return () => {
-      if (typeof window !== "undefined" && "cancelIdleCallback" in window) {
-        cancelIdleCallback(idleCallbackId);
-      } else {
-        clearTimeout(idleCallbackId);
-      }
-    };
-  }, [warmUpAPI]);
+    if (!("IntersectionObserver" in window)) {
+      setIsBelowFoldVisible(true);
+      return;
+    }
+    const sentinel = belowFoldRef.current;
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsBelowFoldVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" },
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
 
   const handleKeyDown = useCallback(
     (e) => {
@@ -319,17 +309,13 @@ const Home = () => {
     link.href = "https://backend-8isq.vercel.app";
     document.head.appendChild(link);
 
-    setTimeout(() => {
-      warmUpAPI();
-    }, 300);
-
     return () => {
       if (link.parentNode) {
         document.head.removeChild(link);
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, [warmUpAPI]);
+  }, []);
 
   return (
     <>
@@ -467,46 +453,53 @@ const Home = () => {
         {hasPronounced && <ExamplesList examples={examples} />}
       </Suspense>
 
-      <Suspense fallback={null}>
-        <WordOfDay pronounce={pronounce} />
-      </Suspense>
+      {/* Sentinel: below-fold content loads once this enters the viewport */}
+      <div ref={belowFoldRef} />
 
-      <Suspense
-        fallback={
-          <div
-            className="loading-placeholder"
-            style={{ height: "200px" }}
-          ></div>
-        }
-      >
-        <MispronouncedWords pronounce={pronounce} />
-      </Suspense>
+      {isBelowFoldVisible && (
+        <>
+          <Suspense fallback={null}>
+            <WordOfDay pronounce={pronounce} />
+          </Suspense>
 
-      <div className="about-page-divider"></div>
+          <Suspense
+            fallback={
+              <div
+                className="loading-placeholder"
+                style={{ height: "200px" }}
+              ></div>
+            }
+          >
+            <MispronouncedWords pronounce={pronounce} />
+          </Suspense>
 
-      <Suspense
-        fallback={
-          <div
-            className="loading-placeholder"
-            style={{ height: "300px" }}
-          ></div>
-        }
-      >
-        <QuickPronounceTips />
-      </Suspense>
+          <div className="about-page-divider"></div>
 
-      <div className="about-page-divider"></div>
+          <Suspense
+            fallback={
+              <div
+                className="loading-placeholder"
+                style={{ height: "300px" }}
+              ></div>
+            }
+          >
+            <QuickPronounceTips />
+          </Suspense>
 
-      <Suspense
-        fallback={
-          <div
-            className="loading-placeholder"
-            style={{ height: "300px" }}
-          ></div>
-        }
-      >
-        <FeaturesPage id="features" />
-      </Suspense>
+          <div className="about-page-divider"></div>
+
+          <Suspense
+            fallback={
+              <div
+                className="loading-placeholder"
+                style={{ height: "300px" }}
+              ></div>
+            }
+          >
+            <FeaturesPage id="features" />
+          </Suspense>
+        </>
+      )}
     </>
   );
 };

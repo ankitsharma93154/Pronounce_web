@@ -1,4 +1,5 @@
 // src/components/BlogPosts.js
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import "../Css/BlogPosts.css";
 import mispronouncedWordsImage from "../../images/mispronounced-image.jpg";
@@ -16,7 +17,7 @@ const blogPostsData = [
     id: 1,
     title: "How to Pronounce the 50 Most Mispronounced English Words",
     description:
-      "Master tricky English pronunciation with our expert audio guide. Learn to say difficult words correctly and never make common mistakes again!",
+      "Master tricky English pronunciation with this detailed audio guide. Learn to say difficult words correctly and never make common mistakes again!",
     imageUrl: mispronouncedWordsImage,
     date: "April 25, 2025",
     category: "Pronunciation Guide",
@@ -27,7 +28,7 @@ const blogPostsData = [
     id: 2,
     title: "10 Tips to Perfect Your English Pronunciation & Audio Clarity",
     description:
-      "Improve your speaking skills with 10 actionable tips on phonetics, word stress, and intonation. Perfect for ESL learners wanting to sound more natural.",
+      "Improve your speaking skills with 10 actionable tips on phonetics, word stress, and intonation. Perfect for ESL learners who want to sound more natural.",
     imageUrl: tenTipsImage,
     date: "May 20, 2025",
     category: "Learning Tips",
@@ -187,12 +188,12 @@ const BlogPosts = () => {
         </div>
       </header>
 
-      <main className="container blog-content">
+      <main className="container blog-content blog-content--spaced">
         <section className="blog-grid-section">
           <div className="blog-grid">
             {sortedBlogPostsData.map((post) => (
-              <a
-                href={post.link}
+              <Link
+                to={post.link}
                 key={post.id}
                 className="blog-card"
                 aria-label={`Read more about ${post.title}`}
@@ -212,7 +213,7 @@ const BlogPosts = () => {
                   <p className="blog-card-description">{post.description}</p>
                   <span className="blog-card-read-time">{post.readTime}</span>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
