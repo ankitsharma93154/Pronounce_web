@@ -43,6 +43,10 @@ const SpeedInsights =
       )
     : () => null;
 
+const BACKEND_PRONUNCIATION_URL =
+  "https://backend-8isq.vercel.app/get-pronunciation";
+const REQUEST_TIMEOUT_MS = 10000;
+
 // Create and memoize static components
 const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
   <button
@@ -145,25 +149,55 @@ const Home = () => {
         return;
       }
 
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 10000);
+      const requestBody = {
+        word: word.trim(),
+        accent,
+        isMale,
+        speed,
+      };
 
-      const response = await fetch(
-        "https://backend-8isq.vercel.app/get-pronunciation",
-        {
+      const queryString = new URLSearchParams({
+        word: requestBody.word,
+        accent: requestBody.accent,
+        isMale: String(requestBody.isMale),
+        speed: requestBody.speed,
+      }).toString();
+
+      let response;
+
+      try {
+        const getController = new AbortController();
+        const getTimeoutId = setTimeout(
+          () => getController.abort(),
+          REQUEST_TIMEOUT_MS,
+        );
+
+        response = await fetch(`${BACKEND_PRONUNCIATION_URL}?${queryString}`, {
+          method: "GET",
+          signal: getController.signal,
+        });
+
+        clearTimeout(getTimeoutId);
+      } catch (getError) {
+        response = null;
+      }
+
+      if (!response || !response.ok) {
+        const postController = new AbortController();
+        const postTimeoutId = setTimeout(
+          () => postController.abort(),
+          REQUEST_TIMEOUT_MS,
+        );
+
+        response = await fetch(BACKEND_PRONUNCIATION_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            word: word.trim(),
-            accent,
-            isMale,
-            speed,
-          }),
-          signal: controller.signal,
-        },
-      );
+          body: JSON.stringify(requestBody),
+          signal: postController.signal,
+        });
 
-      clearTimeout(timeoutId);
+        clearTimeout(postTimeoutId);
+      }
 
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
