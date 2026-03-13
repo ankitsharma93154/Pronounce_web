@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { AudioWaveform } from "lucide-react";
+import { AudioWaveform, BookOpen } from "lucide-react";
 
 const PhoneticSection = memo(
   ({ phonetic, getPronunciation, isPlaying, syllables }) => (
@@ -22,6 +22,14 @@ const PhoneticSection = memo(
           {phonetic || "/ _ /"}
         </span>
       </div>
+
+      <p className="ipa-help-line">
+        <BookOpen className="cta-inline-icon" size={14} />
+        Having trouble understanding IPA?{" "}
+        <a className="ipa-help-link" href="/blog/IPA-guide">
+          Read the IPA guide
+        </a>
+      </p>
 
       {/* Pronunciation Breakdown */}
       {syllables && syllables.length > 0 && (

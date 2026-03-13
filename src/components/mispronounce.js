@@ -1,5 +1,6 @@
 import React from "react";
-import { Volume2 } from "lucide-react"; // lightweight speaker icon
+import { Link } from "react-router-dom";
+import { Volume2, BookOpen } from "lucide-react"; // lightweight speaker icon
 
 const mispronouncedWords = [
   "Gyro",
@@ -55,6 +56,17 @@ const MispronouncedWords = ({ pronounce }) => {
           </div>
         ))}
       </div>
+      <p className="ipa-help-line mispronounced-related-reads">
+        <BookOpen className="cta-inline-icon" size={14} />
+        Related reads:{" "}
+        <Link className="ipa-help-link" to="/blog/pronunciation-guide">
+          50 Most Mispronounced Words
+        </Link>{" "}
+        and{" "}
+        <Link className="ipa-help-link" to="/blog/SilentLetters">
+          Silent Letters Guide
+        </Link>
+      </p>
     </div>
   );
 };

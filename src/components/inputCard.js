@@ -1,4 +1,5 @@
 import React, { memo, useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { ChevronDown, Play, Globe, Zap } from "lucide-react";
 import WordRelations from "./WordRelations";
 
@@ -332,6 +333,13 @@ const InputCard = memo(
               </select>
               <ChevronDown className="select-icon" size={16} />
             </div>
+            <p className="ipa-help-line accent-help-line">
+              <Globe className="cta-inline-icon" size={14} />
+              Need help choosing accents?{" "}
+              <Link className="ipa-help-link" to="/blog/american-vs-british">
+                Compare American vs British
+              </Link>
+            </p>
           </div>
 
           {/* Voice Gender Toggle */}
