@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import "./Css/PrivacyPolicy.css";
 
 const PrivacyPolicy = () => {
@@ -10,6 +11,17 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="pp-page-wrapper">
+      <Helmet>
+        <title>Privacy Policy - QuickPronounce</title>
+        <meta
+          name="description"
+          content="Read the QuickPronounce privacy policy to learn how we collect, use, and protect your data, including our use of Google AdSense cookies."
+        />
+        <link
+          rel="canonical"
+          href="https://www.quickpronounce.site/privacy-policy"
+        />
+      </Helmet>
       <div className="pp-content-container">
         <h1 className="pp-main-title">Privacy Policy</h1>
         <span className="pp-last-updated">Last Updated: {lastUpdated}</span>

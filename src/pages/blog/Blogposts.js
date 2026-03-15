@@ -11,6 +11,9 @@ import IELTS_header from "../../images/IELTS_header.webp";
 import schwaThumb from "../../images/schwa_sound_infographic.webp";
 import edEndingsThumb from "../../images/ed_endings_decision_chart_high_res.webp";
 import connectedSpeechThumb from "../../images/connected_speech_infographic.webp";
+import wordStressThumb from "../../images/word_stress_thumbnail_v2.webp";
+import minimalPairsThumb from "../../images/minimal_pairs_sound_contrast_map_v2.webp";
+import theVsTheeThumb from "../../images/the_vs_thee_flowchart.webp";
 
 const blogPostsData = [
   {
@@ -114,6 +117,41 @@ const blogPostsData = [
     category: "Fluency Training",
     readTime: "11 min read",
     link: "/blog/connected-speech-guide",
+  },
+  {
+    id: 10,
+    title: "Word Stress in English: The Hidden Rule That Changes Meaning",
+    description:
+      "Learn practical word stress rules with real examples and drills to sound clearer in conversations, meetings, and exams.",
+    imageUrl: wordStressThumb,
+    date: "March 15, 2026",
+    category: "Pronunciation Guide",
+    readTime: "14–16 min read",
+    link: "/blog/word-stress-rules-guide",
+  },
+  {
+    id: 11,
+    title:
+      "Minimal Pairs Training Plan: The Fastest Way to Fix Confusing Sounds",
+    description:
+      "Train high-impact sound contrasts with a practical system that improves both listening precision and speaking clarity.",
+    imageUrl: minimalPairsThumb,
+    date: "March 15, 2026",
+    category: "Fluency Training",
+    readTime: "15–17 min read",
+    link: "/blog/minimal-pairs-training-plan",
+  },
+  {
+    id: 12,
+    title:
+      "The vs Thee: A Small Pronunciation Rule That Makes a Big Difference",
+    description:
+      "Master when to say /ðə/ vs /ðiː/ with sound-first rules, natural examples, and rhythm-friendly practice.",
+    imageUrl: theVsTheeThumb,
+    date: "March 15, 2026",
+    category: "Pronunciation Guide",
+    readTime: "12–14 min read",
+    link: "/blog/the-vs-thee-pronunciation",
   },
 ];
 

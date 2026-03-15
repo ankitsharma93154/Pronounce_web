@@ -6,6 +6,7 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
+import { Link } from "react-router-dom";
 
 // Define constant data outside the component to prevent recreation on each render
 const SECTIONS = [
@@ -90,7 +91,7 @@ const TabNavigation = memo(
         </div>
       </div>
     );
-  }
+  },
 );
 
 // Memoized content for each tab to prevent unnecessary re-renders
@@ -326,7 +327,7 @@ const Subsection = memo(
       </button>
       {isExpanded && <div className="subsection-content">{children}</div>}
     </div>
-  )
+  ),
 );
 
 // Main component - memoized to prevent unnecessary re-renders
@@ -461,6 +462,36 @@ const QuickPronounceTips = memo(() => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* From the Blog */}
+          <div className="tips-blog-links">
+            <p className="tips-blog-heading">From the Blog</p>
+            <div className="tips-blog-grid">
+              <Link to="/blog/IPA-guide" className="tips-blog-card">
+                <span className="tips-blog-card__emoji">🔤</span>
+                <span className="tips-blog-card__label">
+                  IPA Symbols Explained
+                </span>
+              </Link>
+              <Link to="/blog/american-vs-british" className="tips-blog-card">
+                <span className="tips-blog-card__emoji">🌍</span>
+                <span className="tips-blog-card__label">
+                  American vs British Accents
+                </span>
+              </Link>
+              <Link
+                to="/blog/word-stress-rules-guide"
+                className="tips-blog-card"
+              >
+                <span className="tips-blog-card__emoji">🎯</span>
+                <span className="tips-blog-card__label">Word Stress Rules</span>
+              </Link>
+              <Link to="/blog/schwa-sound-guide" className="tips-blog-card">
+                <span className="tips-blog-card__emoji">🔊</span>
+                <span className="tips-blog-card__label">The Schwa Sound</span>
+              </Link>
+            </div>
           </div>
 
           {/* Call to Action */}

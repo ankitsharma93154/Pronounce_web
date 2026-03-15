@@ -29,6 +29,15 @@ const EdEndingsPronunciation = lazy(
 const ConnectedSpeechGuide = lazy(
   () => import("./pages/blog/connected-speech-guide"),
 );
+const WordStressRulesGuide = lazy(
+  () => import("./pages/blog/word-stress-rules-guide"),
+);
+const MinimalPairsTrainingPlan = lazy(
+  () => import("./pages/blog/minimal-pairs-training-plan"),
+);
+const TheVsTheePronunciation = lazy(
+  () => import("./pages/blog/the-vs-thee-pronunciation"),
+);
 // Loading component
 const Loading = () => <div className="loading">Loading...</div>;
 
@@ -77,6 +86,18 @@ const App = () => {
             <Route
               path="/blog/connected-speech-guide"
               element={<ConnectedSpeechGuide />}
+            />
+            <Route
+              path="/blog/word-stress-rules-guide"
+              element={<WordStressRulesGuide />}
+            />
+            <Route
+              path="/blog/minimal-pairs-training-plan"
+              element={<MinimalPairsTrainingPlan />}
+            />
+            <Route
+              path="/blog/the-vs-thee-pronunciation"
+              element={<TheVsTheePronunciation />}
             />
           </Routes>
         </Suspense>

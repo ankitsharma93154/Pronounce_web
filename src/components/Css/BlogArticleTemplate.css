@@ -115,14 +115,14 @@
 }
 
 .bt-section a {
-  color: var(--primary);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+  color: var(--primary-hover);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 600;
 }
 
 .bt-section a:hover {
-  color: var(--primary-hover);
+  color: var(--primary);
 }
 
 .bt-section blockquote {
@@ -166,6 +166,15 @@
   margin-bottom: 1rem;
   color: var(--text-secondary);
   line-height: 1.7;
+}
+
+.bt-multi-column-list {
+  columns: 2;
+  column-gap: 2rem;
+}
+
+.bt-multi-column-list li {
+  break-inside: avoid;
 }
 
 .bt-highlight-box {

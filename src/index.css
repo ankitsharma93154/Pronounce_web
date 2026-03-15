@@ -1227,6 +1227,55 @@ body.dark .accent-tag {
   margin-top: 2rem;
   text-align: center;
 }
+
+/* Tips — From the Blog strip */
+.tips-blog-links {
+  margin-top: 2rem;
+  text-align: center;
+}
+.tips-blog-heading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.875rem;
+}
+.tips-blog-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.625rem;
+}
+.tips-blog-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    border-color 0.18s,
+    color 0.18s,
+    background 0.18s;
+}
+.tips-blog-card:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: #f5f0ff;
+}
+.dark .tips-blog-card:hover {
+  background: #2d1e5e;
+}
+.tips-blog-card__emoji {
+  font-size: 1rem;
+  line-height: 1;
+}
 .cta-text {
   color: var(--text-secondary);
   margin-bottom: 0.5rem;

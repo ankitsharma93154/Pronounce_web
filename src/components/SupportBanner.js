@@ -54,7 +54,7 @@ const SupportBanner = ({ show }) => {
         <span className="support-banner__text">
           <strong>Support QuickPronounce</strong>
           <span className="support-banner__sub">
-            Free & ad-free. Your support keeps it running.
+            Free to use. Your support keeps it running.
           </span>
         </span>
       </div>
