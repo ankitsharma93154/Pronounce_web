@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import "./Css/PrivacyPolicy.css";
 
 const PrivacyPolicy = () => {
-  const lastUpdated = "January 22, 2026";
+  const lastUpdated = "March 16, 2026";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -125,10 +125,35 @@ const PrivacyPolicy = () => {
             </a>
             .
           </p>
+
+          <p className="pp-text">
+            To understand how Google may use data from sites that use its
+            services, visit{" "}
+            <a
+              href="https://www.google.com/policies/privacy/partners/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pp-link"
+            >
+              How Google uses information from sites or apps that use our
+              services
+            </a>
+            .
+          </p>
         </section>
 
         <section className="pp-section">
-          <h2 className="pp-section-title">5. Log Files</h2>
+          <h2 className="pp-section-title">5. Analytics</h2>
+          <p className="pp-text">
+            We use Umami Analytics to understand aggregate site usage (for
+            example page visits, device type, and referring sources). This helps
+            us improve content and user experience. We do not sell your personal
+            data.
+          </p>
+        </section>
+
+        <section className="pp-section">
+          <h2 className="pp-section-title">6. Log Files</h2>
           <p className="pp-text">
             QuickPronounce follows standard procedures for using log files.
             These files log visitors when they visit websites. The information
@@ -140,7 +165,7 @@ const PrivacyPolicy = () => {
         </section>
 
         <section className="pp-section">
-          <h2 className="pp-section-title">6. GDPR & CCPA Rights</h2>
+          <h2 className="pp-section-title">7. GDPR & CCPA Rights</h2>
           <p className="pp-text">
             Depending on your location, you may have the following data
             protection rights:
@@ -161,7 +186,7 @@ const PrivacyPolicy = () => {
         </section>
 
         <section className="pp-section">
-          <h2 className="pp-section-title">7. Children's Information</h2>
+          <h2 className="pp-section-title">8. Children's Information</h2>
           <p className="pp-text">
             QuickPronounce does not knowingly collect any Personal Identifiable
             Information from children under the age of 13. If you believe that
@@ -171,7 +196,7 @@ const PrivacyPolicy = () => {
         </section>
 
         <section className="pp-section">
-          <h2 className="pp-section-title">8. Contact Us</h2>
+          <h2 className="pp-section-title">9. Contact Us</h2>
           <p className="pp-text">
             If you have any questions or concerns about this Privacy Policy,
             feel free to contact us:

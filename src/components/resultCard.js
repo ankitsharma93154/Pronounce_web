@@ -27,8 +27,7 @@ const ResultsCard = memo(
             Enter a word and click Pronounce to hear it.
           </p>
           <div className="social-cred-subtle">
-            🌍 Over <strong>15,000 learners</strong> from 100+ countries
-            improved their pronunciation here last month.
+            🌍 Used by English learners in <strong>100+ countries</strong>.
           </div>
         </div>
       ) : (

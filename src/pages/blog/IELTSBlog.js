@@ -7,13 +7,14 @@ import stressImg from "../../images/IELTS_stress_reduction.webp";
 
 const IELTSBlog = () => {
   const seo = {
-    pageTitle: "IELTS Speaking Pronunciation: How to Reach a Band 9 Naturally",
+    pageTitle:
+      "IELTS Speaking Pronunciation: Practical Training for Higher Scores",
     description:
       "Learn what IELTS examiners score for pronunciation and train with clear steps for stress, connected speech, and fluency.",
     canonicalUrl: "https://www.quickpronounce.site/blog/ielts",
-    ogTitle: "IELTS Pronunciation Guide: Reach Band 9 Without Faking an Accent",
+    ogTitle: "IELTS Pronunciation Guide: Clear, Practical Training Plan",
     ogDescription:
-      "A practical Band 9 pronunciation roadmap for IELTS Speaking with drills and examples.",
+      "A practical pronunciation roadmap for IELTS Speaking with drills and examples.",
     ogType: "article",
   };
 
@@ -21,7 +22,7 @@ const IELTSBlog = () => {
     "@context": "https://schema.org",
     "@type": "Article",
     headline:
-      "Mastering IELTS Speaking Pronunciation: How to Reach a Band 9 Without Sounding Fake",
+      "Mastering IELTS Speaking Pronunciation: A Practical Training Plan",
     description:
       "A practical guide to IELTS pronunciation scoring and training strategy.",
     author: {
@@ -41,7 +42,7 @@ const IELTSBlog = () => {
     <BlogArticleTemplate
       seo={{ ...seo, structuredData: articleSchema }}
       category="Exam Preparation"
-      title="Mastering IELTS Speaking Pronunciation: How to Reach a Band 9 Without Sounding Fake"
+      title="Mastering IELTS Speaking Pronunciation: A Practical Training Plan"
       author="By QuickPronounce Team"
       readTime="12-14 min read"
       date="January 2026"
