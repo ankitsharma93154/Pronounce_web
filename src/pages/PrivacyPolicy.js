@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
         <title>Privacy Policy - QuickPronounce</title>
         <meta
           name="description"
-          content="Read the QuickPronounce privacy policy to learn how we collect, use, and protect your data, including our use of Google AdSense cookies."
+          content="Read the QuickPronounce privacy policy to learn how we collect, use, and protect your data, including our use of cookies and third-party advertising technologies."
         />
         <link
           rel="canonical"
@@ -78,17 +78,19 @@ const PrivacyPolicy = () => {
               To understand how users interact with the site
             </li>
             <li className="pp-list-item">
-              To serve relevant advertisements via Google AdSense
+              To serve relevant advertisements via third-party ad partners
             </li>
           </ul>
         </section>
 
         <section className="pp-section">
-          <h2 className="pp-section-title">4. Google AdSense and Cookies</h2>
+          <h2 className="pp-section-title">
+            4. Advertising Partners and Cookies
+          </h2>
           <p className="pp-text">
-            This website uses Google AdSense to display advertisements. To
-            ensure transparency and compliance with Google policies, please
-            note:
+            This website uses third-party advertising partners (including Ezoic)
+            to display advertisements. To ensure transparency and compliance
+            with Google policies, please note:
           </p>
 
           <div className="pp-highlight-box">

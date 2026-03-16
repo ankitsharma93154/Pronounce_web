@@ -7,6 +7,11 @@
       ],
       "destination": "https://www.quickpronounce.site/:path*",
       "permanent": true
+    },
+    {
+      "source": "/ads.txt",
+      "destination": "https://srv.adstxtmanager.com/19390/quickpronounce.site",
+      "permanent": true
     }
   ],
 
