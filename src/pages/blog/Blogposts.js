@@ -176,23 +176,21 @@ const BlogPosts = () => {
   return (
     <div className="blog-posts-page">
       <Helmet>
-        <title>
-          QuickPronounce Blog: English Pronunciation Guides & Accent Tips
-        </title>
+        <title>How to Pronounce Words: Audio, IPA & Accent Guides</title>
         <meta
           name="description"
-          content="Expert blog posts on American vs British accents, IPA phonetic guides, and audio pronunciation tips. Improve your English speaking skills with QuickPronounce."
+          content="Explore guides on how to pronounce words, compare pronunciation audio, read IPA, and improve English accent clarity with QuickPronounce."
         />
         <link rel="canonical" href="https://www.quickpronounce.site/blog" />
 
         {/* OPEN GRAPH */}
         <meta
           property="og:title"
-          content="QuickPronounce Blog: Accent Hacks & Audio Guides"
+          content="How to Pronounce Words: Audio, IPA & Accent Guides"
         />
         <meta
           property="og:description"
-          content="Master English sounds with our deep-dive guides on phonetics, silent letters, and regional accents."
+          content="Master English sounds with practical guides on word pronunciation audio, IPA, silent letters, and accent differences."
         />
         <meta
           property="og:url"
@@ -217,11 +215,11 @@ const BlogPosts = () => {
 
       <header className="blog-header">
         <div className="container">
-          <h1>English Pronunciation & Accent Blog</h1>
+          <h1>How to Pronounce Words, IPA, and Accent Differences</h1>
           <p className="subtitle">
             Master <strong>phonetic transcription</strong>, explore{" "}
-            <strong>American vs British audio</strong>, and perfect your
-            speaking skills.
+            <strong>American vs British audio</strong>, and find practical
+            guides for words learners search and replay most often.
           </p>
         </div>
       </header>

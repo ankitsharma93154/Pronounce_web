@@ -209,24 +209,23 @@ const FAQPage = () => {
   return (
     <div className="faq-container">
       <Helmet>
-        <title>
-          FAQ – QuickPronounce: Multi-Accent Audio & English Pronunciation Help
-        </title>
+        <title>How to Pronounce Words: FAQ for Audio, IPA & Accents</title>
         <meta
           name="description"
-          content="Answers to common questions about English pronunciation. Learn about American, British, Australian, and Indian accents, IPA phonetics, and using our free audio tool."
+          content="Get answers about how to pronounce words, use word pronunciation audio, compare accents, and read IPA with QuickPronounce."
         />
         <link rel="canonical" href="https://www.quickpronounce.site/faq" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
       <div className="faq-header">
-        <h1>Frequently Asked Questions</h1>
+        <h1>How to Pronounce Words: Quick FAQ</h1>
         <p className="faq-intro">
           Learn how to master{" "}
           <strong>American, British, Australian, and Indian accents</strong>.
-          Find tips on <strong>phonetic pronunciation</strong> and using our
-          free audio tool effectively.
+          Find tips on <strong>phonetic pronunciation</strong>,{" "}
+          <strong>word pronunciation audio</strong>, and using our free
+          pronunciation tool effectively.
         </p>
       </div>
 

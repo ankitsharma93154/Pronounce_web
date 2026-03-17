@@ -5,13 +5,13 @@ const FeaturesPage = () => (
   <section id="features" className="pronunciation-tools-section">
     <div className="page-content">
       <h2 className="page-title">
-        Improve Your English Pronunciation & Accent Clarity
+        Improve Your English Pronunciation with Clear Word Audio
       </h2>
       <p className="feature-subtitle">
         Our English pronunciation tool helps you master correct word
         pronunciation with clear audio, phonetic guides, and multiple accents.
-        Perfect for pronunciation practice and learning how to pronounce words
-        clearly and correctly.
+        Perfect for pronunciation practice, word pronunciation audio, and
+        learning how to pronounce words clearly and correctly.
       </p>
 
       <div className="feature-grid">
@@ -73,8 +73,9 @@ const FeaturesPage = () => (
             This tool to pronounce words includes clear audio from both
             <strong> male and female voices</strong>, allowing you to practice
             with different tones and speaking styles. Our English pronunciation
-            tool delivers high-quality audio examples to improve your listening
-            comprehension and help you develop natural-sounding pronunciation.
+            tool delivers high-quality <strong>word pronunciation audio</strong>
+            to improve your listening comprehension and help you develop
+            natural-sounding pronunciation.
           </p>
           <div className="feature-highlight">
             <span className="accent-tag">
@@ -109,7 +110,8 @@ const FeaturesPage = () => (
           voice audio, and get instant feedback using our free tool to pronounce
           words clearly and confidently. With phonetic transcriptions and
           multiple accent options, our pronounce words tool makes it easy to
-          enhance your English speaking skills.
+          enhance your English speaking skills and build pronunciation habits
+          that stick.
         </p>
       </div>
     </div>

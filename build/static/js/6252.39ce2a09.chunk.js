@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[6252],{6252:(e,c,i)=>{e.exports=i.p+"static/media/word_stress_thumbnail_v2.4b873eea9664c273c372.webp"}}]);

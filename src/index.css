@@ -182,6 +182,139 @@ body.dark {
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
 }
+
+.home-intent-grid,
+.home-guides-grid,
+.home-faq-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.home-seo-section {
+  max-width: 64rem;
+  margin: 0 auto 2rem;
+}
+
+.home-seo-stack {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.home-seo-panel {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  transition: box-shadow 0.3s;
+}
+
+.home-seo-panel:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.home-seo-anchor {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 52rem;
+  margin: 0 auto 1.5rem;
+}
+
+.home-intent-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.home-seo-card,
+.home-guide-link,
+.home-faq-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.home-seo-card,
+.home-faq-card {
+  padding: 1.25rem;
+}
+
+.home-seo-card h3,
+.home-guide-link h3,
+.home-faq-card h3 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.home-seo-card p,
+.home-guides-subtitle,
+.home-faq-card p {
+  color: var(--text-secondary);
+}
+
+.home-intent-steps,
+.home-intent-points {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+  color: var(--text-primary);
+}
+
+.home-intent-steps li,
+.home-intent-points li {
+  margin-bottom: 0.6rem;
+}
+
+.home-guides-subtitle {
+  max-width: 760px;
+  margin-bottom: 1rem;
+}
+
+.home-guides-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.home-guide-link {
+  display: block;
+  padding: 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.home-guide-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(110, 69, 226, 0.35);
+}
+
+.home-guide-link p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.home-faq-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 767px) {
+  .home-seo-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .home-guides-grid,
+  .home-faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-seo-panel {
+    padding: 1.5rem;
+  }
+}
 .mobile-nav-link:hover,
 .subsection-toggle:hover {
   background-color: var(--bg-secondary);
@@ -295,8 +428,9 @@ body.dark {
   font-size: 1.25rem;
   font-weight: 600;
   background: var(--primary-gradient);
-  color: transparent;
+  -webkit-background-clip: text;
   background-clip: text;
+  color: transparent;
   margin-bottom: 1.5rem;
   position: relative;
 }

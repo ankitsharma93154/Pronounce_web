@@ -7,6 +7,7 @@ import React, {
   Suspense,
   memo,
 } from "react";
+import { Link } from "react-router-dom";
 import { Volume2 } from "lucide-react";
 import { Helmet } from "react-helmet";
 
@@ -59,6 +60,51 @@ const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
     <Volume2 className="icon" />
   </button>
 ));
+
+const featuredGuides = [
+  {
+    to: "/blog/pronunciation-guide",
+    title: "How to pronounce difficult English words",
+    description:
+      "Review 50 high-frequency words learners mispronounce and hear the right sound pattern faster.",
+  },
+  {
+    to: "/blog/IPA-guide",
+    title: "Read IPA phonetic pronunciation clearly",
+    description:
+      "Use the IPA guide when you want to understand symbols, stress marks, and syllable breaks.",
+  },
+  {
+    to: "/blog/american-vs-british",
+    title: "Compare American vs British pronunciation audio",
+    description:
+      "Train your ear with the sound rules that explain accent differences across common words.",
+  },
+  {
+    to: "/faq",
+    title: "Get quick answers about pronunciation practice",
+    description:
+      "Find short answers on word pronunciation audio, accents, IPA, and how to practice daily.",
+  },
+];
+
+const homeFaqs = [
+  {
+    question: "How do I pronounce a word correctly?",
+    answer:
+      "Type the word, play the pronunciation audio, then repeat it while checking the IPA and syllable stress. Practicing with two accents helps you hear the sound pattern more clearly.",
+  },
+  {
+    question: "How do you pronounce words in English?",
+    answer:
+      "Type any word to hear its pronunciation in English instantly. QuickPronounce gives you free audio, IPA, and accent options so you can check the pronunciation of words across American, British, Australian, and Indian English.",
+  },
+  {
+    question: "Can I compare American and British pronunciation?",
+    answer:
+      "Yes. You can switch between American, British, Australian, and Indian English to compare vowel sounds, stress, and rhythm for the same word.",
+  },
+];
 
 const Home = () => {
   const [state, setState] = useState({
@@ -354,24 +400,22 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        {/* SEO TARGET: Primary Keywords first */}
         <title>
-          Free Audio Pronunciation Tool: American, British & Indian Accents
+          Pronounce Words Audio | Word Pronouncer &amp; Pronunciation Tool
         </title>
         <meta
           name="description"
-          content="Listen to clear audio pronunciation in American, British, Australian, and Indian accents. Get free IPA phonetic transcription for any English word instantly."
+          content="Pronounce words with free audio in American, British, Australian, and Indian English. Use our word pronouncer tool with IPA to hear any word instantly."
         />
         <link rel="canonical" href="https://www.quickpronounce.site/" />
 
-        {/* OPEN GRAPH (SOCIALS) */}
         <meta
           property="og:title"
-          content="QuickPronounce: Free Audio in 4 English Accents"
+          content="Pronounce Words with Free Audio in 4 English Accents"
         />
         <meta
           property="og:description"
-          content="Instant audio pronunciation for any word. Compare American, British, Indian, and Australian accents for free with IPA phonetics."
+          content="Hear word pronunciation audio instantly, compare accents, and check IPA phonetics with one free pronunciation tool."
         />
         <meta property="og:url" content="https://www.quickpronounce.site/" />
         <meta property="og:type" content="website" />
@@ -380,7 +424,6 @@ const Home = () => {
           content="https://www.quickpronounce.site/og-preview.png"
         />
 
-        {/* JSON-LD: Added SoftwareApplication to target high-CTR "Tool" queries */}
         <script type="application/ld+json">
           {JSON.stringify([
             {
@@ -388,12 +431,6 @@ const Home = () => {
               "@type": "WebSite",
               url: "https://www.quickpronounce.site/",
               name: "QuickPronounce",
-              potentialAction: {
-                "@type": "SearchAction",
-                target:
-                  "https://www.quickpronounce.site/search?q={search_term_string}",
-                "query-input": "required name=search_term_string",
-              },
             },
             {
               "@context": "https://schema.org",
@@ -402,12 +439,26 @@ const Home = () => {
               operatingSystem: "Any",
               applicationCategory: "EducationalApplication",
               featureList:
-                "Audio pronunciation, Multiple accents (AmE, BrE, InE, AuE), IPA Phonetics",
+                "Word pronunciation audio, Multiple accents (American, British, Australian, Indian), IPA phonetics, meanings and examples",
+              description:
+                "A free word pronouncer tool for hearing pronunciation audio, comparing English accents, and checking IPA.",
               offers: {
                 "@type": "Offer",
                 price: "0",
                 priceCurrency: "USD",
               },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: homeFaqs.map((faq) => ({
+                "@type": "Question",
+                name: faq.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: faq.answer,
+                },
+              })),
             },
           ])}
         </script>
@@ -467,22 +518,6 @@ const Home = () => {
         />
       </main>
 
-      {/* SEO BOOST: Visible keyword anchors for high-impression accent queries */}
-      <div
-        className="accent-seo-anchor"
-        style={{
-          textAlign: "center",
-          marginTop: "1rem",
-          marginBottom: "2rem",
-          fontSize: "0.95rem",
-          opacity: 0.7,
-        }}
-      >
-        Learn how to pronounce in <strong>American English</strong>,{" "}
-        <strong>British English</strong>, <strong>Indian English</strong>, and{" "}
-        <strong>Australian accents</strong>.
-      </div>
-
       <Suspense fallback={null}>
         {hasPronounced && <ExamplesList examples={examples} />}
       </Suspense>
@@ -519,6 +554,121 @@ const Home = () => {
           >
             <QuickPronounceTips />
           </Suspense>
+
+          <div className="about-page-divider"></div>
+
+          <section
+            className="home-seo-section container"
+            aria-labelledby="home-intent-title"
+          >
+            <p className="home-seo-anchor">
+              Learn how to pronounce words in <strong>American English</strong>,{" "}
+              <strong>British English</strong>, <strong>Indian English</strong>,
+              and <strong>Australian English</strong> with free pronunciation
+              audio.
+            </p>
+
+            <div className="home-seo-stack">
+              <div className="home-seo-panel home-seo-intent-panel">
+                <h2 className="about-page-section-title" id="home-intent-title">
+                  How to pronounce a word correctly
+                </h2>
+                <div className="home-intent-grid">
+                  <div className="home-seo-card">
+                    <p>
+                      If you searched for <strong>pronounce words audio</strong>
+                      , <strong>pronounce this word</strong>,{" "}
+                      <strong>word pronunciation audio</strong>,{" "}
+                      <strong>quick pronunciation</strong>, or{" "}
+                      <strong>how to pronounce a word</strong>, this page is
+                      designed for that exact intent. Use the audio first, then
+                      the IPA, then repeat the word aloud while matching the
+                      stress pattern.
+                    </p>
+                    <ol className="home-intent-steps">
+                      <li>Enter the word or phrase you want to pronounce.</li>
+                      <li>
+                        Play the pronunciation audio in your target accent.
+                      </li>
+                      <li>
+                        Check the IPA and examples, then repeat the word
+                        naturally.
+                      </li>
+                    </ol>
+                  </div>
+
+                  <div className="home-seo-card">
+                    <h3>Why learners use this pronunciation tool</h3>
+                    <p>
+                      QuickPronounce works as a fast{" "}
+                      <strong>word pronouncer</strong>
+                      and <strong>pronunciation tool</strong> for learners who
+                      want clear sound, accent comparison, and phonetic support
+                      without extra steps.
+                    </p>
+                    <ul className="home-intent-points">
+                      <li>
+                        Free pronunciation audio for common, academic, and
+                        tricky words
+                      </li>
+                      <li>
+                        IPA phonetic transcription to support pronunciation in
+                        English
+                      </li>
+                      <li>
+                        Accent switching for American, British, Australian, and
+                        Indian English
+                      </li>
+                      <li>
+                        Word meanings and examples that make pronunciation
+                        easier to remember
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="home-seo-panel"
+                aria-labelledby="home-guides-title"
+              >
+                <h2 className="about-page-section-title" id="home-guides-title">
+                  Popular pronunciation guides
+                </h2>
+                <p className="home-guides-subtitle">
+                  Go deeper with these free guides on english pronunciation,
+                  phonetic spelling, accent comparison, and common pronunciation
+                  questions.
+                </p>
+                <div className="home-guides-grid">
+                  {featuredGuides.map((guide) => (
+                    <Link
+                      key={guide.to}
+                      to={guide.to}
+                      className="home-guide-link"
+                    >
+                      <h3>{guide.title}</h3>
+                      <p>{guide.description}</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="home-seo-panel" aria-labelledby="home-faq-title">
+                <h2 className="about-page-section-title" id="home-faq-title">
+                  Common pronunciation questions
+                </h2>
+                <div className="home-faq-grid">
+                  {homeFaqs.map((faq) => (
+                    <article key={faq.question} className="home-faq-card">
+                      <h3>{faq.question}</h3>
+                      <p>{faq.answer}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
 
           <div className="about-page-divider"></div>
 
