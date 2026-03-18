@@ -601,7 +601,7 @@ const Home = () => {
                     <h3>Why learners use this pronunciation tool</h3>
                     <p>
                       QuickPronounce works as a fast{" "}
-                      <strong>word pronouncer</strong>
+                      <strong>word pronouncer </strong>
                       and <strong>pronunciation tool</strong> for learners who
                       want clear sound, accent comparison, and phonetic support
                       without extra steps.
