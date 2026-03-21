@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[8443],{8443:(e,i,p)=>{e.exports=p.p+"static/media/mouth_position_guide_v3.a5e78614c243089c2b6f.webp"}}]);

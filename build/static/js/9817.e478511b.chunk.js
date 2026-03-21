@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[9817],{9817:(e,c,i)=>{e.exports=i.p+"static/media/Correct_pronunciation.c6551dfeda6d25387791.webp"}}]);

@@ -2,8 +2,8 @@ import React from "react";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
-import edDecisionChart from "../../images/ed_endings_decision_chart_high_res.webp";
-import edReferenceTable from "../../images/ed_pronunciation_reference_table.webp";
+import edDecisionChart from "../../images/blogs/ed-endings-pronunciation/ed_endings_decision_chart_high_res.webp";
+import edReferenceTable from "../../images/blogs/ed-endings-pronunciation/ed_pronunciation_reference_table.webp";
 
 const blogImageStyle = {
   width: "100%",

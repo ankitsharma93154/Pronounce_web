@@ -5,7 +5,7 @@ import "./Css/Blog.css";
 import BlogArticleTemplate from "../components/BlogArticleTemplate";
 
 // Only import the header image upfront since it's above the fold
-import headerImage from "../images/header.jpg";
+import headerImage from "../images/blogs/pronunciation-tips/header.jpg";
 
 const PronunciationBlog = () => {
   // State to store dynamically loaded images
@@ -121,7 +121,9 @@ const PronunciationBlog = () => {
       const importImage = async (path) => {
         try {
           // Using dynamic import for each image
-          const imageModule = await import(`../images/${path}`);
+          const imageModule = await import(
+            `../images/blogs/pronunciation-tips/${path}`,
+          );
           setTipImages((prev) => ({
             ...prev,
             [path]: imageModule.default,

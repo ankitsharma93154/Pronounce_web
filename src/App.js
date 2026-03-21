@@ -38,6 +38,15 @@ const MinimalPairsTrainingPlan = lazy(
 const TheVsTheePronunciation = lazy(
   () => import("./pages/blog/the-vs-thee-pronunciation"),
 );
+const CanVsCantPronunciation = lazy(
+  () => import("./pages/blog/can-vs-cant-pronunciation"),
+);
+const PronunciationJobInterviewGuide = lazy(
+  () => import("./pages/blog/pronunciation-job-interview-guide"),
+);
+const PronunciationMythsGuide = lazy(
+  () => import("./pages/blog/pronunciation-myths-guide"),
+);
 // Loading component
 const Loading = () => <div className="loading">Loading...</div>;
 
@@ -98,6 +107,18 @@ const App = () => {
             <Route
               path="/blog/the-vs-thee-pronunciation"
               element={<TheVsTheePronunciation />}
+            />
+            <Route
+              path="/blog/can-vs-cant-pronunciation"
+              element={<CanVsCantPronunciation />}
+            />
+            <Route
+              path="/blog/pronunciation-job-interview-guide"
+              element={<PronunciationJobInterviewGuide />}
+            />
+            <Route
+              path="/blog/pronunciation-myths-guide"
+              element={<PronunciationMythsGuide />}
             />
           </Routes>
         </Suspense>

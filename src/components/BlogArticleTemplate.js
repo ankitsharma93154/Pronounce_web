@@ -138,7 +138,20 @@ const BlogArticleTemplate = ({
 };
 
 export const BlogSection = ({ title, children }) => (
-  <section className="bt-section">
+  <section
+    className={`bt-section ${(() => {
+      const normalizedTitle = (title || "").toLowerCase();
+      if (normalizedTitle.includes("table of contents")) return "bt-section--toc";
+      if (normalizedTitle.includes("common mistake")) return "bt-section--mistakes";
+      if (
+        normalizedTitle.includes("pro tip") ||
+        normalizedTitle.includes("expert insight")
+      )
+        return "bt-section--pro";
+      if (normalizedTitle.includes("faq")) return "bt-section--faq";
+      return "";
+    })()}`.trim()}
+  >
     {title ? <h2 className="bt-section-title">{title}</h2> : null}
     {children}
   </section>

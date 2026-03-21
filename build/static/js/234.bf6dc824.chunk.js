@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[234],{234:(e,c,p)=>{e.exports=p.p+"static/media/thumb_the_vs_thee_placeholder.424e33c097ff5e788522.svg"}}]);

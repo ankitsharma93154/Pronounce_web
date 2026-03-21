@@ -142,3 +142,60 @@ Use this structure for each article:
 - The strongest opportunity is not "more random word lists".
 - The strongest opportunity is micro-problems with clear drills and measurable outcomes.
 - Keep each post tightly scoped so it ranks for one core intent.
+
+## prompt for the blog
+
+You are an expert SEO content writer and subject-matter specialist.
+
+Write a high-quality, in-depth blog post on the topic: "{TOPIC}"
+
+Target audience: {BEGINNER / INTERMEDIATE / ADVANCED users}
+Primary keyword: "{PRIMARY KEYWORD}"
+Secondary keywords: "{SECONDARY KEYWORDS}"
+
+Requirements:
+
+- The article must be 1200–2000+ words.
+- Write in a clear, engaging, and human-like tone (not robotic or generic AI style).
+- Avoid fluff. Every section must provide real value, insights, or actionable advice.
+- Use simple language but include depth where needed.
+
+Structure:
+
+1. Compelling introduction (hook the reader within first 3–4 lines)
+2. Table of contents (optional but preferred for SEO)
+3. Well-structured sections with H2 and H3 headings
+4. Use bullet points, examples, and real-world explanations
+5. Include at least one "common mistakes" section
+6. Include a "pro tips" or "expert insights" section
+7. Add a short FAQ section (3–5 questions)
+8. Strong conclusion with a takeaway or call-to-action
+
+SEO Optimization:
+
+- Naturally include the primary keyword in:
+  - Title
+  - First 100 words
+  - At least one H2 heading
+- Use secondary keywords naturally throughout
+- Avoid keyword stuffing
+- Write a meta description (150–160 characters)
+
+Content Quality:
+
+- Ensure the content is original and not generic
+- Add unique insights or perspectives where possible
+- Use analogies or relatable examples to explain concepts
+- Avoid repetition
+
+Formatting:
+
+- Use short paragraphs (2–4 lines max)
+- Use bold text to highlight key ideas
+- Ensure readability for mobile users
+
+Output format:
+
+- Title
+- Meta description
+- Full blog content (properly formatted in Markdown)

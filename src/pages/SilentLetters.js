@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import "./Css/SilentLetters.css";
 import BlogArticleTemplate from "../components/BlogArticleTemplate";
 
-import introImage from "../images/silent_letters_intro.webp";
-import vowelShift from "../images/vowel_shift.webp";
-import silentRules from "../images/silent_letters_rules.webp";
-import quickpronounceScreenshot from "../images/screenshot_quickpronounce.webp";
-import rightPronuncation from "../images/Correct_pronunciation.webp";
+import introImage from "../images/blogs/silent-letters/silent_letters_intro.webp";
+import vowelShift from "../images/blogs/silent-letters/vowel_shift.webp";
+import silentRules from "../images/blogs/silent-letters/silent_letters_rules.webp";
+import quickpronounceScreenshot from "../images/blogs/silent-letters/screenshot_quickpronounce.webp";
+import rightPronuncation from "../images/blogs/silent-letters/Correct_pronunciation.webp";
 // Helper component for the Silent Word List
 const SilentWordItem = ({ word, ipa }) => (
   <div className="sk-silent-word-item">

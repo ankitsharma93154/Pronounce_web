@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
-import wordStressMap from "../../images/word_stress_thumbnail_v2.webp";
-import nounVerbStressChart from "../../images/noun_verb_stress_chart_v2.webp";
+import wordStressMap from "../../images/blogs/word-stress-rules-guide/word_stress_thumbnail_v2.webp";
+import nounVerbStressChart from "../../images/blogs/word-stress-rules-guide/noun_verb_stress_chart_v2.webp";
 
 const blogImageStyle = {
   width: "100%",

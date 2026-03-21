@@ -62,8 +62,8 @@ const AboutUs = () => {
           </h2>
           <div className="about-page-content">
             <p className="about-page-section-text">
-              Welcome to <strong>QuickPronounce</strong> — a specialized web
-              tool designed for mastering{" "}
+              Welcome to <strong>QuickPronounce.</strong> It is a specialized
+              web tool designed for mastering{" "}
               <strong>English pronunciation audio</strong> in seconds. Our
               mission is to simplify the way global learners hear and understand
               how to pronounce English words correctly across different regions.

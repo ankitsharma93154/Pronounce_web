@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[9562],{9562:(e,c,n)=>{e.exports=n.p+"static/media/schwa_sound_rythmn.994e15ac825ad2b16e18.webp"}}]);

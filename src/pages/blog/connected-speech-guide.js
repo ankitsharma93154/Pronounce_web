@@ -2,9 +2,9 @@ import React from "react";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
-import connectedSpeechInfographic from "../../images/connected_speech_infographic.webp";
-import connectedSpeechComparison from "../../images/connected_speech_comparison.webp";
-import connectedSpeechRoutine from "../../images/connected_speech_routine.webp";
+import connectedSpeechInfographic from "../../images/blogs/connected-speech-guide/connected_speech_infographic.webp";
+import connectedSpeechComparison from "../../images/blogs/connected-speech-guide/connected_speech_comparison.webp";
+import connectedSpeechRoutine from "../../images/blogs/connected-speech-guide/connected_speech_routine.webp";
 
 const blogImageStyle = {
   width: "100%",

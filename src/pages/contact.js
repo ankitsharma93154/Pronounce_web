@@ -73,10 +73,11 @@ const Contact = () => {
           <h1 className="about-page-section-title">Contact QuickPronounce</h1>
           <div className="about-page-content">
             <p className="about-page-section-text">
-              I’m always looking for ways to improve QuickPronounce for the
-              learning community. Have a feature request or need help with a
-              specific pronunciation? Reach out—I typically respond within 24
-              hours.
+              Hey ! It's me Ankit, the person behind QuickPronounce. I’m always
+              looking for ways to improve QuickPronounce for the learning
+              community. Have a feature request or need help with a specific
+              pronunciation? Reach out to me directly. I typically respond
+              within 24 hours.
             </p>
             <p className="about-page-section-text">
               Your feedback helps make QuickPronounce the best free resource for

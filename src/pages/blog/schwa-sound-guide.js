@@ -2,8 +2,8 @@ import React from "react";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
-import schwaInfographic from "../../images/schwa_sound_infographic.webp";
-import schwaRhythm from "../../images/schwa_sound_rythmn.webp";
+import schwaInfographic from "../../images/blogs/schwa-sound-guide/schwa_sound_infographic.webp";
+import schwaRhythm from "../../images/blogs/schwa-sound-guide/schwa_sound_rythmn.webp";
 
 const blogImageStyle = {
   width: "100%",

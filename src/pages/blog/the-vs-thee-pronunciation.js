@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
-import theVsTheeFlowchart from "../../images/the_vs_thee_flowchart.webp";
-import rhythmComparison from "../../images/rhythm_comparison.webp";
+import theVsTheeFlowchart from "../../images/blogs/the-vs-thee-pronunciation/the_vs_thee_flowchart.webp";
+import rhythmComparison from "../../images/blogs/the-vs-thee-pronunciation/rhythm_comparison.webp";
 
 const blogImageStyle = {
   width: "100%",

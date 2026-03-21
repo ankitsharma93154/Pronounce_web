@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Css/IPA_Guide.css";
 import BlogArticleTemplate from "../components/BlogArticleTemplate";
-import IPA_img from "../images/IPA_GUIDE_img.webp";
+import IPA_img from "../images/blogs/ipa-guide/IPA_GUIDE_img.webp";
 
 // Helper component for the IPA symbols grid
 const IPASymbolCard = ({ symbol, example, description }) => (

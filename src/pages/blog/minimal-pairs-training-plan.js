@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
-import soundContrastMap from "../../images/minimal_pairs_sound_contrast_map_v2.webp";
-import mouthPositionGuide from "../../images/mouth_position_guide_v3.webp";
+import soundContrastMap from "../../images/blogs/minimal-pairs-training-plan/minimal_pairs_sound_contrast_map_v2.webp";
+import mouthPositionGuide from "../../images/blogs/minimal-pairs-training-plan/mouth_position_guide_v3.webp";
 
 const blogImageStyle = {
   width: "100%",

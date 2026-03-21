@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[1607],{1607:(e,c,r)=>{e.exports=r.p+"static/media/thumb_word_stress_placeholder.b5138ede38c4692d63c4.svg"}}]);

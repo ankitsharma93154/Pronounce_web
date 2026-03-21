@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkquick_word_pronunciation_helper=self.webpackChunkquick_word_pronunciation_helper||[]).push([[1879],{1879:(e,c,p)=>{e.exports=p.p+"static/media/connected_speech_comparison.7dd043f8dddeb757a639.webp"}}]);

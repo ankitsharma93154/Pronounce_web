@@ -2,8 +2,8 @@ import React from "react";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
-import headerImg from "../../images/IELTS_header.webp";
-import stressImg from "../../images/IELTS_stress_reduction.webp";
+import headerImg from "../../images/blogs/ielts/IELTS_header.webp";
+import stressImg from "../../images/blogs/ielts/IELTS_stress_reduction.webp";
 
 const IELTSBlog = () => {
   const seo = {
