@@ -151,6 +151,39 @@ body.dark .blog-card {
   background-color: var(--bg-dark);
   border-color: var(--border-dark);
 }
+.blog-hub-section {
+  margin-top: 2rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.4rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.blog-hub-section h2 {
+  margin: 0 0 0.8rem;
+  color: var(--text-primary);
+  font-size: 1.45rem;
+}
+
+.blog-hub-section h3 {
+  margin: 1rem 0 0.45rem;
+  color: var(--text-primary);
+  font-size: 1.08rem;
+}
+
+.blog-hub-section p,
+.blog-hub-section li {
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.blog-hub-section ul,
+.blog-hub-section ol {
+  margin: 0.45rem 0 0.9rem;
+  padding-left: 1.2rem;
+}
+
 @media (max-width: 768px) {
   .blog-header {
     padding: 5rem 1rem 2.5rem;

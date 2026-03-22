@@ -10,7 +10,7 @@ const PronunciationGuide = () => {
       "An expert guide to correcting the 50 most common pronunciation errors in English using audio and IPA.",
     author: {
       "@type": "Person",
-      name: "Amit Kumar Sharma",
+      name: "Ankit Kumar Sharma",
     },
     publisher: {
       "@type": "Organization",

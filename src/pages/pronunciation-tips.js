@@ -122,7 +122,7 @@ const PronunciationBlog = () => {
         try {
           // Using dynamic import for each image
           const imageModule = await import(
-            `../images/blogs/pronunciation-tips/${path}`,
+            `../images/blogs/pronunciation-tips/${path}`
           );
           setTipImages((prev) => ({
             ...prev,
@@ -214,7 +214,7 @@ const PronunciationBlog = () => {
       "A comprehensive guide to mastering English sounds using IPA, native audio comparison, and accent training.",
     author: {
       "@type": "Person",
-      name: "Amit Kumar Sharma",
+      name: "Ankit Kumar Sharma",
     },
     publisher: {
       "@type": "Organization",

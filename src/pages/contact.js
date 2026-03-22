@@ -80,8 +80,22 @@ const Contact = () => {
               within 24 hours.
             </p>
             <p className="about-page-section-text">
+              <strong>Founder:</strong> Ankit Kumar Sharma (B.Tech Computer
+              Science student) <br />
+              <strong>Project started:</strong> February 2025 <br />
+              <strong>
+                Primary contact:
+              </strong> hello.quickpronounce@gmail.com <br />
+              <strong>Typical reply window:</strong> within 24-48 hours
+            </p>
+            <p className="about-page-section-text">
               Your feedback helps make QuickPronounce the best free resource for
               English learners worldwide.
+            </p>
+            <p className="about-page-section-text">
+              If you email, sharing your target accent, sample word list, or the
+              exact issue you faced helps me give faster and more useful
+              support.
             </p>
             <p className="about-page-section-text">
               Have other questions? Check out our{" "}

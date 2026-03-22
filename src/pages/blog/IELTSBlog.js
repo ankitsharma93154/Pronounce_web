@@ -246,6 +246,25 @@ const IELTSBlog = () => {
         </p>
       </BlogSection>
 
+      <BlogSection title="6. Speaking Task Transfer: From Practice to Exam Performance">
+        <p className="bt-text">
+          Many candidates practice pronunciation in isolation but lose control
+          during live speaking tasks. To avoid this, transfer your drills into
+          IELTS-style responses. After practicing a target pattern (for example
+          stress or linking), immediately use it in a Part 2 mini-talk and a
+          Part 3 opinion answer. This bridges the gap between practice mode and
+          exam mode.
+        </p>
+        <p className="bt-text">
+          A practical method is the "1-2-1 cycle": one short model answer, two
+          self-recorded attempts, and one corrected final version. This creates
+          fast feedback while keeping pressure realistic. Focus on clarity
+          first, then pacing, then expression. If your message remains
+          understandable at natural speed, your pronunciation performance is
+          moving in the right direction.
+        </p>
+      </BlogSection>
+
       <BlogSection title="Frequently Asked Questions">
         <p className="bt-text">
           <strong>Do I need a British accent for IELTS?</strong>

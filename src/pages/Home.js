@@ -562,10 +562,10 @@ const Home = () => {
             aria-labelledby="home-intent-title"
           >
             <p className="home-seo-anchor">
-              Learn how to pronounce words in <strong>American English</strong>,{" "}
-              <strong>British English</strong>, <strong>Indian English</strong>,
-              and <strong>Australian English</strong> with free pronunciation
-              audio.
+              Practice clear pronunciation with audio in{" "}
+              <strong>American</strong>, <strong>British</strong>,{" "}
+              <strong>Indian</strong>, and <strong>Australian</strong> English,
+              then use IPA and examples to reinforce each word.
             </p>
 
             <div className="home-seo-stack">
@@ -576,14 +576,10 @@ const Home = () => {
                 <div className="home-intent-grid">
                   <div className="home-seo-card">
                     <p>
-                      If you searched for <strong>pronounce words audio</strong>
-                      , <strong>pronounce this word</strong>,{" "}
-                      <strong>word pronunciation audio</strong>,{" "}
-                      <strong>quick pronunciation</strong>, or{" "}
-                      <strong>how to pronounce a word</strong>, this page is
-                      designed for that exact intent. Use the audio first, then
-                      the IPA, then repeat the word aloud while matching the
-                      stress pattern.
+                      Start with audio, then check IPA, then repeat aloud while
+                      matching stress and rhythm. This simple sequence helps you
+                      hear the target sound first and reproduce it more
+                      naturally.
                     </p>
                     <ol className="home-intent-steps">
                       <li>Enter the word or phrase you want to pronounce.</li>
@@ -600,11 +596,9 @@ const Home = () => {
                   <div className="home-seo-card">
                     <h3>Why learners use this pronunciation tool</h3>
                     <p>
-                      QuickPronounce works as a fast{" "}
-                      <strong>word pronouncer </strong>
-                      and <strong>pronunciation tool</strong> for learners who
-                      want clear sound, accent comparison, and phonetic support
-                      without extra steps.
+                      QuickPronounce is built for fast daily practice: hear the
+                      word, compare accents, and use phonetic support without
+                      switching between multiple websites.
                     </p>
                     <ul className="home-intent-points">
                       <li>
@@ -636,9 +630,8 @@ const Home = () => {
                   Popular pronunciation guides
                 </h2>
                 <p className="home-guides-subtitle">
-                  Go deeper with these free guides on english pronunciation,
-                  phonetic spelling, accent comparison, and common pronunciation
-                  questions.
+                  Go deeper with practical guides on pronunciation, accent
+                  differences, and sound-focused practice routines.
                 </p>
                 <div className="home-guides-grid">
                   {featuredGuides.map((guide) => (

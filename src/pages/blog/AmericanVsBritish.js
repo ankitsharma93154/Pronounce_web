@@ -318,6 +318,25 @@ const PronunciationComparison = () => {
       date="October 2025"
       heroImage={im1}
       heroImageAlt="American and British pronunciation comparison"
+      authorProfile={{
+        name: "Ankit Kumar Sharma",
+        role: "Founder, QuickPronounce",
+        bio: "Publishes pronunciation explainers that turn accent theory into practical listening and speaking drills.",
+      }}
+      relatedArticles={[
+        {
+          to: "/blog/IPA-guide",
+          label: "Use IPA to decode accent differences",
+        },
+        {
+          to: "/blog/the-vs-thee-pronunciation",
+          label: "Improve rhythm with article pronunciation rules",
+        },
+        {
+          to: "/blog/can-vs-cant-pronunciation",
+          label: "Strengthen clarity in fast speech",
+        },
+      ]}
       cta={{
         title: "Ready to Master Both Accents?",
         description:

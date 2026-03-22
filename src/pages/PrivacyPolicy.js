@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import "./Css/PrivacyPolicy.css";
 
 const PrivacyPolicy = () => {
-  const lastUpdated = "March 16, 2026";
+  const lastUpdated = "March 22, 2026";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -88,9 +88,9 @@ const PrivacyPolicy = () => {
             4. Advertising Partners and Cookies
           </h2>
           <p className="pp-text">
-            This website uses third-party advertising partners (including Ezoic)
-            to display advertisements. To ensure transparency and compliance
-            with Google policies, please note:
+            This website uses third-party advertising partners (including Google
+            AdSense) to display advertisements. To ensure transparency and
+            compliance with Google policies, please note:
           </p>
 
           <div className="pp-highlight-box">
@@ -184,7 +184,16 @@ const PrivacyPolicy = () => {
               <strong>Right to erasure</strong> – Request deletion of your data
               under certain conditions
             </li>
+            <li className="pp-list-item">
+              <strong>Right to opt out of personalized ads</strong> – Manage ad
+              personalization via Google Ads Settings
+            </li>
           </ul>
+          <p className="pp-text">
+            To make a privacy-related request, contact us at
+            <strong> hello.quickpronounce@gmail.com</strong>. We will review and
+            respond within a reasonable time in accordance with applicable law.
+          </p>
         </section>
 
         <section className="pp-section">
@@ -205,6 +214,16 @@ const PrivacyPolicy = () => {
           </p>
           <p className="pp-text">
             <strong>Email:</strong> hello.quickpronounce@gmail.com
+          </p>
+        </section>
+
+        <section className="pp-section">
+          <h2 className="pp-section-title">10. Policy Updates</h2>
+          <p className="pp-text">
+            We may update this Privacy Policy from time to time to reflect
+            changes to our services, advertising technology, analytics, legal
+            obligations, or Google AdSense requirements. Any updates will be
+            posted on this page with a revised "Last Updated" date.
           </p>
         </section>
       </div>

@@ -21,6 +21,8 @@ const IPA_GUIDE = lazy(() => import("./pages/blog/IPA_Guide"));
 const BlogPosts = lazy(() => import("./pages/blog/Blogposts"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
+const Disclaimer = lazy(() => import("./pages/Disclaimer"));
+const EditorialPolicy = lazy(() => import("./pages/EditorialPolicy"));
 const IELTSBlog = lazy(() => import("./pages/blog/IELTSBlog.js"));
 const SchwaSoundGuide = lazy(() => import("./pages/blog/schwa-sound-guide"));
 const EdEndingsPronunciation = lazy(
@@ -67,6 +69,8 @@ const App = () => {
               path="/terms-and-conditions"
               element={<TermsAndConditions />}
             />
+            <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/editorial-policy" element={<EditorialPolicy />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/blog" element={<BlogPosts />} />
             <Route

@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import "./Css/TermsAndConditions.css";
 
 const TermsAndConditions = () => {
-  const lastUpdated = "March 7, 2026";
+  const lastUpdated = "March 22, 2026";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -144,7 +144,21 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="tc-section">
-          <h2 className="tc-section-title">7. Limitation of Liability</h2>
+          <h2 className="tc-section-title">7. Advertising and Ad Use</h2>
+          <p className="tc-text">
+            QuickPronounce may display advertising provided by third-party
+            partners, including Google AdSense. Ad delivery may use cookies or
+            similar technologies as described in our Privacy Policy.
+          </p>
+          <p className="tc-text">
+            Users must not engage in invalid activity related to ads, including
+            automated clicks, incentivized clicks, misleading ad interactions,
+            or any attempt to artificially inflate impressions or revenue.
+          </p>
+        </section>
+
+        <section className="tc-section">
+          <h2 className="tc-section-title">8. Limitation of Liability</h2>
           <p className="tc-text">
             To the maximum extent permitted by law, QuickPronounce and its
             developers, owners, and affiliates shall not be liable for any
@@ -168,7 +182,7 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="tc-section">
-          <h2 className="tc-section-title">8. Changes to the Terms</h2>
+          <h2 className="tc-section-title">9. Changes to the Terms</h2>
           <p className="tc-text">
             We reserve the right to modify these Terms and Conditions at any
             time without prior notice. Any changes will be effective immediately
@@ -183,7 +197,7 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="tc-section">
-          <h2 className="tc-section-title">9. Contact Information</h2>
+          <h2 className="tc-section-title">10. Contact Information</h2>
           <p className="tc-text">
             If you have any questions, concerns, or inquiries about these Terms
             and Conditions, please contact us:
@@ -201,7 +215,7 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="tc-section">
-          <h2 className="tc-section-title">10. Governing Law</h2>
+          <h2 className="tc-section-title">11. Governing Law</h2>
           <p className="tc-text">
             These Terms and Conditions are governed by and construed in
             accordance with the laws of India. Any disputes arising from these

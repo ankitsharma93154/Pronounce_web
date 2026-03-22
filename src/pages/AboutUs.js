@@ -62,25 +62,28 @@ const AboutUs = () => {
           </h2>
           <div className="about-page-content">
             <p className="about-page-section-text">
-              Welcome to <strong>QuickPronounce.</strong> It is a specialized
-              web tool designed for mastering{" "}
-              <strong>English pronunciation audio</strong> in seconds. Our
-              mission is to simplify the way global learners hear and understand
-              how to pronounce English words correctly across different regions.
+              Welcome to <strong>QuickPronounce.</strong> I am a Computer
+              Science student pursuing B.Tech. My name is
+              <strong> Ankit Kumar Sharma</strong>, and I am the founder of this
+              project. This was my first project, and I started it to solve my
+              own pronunciation problem while learning and communicating in
+              English.
             </p>
             <p className="about-page-section-text">
-              Built by a solo developer from India, this project addresses a
-              common gap: the need for instant{" "}
-              <strong>American vs. British accent comparison</strong>. We
-              provide clear audio and{" "}
-              <strong>IPA phonetic transcriptions</strong> to help you visualize
-              sounds before you speak.
+              Over time, it grew into something much bigger than I expected. I
+              started building QuickPronounce in February last year, and it has
+              now been more than a year of continuous work and improvement. I
+              have personally handled everything in this project, including
+              code, design, SEO, and growth. To move faster and make better
+              decisions, I also used ChatGPT as a step-by-step guide during the
+              journey.
             </p>
             <p className="about-page-section-text">
-              Whether you are an ESL student, a teacher, or a professional
-              preparing for an interview, QuickPronounce offers a fast,
-              reliable, and mobile-friendly solution to pronunciation
-              challenges.
+              There were days when I wanted to shut it down and try something
+              else, but I stayed with it and it was worth it. If QuickPronounce
+              has helped you in any way, feel free to email me directly at{" "}
+              <strong>hello.quickpronounce@gmail.com</strong>. Any feedback is
+              truly appreciated.
             </p>
           </div>
         </section>
