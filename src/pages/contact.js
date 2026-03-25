@@ -151,12 +151,16 @@ const Contact = () => {
               Ko-fi. Every contribution, no matter how small, helps us continue
               developing new features and maintaining the platform.
             </p>
+            <p className="about-page-section-text">
+              Support is completely optional and does not affect access to any
+              QuickPronounce features.
+            </p>
 
             <div className="kofi-support-container">
               <a
                 href="https://ko-fi.com/quickpronounce"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="kofi-support-link"
                 aria-label="Support QuickPronounce on Ko-fi"
               >

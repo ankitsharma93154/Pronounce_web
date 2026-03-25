@@ -63,9 +63,10 @@ const EditorialPolicy = () => {
         <section className="tc-section">
           <h2 className="tc-section-title">4. Author and Review Process</h2>
           <p className="tc-text">
-            Articles are written and maintained by the QuickPronounce editorial
-            team and reviewed for clarity, usefulness, and correctness before
-            publication.
+            QuickPronounce is founder-led by <strong>Ankit Kumar Sharma</strong>
+            . Content is written, reviewed, and updated with a learner-first
+            process focused on clarity, practical usage, and factual accuracy
+            before publication.
           </p>
         </section>
 
@@ -81,8 +82,9 @@ const EditorialPolicy = () => {
         <section className="tc-section">
           <h2 className="tc-section-title">6. AI Use Disclosure</h2>
           <p className="tc-text">
-            We may use tools to assist drafting and editing, but final content
-            is reviewed and edited by humans before publication.
+            AI tools may be used to assist brainstorming, drafting, and editing.
+            Final content decisions, examples, and publication are
+            human-reviewed and controlled by the founder.
           </p>
         </section>
 

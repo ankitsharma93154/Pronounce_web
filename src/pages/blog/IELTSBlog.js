@@ -148,6 +148,8 @@ const IELTSBlog = () => {
         src={stressImg}
         alt="Sentence waveform showing stress and reduction"
         className="bt-hero-image"
+        width="1200"
+        height="675"
       />
 
       <BlogSection title="3. High-Value IELTS Vocabulary (With Correct Pronunciation)">

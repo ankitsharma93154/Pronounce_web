@@ -41,7 +41,7 @@ const Header = () => {
       <div className="container header-content">
         <Link to="/" className="logo">
           <div className="logo-icon">
-            <img src={logo} alt="Logo" height={40} width="auto" />
+            <img src={logo} alt="Logo" height="40" width="40" />
           </div>
           <span className="logo-text">QuickPronounce</span>
         </Link>

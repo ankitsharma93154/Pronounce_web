@@ -113,13 +113,20 @@ const AboutUs = () => {
               Why Audio Accents Matter
             </h3>
             <div className="about-page-feature-content">
-              <p className="about-page-text">
-                Clear communication relies on understanding regional variations.
-                Comparing
-                <strong> American, British, Indian, and Australian</strong>{" "}
-                audio helps learners adapt to global standards and builds
-                conversational confidence in any professional setting.
-              </p>
+              <ul className="about-page-feature-list">
+                <li>
+                  Understand regional variations with
+                  <strong>
+                    {" "}
+                    American, British, Indian, and Australian
+                  </strong>{" "}
+                  accents
+                </li>
+                <li>Adapt to global communication standards</li>
+                <li>
+                  Build conversational confidence in any professional setting
+                </li>
+              </ul>
             </div>
           </section>
 
@@ -127,13 +134,20 @@ const AboutUs = () => {
           <section className="about-page-feature">
             <h3 className="about-page-feature-title">Modern Technology</h3>
             <div className="about-page-feature-content">
-              <p className="about-page-text">
-                QuickPronounce is a high-performance{" "}
-                <strong>React application</strong>. It utilizes advanced Speech
-                Synthesis APIs to deliver high-fidelity audio, optimized for
-                <strong>fast loading speeds</strong> even on slow mobile
-                networks.
-              </p>
+              <ul className="about-page-feature-list">
+                <li>
+                  High-performance <strong>React application</strong> for fast
+                  responsiveness
+                </li>
+                <li>
+                  Advanced <strong>Speech Synthesis APIs</strong> for
+                  high-fidelity audio
+                </li>
+                <li>
+                  Optimized for <strong>fast loading speeds</strong> on slow
+                  mobile networks
+                </li>
+              </ul>
             </div>
           </section>
         </div>

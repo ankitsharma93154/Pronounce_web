@@ -9,12 +9,14 @@ import mythsVsRealityImage from "../../images/blogs/pronunciation-myths/myths_vs
 const blogImageStyle = {
   width: "100%",
   maxWidth: "736px",
+  aspectRatio: "1200 / 800",
   borderRadius: "16px",
   display: "block",
   margin: "16px auto",
   border: "1px solid #e2e8f0",
   boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
   objectFit: "cover",
+  height: "auto",
 };
 
 const imageCaptionStyle = {
@@ -35,7 +37,8 @@ const PronunciationMythsGuide = () => {
     ogTitle: "English Pronunciation Myths That Waste Learners' Time",
     ogDescription:
       "Learn which pronunciation myths are holding you back and what to do instead for faster, measurable speaking improvement.",
-    ogImage: "https://www.quickpronounce.site/images/word_stress_thumbnail_v2.webp",
+    ogImage:
+      "https://www.quickpronounce.site/images/word_stress_thumbnail_v2.webp",
     ogType: "article",
     structuredData: {
       "@context": "https://schema.org",
@@ -95,7 +98,9 @@ const PronunciationMythsGuide = () => {
           <li>1) Myth #1: You need a native accent to be understood</li>
           <li>2) Myth #2: Pronunciation is only about individual sounds</li>
           <li>3) Myth #3: Adults cannot improve pronunciation much</li>
-          <li>4) Myth #4: More speaking automatically means better pronunciation</li>
+          <li>
+            4) Myth #4: More speaking automatically means better pronunciation
+          </li>
           <li>5) Myth #5: IPA is too difficult and unnecessary</li>
           <li>6) Myth #6: Fast speech equals fluent speech</li>
           <li>7) Myth #7: You should avoid recording yourself</li>
@@ -106,7 +111,9 @@ const PronunciationMythsGuide = () => {
       </BlogSection>
 
       <BlogSection title="English Pronunciation Myths vs Reality: What Actually Works">
-        <h3 className="bt-sub-title">Myth #1: You need a native accent to be understood</h3>
+        <h3 className="bt-sub-title">
+          Myth #1: You need a native accent to be understood
+        </h3>
         <p>
           <strong>Reality:</strong> intelligibility matters more than imitation.
           You can be highly understandable with a global accent if your stress,
@@ -117,14 +124,19 @@ const PronunciationMythsGuide = () => {
           identity-changing accent mimicry.
         </p>
 
-        <h3 className="bt-sub-title">Myth #2: Pronunciation is only about individual sounds</h3>
+        <h3 className="bt-sub-title">
+          Myth #2: Pronunciation is only about individual sounds
+        </h3>
         <p>
           <strong>Reality:</strong> sentence rhythm, linking, and stress often
           influence comprehension more than one isolated consonant.
         </p>
         <p>
           Practical move: combine sound drills with
-          <Link to="/blog/connected-speech-guide"> connected speech training</Link>
+          <Link to="/blog/connected-speech-guide">
+            {" "}
+            connected speech training
+          </Link>
           every week.
         </p>
 
@@ -139,7 +151,9 @@ const PronunciationMythsGuide = () => {
           clarification requests per week).
         </p>
 
-        <h3 className="bt-sub-title">Myth #4: More speaking automatically improves pronunciation</h3>
+        <h3 className="bt-sub-title">
+          Myth #4: More speaking automatically improves pronunciation
+        </h3>
         <p>
           <strong>Reality:</strong> repetition without correction can stabilize
           incorrect habits. Quantity helps only when quality control exists.
@@ -148,11 +162,13 @@ const PronunciationMythsGuide = () => {
           Practical move: add short audit cycles with recording and error tags.
         </p>
 
-        <h3 className="bt-sub-title">Myth #5: IPA is too hard and not useful</h3>
+        <h3 className="bt-sub-title">
+          Myth #5: IPA is too hard and not useful
+        </h3>
         <p>
-          <strong>Reality:</strong> IPA is a practical map, not an academic test.
-          Learning the most frequent symbols quickly improves dictionary use and
-          self-correction speed.
+          <strong>Reality:</strong> IPA is a practical map, not an academic
+          test. Learning the most frequent symbols quickly improves dictionary
+          use and self-correction speed.
         </p>
         <p>
           Practical move: review core symbols in
@@ -160,7 +176,9 @@ const PronunciationMythsGuide = () => {
           to your target words.
         </p>
 
-        <h3 className="bt-sub-title">Myth #6: Fast speech means fluent speech</h3>
+        <h3 className="bt-sub-title">
+          Myth #6: Fast speech means fluent speech
+        </h3>
         <p>
           <strong>Reality:</strong> speed without articulation reduces
           intelligibility. Effective fluency is controlled pace + clear rhythm +
@@ -171,17 +189,19 @@ const PronunciationMythsGuide = () => {
           transitions.
         </p>
 
-        <h3 className="bt-sub-title">Myth #7: Recording yourself is embarrassing and unnecessary</h3>
+        <h3 className="bt-sub-title">
+          Myth #7: Recording yourself is embarrassing and unnecessary
+        </h3>
         <p>
           <strong>Reality:</strong> recording is one of the fastest learning
           accelerators because it exposes hidden habits your ears miss in live
           speech.
         </p>
-        <p>
-          Practical move: record 30 seconds daily; review one target only.
-        </p>
+        <p>Practical move: record 30 seconds daily; review one target only.</p>
 
-        <h3 className="bt-sub-title">Myth #8: One universal method works for everyone</h3>
+        <h3 className="bt-sub-title">
+          Myth #8: One universal method works for everyone
+        </h3>
         <p>
           <strong>Reality:</strong> learners have different first-language
           backgrounds, goals, and listening environments. Training should be
@@ -200,7 +220,8 @@ const PronunciationMythsGuide = () => {
         <p>
           Practical move: use a repeatable routine from
           <Link to="/blog/pronunciation-job-interview-guide">
-            {" "}the interview pronunciation guide
+            {" "}
+            the interview pronunciation guide
           </Link>
           .
         </p>
@@ -219,9 +240,7 @@ const PronunciationMythsGuide = () => {
       </BlogSection>
 
       <BlogSection title="A Smarter Framework: What to Focus on Instead">
-        <p>
-          Replace myth-based practice with this four-part framework:
-        </p>
+        <p>Replace myth-based practice with this four-part framework:</p>
         <ul>
           <li>
             <strong>Sound clarity:</strong> target high-impact vowel and
@@ -273,8 +292,8 @@ const PronunciationMythsGuide = () => {
       <BlogSection title="Pro Tips and Expert Insights">
         <ul>
           <li>
-            <strong>Build a personal error bank.</strong> Save your top recurring
-            mistakes and review them weekly.
+            <strong>Build a personal error bank.</strong> Save your top
+            recurring mistakes and review them weekly.
           </li>
           <li>
             <strong>Use high-frequency sentence frames.</strong> Train language
@@ -318,8 +337,8 @@ const PronunciationMythsGuide = () => {
             what to change and when.
           </li>
           <li>
-            <strong>Is there a drill?</strong> Useful guidance includes a repeatable
-            exercise, not just theory.
+            <strong>Is there a drill?</strong> Useful guidance includes a
+            repeatable exercise, not just theory.
           </li>
           <li>
             <strong>Is there a check method?</strong> You need recording,
@@ -355,8 +374,8 @@ const PronunciationMythsGuide = () => {
 
         <h3 className="bt-sub-title">Day 3: Contrast Drill Day</h3>
         <p>
-          Practice confusing pairs in full sentences (for example can/can&apos;t,
-          ship/sheep, live/leave).
+          Practice confusing pairs in full sentences (for example
+          can/can&apos;t, ship/sheep, live/leave).
         </p>
 
         <h3 className="bt-sub-title">Day 4: IPA-Assisted Correction</h3>
@@ -366,9 +385,7 @@ const PronunciationMythsGuide = () => {
         </p>
 
         <h3 className="bt-sub-title">Day 5: Connected Speech Transfer</h3>
-        <p>
-          Practice phrase linking and reductions in short responses.
-        </p>
+        <p>Practice phrase linking and reductions in short responses.</p>
 
         <h3 className="bt-sub-title">Day 6: Real Scenario Practice</h3>
         <p>
@@ -429,12 +446,12 @@ const PronunciationMythsGuide = () => {
             (meetings, calls, interviews, discussions).
           </li>
           <li>
-            <strong>Week 3:</strong> run targeted listening checks to ensure your
-            perception matches production.
+            <strong>Week 3:</strong> run targeted listening checks to ensure
+            your perception matches production.
           </li>
           <li>
-            <strong>Week 4:</strong> record a before/after sample and update your
-            next month&apos;s priorities.
+            <strong>Week 4:</strong> record a before/after sample and update
+            your next month&apos;s priorities.
           </li>
         </ul>
         <p>
@@ -451,32 +468,37 @@ const PronunciationMythsGuide = () => {
 
       <BlogSection title="Decision Filter: Should You Follow This New Pronunciation Tip?">
         <p>
-          Before adopting a new tip, ask: Does it improve intelligibility in real
-          conversation? Can I measure change in one week? Does it include active
-          speaking, not passive watching? If the answer is no, skip it.
+          Before adopting a new tip, ask: Does it improve intelligibility in
+          real conversation? Can I measure change in one week? Does it include
+          active speaking, not passive watching? If the answer is no, skip it.
         </p>
         <p>
           This simple filter saves time and protects focus. Smart learners do
-          not follow every trend—they follow systems that produce visible results.
+          not follow every trend—they follow systems that produce visible
+          results.
         </p>
       </BlogSection>
 
       <BlogSection title="Minimum Effective Practice Dose">
         <p>
-          On busy days, do not skip everything. Keep a minimum effective dose:
-          8 to 10 minutes of focused drill plus one short recording. Consistency
+          On busy days, do not skip everything. Keep a minimum effective dose: 8
+          to 10 minutes of focused drill plus one short recording. Consistency
           beats intensity when building lasting pronunciation change.
         </p>
       </BlogSection>
 
       <BlogSection title="FAQ: English Pronunciation Myths">
-        <h3 className="bt-sub-title">Do I need to sound American or British to succeed?</h3>
+        <h3 className="bt-sub-title">
+          Do I need to sound American or British to succeed?
+        </h3>
         <p>
           No. Accent consistency can help style, but communication success comes
           from intelligibility, not imitation.
         </p>
 
-        <h3 className="bt-sub-title">How quickly can I improve with better methods?</h3>
+        <h3 className="bt-sub-title">
+          How quickly can I improve with better methods?
+        </h3>
         <p>
           Many learners notice clearer speech in one to two weeks when they use
           focused drills and daily recording feedback.

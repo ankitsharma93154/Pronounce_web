@@ -385,6 +385,7 @@
 .avb-diff-image {
   width: 100%;
   height: auto;
+  aspect-ratio: 1200 / 800;
   max-width: 100%;
   display: block;
   object-fit: cover;

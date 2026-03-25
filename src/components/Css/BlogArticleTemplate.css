@@ -99,12 +99,15 @@
 
 .bt-hero-image {
   width: 100%;
+  aspect-ratio: 16 / 9;
   height: auto;
   border-radius: 1.1rem;
   margin: 2.5rem 0;
   display: block;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-hero);
+  object-fit: cover;
+  object-position: center;
 }
 
 .bt-section {

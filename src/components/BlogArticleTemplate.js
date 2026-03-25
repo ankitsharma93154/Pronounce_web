@@ -15,7 +15,7 @@ const BlogArticleTemplate = ({
   cta,
   authorProfile,
   relatedArticles,
-  showLearningWorkbook = true,
+  showLearningWorkbook = false,
   children,
 }) => {
   const location = useLocation();
@@ -241,6 +241,8 @@ const BlogArticleTemplate = ({
             src={heroImage}
             alt={heroImageAlt || title}
             className="bt-hero-image"
+            width="1200"
+            height="675"
           />
         ) : null}
 

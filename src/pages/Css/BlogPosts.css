@@ -70,6 +70,7 @@
   object-position: top center;
   display: block;
   background-color: var(--bg-secondary);
+  content-visibility: auto;
 }
 body.dark .blog-card-image,
 body.dark .blog-header {

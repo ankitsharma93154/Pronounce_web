@@ -8,12 +8,14 @@ import schwaRhythm from "../../images/blogs/schwa-sound-guide/schwa_sound_rythmn
 const blogImageStyle = {
   width: "100%",
   maxWidth: "736px",
+  aspectRatio: "1200 / 800",
   borderRadius: "16px",
   display: "block",
   margin: "16px auto",
   border: "1px solid #e2e8f0",
   boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
   objectFit: "cover",
+  height: "auto",
 };
 
 const imageCaptionStyle = {

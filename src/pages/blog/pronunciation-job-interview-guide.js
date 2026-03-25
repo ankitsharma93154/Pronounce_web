@@ -9,12 +9,14 @@ import jobInterviewStarMethodImage from "../../images/blogs/job-interview/star_f
 const blogImageStyle = {
   width: "100%",
   maxWidth: "736px",
+  aspectRatio: "1200 / 800",
   borderRadius: "16px",
   display: "block",
   margin: "16px auto",
   border: "1px solid #e2e8f0",
   boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
   objectFit: "cover",
+  height: "auto",
 };
 
 const imageCaptionStyle = {
@@ -75,9 +77,9 @@ const PronunciationJobInterviewGuide = () => {
         <p>
           In most interviews, your ideas matter most—but your delivery controls
           whether those ideas are understood quickly. That is why
-          <strong> pronunciation for job interviews</strong> is a practical skill,
-          not a cosmetic one. If your message is clear on first hearing, you
-          sound more prepared, more reliable, and easier to work with.
+          <strong> pronunciation for job interviews</strong> is a practical
+          skill, not a cosmetic one. If your message is clear on first hearing,
+          you sound more prepared, more reliable, and easier to work with.
         </p>
         <p>
           Many candidates focus on grammar and content but ignore pronunciation
@@ -112,19 +114,25 @@ const PronunciationJobInterviewGuide = () => {
           style={blogImageStyle}
         />
         <p style={imageCaptionStyle}>
-          STAR framework visual to support structured answers with better stress,
-          pacing, and clarity.
+          STAR framework visual to support structured answers with better
+          stress, pacing, and clarity.
         </p>
       </BlogSection>
 
       <BlogSection title="The Interview Clarity Model (What Recruiters Actually Need)">
-        <p>
-          Interviewers are usually listening for three things at once:
-        </p>
+        <p>Interviewers are usually listening for three things at once:</p>
         <ul>
-          <li><strong>Meaning clarity:</strong> can they catch your key point fast?</li>
-          <li><strong>Processing ease:</strong> is your speech easy to follow?</li>
-          <li><strong>Professional control:</strong> do you sound steady under pressure?</li>
+          <li>
+            <strong>Meaning clarity:</strong> can they catch your key point
+            fast?
+          </li>
+          <li>
+            <strong>Processing ease:</strong> is your speech easy to follow?
+          </li>
+          <li>
+            <strong>Professional control:</strong> do you sound steady under
+            pressure?
+          </li>
         </ul>
         <p>
           Pronunciation supports all three. A clear response at medium speed is
@@ -135,7 +143,9 @@ const PronunciationJobInterviewGuide = () => {
       </BlogSection>
 
       <BlogSection title="High-Impact Pronunciation Targets for Interviews">
-        <h3 className="bt-sub-title">1) Word stress in professional vocabulary</h3>
+        <h3 className="bt-sub-title">
+          1) Word stress in professional vocabulary
+        </h3>
         <p>
           Words like <strong>analysis</strong>, <strong>experience</strong>,
           <strong> development</strong>, <strong>responsibility</strong>, and
@@ -150,7 +160,9 @@ const PronunciationJobInterviewGuide = () => {
           natural rhythm and helps interviewers track your argument.
         </p>
 
-        <h3 className="bt-sub-title">3) Clean endings in past tense and numbers</h3>
+        <h3 className="bt-sub-title">
+          3) Clean endings in past tense and numbers
+        </h3>
         <p>
           Interview answers are full of results and timelines. If past tense
           endings are unclear, achievements sound less precise. Review
@@ -158,7 +170,9 @@ const PronunciationJobInterviewGuide = () => {
           practice numeric phrases aloud.
         </p>
 
-        <h3 className="bt-sub-title">4) Connected speech without swallowing meaning</h3>
+        <h3 className="bt-sub-title">
+          4) Connected speech without swallowing meaning
+        </h3>
         <p>
           You want natural flow, not robotic word-by-word speech. But avoid
           over-reduction. In interviews, clarity wins. Use light linking, then
@@ -173,10 +187,19 @@ const PronunciationJobInterviewGuide = () => {
           map your voice to it.
         </p>
         <ul>
-          <li><strong>Situation:</strong> calm pace, setup context clearly.</li>
-          <li><strong>Task:</strong> stress the key problem noun and verb.</li>
-          <li><strong>Action:</strong> maintain medium pace and clean transitions.</li>
-          <li><strong>Result:</strong> emphasize numbers, outcomes, and impact words.</li>
+          <li>
+            <strong>Situation:</strong> calm pace, setup context clearly.
+          </li>
+          <li>
+            <strong>Task:</strong> stress the key problem noun and verb.
+          </li>
+          <li>
+            <strong>Action:</strong> maintain medium pace and clean transitions.
+          </li>
+          <li>
+            <strong>Result:</strong> emphasize numbers, outcomes, and impact
+            words.
+          </li>
         </ul>
         <p>
           Example line: “I <strong>led</strong> a small team to
@@ -190,21 +213,29 @@ const PronunciationJobInterviewGuide = () => {
         <ul>
           <li>“I have five years of experience in customer operations.”</li>
           <li>“My core strength is solving process bottlenecks quickly.”</li>
-          <li>“I enjoy cross-functional collaboration and measurable outcomes.”</li>
+          <li>
+            “I enjoy cross-functional collaboration and measurable outcomes.”
+          </li>
         </ul>
 
         <h3 className="bt-sub-title">Behavioral answers</h3>
         <ul>
           <li>“One challenge I faced was delayed client onboarding.”</li>
-          <li>“I analyzed the workflow and simplified three approval steps.”</li>
+          <li>
+            “I analyzed the workflow and simplified three approval steps.”
+          </li>
           <li>“As a result, completion time dropped from 10 days to 6.”</li>
         </ul>
 
         <h3 className="bt-sub-title">Closing questions</h3>
         <ul>
-          <li>“What does success in this role look like in the first 90 days?”</li>
+          <li>
+            “What does success in this role look like in the first 90 days?”
+          </li>
           <li>“How does this team measure performance and impact?”</li>
-          <li>“What are the biggest priorities for this position right now?”</li>
+          <li>
+            “What are the biggest priorities for this position right now?”
+          </li>
         </ul>
       </BlogSection>
 
@@ -227,19 +258,32 @@ const PronunciationJobInterviewGuide = () => {
             practice chunks, not full memorized paragraphs.
           </li>
           <li>
-            <strong>Mistake 5: No audio feedback.</strong> Fix:
-            record 60-second answers and review daily.
+            <strong>Mistake 5: No audio feedback.</strong> Fix: record 60-second
+            answers and review daily.
           </li>
         </ul>
       </BlogSection>
 
       <BlogSection title="12-Minute Daily Routine for Interview Pronunciation">
         <ol>
-          <li><strong>Minute 1-2:</strong> warm up with 10 high-frequency interview words.</li>
-          <li><strong>Minute 3-5:</strong> practice two STAR answers slowly.</li>
-          <li><strong>Minute 6-8:</strong> repeat the same answers at natural speed.</li>
-          <li><strong>Minute 9-10:</strong> record one 45-second response.</li>
-          <li><strong>Minute 11-12:</strong> review and mark one correction target.</li>
+          <li>
+            <strong>Minute 1-2:</strong> warm up with 10 high-frequency
+            interview words.
+          </li>
+          <li>
+            <strong>Minute 3-5:</strong> practice two STAR answers slowly.
+          </li>
+          <li>
+            <strong>Minute 6-8:</strong> repeat the same answers at natural
+            speed.
+          </li>
+          <li>
+            <strong>Minute 9-10:</strong> record one 45-second response.
+          </li>
+          <li>
+            <strong>Minute 11-12:</strong> review and mark one correction
+            target.
+          </li>
         </ol>
         <p>
           Use <Link to="/">QuickPronounce</Link> for uncertain words before you
@@ -266,18 +310,32 @@ const PronunciationJobInterviewGuide = () => {
             rhythm and pause placement, not just individual sounds.
           </li>
           <li>
-            <strong>Build a "rescue sentence" bank.</strong> Prepare short
-            clear lines to recover when you lose flow.
+            <strong>Build a "rescue sentence" bank.</strong> Prepare short clear
+            lines to recover when you lose flow.
           </li>
         </ul>
       </BlogSection>
 
       <BlogSection title="Related Reading to Support This Topic">
         <ul>
-          <li><Link to="/blog/word-stress-rules-guide">Word Stress Rules Guide</Link></li>
-          <li><Link to="/blog/connected-speech-guide">Connected Speech Guide</Link></li>
-          <li><Link to="/blog/IPA-guide">IPA Guide</Link></li>
-          <li><Link to="/blog/can-vs-cant-pronunciation">Can vs Can&apos;t Pronunciation</Link></li>
+          <li>
+            <Link to="/blog/word-stress-rules-guide">
+              Word Stress Rules Guide
+            </Link>
+          </li>
+          <li>
+            <Link to="/blog/connected-speech-guide">
+              Connected Speech Guide
+            </Link>
+          </li>
+          <li>
+            <Link to="/blog/IPA-guide">IPA Guide</Link>
+          </li>
+          <li>
+            <Link to="/blog/can-vs-cant-pronunciation">
+              Can vs Can&apos;t Pronunciation
+            </Link>
+          </li>
         </ul>
       </BlogSection>
 
@@ -288,22 +346,31 @@ const PronunciationJobInterviewGuide = () => {
           Keep the scorecard simple so you actually use it.
         </p>
         <ul>
-          <li><strong>Word stress clarity:</strong> key words are easy to catch.</li>
-          <li><strong>Pace control:</strong> not rushed, not robotic.</li>
-          <li><strong>Ending clarity:</strong> final sounds are audible enough.</li>
-          <li><strong>Sentence rhythm:</strong> ideas flow in natural chunks.</li>
-          <li><strong>Confidence signal:</strong> voice sounds stable under pressure.</li>
+          <li>
+            <strong>Word stress clarity:</strong> key words are easy to catch.
+          </li>
+          <li>
+            <strong>Pace control:</strong> not rushed, not robotic.
+          </li>
+          <li>
+            <strong>Ending clarity:</strong> final sounds are audible enough.
+          </li>
+          <li>
+            <strong>Sentence rhythm:</strong> ideas flow in natural chunks.
+          </li>
+          <li>
+            <strong>Confidence signal:</strong> voice sounds stable under
+            pressure.
+          </li>
         </ul>
-        <p>
-          Example weekly log:
-        </p>
+        <p>Example weekly log:</p>
         <ul>
           <li>Day 1: Stress 2, Pace 3, Endings 2, Rhythm 2, Confidence 2</li>
           <li>Day 7: Stress 4, Pace 4, Endings 3, Rhythm 4, Confidence 4</li>
         </ul>
         <p>
-          This turns interview pronunciation into measurable training rather than
-          vague self-judgment.
+          This turns interview pronunciation into measurable training rather
+          than vague self-judgment.
         </p>
       </BlogSection>
 
@@ -316,23 +383,34 @@ const PronunciationJobInterviewGuide = () => {
 
         <h3 className="bt-sub-title">Tech / Product</h3>
         <ul>
-          <li>“I improved API response consistency across peak traffic periods.”</li>
+          <li>
+            “I improved API response consistency across peak traffic periods.”
+          </li>
           <li>“I prioritized bug fixes based on customer impact severity.”</li>
-          <li>“I collaborated with design and backend teams to reduce friction.”</li>
+          <li>
+            “I collaborated with design and backend teams to reduce friction.”
+          </li>
         </ul>
 
         <h3 className="bt-sub-title">Operations</h3>
         <ul>
           <li>“I mapped the process and removed duplicate approval steps.”</li>
           <li>“We reduced turnaround time by 22 percent over one quarter.”</li>
-          <li>“I created a weekly reporting dashboard for leadership updates.”</li>
+          <li>
+            “I created a weekly reporting dashboard for leadership updates.”
+          </li>
         </ul>
 
         <h3 className="bt-sub-title">Customer Support</h3>
         <ul>
-          <li>“I resolved high-priority tickets with clear escalation workflows.”</li>
+          <li>
+            “I resolved high-priority tickets with clear escalation workflows.”
+          </li>
           <li>“I improved first-response quality using response templates.”</li>
-          <li>“I handled difficult conversations while maintaining empathy and clarity.”</li>
+          <li>
+            “I handled difficult conversations while maintaining empathy and
+            clarity.”
+          </li>
         </ul>
 
         <p>
@@ -347,20 +425,35 @@ const PronunciationJobInterviewGuide = () => {
           overload your brain. Use this 20-minute sequence.
         </p>
         <ol>
-          <li><strong>Minute 1–4:</strong> breathe and reset pace with short warm-up lines.</li>
-          <li><strong>Minute 5–9:</strong> run two STAR answers with clear stress.</li>
-          <li><strong>Minute 10–14:</strong> answer two unpredictable questions aloud.</li>
-          <li><strong>Minute 15–18:</strong> replay one recording and fix one issue only.</li>
-          <li><strong>Minute 19–20:</strong> speak three confidence anchor sentences.</li>
+          <li>
+            <strong>Minute 1–4:</strong> breathe and reset pace with short
+            warm-up lines.
+          </li>
+          <li>
+            <strong>Minute 5–9:</strong> run two STAR answers with clear stress.
+          </li>
+          <li>
+            <strong>Minute 10–14:</strong> answer two unpredictable questions
+            aloud.
+          </li>
+          <li>
+            <strong>Minute 15–18:</strong> replay one recording and fix one
+            issue only.
+          </li>
+          <li>
+            <strong>Minute 19–20:</strong> speak three confidence anchor
+            sentences.
+          </li>
         </ol>
         <p>
-          Confidence anchors are short lines you can deliver cleanly anytime, for
-          example: “Thanks for the opportunity. I’ll give a clear, structured
-          answer.” These lines stabilize rhythm and reduce panic effects.
+          Confidence anchors are short lines you can deliver cleanly anytime,
+          for example: “Thanks for the opportunity. I’ll give a clear,
+          structured answer.” These lines stabilize rhythm and reduce panic
+          effects.
         </p>
         <p>
-          If you do this before each important interview, your delivery will feel
-          more consistent even when questions become difficult.
+          If you do this before each important interview, your delivery will
+          feel more consistent even when questions become difficult.
         </p>
       </BlogSection>
 
@@ -374,7 +467,8 @@ const PronunciationJobInterviewGuide = () => {
         <h3 className="bt-sub-title">Behavioral conflict questions</h3>
         <p>
           Use slower onset and stronger stress on action verbs: “I
-          <strong> clarified</strong> expectations, then <strong>aligned</strong>
+          <strong> clarified</strong> expectations, then{" "}
+          <strong>aligned</strong>
           the team on priorities.”
         </p>
 
@@ -398,8 +492,9 @@ const PronunciationJobInterviewGuide = () => {
 
         <p>
           Train each question type with two recorded answers. Review where pace
-          rises too much and where stress disappears. Correcting these two issues
-          usually improves interview clarity faster than chasing accent style.
+          rises too much and where stress disappears. Correcting these two
+          issues usually improves interview clarity faster than chasing accent
+          style.
         </p>
       </BlogSection>
 
@@ -411,8 +506,8 @@ const PronunciationJobInterviewGuide = () => {
         </p>
         <p>
           This loop converts each interview into training data. Over time, your
-          pronunciation becomes more stable under pressure, and your communication
-          sounds consistently professional.
+          pronunciation becomes more stable under pressure, and your
+          communication sounds consistently professional.
         </p>
       </BlogSection>
 
@@ -426,13 +521,17 @@ const PronunciationJobInterviewGuide = () => {
       </BlogSection>
 
       <BlogSection title="FAQ: Pronunciation for Job Interviews">
-        <h3 className="bt-sub-title">Do I need a British or American accent to pass interviews?</h3>
+        <h3 className="bt-sub-title">
+          Do I need a British or American accent to pass interviews?
+        </h3>
         <p>
           No. Most interviewers care about clarity, professionalism, and
           communication efficiency, not accent imitation.
         </p>
 
-        <h3 className="bt-sub-title">How soon can I improve interview clarity?</h3>
+        <h3 className="bt-sub-title">
+          How soon can I improve interview clarity?
+        </h3>
         <p>
           With daily focused practice and recording, many learners hear progress
           within one to two weeks.
@@ -444,7 +543,9 @@ const PronunciationJobInterviewGuide = () => {
           often sounds unnatural and breaks under follow-up questions.
         </p>
 
-        <h3 className="bt-sub-title">What should I do one hour before an interview?</h3>
+        <h3 className="bt-sub-title">
+          What should I do one hour before an interview?
+        </h3>
         <p>
           Warm up with your key vocabulary, run two short answers aloud, and do
           one final recording pass for pace and stress.
@@ -463,8 +564,8 @@ const PronunciationJobInterviewGuide = () => {
           creates confidence you can feel on interview day.
         </p>
         <p>
-          Start now: open <Link to="/">QuickPronounce</Link>, verify your top
-          15 interview words, and run the 12-minute routine today.
+          Start now: open <Link to="/">QuickPronounce</Link>, verify your top 15
+          interview words, and run the 12-minute routine today.
         </p>
       </BlogSection>
     </BlogArticleTemplate>
