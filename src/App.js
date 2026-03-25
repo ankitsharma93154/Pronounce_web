@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Home from "./pages/Home"; // Direct import for Home
 
 // Lazy load only secondary pages
@@ -58,74 +59,76 @@ const App = () => {
       <div className="app">
         <Header />
 
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/faq" element={<FAQPage />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route
-              path="/terms-and-conditions"
-              element={<TermsAndConditions />}
-            />
-            <Route path="/disclaimer" element={<Disclaimer />} />
-            <Route path="/editorial-policy" element={<EditorialPolicy />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/blog" element={<BlogPosts />} />
-            <Route
-              path="/blog/pronunciation-guide"
-              element={<PronunciationGuide />}
-            />
-            <Route
-              path="/blog/pronunciation-tips"
-              element={<PronunciationBlog />}
-            />
-            <Route
-              path="/blog/american-vs-british"
-              element={<PronunciationComparison />}
-            />
-            <Route path="/blog/IPA-guide" element={<IPA_GUIDE />} />
-            <Route path="/blog/SilentLetters" element={<SilentKillers />} />
-            <Route path="/blog/ielts" element={<IELTSBlog />} />
-            <Route
-              path="/blog/schwa-sound-guide"
-              element={<SchwaSoundGuide />}
-            />
-            <Route
-              path="/blog/ed-endings-pronunciation"
-              element={<EdEndingsPronunciation />}
-            />
-            <Route
-              path="/blog/connected-speech-guide"
-              element={<ConnectedSpeechGuide />}
-            />
-            <Route
-              path="/blog/word-stress-rules-guide"
-              element={<WordStressRulesGuide />}
-            />
-            <Route
-              path="/blog/minimal-pairs-training-plan"
-              element={<MinimalPairsTrainingPlan />}
-            />
-            <Route
-              path="/blog/the-vs-thee-pronunciation"
-              element={<TheVsTheePronunciation />}
-            />
-            <Route
-              path="/blog/can-vs-cant-pronunciation"
-              element={<CanVsCantPronunciation />}
-            />
-            <Route
-              path="/blog/pronunciation-job-interview-guide"
-              element={<PronunciationJobInterviewGuide />}
-            />
-            <Route
-              path="/blog/pronunciation-myths-guide"
-              element={<PronunciationMythsGuide />}
-            />
-          </Routes>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/faq" element={<FAQPage />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route
+                path="/terms-and-conditions"
+                element={<TermsAndConditions />}
+              />
+              <Route path="/disclaimer" element={<Disclaimer />} />
+              <Route path="/editorial-policy" element={<EditorialPolicy />} />
+              <Route path="*" element={<NotFound />} />
+              <Route path="/blog" element={<BlogPosts />} />
+              <Route
+                path="/blog/pronunciation-guide"
+                element={<PronunciationGuide />}
+              />
+              <Route
+                path="/blog/pronunciation-tips"
+                element={<PronunciationBlog />}
+              />
+              <Route
+                path="/blog/american-vs-british"
+                element={<PronunciationComparison />}
+              />
+              <Route path="/blog/IPA-guide" element={<IPA_GUIDE />} />
+              <Route path="/blog/SilentLetters" element={<SilentKillers />} />
+              <Route path="/blog/ielts" element={<IELTSBlog />} />
+              <Route
+                path="/blog/schwa-sound-guide"
+                element={<SchwaSoundGuide />}
+              />
+              <Route
+                path="/blog/ed-endings-pronunciation"
+                element={<EdEndingsPronunciation />}
+              />
+              <Route
+                path="/blog/connected-speech-guide"
+                element={<ConnectedSpeechGuide />}
+              />
+              <Route
+                path="/blog/word-stress-rules-guide"
+                element={<WordStressRulesGuide />}
+              />
+              <Route
+                path="/blog/minimal-pairs-training-plan"
+                element={<MinimalPairsTrainingPlan />}
+              />
+              <Route
+                path="/blog/the-vs-thee-pronunciation"
+                element={<TheVsTheePronunciation />}
+              />
+              <Route
+                path="/blog/can-vs-cant-pronunciation"
+                element={<CanVsCantPronunciation />}
+              />
+              <Route
+                path="/blog/pronunciation-job-interview-guide"
+                element={<PronunciationJobInterviewGuide />}
+              />
+              <Route
+                path="/blog/pronunciation-myths-guide"
+                element={<PronunciationMythsGuide />}
+              />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
 
         <Footer />
       </div>

@@ -129,7 +129,7 @@ const PronunciationBlog = () => {
             [path]: imageModule.default,
           }));
         } catch (error) {
-          console.error(`Failed to load image: ${path}`, error);
+          // Image load failed - will use fallback or skip
         }
       };
 

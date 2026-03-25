@@ -32,6 +32,7 @@ const InputCard = memo(
     synonyms,
     antonyms,
     handleRelationToggle,
+    maxWordLength = 60,
   }) => {
     // State for auto-suggestions
     const [suggestions, setSuggestions] = useState([]);
@@ -59,7 +60,6 @@ const InputCard = memo(
         setWordList(words);
         setWordListLoaded(true);
       } catch (error) {
-        console.error("Failed to load wordlist:", error);
         setWordList([]);
       } finally {
         setIsLoadingDict(false);
@@ -214,7 +214,8 @@ const InputCard = memo(
             type="text"
             className="word-input"
             value={word}
-            onChange={(e) => setWord(e.target.value)}
+            maxLength={maxWordLength}
+            onChange={(e) => setWord(e.target.value.slice(0, maxWordLength))}
             onKeyDown={handleSuggestionKeyDown}
             onFocus={() => {
               // Lazy load wordlist on first focus

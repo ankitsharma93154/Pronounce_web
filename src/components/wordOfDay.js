@@ -81,7 +81,7 @@ const WordOfDay = memo(({ pronounce }) => {
       }
     } catch (err) {
       setError("Failed to load word of the day");
-      console.error("Error fetching word of the day:", err);
+      // Error handled and displayed to user
     } finally {
       setLoading(false);
     }

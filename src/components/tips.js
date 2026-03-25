@@ -346,21 +346,27 @@ const QuickPronounceTips = memo(() => {
   }, []);
 
   // Effect to scroll to active tab
+  // Use requestAnimationFrame to avoid forced reflows
   useEffect(() => {
     if (tabsContainerRef.current && activeTabRef.current) {
-      const container = tabsContainerRef.current;
-      const activeTabElement = activeTabRef.current;
+      // RequestAnimationFrame batches DOM reads/writes to prevent forced reflows
+      requestAnimationFrame(() => {
+        const container = tabsContainerRef.current;
+        const activeTabElement = activeTabRef.current;
 
-      // Calculate the scroll position to center the active tab
-      const scrollPosition =
-        activeTabElement.offsetLeft -
-        container.offsetWidth / 2 +
-        activeTabElement.offsetWidth / 2;
+        if (!container || !activeTabElement) return;
 
-      // Scroll smoothly to the active tab
-      container.scrollTo({
-        left: Math.max(0, scrollPosition),
-        behavior: "smooth",
+        // Calculate the scroll position to center the active tab
+        const scrollPosition =
+          activeTabElement.offsetLeft -
+          container.offsetWidth / 2 +
+          activeTabElement.offsetWidth / 2;
+
+        // Scroll smoothly to the active tab
+        container.scrollTo({
+          left: Math.max(0, scrollPosition),
+          behavior: "smooth",
+        });
       });
     }
   }, [activeTab]);

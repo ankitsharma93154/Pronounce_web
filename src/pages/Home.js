@@ -47,6 +47,7 @@ const SpeedInsights =
 const BACKEND_PRONUNCIATION_URL =
   "https://backend-8isq.vercel.app/get-pronunciation";
 const REQUEST_TIMEOUT_MS = 10000;
+const MAX_WORD_LENGTH = 60;
 
 // Create and memoize static components
 const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
@@ -161,6 +162,11 @@ const Home = () => {
       updateState({ showSynonyms: type === "synonyms" });
     },
     [updateState],
+  );
+
+  const sanitizeWord = useCallback(
+    (value) => String(value ?? "").slice(0, MAX_WORD_LENGTH),
+    [],
   );
 
   const getPronunciation = useCallback(async () => {
@@ -281,7 +287,7 @@ const Home = () => {
           audioRef.current.onended = () => setIsPlaying(false);
         } catch (audioError) {
           setIsPlaying(false);
-          console.error("Error processing audio:", audioError);
+          // Audio processing error handled gracefully
         }
       } else {
         setIsPlaying(false);
@@ -308,7 +314,7 @@ const Home = () => {
       });
     } catch (error) {
       setIsPlaying(false);
-      console.error("Error fetching pronunciation:", error);
+      // API error handled gracefully - user still sees app
     } finally {
       updateState({ isLoading: false });
     }
@@ -323,13 +329,13 @@ const Home = () => {
 
   const pronounce = useCallback(
     (selectedWord) => {
-      updateState({ word: selectedWord });
+      updateState({ word: sanitizeWord(selectedWord) });
       setShouldPronounce(true);
       requestAnimationFrame(() =>
         window.scrollTo({ top: 0, behavior: "smooth" }),
       );
     },
-    [updateState],
+    [updateState, sanitizeWord],
   );
 
   useEffect(() => {
@@ -480,7 +486,9 @@ const Home = () => {
         <div className="interface-grid">
           <InputCard
             word={word}
-            setWord={(word) => updateState({ word })}
+            setWord={(nextWord) =>
+              updateState({ word: sanitizeWord(nextWord) })
+            }
             handleKeyDown={handleKeyDown}
             getPronunciation={getPronunciation}
             pronounce={pronounce}
@@ -495,6 +503,7 @@ const Home = () => {
             synonyms={synonyms}
             antonyms={antonyms}
             handleRelationToggle={handleRelationToggle}
+            maxWordLength={MAX_WORD_LENGTH}
           />
 
           <ResultsCard
