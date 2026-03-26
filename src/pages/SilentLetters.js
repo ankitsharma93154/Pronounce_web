@@ -398,6 +398,8 @@ const SilentKillers = () => {
               src={vowelShift}
               alt="Great Vowel Shift Illustration"
               className="sk-vowel-shift-image"
+              width="1200"
+              height="900"
             />
 
             <div className="sk-key-takeaway">
@@ -423,6 +425,8 @@ const SilentKillers = () => {
               src={silentRules}
               alt="Silent Letter Rules Illustration"
               className="sk-silent-rules-image"
+              width="1200"
+              height="900"
             />
 
             <div className="sk-silent-letter-card-grid">
@@ -494,6 +498,8 @@ const SilentKillers = () => {
               src={rightPronuncation}
               alt="Correct Pronunciation Illustration"
               className="sk-pronunciation-image"
+              width="1200"
+              height="900"
             />
           </section>
 
@@ -558,6 +564,8 @@ const SilentKillers = () => {
               src={quickpronounceScreenshot}
               alt="QuickPronounce Screenshot"
               className="sk-quickpronounce-image"
+              width="1200"
+              height="900"
             />
           </section>
 

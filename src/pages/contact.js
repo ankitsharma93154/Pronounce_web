@@ -168,6 +168,8 @@ const Contact = () => {
                   src="https://storage.ko-fi.com/cdn/cup-border.png"
                   alt="Ko-fi"
                   className="kofi-image"
+                  width="36"
+                  height="36"
                 />
                 <span className="kofi-text">Support on Ko-fi</span>
               </a>
