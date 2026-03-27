@@ -1,5 +1,10 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -50,8 +55,12 @@ const PronunciationJobInterviewGuide = lazy(
 const PronunciationMythsGuide = lazy(
   () => import("./pages/blog/pronunciation-myths-guide"),
 );
-// Loading component
-const Loading = () => <div className="loading">Loading...</div>;
+// Loading component with reserved space to reduce route-level layout shifts.
+const Loading = () => (
+  <div className="loading loading--route" role="status" aria-live="polite">
+    Loading...
+  </div>
+);
 
 const App = () => {
   return (
@@ -87,8 +96,16 @@ const App = () => {
                 path="/blog/american-vs-british"
                 element={<PronunciationComparison />}
               />
-              <Route path="/blog/IPA-guide" element={<IPA_GUIDE />} />
-              <Route path="/blog/SilentLetters" element={<SilentKillers />} />
+              <Route path="/blog/ipa-guide" element={<IPA_GUIDE />} />
+              <Route path="/blog/silent-letters" element={<SilentKillers />} />
+              <Route
+                path="/blog/IPA-guide"
+                element={<Navigate to="/blog/ipa-guide" replace />}
+              />
+              <Route
+                path="/blog/SilentLetters"
+                element={<Navigate to="/blog/silent-letters" replace />}
+              />
               <Route path="/blog/ielts" element={<IELTSBlog />} />
               <Route
                 path="/blog/schwa-sound-guide"

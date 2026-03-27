@@ -474,7 +474,7 @@ const QuickPronounceTips = memo(() => {
           <div className="tips-blog-links">
             <p className="tips-blog-heading">From the Blog</p>
             <div className="tips-blog-grid">
-              <Link to="/blog/IPA-guide" className="tips-blog-card">
+              <Link to="/blog/ipa-guide" className="tips-blog-card">
                 <span className="tips-blog-card__emoji">🔤</span>
                 <span className="tips-blog-card__label">
                   IPA Symbols Explained

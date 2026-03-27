@@ -63,7 +63,7 @@ const MispronouncedWords = ({ pronounce }) => {
           50 Most Mispronounced Words
         </Link>{" "}
         and{" "}
-        <Link className="ipa-help-link" to="/blog/SilentLetters">
+        <Link className="ipa-help-link" to="/blog/silent-letters">
           Silent Letters Guide
         </Link>
       </p>

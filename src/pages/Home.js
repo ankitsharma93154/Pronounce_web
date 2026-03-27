@@ -67,19 +67,19 @@ const featuredGuides = [
     to: "/blog/pronunciation-guide",
     title: "How to pronounce difficult English words",
     description:
-      "Review 50 high-frequency words learners mispronounce and hear the right sound pattern faster.",
+      "You can read the article on 50 most mispronounced words by learners and listen to correct pronunciations to understand the right sound pattern.",
   },
   {
-    to: "/blog/IPA-guide",
+    to: "/blog/ipa-guide",
     title: "Read IPA phonetic pronunciation clearly",
     description:
-      "Use the IPA guide when you want to understand symbols, stress marks, and syllable breaks.",
+      "You should check out the IPA guide to understand how symbols represent sounds, how stress marks show syllable emphasis, and how syllable breaks indicate word rhythm.",
   },
   {
     to: "/blog/american-vs-british",
     title: "Compare American vs British pronunciation audio",
     description:
-      "Train your ear with the sound rules that explain accent differences across common words.",
+      "Explore the key sound differences between American and British English with audio examples that highlight vowel shifts, stress patterns, and common pronunciation variations.",
   },
   {
     to: "/faq",
@@ -98,7 +98,7 @@ const homeFaqs = [
   {
     question: "How do you pronounce words in English?",
     answer:
-      "Type any word to hear its pronunciation in English instantly. QuickPronounce gives you free audio, IPA, and accent options so you can check the pronunciation of words across American, British, Australian, and Indian English.",
+      "Type any word to hear its pronunciation in English instantly. QuickPronounce gives you access to audio, IPA, and accent options so you can check the pronunciation of words across American, British, Australian, and Indian English.",
   },
   {
     question: "Can I compare American and British pronunciation?",
@@ -536,7 +536,14 @@ const Home = () => {
 
       {isBelowFoldVisible && (
         <>
-          <Suspense fallback={null}>
+          <Suspense
+            fallback={
+              <div
+                className="loading-placeholder"
+                style={{ height: "260px" }}
+              ></div>
+            }
+          >
             <WordOfDay pronounce={pronounce} />
           </Suspense>
 
@@ -639,8 +646,9 @@ const Home = () => {
                   Popular pronunciation guides
                 </h2>
                 <p className="home-guides-subtitle">
-                  Go deeper with practical guides on pronunciation, accent
-                  differences, and sound-focused practice routines.
+                  You can explore practical guides on pronunciation, accent
+                  differences, and sound-focused practice routines to improve
+                  your English pronunciation skills effectively.
                 </p>
                 <div className="home-guides-grid">
                   {featuredGuides.map((guide) => (

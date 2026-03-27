@@ -117,6 +117,9 @@ const TheVsTheePronunciation = () => {
           src={theVsTheeFlowchart}
           alt="Decision flowchart for choosing between the pronunciation thuh and thee based on whether the next word starts with a consonant or vowel sound"
           style={blogImageStyle}
+          loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           One question decides it: does the next word start with a consonant
@@ -220,6 +223,9 @@ const TheVsTheePronunciation = () => {
           src={rhythmComparison}
           alt="Rhythm comparison showing the difference between saying the apple with thee and the book with thuh in natural English speech"
           style={blogImageStyle}
+          loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           /ðiː/ before a vowel sound creates a smooth glide. /ðə/ before a
@@ -289,7 +295,7 @@ const TheVsTheePronunciation = () => {
         <ul>
           <li>
             Learn symbol confidence in{" "}
-            <Link to="/blog/IPA-guide">the IPA guide</Link>.
+            <Link to="/blog/ipa-guide">the IPA guide</Link>.
           </li>
           <li>
             Improve rhythm transfer in{" "}

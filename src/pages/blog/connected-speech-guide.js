@@ -96,6 +96,8 @@ const ConnectedSpeechGuide = () => {
           alt="Connected speech train-car analogy showing linking, elision, and assimilation"
           style={blogImageStyle}
           loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Train-car analogy: words link, compress, and shift in natural speech.
@@ -180,6 +182,8 @@ const ConnectedSpeechGuide = () => {
           alt="Before and after transcript with connected speech highlights"
           style={blogImageStyle}
           loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Compare careful speech and natural connected speech side by side.
@@ -285,6 +289,8 @@ const ConnectedSpeechGuide = () => {
           alt="7-minute connected speech daily routine card"
           style={blogImageStyle}
           loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Use this quick routine daily to build smoother linking and rhythm.

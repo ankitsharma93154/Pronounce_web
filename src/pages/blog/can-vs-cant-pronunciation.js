@@ -141,6 +141,9 @@ const CanVsCantPronunciation = () => {
           src={canVsCantContrastImage}
           alt="Can and can't pronunciation contrast visual"
           style={blogImageStyle}
+          loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Side-by-side contrast visual for hearing and producing the difference

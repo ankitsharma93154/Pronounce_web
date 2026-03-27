@@ -61,7 +61,7 @@ const blogPostsData = [
     date: "December 14, 2025",
     category: "Phonetics",
     readTime: "8 min read",
-    link: "/blog/IPA-guide",
+    link: "/blog/ipa-guide",
   },
   {
     id: 5,
@@ -72,7 +72,7 @@ const blogPostsData = [
     date: "January 9, 2026",
     category: "Pronunciation Guide",
     readTime: "10 min read",
-    link: "/blog/SilentLetters",
+    link: "/blog/silent-letters",
   },
   {
     id: 6,
@@ -277,6 +277,8 @@ const BlogPosts = () => {
                   src={post.imageUrl}
                   alt={post.title}
                   loading="lazy"
+                  width="1600"
+                  height="900"
                 />
                 <div className="blog-card-content">
                   <div className="blog-card-meta">

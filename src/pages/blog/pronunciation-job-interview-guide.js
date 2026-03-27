@@ -112,6 +112,9 @@ const PronunciationJobInterviewGuide = () => {
           src={jobInterviewStarMethodImage}
           alt="STAR method interview response visual"
           style={blogImageStyle}
+          loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           STAR framework visual to support structured answers with better
@@ -329,7 +332,7 @@ const PronunciationJobInterviewGuide = () => {
             </Link>
           </li>
           <li>
-            <Link to="/blog/IPA-guide">IPA Guide</Link>
+            <Link to="/blog/ipa-guide">IPA Guide</Link>
           </li>
           <li>
             <Link to="/blog/can-vs-cant-pronunciation">

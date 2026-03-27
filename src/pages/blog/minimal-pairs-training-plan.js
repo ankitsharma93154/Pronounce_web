@@ -101,6 +101,9 @@ const MinimalPairsTrainingPlan = () => {
           src={soundContrastMap}
           alt="Sound contrast map grouping minimal pair families by vowel length, voiced vs voiceless, and consonant contrasts in English"
           style={blogImageStyle}
+          loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Minimal pair families grouped by contrast type. Start with the
@@ -228,6 +231,9 @@ const MinimalPairsTrainingPlan = () => {
           src={mouthPositionGuide}
           alt="Mouth and tongue position diagrams for difficult English sound contrasts including short vs long vowels and r vs l"
           style={blogImageStyle}
+          loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Tongue height, lip spread, and airflow direction are the three
@@ -332,7 +338,7 @@ const MinimalPairsTrainingPlan = () => {
         </p>
         <ul>
           <li>
-            Use <Link to="/blog/IPA-guide">the IPA guide</Link> to decode sound
+            Use <Link to="/blog/ipa-guide">the IPA guide</Link> to decode sound
             symbols quickly.
           </li>
           <li>

@@ -20,6 +20,8 @@ const LazyImage = ({ alt, src }) => (
       src={imageMap[src] || src}
       alt={alt}
       className="avb-diff-image"
+      width="1200"
+      height="800"
     />
   </div>
 );
@@ -325,7 +327,7 @@ const PronunciationComparison = () => {
       }}
       relatedArticles={[
         {
-          to: "/blog/IPA-guide",
+          to: "/blog/ipa-guide",
           label: "Use IPA to decode accent differences",
         },
         {

@@ -107,6 +107,8 @@ const SchwaSoundGuide = () => {
           alt="Schwa mouth position and stressed versus unstressed syllable timeline"
           style={blogImageStyle}
           loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Schwa appears in unstressed syllables where the mouth stays relaxed.
@@ -328,6 +330,8 @@ const SchwaSoundGuide = () => {
           alt="Sentence rhythm waveform with stressed peaks and schwa valleys"
           style={blogImageStyle}
           loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Strong syllables form peaks, while reduced schwa syllables form

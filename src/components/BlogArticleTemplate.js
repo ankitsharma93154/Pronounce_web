@@ -27,7 +27,7 @@ const BlogArticleTemplate = ({
 
   const relatedMap = {
     "/blog/pronunciation-guide": [
-      { to: "/blog/IPA-guide", label: "Read IPA symbols clearly" },
+      { to: "/blog/ipa-guide", label: "Read IPA symbols clearly" },
       {
         to: "/blog/american-vs-british",
         label: "Compare American and British sounds",
@@ -52,7 +52,7 @@ const BlogArticleTemplate = ({
       },
     ],
     "/blog/american-vs-british": [
-      { to: "/blog/IPA-guide", label: "Use IPA for accent comparison" },
+      { to: "/blog/ipa-guide", label: "Use IPA for accent comparison" },
       {
         to: "/blog/the-vs-thee-pronunciation",
         label: "Practice rhythm-based pronunciation",
@@ -65,7 +65,7 @@ const BlogArticleTemplate = ({
   };
 
   const fallbackRelatedArticles = [
-    { to: "/blog/IPA-guide", label: "Read IPA symbols with confidence" },
+    { to: "/blog/ipa-guide", label: "Read IPA symbols with confidence" },
     {
       to: "/blog/connected-speech-guide",
       label: "Improve real conversation listening",

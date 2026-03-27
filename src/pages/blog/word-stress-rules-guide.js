@@ -105,6 +105,9 @@ const WordStressRulesGuide = () => {
           src={wordStressMap}
           alt="Word stress map showing stressed vs unstressed syllables in English words like TAble, comPUter and deVElopment"
           style={blogImageStyle}
+          loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Stressed syllables carry more weight, volume, and length. Unstressed
@@ -289,6 +292,9 @@ const WordStressRulesGuide = () => {
           src={nounVerbStressChart}
           alt="Chart comparing noun and verb stress patterns for two-syllable English words such as REcord vs reCORD and PERmit vs perMIT"
           style={blogImageStyle}
+          loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           For two-syllable noun/adjective pairs, stress falls on syllable 1. For
@@ -348,7 +354,7 @@ const WordStressRulesGuide = () => {
         </p>
         <ul>
           <li>
-            Start with <Link to="/blog/IPA-guide">the IPA guide</Link> to read
+            Start with <Link to="/blog/ipa-guide">the IPA guide</Link> to read
             stress marks and phonetic patterns more confidently.
           </li>
           <li>

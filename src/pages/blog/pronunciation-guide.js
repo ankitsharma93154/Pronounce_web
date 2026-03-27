@@ -106,9 +106,9 @@ const PronunciationGuide = () => {
         bio: "Creates practical pronunciation systems that help learners fix high-frequency speaking mistakes with audio-first drills.",
       }}
       relatedArticles={[
-        { to: "/blog/IPA-guide", label: "Read IPA symbols step by step" },
+        { to: "/blog/ipa-guide", label: "Read IPA symbols step by step" },
         {
-          to: "/blog/SilentLetters",
+          to: "/blog/silent-letters",
           label: "Fix silent letter pronunciation patterns",
         },
         {

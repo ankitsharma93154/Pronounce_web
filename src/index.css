@@ -941,6 +941,13 @@ body.dark .accent-tag {
   position: relative;
   background: var(--bg-primary);
 }
+
+.word-of-day-container--placeholder {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .word-main {
   padding: 1rem 0;
 }
@@ -1096,9 +1103,37 @@ body.dark .accent-tag {
 .word-of-day-error,
 .word-of-day-loading {
   display: flex;
+  align-items: center;
   justify-content: center;
   padding: 40px;
   text-align: center;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.loading--route {
+  min-height: calc(100vh - 64px - 120px);
+}
+
+.loading-placeholder {
+  width: min(100%, 64rem);
+  margin: 0 auto 2rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: linear-gradient(
+    110deg,
+    var(--bg-secondary) 25%,
+    rgba(110, 69, 226, 0.08) 45%,
+    var(--bg-secondary) 65%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
 }
 .word-of-day-error {
   color: #ef4444;
@@ -1178,6 +1213,15 @@ body.dark .accent-tag {
   }
   50% {
     transform: scale(1.2);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 .icon {

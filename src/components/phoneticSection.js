@@ -26,7 +26,7 @@ const PhoneticSection = memo(
       <p className="ipa-help-line">
         <BookOpen className="cta-inline-icon" size={14} />
         Having trouble understanding IPA?{" "}
-        <a className="ipa-help-link" href="/blog/IPA-guide">
+        <a className="ipa-help-link" href="/blog/ipa-guide">
           Read the IPA guide
         </a>
       </p>

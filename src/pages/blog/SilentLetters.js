@@ -638,7 +638,7 @@ const SilentKillers = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/blog/IPA-guide">
+                  <Link to="/blog/ipa-guide">
                     IPA for Beginners: Your Complete Guide to the International
                     Phonetic Alphabet
                   </Link>

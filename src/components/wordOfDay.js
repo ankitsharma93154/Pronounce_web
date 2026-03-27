@@ -25,19 +25,25 @@ const formatDate = (dateString) => {
 
 // Memoized loading component
 const LoadingSpinner = memo(() => (
-  <div className="word-of-day-loading">
-    <div className="loading-spinner"></div>
+  <div className="word-of-day-container word-of-day-container--placeholder">
+    <div className="word-of-day-loading">
+      <div className="loading-spinner"></div>
+    </div>
   </div>
 ));
 
 // Memoized error component
 const ErrorDisplay = memo(({ message }) => (
-  <div className="word-of-day-error">{message}</div>
+  <div className="word-of-day-container word-of-day-container--placeholder">
+    <div className="word-of-day-error">{message}</div>
+  </div>
 ));
 
 // Memoized empty state component
 const EmptyState = memo(() => (
-  <div className="word-of-day-empty">No word of the day available.</div>
+  <div className="word-of-day-container word-of-day-container--placeholder">
+    <div className="word-of-day-empty">No word of the day available.</div>
+  </div>
 ));
 
 // Main component

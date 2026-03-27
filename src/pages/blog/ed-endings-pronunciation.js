@@ -94,6 +94,8 @@ const EdEndingsPronunciation = () => {
           alt="Three-door decision chart for -ed endings /t/, /d/, and /id/"
           style={blogImageStyle}
           loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Use the final sound of the base verb to choose /t/, /d/, or /id/.
@@ -151,6 +153,8 @@ const EdEndingsPronunciation = () => {
           alt="Color-coded -ed pronunciation table with voiceless and voiced final sounds"
           style={blogImageStyle}
           loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Quick reference for voiceless, voiced, and /t/ /d/ ending categories.

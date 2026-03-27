@@ -172,7 +172,7 @@ const PronunciationMythsGuide = () => {
         </p>
         <p>
           Practical move: review core symbols in
-          <Link to="/blog/IPA-guide"> the IPA guide</Link> and apply them only
+          <Link to="/blog/ipa-guide"> the IPA guide</Link> and apply them only
           to your target words.
         </p>
 
@@ -232,6 +232,9 @@ const PronunciationMythsGuide = () => {
           src={mythsVsRealityImage}
           alt="Pronunciation myths and reality comparison chart"
           style={blogImageStyle}
+          loading="lazy"
+          width="1200"
+          height="800"
         />
         <p style={imageCaptionStyle}>
           Side-by-side myth-versus-reality visual designed for quick scanning on
@@ -380,7 +383,7 @@ const PronunciationMythsGuide = () => {
 
         <h3 className="bt-sub-title">Day 4: IPA-Assisted Correction</h3>
         <p>
-          Use <Link to="/blog/IPA-guide">IPA references</Link> only for target
+          Use <Link to="/blog/ipa-guide">IPA references</Link> only for target
           words you repeatedly miss.
         </p>
 
