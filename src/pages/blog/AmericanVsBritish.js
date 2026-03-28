@@ -335,7 +335,7 @@ const PronunciationComparison = () => {
           label: "Improve rhythm with article pronunciation rules",
         },
         {
-          to: "/blog/can-vs-cant-pronunciation",
+          to: "/blog/minimal-pairs-training-plan",
           label: "Strengthen clarity in fast speech",
         },
       ]}

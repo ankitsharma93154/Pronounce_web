@@ -58,7 +58,7 @@ const BlogArticleTemplate = ({
         label: "Practice rhythm-based pronunciation",
       },
       {
-        to: "/blog/can-vs-cant-pronunciation",
+        to: "/blog/minimal-pairs-training-plan",
         label: "Fix high-impact listening confusions",
       },
     ],

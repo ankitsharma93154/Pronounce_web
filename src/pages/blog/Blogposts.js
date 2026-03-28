@@ -14,9 +14,6 @@ import connectedSpeechThumb from "../../images/blogs/connected-speech-guide/conn
 import wordStressThumb from "../../images/blogs/word-stress-rules-guide/word_stress_thumbnail_v2.webp";
 import minimalPairsThumb from "../../images/blogs/minimal-pairs-training-plan/minimal_pairs_sound_contrast_map_v2.webp";
 import theVsTheeThumb from "../../images/blogs/the-vs-thee-pronunciation/the_vs_thee_flowchart.webp";
-import canVsCantThumb from "../../images/blogs/can-vs-cant/video_call_pronunciation_hero_v2.webp";
-import jobInterviewThumb from "../../images/blogs/job-interview/professional_interview_scene.webp";
-import mythsThumb from "../../images/blogs/pronunciation-myths/myth_to_clarity_learner.webp";
 
 const blogPostsData = [
   {
@@ -155,41 +152,6 @@ const blogPostsData = [
     category: "Pronunciation Guide",
     readTime: "12–14 min read",
     link: "/blog/the-vs-thee-pronunciation",
-  },
-  {
-    id: 13,
-    title:
-      "Can vs Can't Pronunciation: The Small Sound Difference That Changes Meaning",
-    description:
-      "Master can vs can't pronunciation with practical stress rules, listening drills, and speaking routines for clear everyday English.",
-    imageUrl: canVsCantThumb,
-    date: "March 21, 2026",
-    category: "Pronunciation Guide",
-    readTime: "13-15 min read",
-    link: "/blog/can-vs-cant-pronunciation",
-  },
-  {
-    id: 14,
-    title: "Pronunciation for Job Interviews: How to Sound Clear and Confident",
-    description:
-      "Learn practical pronunciation strategies for job interviews, including stress control, answer rhythm, and confidence drills.",
-    imageUrl: jobInterviewThumb,
-    date: "March 21, 2026",
-    category: "Career English",
-    readTime: "14-16 min read",
-    link: "/blog/pronunciation-job-interview-guide",
-  },
-  {
-    id: 15,
-    title:
-      "English Pronunciation Myths That Waste Your Time (And What Works Instead)",
-    description:
-      "Break common pronunciation myths with practical strategies that improve intelligibility, confidence, and real-world communication.",
-    imageUrl: mythsThumb,
-    date: "March 21, 2026",
-    category: "Learning Tips",
-    readTime: "14-16 min read",
-    link: "/blog/pronunciation-myths-guide",
   },
 ];
 

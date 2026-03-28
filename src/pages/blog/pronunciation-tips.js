@@ -284,7 +284,7 @@ const PronunciationBlog = () => {
           label: "Practice confusing sounds with minimal pairs",
         },
         {
-          to: "/blog/can-vs-cant-pronunciation",
+          to: "/blog/the-vs-thee-pronunciation",
           label: "Fix common listening contrast mistakes",
         },
       ]}
