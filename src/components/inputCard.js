@@ -84,7 +84,7 @@ const InputCard = memo(
       // Filter words locally - much faster and no backend requests!
       const matchedWords = wordList
         .filter((w) => w.startsWith(inputValue))
-        .slice(0, 4); // Limit to 4 suggestions
+        .slice(0, 3); // Limit to 3 suggestions
 
       setSuggestions(matchedWords);
       const exactMatch = matchedWords.some((w) => w === inputValue);
@@ -176,7 +176,7 @@ const InputCard = memo(
         }
       }, 0);
 
-      // Pronounce the word if the function is available
+      // Keep legacy UX: selecting a suggestion also triggers pronunciation.
       if (pronounce) {
         setTimeout(() => {
           pronounce(suggestion);
@@ -184,24 +184,24 @@ const InputCard = memo(
       }
     };
 
-    // Modify toggle functions to trigger pronunciation
+    // Preserve existing UX: control changes re-pronounce current word.
     const handleToggleGender = () => {
       setIsMale(!isMale);
-      if (word) {
+      if (word && pronounce) {
         pronounce(word);
       }
     };
 
     const handleToggleSpeed = (newSpeed) => {
       setSpeed(newSpeed);
-      if (word) {
+      if (word && pronounce) {
         pronounce(word);
       }
     };
 
     const handleAccentChange = (e) => {
       setAccent(e.target.value);
-      if (word) {
+      if (word && pronounce) {
         pronounce(word);
       }
     };
@@ -215,7 +215,12 @@ const InputCard = memo(
             className="word-input"
             value={word}
             maxLength={maxWordLength}
-            onChange={(e) => setWord(e.target.value.slice(0, maxWordLength))}
+            onChange={(e) => {
+              if (!wordListLoaded && !isLoadingDict) {
+                loadWordList();
+              }
+              setWord(e.target.value.slice(0, maxWordLength));
+            }}
             onKeyDown={handleSuggestionKeyDown}
             onFocus={() => {
               // Lazy load wordlist on first focus

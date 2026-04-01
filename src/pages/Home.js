@@ -3,6 +3,7 @@ import React, {
   useState,
   useRef,
   useEffect,
+  useMemo,
   lazy,
   Suspense,
   memo,
@@ -17,6 +18,8 @@ import Hero from "../components/hero";
 import InputCard from "../components/inputCard";
 import ResultsCard from "../components/resultCard";
 import ExamplesList from "../components/exampleList";
+import useDebouncedCallback from "../hooks/useDebouncedCallback";
+import usePersistentCache from "../hooks/usePersistentCache";
 
 // Lazy load all components that aren't needed for initial render
 const FeaturesPage = lazy(() => import("../components/features"));
@@ -47,6 +50,11 @@ const SpeedInsights =
 const BACKEND_PRONUNCIATION_URL =
   "https://backend-8isq.vercel.app/get-pronunciation";
 const REQUEST_TIMEOUT_MS = 10000;
+const SEARCH_DEBOUNCE_MS = 400;
+const CACHE_STORAGE_KEY = "quickpronounce_pronunciation_cache_v1";
+const CACHE_MAX_ENTRIES = 40;
+const RATE_LIMIT_WINDOW_MS = 1000;
+const MAX_REQUESTS_PER_WINDOW = 2;
 const MAX_WORD_LENGTH = 60;
 
 // Create and memoize static components
@@ -128,7 +136,11 @@ const Home = () => {
   });
 
   const audioRef = useRef(new Audio());
-  const cacheRef = useRef({});
+  const activeAudioUrlRef = useRef(null);
+  const activeRequestControllerRef = useRef(null);
+  const requestTimestampsRef = useRef([]);
+  const lastRequestKeyRef = useRef("");
+  const cache = usePersistentCache(CACHE_STORAGE_KEY, CACHE_MAX_ENTRIES);
 
   const {
     word,
@@ -152,7 +164,6 @@ const Home = () => {
     setState((prev) => ({ ...prev, ...updates }));
   }, []);
 
-  const [shouldPronounce, setShouldPronounce] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isBelowFoldVisible, setIsBelowFoldVisible] = useState(false);
   const belowFoldRef = useRef(null);
@@ -169,173 +180,289 @@ const Home = () => {
     [],
   );
 
-  const getPronunciation = useCallback(async () => {
-    if (!word.trim()) return;
+  const normalizeWord = useCallback(
+    (value) => sanitizeWord(value).trim().toLowerCase(),
+    [sanitizeWord],
+  );
 
-    const cacheKey = `${word.trim()}-${accent}-${isMale}-${speed}`;
+  const buildRequestKey = useCallback(
+    (normalizedWord) => `${normalizedWord}-${accent}-${isMale}-${speed}`,
+    [accent, isMale, speed],
+  );
 
-    try {
-      updateState({ isLoading: true });
-      setIsPlaying(true);
+  const isRateLimited = useCallback(() => {
+    const now = Date.now();
+    const validWindow = requestTimestampsRef.current.filter(
+      (ts) => now - ts < RATE_LIMIT_WINDOW_MS,
+    );
+    requestTimestampsRef.current = validWindow;
+    return validWindow.length >= MAX_REQUESTS_PER_WINDOW;
+  }, []);
 
-      if (cacheRef.current[cacheKey]) {
-        const cachedData = cacheRef.current[cacheKey];
-        updateState({
-          phonetic: cachedData.phonetic,
-          meanings: cachedData.meanings,
-          examples: cachedData.examples,
-          synonyms: cachedData.synonyms,
-          antonyms: cachedData.antonyms,
-          syllables: cachedData.syllables,
-          hasPronounced: true,
-          isLoading: false,
-        });
+  const rememberRequestTimestamp = useCallback(() => {
+    requestTimestampsRef.current = [
+      ...requestTimestampsRef.current,
+      Date.now(),
+    ];
+  }, []);
 
-        if (cachedData.audioUrl) {
-          audioRef.current.src = cachedData.audioUrl;
-          audioRef.current.play();
-          audioRef.current.onended = () => setIsPlaying(false);
-        } else {
-          setIsPlaying(false);
-        }
-        return;
-      }
-
-      const requestBody = {
-        word: word.trim(),
-        accent,
-        isMale,
-        speed,
-      };
-
-      const queryString = new URLSearchParams({
-        word: requestBody.word,
-        accent: requestBody.accent,
-        isMale: String(requestBody.isMale),
-        speed: requestBody.speed,
-      }).toString();
-
-      let response;
+  const trackCacheLookup = useCallback(
+    (isHit, normalizedWord) => {
+      if (typeof window === "undefined" || !window.umami) return;
 
       try {
-        const getController = new AbortController();
-        const getTimeoutId = setTimeout(
-          () => getController.abort(),
-          REQUEST_TIMEOUT_MS,
-        );
-
-        response = await fetch(`${BACKEND_PRONUNCIATION_URL}?${queryString}`, {
-          method: "GET",
-          signal: getController.signal,
+        window.umami.track("pronunciation_cache_lookup", {
+          cache_hit: isHit,
+          query_length: normalizedWord.length,
+          accent,
+          speed,
         });
+      } catch (_) {
+        // Ignore analytics runtime issues to avoid affecting user flow.
+      }
+    },
+    [accent, speed],
+  );
 
-        clearTimeout(getTimeoutId);
-      } catch (getError) {
-        response = null;
+  const playAudioFromContent = useCallback((audioContent) => {
+    if (!audioContent) {
+      setIsPlaying(false);
+      return;
+    }
+
+    try {
+      if (activeAudioUrlRef.current) {
+        URL.revokeObjectURL(activeAudioUrlRef.current);
+        activeAudioUrlRef.current = null;
       }
 
-      if (!response || !response.ok) {
-        const postController = new AbortController();
-        const postTimeoutId = setTimeout(
-          () => postController.abort(),
-          REQUEST_TIMEOUT_MS,
-        );
+      const byteArray = Uint8Array.from(atob(audioContent), (c) =>
+        c.charCodeAt(0),
+      );
+      const audioBlob = new Blob([byteArray], { type: "audio/mp3" });
+      const audioUrl = URL.createObjectURL(audioBlob);
+      activeAudioUrlRef.current = audioUrl;
 
-        response = await fetch(BACKEND_PRONUNCIATION_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(requestBody),
-          signal: postController.signal,
-        });
+      audioRef.current.src = audioUrl;
+      audioRef.current.preload = "auto";
+      audioRef.current.oncanplaythrough = () => audioRef.current.play();
+      audioRef.current.onended = () => setIsPlaying(false);
+    } catch (_) {
+      setIsPlaying(false);
+    }
+  }, []);
 
-        clearTimeout(postTimeoutId);
-      }
-
-      if (!response.ok) {
-        throw new Error(`Server error: ${response.status}`);
-      }
-
-      const data = await response.json();
-      const phonetic = data.phonetic || "Phonetic transcription not available.";
-      const meanings =
+  const applyPronunciationResult = useCallback(
+    (data, requestKey, normalizedWord) => {
+      const safeMeanings =
         Array.isArray(data.meanings) && data.meanings.length > 0
           ? data.meanings
           : [
               `${
-                /^[A-Z][a-z]+$/.test(word) ? "This looks like a name! " : ""
+                /^[A-Z][a-z]+$/.test(normalizedWord)
+                  ? "This looks like a name! "
+                  : ""
               }Hmm... we couldn't find a meaning for this word. Try another word!`,
             ];
-      const examples =
+      const safeExamples =
         Array.isArray(data.examples) && data.examples.length > 0
           ? data.examples
           : [{ text: "No examples available for this word." }];
-      const synonyms = Array.isArray(data.synonyms) ? data.synonyms : [];
-      const antonyms = Array.isArray(data.antonyms) ? data.antonyms : [];
-      const syllables = Array.isArray(data.syllables) ? data.syllables : [];
 
-      let audioUrl = null;
-      if (data.audioContent) {
-        try {
-          const byteArray = Uint8Array.from(atob(data.audioContent), (c) =>
-            c.charCodeAt(0),
-          );
-          const audioBlob = new Blob([byteArray], { type: "audio/mp3" });
-          audioUrl = URL.createObjectURL(audioBlob);
-          audioRef.current.src = audioUrl;
-          audioRef.current.preload = "auto";
-          audioRef.current.oncanplaythrough = () => audioRef.current.play();
-          audioRef.current.onended = () => setIsPlaying(false);
-        } catch (audioError) {
-          setIsPlaying(false);
-          // Audio processing error handled gracefully
-        }
-      } else {
-        setIsPlaying(false);
-      }
-
-      cacheRef.current[cacheKey] = {
-        phonetic,
-        meanings,
-        examples,
-        synonyms,
-        antonyms,
-        syllables,
-        audioUrl,
+      const result = {
+        phonetic: data.phonetic || "Phonetic transcription not available.",
+        meanings: safeMeanings,
+        examples: safeExamples,
+        synonyms: Array.isArray(data.synonyms) ? data.synonyms : [],
+        antonyms: Array.isArray(data.antonyms) ? data.antonyms : [],
+        syllables: Array.isArray(data.syllables) ? data.syllables : [],
+        audioContent: data.audioContent || null,
       };
 
+      cache.set(requestKey, result);
+      lastRequestKeyRef.current = requestKey;
+
       updateState({
-        phonetic,
-        meanings,
-        examples,
-        synonyms,
-        antonyms,
-        syllables,
+        phonetic: result.phonetic,
+        meanings: result.meanings,
+        examples: result.examples,
+        synonyms: result.synonyms,
+        antonyms: result.antonyms,
+        syllables: result.syllables,
         hasPronounced: true,
       });
-    } catch (error) {
-      setIsPlaying(false);
-      // API error handled gracefully - user still sees app
-    } finally {
-      updateState({ isLoading: false });
-    }
-  }, [word, accent, isMale, speed, updateState]);
 
-  useEffect(() => {
-    if (word && shouldPronounce) {
-      getPronunciation();
-      setShouldPronounce(false);
-    }
-  }, [word, shouldPronounce, getPronunciation]);
+      playAudioFromContent(result.audioContent);
+    },
+    [cache, playAudioFromContent, updateState],
+  );
+
+  const executePronunciationRequest = useCallback(
+    async (rawWord, { bypassRateLimit = false } = {}) => {
+      const normalizedWord = normalizeWord(rawWord);
+      if (!normalizedWord) return;
+
+      const requestKey = buildRequestKey(normalizedWord);
+      const cached = cache.get(requestKey);
+
+      if (cached) {
+        trackCacheLookup(true, normalizedWord);
+      }
+
+      if (requestKey === lastRequestKeyRef.current) {
+        if (cached) {
+          updateState({
+            phonetic: cached.phonetic,
+            meanings: cached.meanings,
+            examples: cached.examples,
+            synonyms: cached.synonyms,
+            antonyms: cached.antonyms,
+            syllables: cached.syllables,
+            hasPronounced: true,
+            isLoading: false,
+          });
+          playAudioFromContent(cached.audioContent);
+        }
+        return;
+      }
+
+      if (!bypassRateLimit && isRateLimited()) {
+        return;
+      }
+
+      if (cached) {
+        updateState({
+          phonetic: cached.phonetic,
+          meanings: cached.meanings,
+          examples: cached.examples,
+          synonyms: cached.synonyms,
+          antonyms: cached.antonyms,
+          syllables: cached.syllables,
+          hasPronounced: true,
+          isLoading: false,
+        });
+
+        playAudioFromContent(cached.audioContent);
+        lastRequestKeyRef.current = requestKey;
+        return;
+      }
+
+      trackCacheLookup(false, normalizedWord);
+
+      if (activeRequestControllerRef.current) {
+        activeRequestControllerRef.current.abort();
+      }
+
+      const controller = new AbortController();
+      activeRequestControllerRef.current = controller;
+      rememberRequestTimestamp();
+
+      try {
+        updateState({ isLoading: true });
+        setIsPlaying(true);
+
+        const requestBody = {
+          word: normalizedWord,
+          accent,
+          isMale,
+          speed,
+        };
+
+        const queryString = new URLSearchParams({
+          word: requestBody.word,
+          accent: requestBody.accent,
+          isMale: String(requestBody.isMale),
+          speed: requestBody.speed,
+        }).toString();
+
+        let response;
+
+        try {
+          const getTimeoutId = setTimeout(
+            () => controller.abort(),
+            REQUEST_TIMEOUT_MS,
+          );
+
+          response = await fetch(
+            `${BACKEND_PRONUNCIATION_URL}?${queryString}`,
+            {
+              method: "GET",
+              signal: controller.signal,
+            },
+          );
+
+          clearTimeout(getTimeoutId);
+        } catch (_) {
+          response = null;
+        }
+
+        if (!response || !response.ok) {
+          const postTimeoutId = setTimeout(
+            () => controller.abort(),
+            REQUEST_TIMEOUT_MS,
+          );
+
+          response = await fetch(BACKEND_PRONUNCIATION_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestBody),
+            signal: controller.signal,
+          });
+
+          clearTimeout(postTimeoutId);
+        }
+
+        if (!response.ok) {
+          throw new Error(`Server error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        applyPronunciationResult(data, requestKey, normalizedWord);
+      } catch (error) {
+        if (error?.name !== "AbortError") {
+          setIsPlaying(false);
+        }
+      } finally {
+        if (activeRequestControllerRef.current === controller) {
+          activeRequestControllerRef.current = null;
+        }
+        updateState({ isLoading: false });
+      }
+    },
+    [
+      normalizeWord,
+      buildRequestKey,
+      isRateLimited,
+      cache,
+      updateState,
+      playAudioFromContent,
+      rememberRequestTimestamp,
+      accent,
+      isMale,
+      speed,
+      applyPronunciationResult,
+      trackCacheLookup,
+    ],
+  );
+
+  const { debouncedCallback: debouncedSearch, cancel: cancelDebouncedSearch } =
+    useDebouncedCallback(executePronunciationRequest, SEARCH_DEBOUNCE_MS);
+
+  const getPronunciation = useCallback(() => {
+    cancelDebouncedSearch();
+    executePronunciationRequest(word);
+  }, [cancelDebouncedSearch, executePronunciationRequest, word]);
 
   const pronounce = useCallback(
     (selectedWord) => {
-      updateState({ word: sanitizeWord(selectedWord) });
-      setShouldPronounce(true);
+      const safeWord = sanitizeWord(selectedWord);
+      updateState({ word: safeWord });
+      debouncedSearch(safeWord);
       requestAnimationFrame(() =>
         window.scrollTo({ top: 0, behavior: "smooth" }),
       );
     },
-    [updateState, sanitizeWord],
+    [updateState, sanitizeWord, debouncedSearch],
   );
 
   useEffect(() => {
@@ -360,25 +487,36 @@ const Home = () => {
 
   const handleKeyDown = useCallback(
     (e) => {
-      if (e.key === "Enter") getPronunciation();
+      if (e.key === "Enter") {
+        e.preventDefault();
+        getPronunciation();
+      }
     },
     [getPronunciation],
   );
 
-  const togglers = {
-    darkMode: useCallback(
-      () => updateState({ isDarkMode: !isDarkMode }),
-      [updateState, isDarkMode],
-    ),
-    mobileMenu: useCallback(
-      () => updateState({ isMobileMenuOpen: !isMobileMenuOpen }),
-      [updateState, isMobileMenuOpen],
-    ),
-    favorite: useCallback(
-      () => updateState({ isFavorite: !isFavorite }),
-      [updateState, isFavorite],
-    ),
-  };
+  const togglers = useMemo(
+    () => ({
+      darkMode: () => updateState({ isDarkMode: !isDarkMode }),
+      mobileMenu: () => updateState({ isMobileMenuOpen: !isMobileMenuOpen }),
+      favorite: () => updateState({ isFavorite: !isFavorite }),
+    }),
+    [updateState, isDarkMode, isMobileMenuOpen, isFavorite],
+  );
+
+  useEffect(
+    () => () => {
+      cancelDebouncedSearch();
+      if (activeRequestControllerRef.current) {
+        activeRequestControllerRef.current.abort();
+      }
+      if (activeAudioUrlRef.current) {
+        URL.revokeObjectURL(activeAudioUrlRef.current);
+        activeAudioUrlRef.current = null;
+      }
+    },
+    [cancelDebouncedSearch],
+  );
 
   useEffect(() => {
     const handleResize = () => {

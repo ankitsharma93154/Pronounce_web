@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# QuickPronounce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+QuickPronounce is a React-based pronunciation tool where users can search words, listen to audio pronunciation, view IPA and meanings, compare accents, and practice with related features like Word of the Day and common mispronunciations.
 
-## Available Scripts
+## Run Locally
 
-In the project directory, you can run:
+Prerequisites
 
-### `npm start`
+- Node.js 18 or newer
+- npm
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Commands
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- npm install
+- npm start
+- npm run build
 
-### `npm test`
+Development app URL
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- http://localhost:3000
 
-### `npm run build`
+## Production
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Hosted on Vercel
+- Frontend serves static assets and calls backend pronunciation API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Updates (2026-04-01)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### New Feature
 
-### `npm run eject`
+- Added Support page and support banner flow.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Performance and Request Optimization
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Added reusable debounce hook for controlled request triggering.
+- Added in-flight request cancellation via AbortController.
+- Added persistent client cache using localStorage-backed cache hook.
+- Added normalized duplicate-query guard to skip redundant requests.
+- Added lightweight client-side rate limiting for burst protection.
+- Improved repeated Pronounce behavior to replay cached results and audio.
+- Limited suggestion dropdown to 3 results.
+- Added Umami event pronunciation_cache_lookup for cache hit tracking.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Verification
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Production build completed successfully.
 
-## Learn More
+## Notes on Documentation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Documenting in README is good for:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- quick setup
+- architecture overview
+- recent notable changes
 
-### Code Splitting
+For long-term maintainability, keep README concise and move deep details to docs files, for example:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- docs/architecture.md
+- docs/changelog.md
+- docs/analytics.md
