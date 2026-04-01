@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const DISMISS_DAYS = 7;
 const DISMISS_KEY = "supportBannerDismissedAt";
@@ -60,10 +61,8 @@ const SupportBanner = ({ show }) => {
       </div>
 
       <div className="support-banner__actions">
-        <a
-          href="https://ko-fi.com/quickpronounce"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/support"
           className="support-banner__button"
           onClick={() => {
             if (window.umami) {
@@ -74,7 +73,7 @@ const SupportBanner = ({ show }) => {
           }}
         >
           Support
-        </a>
+        </Link>
 
         <button
           className="support-banner__close"

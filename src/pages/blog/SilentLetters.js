@@ -203,8 +203,7 @@ const SilentKillers = () => {
       "Silent Letters in English: Complete Guide to Pronunciation Rules & Common Words (2025)",
     description:
       "Master silent letters in English pronunciation! Learn rules for silent B, K, L, P, G, H, T, W with IPA examples. Stop mispronouncing debt, island, knife & more. Free pronunciation checker included.",
-    canonicalUrl:
-      "https://www.quickpronounce.site/blog/silent-letters-pronunciation-guide",
+    canonicalUrl: "https://www.quickpronounce.site/blog/silent-letters",
     ogTitle: "Silent Letters in English: Complete Pronunciation Guide",
     ogDescription:
       "Master silent letters with our comprehensive guide. Learn pronunciation rules for 50+ common words with silent B, K, L, P, and more.",

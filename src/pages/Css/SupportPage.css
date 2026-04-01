@@ -1,0 +1,128 @@
+.support-page {
+  min-height: calc(100vh - 70px);
+  padding: 6.5rem 1rem 3rem;
+  background-color: var(--bg-secondary);
+}
+
+.support-page__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.support-page__hero {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.3rem 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.support-page__hero h1 {
+  font-size: clamp(1.85rem, 2.8vw, 2.6rem);
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.75rem;
+}
+
+.support-page__hero p {
+  max-width: 52rem;
+  margin: 0 auto;
+  color: var(--text-secondary);
+}
+
+.support-page__grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.support-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.35rem;
+  box-shadow: var(--shadow-md);
+}
+
+body.dark .support-card {
+  box-shadow: 0 8px 26px rgba(2, 6, 23, 0.42);
+}
+
+.support-card h2 {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+}
+
+.support-card p {
+  color: var(--text-secondary);
+}
+
+.support-card__qr {
+  display: block;
+  width: min(100%, 320px);
+  height: auto;
+  margin: 1rem auto 0.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+}
+
+.support-card__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.4rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--primary-gradient);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 8px 18px rgba(62, 108, 231, 0.22);
+}
+
+.support-card__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(62, 108, 231, 0.26);
+}
+
+.support-card__kofi-banner-link {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.support-card__kofi-banner {
+  display: block;
+  width: min(100%, 360px);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 16px;
+  border: none;
+  background: transparent;
+}
+
+.support-card__hint {
+  margin-top: auto;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 640px) {
+  .support-page {
+    padding-top: 5.8rem;
+  }
+}

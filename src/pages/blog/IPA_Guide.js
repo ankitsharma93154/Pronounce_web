@@ -226,7 +226,7 @@ const IPAGuide = () => {
       "The Ultimate Guide to IPA: Read Phonetic Transcriptions & Master English Pronunciation",
     description:
       "Decode the International Phonetic Alphabet (IPA) for English. Learn the key symbols, master vowel and consonant sounds, and use QuickPronounce to instantly check any word's IPA.",
-    canonicalUrl: "https://www.quickpronounce.site/blog/ultimate-guide-to-ipa",
+    canonicalUrl: "https://www.quickpronounce.site/blog/ipa-guide",
     ogImage: "https://www.quickpronounce.site/images/ipa-guide-banner.jpg",
     extraMeta: [
       {

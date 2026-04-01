@@ -14,6 +14,7 @@ import Home from "./pages/Home"; // Direct import for Home
 const FAQPage = lazy(() => import("./pages/faqs"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Contact = lazy(() => import("./pages/contact"));
+const Support = lazy(() => import("./pages/Support"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const PronunciationBlog = lazy(() => import("./pages/blog/pronunciation-tips"));
 const PronunciationGuide = lazy(
@@ -66,6 +67,7 @@ const App = () => {
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/support" element={<Support />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route
                 path="/terms-and-conditions"
@@ -94,7 +96,15 @@ const App = () => {
                 element={<Navigate to="/blog/ipa-guide" replace />}
               />
               <Route
+                path="/blog/ultimate-guide-to-ipa"
+                element={<Navigate to="/blog/ipa-guide" replace />}
+              />
+              <Route
                 path="/blog/SilentLetters"
+                element={<Navigate to="/blog/silent-letters" replace />}
+              />
+              <Route
+                path="/blog/silent-letters-pronunciation-guide"
                 element={<Navigate to="/blog/silent-letters" replace />}
               />
               <Route path="/blog/ielts" element={<IELTSBlog />} />
