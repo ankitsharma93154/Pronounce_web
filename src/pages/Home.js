@@ -216,12 +216,13 @@ const Home = () => {
           query_length: normalizedWord.length,
           accent,
           speed,
+          gender: isMale ? "male" : "female",
         });
       } catch (_) {
         // Ignore analytics runtime issues to avoid affecting user flow.
       }
     },
-    [accent, speed],
+    [accent, speed, isMale],
   );
 
   const playAudioFromContent = useCallback((audioContent) => {
