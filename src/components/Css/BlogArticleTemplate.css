@@ -479,3 +479,60 @@
     padding: 2rem 1.2rem;
   }
 }
+
+@media (max-width: 480px) {
+  .bt-page-wrapper {
+    padding: 3rem 0.75rem;
+  }
+
+  .bt-article-container {
+    padding: 1.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+  }
+
+  .bt-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .bt-main-title {
+    font-size: 1.8rem;
+  }
+
+  .bt-meta {
+    gap: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .bt-section {
+    padding: 1rem;
+  }
+
+  .bt-section-title {
+    font-size: 1.35rem;
+  }
+
+  .bt-text,
+  .bt-section p,
+  .bt-section li {
+    font-size: 0.98rem;
+    line-height: 1.72;
+  }
+
+  .bt-multi-column-list {
+    columns: 1;
+  }
+
+  .bt-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bt-cta-box {
+    padding: 1.5rem 1rem;
+  }
+
+  .bt-cta-title {
+    font-size: 1.45rem;
+  }
+}

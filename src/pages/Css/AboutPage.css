@@ -11,7 +11,7 @@
   background: var(--primary-gradient);
 }
 .about-page-section-title {
-  font-size: 1.75rem;
+  font-size: clamp(1.5rem, 4vw, 1.75rem);
   font-weight: 700;
   margin-bottom: 20px;
   color: #fff;
@@ -94,6 +94,7 @@
   display: flex;
   gap: 20px;
   margin-top: 30px;
+  flex-wrap: wrap;
 }
 .about-page-icon-link {
   display: flex;
@@ -190,11 +191,45 @@
   .about-page-inner {
     padding: 30px 20px;
   }
+  .about-page-container {
+    padding-top: 24px;
+  }
   .about-page-section-title {
     font-size: 1.5rem;
   }
   .about-page-feature-title {
     font-size: 1.15rem;
+  }
+  .about-page-contact-icons {
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .about-page-icon-link {
+    width: 44px;
+    height: 44px;
+  }
+  .kofi-support-container {
+    margin-top: 20px;
+  }
+  .kofi-support-link {
+    width: 100%;
+    max-width: 220px;
+    min-height: 88px;
+    padding: 0.85rem;
+  }
+  .kofi-image {
+    width: 32px;
+    height: 32px;
+  }
+  .kofi-text {
+    font-size: 0.75rem;
+  }
+  .faq-page-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.35rem 0.65rem;
+    line-height: 1.2;
   }
 }
 /* Add these styles to your AboutPage.css file */

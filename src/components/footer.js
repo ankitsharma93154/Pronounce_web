@@ -21,10 +21,6 @@ const Footer = memo(() => (
           Editorial Policy
         </Link>
         <span className="footer-separator">|</span>
-        <Link to="/support" className="footer-link">
-          Support
-        </Link>
-        <span className="footer-separator">|</span>
         <span className="footer-copyright">
           © {new Date().getFullYear()} QuickPronounce. All rights reserved.
         </span>

@@ -111,10 +111,10 @@
   }
 
   .pp-content-container {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
   .pp-main-title {
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
   }
 }
