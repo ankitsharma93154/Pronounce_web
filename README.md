@@ -41,6 +41,12 @@ Development app URL
 - Limited suggestion dropdown to 3 results.
 - Added Umami event pronunciation_cache_lookup for cache hit tracking.
 
+### Cache and Analytics Tuning (latest)
+
+- Increased pronunciation cache capacity from 40 to 100 entries to improve repeat-query hit retention.
+- Extended pronunciation_cache_lookup analytics with gender dimension (male/female) for better behavior segmentation.
+- Evaluated lazy preload list strategy and intentionally did not keep it to avoid extra background edge/API requests.
+
 ### Verification
 
 - Production build completed successfully.
