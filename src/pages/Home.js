@@ -28,25 +28,6 @@ const WordOfDay = lazy(() => import("../components/wordOfDay"));
 const QuickPronounceTips = lazy(() => import("../components/tips"));
 const SupportBanner = lazy(() => import("../components/SupportBanner"));
 
-// Lazy load analytics components
-const Analytics =
-  process.env.NODE_ENV === "production"
-    ? lazy(() =>
-        import("@vercel/analytics/react").then((mod) => ({
-          default: mod.Analytics,
-        })),
-      )
-    : () => null;
-
-const SpeedInsights =
-  process.env.NODE_ENV === "production"
-    ? lazy(() =>
-        import("@vercel/speed-insights/react").then((mod) => ({
-          default: mod.SpeedInsights,
-        })),
-      )
-    : () => null;
-
 const BACKEND_PRONUNCIATION_URL =
   "https://backend-8isq.vercel.app/get-pronunciation";
 const REQUEST_TIMEOUT_MS = 10000;
@@ -206,25 +187,6 @@ const Home = () => {
     ];
   }, []);
 
-  const trackCacheLookup = useCallback(
-    (isHit, normalizedWord) => {
-      if (typeof window === "undefined" || !window.umami) return;
-
-      try {
-        window.umami.track("pronunciation_cache_lookup", {
-          cache_hit: isHit,
-          query_length: normalizedWord.length,
-          accent,
-          speed,
-          gender: isMale ? "male" : "female",
-        });
-      } catch (_) {
-        // Ignore analytics runtime issues to avoid affecting user flow.
-      }
-    },
-    [accent, speed, isMale],
-  );
-
   const playAudioFromContent = useCallback((audioContent) => {
     if (!audioContent) {
       setIsPlaying(false);
@@ -306,10 +268,6 @@ const Home = () => {
       const requestKey = buildRequestKey(normalizedWord);
       const cached = cache.get(requestKey);
 
-      if (cached) {
-        trackCacheLookup(true, normalizedWord);
-      }
-
       if (requestKey === lastRequestKeyRef.current) {
         if (cached) {
           updateState({
@@ -347,8 +305,6 @@ const Home = () => {
         lastRequestKeyRef.current = requestKey;
         return;
       }
-
-      trackCacheLookup(false, normalizedWord);
 
       if (activeRequestControllerRef.current) {
         activeRequestControllerRef.current.abort();
@@ -442,7 +398,6 @@ const Home = () => {
       isMale,
       speed,
       applyPronunciationResult,
-      trackCacheLookup,
     ],
   );
 
@@ -608,13 +563,6 @@ const Home = () => {
           ])}
         </script>
       </Helmet>
-
-      {process.env.NODE_ENV === "production" && (
-        <Suspense fallback={null}>
-          <Analytics />
-          <SpeedInsights />
-        </Suspense>
-      )}
 
       {isMobileMenuOpen && <MobileMenu />}
 
