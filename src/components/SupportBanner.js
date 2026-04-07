@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-const REQUIRED_SUCCESS_COUNT = 5;
+const REQUIRED_SUCCESS_COUNT = 3;
 const COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 const SUCCESS_COUNT_KEY = "successCount";
 const SESSION_SHOWN_KEY = "supportShown";
