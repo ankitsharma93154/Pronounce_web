@@ -1,10 +1,59 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-const DISMISS_DAYS = 7;
-const DISMISS_KEY = "supportBannerDismissedAt";
+const REQUIRED_SUCCESS_COUNT = 5;
+const COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
+const SUCCESS_COUNT_KEY = "successCount";
+const SESSION_SHOWN_KEY = "supportShown";
+const LAST_SHOWN_KEY = "supportLastShown";
+const CLICKED_AT_KEY = "supportClickedAt";
 
-const SupportBanner = ({ show }) => {
+const readLocalNumber = (key, fallback = 0) => {
+  if (typeof window === "undefined") return fallback;
+
+  try {
+    const raw = window.localStorage.getItem(key);
+    const parsed = Number.parseInt(raw || "", 10);
+    return Number.isFinite(parsed) ? parsed : fallback;
+  } catch (_) {
+    return fallback;
+  }
+};
+
+const writeLocalValue = (key, value) => {
+  if (typeof window === "undefined") return;
+
+  try {
+    window.localStorage.setItem(key, value);
+  } catch (_) {
+    // Ignore storage errors so banner rendering remains resilient.
+  }
+};
+
+const readSessionValue = (key) => {
+  if (typeof window === "undefined") return null;
+
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch (_) {
+    return null;
+  }
+};
+
+const writeSessionValue = (key, value) => {
+  if (typeof window === "undefined") return;
+
+  try {
+    window.sessionStorage.setItem(key, value);
+  } catch (_) {
+    // Ignore storage errors so banner rendering remains resilient.
+  }
+};
+
+const isWithinCooldown = (timestamp, now) =>
+  Number.isFinite(timestamp) && timestamp > 0 && now - timestamp < COOLDOWN_MS;
+
+const SupportBanner = ({ show, successCount = 0 }) => {
   const [mounted, setMounted] = useState(false);
   const [animate, setAnimate] = useState(false);
 
@@ -12,16 +61,32 @@ const SupportBanner = ({ show }) => {
   const hasTrackedView = useRef(false);
 
   useEffect(() => {
-    if (!show) return;
+    if (!show || mounted) return;
 
-    const dismissedAt = localStorage.getItem(DISMISS_KEY);
+    const now = Date.now();
 
-    if (dismissedAt) {
-      const daysPassed =
-        (Date.now() - Number(dismissedAt)) / (1000 * 60 * 60 * 24);
+    // Eligibility: wait until users have at least N successful queries.
+    const totalSuccesses =
+      Number.isFinite(successCount) && successCount > 0
+        ? successCount
+        : readLocalNumber(SUCCESS_COUNT_KEY, 0);
 
-      if (daysPassed < DISMISS_DAYS) return;
+    if (totalSuccesses < REQUIRED_SUCCESS_COUNT) return;
+
+    // Cooldowns: once per session and no repeats within 7 days after show/click.
+    if (readSessionValue(SESSION_SHOWN_KEY) === "1") return;
+
+    const lastShownAt = readLocalNumber(LAST_SHOWN_KEY, 0);
+    const clickedAt = readLocalNumber(CLICKED_AT_KEY, 0);
+    if (
+      isWithinCooldown(lastShownAt, now) ||
+      isWithinCooldown(clickedAt, now)
+    ) {
+      return;
     }
+
+    writeLocalValue(LAST_SHOWN_KEY, String(now));
+    writeSessionValue(SESSION_SHOWN_KEY, "1");
 
     setMounted(true);
 
@@ -36,10 +101,9 @@ const SupportBanner = ({ show }) => {
         hasTrackedView.current = true;
       }
     });
-  }, [show]);
+  }, [show, successCount, mounted]);
 
   const handleClose = () => {
-    localStorage.setItem(DISMISS_KEY, Date.now().toString());
     setAnimate(false);
 
     // wait for exit animation
@@ -55,7 +119,7 @@ const SupportBanner = ({ show }) => {
         <span className="support-banner__text">
           <strong>Support QuickPronounce</strong>
           <span className="support-banner__sub">
-            Free to use. Your support keeps it running.
+            Free to use. If it has helped you, consider supporting it.
           </span>
         </span>
       </div>
@@ -65,6 +129,8 @@ const SupportBanner = ({ show }) => {
           to="/support"
           className="support-banner__button"
           onClick={() => {
+            writeLocalValue(CLICKED_AT_KEY, String(Date.now()));
+
             if (window.umami) {
               window.umami.track("support_button_click", {
                 location: "support_banner",

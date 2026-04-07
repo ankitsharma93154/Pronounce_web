@@ -37,6 +37,19 @@ const CACHE_MAX_ENTRIES = 100;
 const RATE_LIMIT_WINDOW_MS = 1000;
 const MAX_REQUESTS_PER_WINDOW = 2;
 const MAX_WORD_LENGTH = 60;
+const SUCCESS_COUNT_KEY = "successCount";
+
+const readSuccessCount = () => {
+  if (typeof window === "undefined") return 0;
+
+  try {
+    const raw = window.localStorage.getItem(SUCCESS_COUNT_KEY);
+    const parsed = Number.parseInt(raw || "0", 10);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+  } catch (_) {
+    return 0;
+  }
+};
 
 // Create and memoize static components
 const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
@@ -147,7 +160,22 @@ const Home = () => {
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isBelowFoldVisible, setIsBelowFoldVisible] = useState(false);
+  const [successCount, setSuccessCount] = useState(() => readSuccessCount());
   const belowFoldRef = useRef(null);
+
+  const incrementSuccessCount = useCallback(() => {
+    setSuccessCount((prev) => {
+      const nextCount = prev + 1;
+
+      try {
+        window.localStorage.setItem(SUCCESS_COUNT_KEY, String(nextCount));
+      } catch (_) {
+        // Ignore storage errors so query flow never breaks.
+      }
+
+      return nextCount;
+    });
+  }, []);
 
   const handleRelationToggle = useCallback(
     (type) => {
@@ -281,6 +309,7 @@ const Home = () => {
             isLoading: false,
           });
           playAudioFromContent(cached.audioContent);
+          incrementSuccessCount();
         }
         return;
       }
@@ -303,6 +332,7 @@ const Home = () => {
 
         playAudioFromContent(cached.audioContent);
         lastRequestKeyRef.current = requestKey;
+        incrementSuccessCount();
         return;
       }
 
@@ -375,6 +405,7 @@ const Home = () => {
 
         const data = await response.json();
         applyPronunciationResult(data, requestKey, normalizedWord);
+        incrementSuccessCount();
       } catch (error) {
         if (error?.name !== "AbortError") {
           setIsPlaying(false);
@@ -398,6 +429,7 @@ const Home = () => {
       isMale,
       speed,
       applyPronunciationResult,
+      incrementSuccessCount,
     ],
   );
 
@@ -568,7 +600,9 @@ const Home = () => {
 
       <main className="main container" id="home">
         {!hasPronounced && <Hero />}
-        {hasPronounced && <SupportBanner show={true} />}
+        {hasPronounced && (
+          <SupportBanner show={true} successCount={successCount} />
+        )}
 
         <div className="interface-grid">
           <InputCard

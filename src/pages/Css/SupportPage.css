@@ -29,8 +29,14 @@
   margin-bottom: 0.75rem;
 }
 
+.support-page__heart {
+  color: #e11d48;
+  background: none;
+}
+
 .support-page__hero p {
-  max-width: 52rem;
+  width: 52rem;
+  max-width: 100%;
   margin: 0 auto;
   color: var(--text-secondary);
 }

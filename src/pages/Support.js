@@ -50,16 +50,17 @@ const Support = () => {
 
       <div className="support-page__inner">
         <section className="support-page__hero">
-          <h1>Support QuickPronounce</h1>
+          <h1>
+            Enjoying QuickPronounce? Support It{" "}
+            <span className="support-page__heart">❤</span>
+          </h1>
           <p>
-            QuickPronounce is built and maintained by a single founder, and it
-            is still free for everyone to use.
-          </p>
-          <p>
-            As usage grows, hosting, API, and maintenance costs are increasing
-            faster than I can sustainably manage alone. If this tool has helped
-            you, please consider supporting it using the payment option that is
-            easiest for you.
+            Hi, I am Ankit, the person behind QuickPronounce. QuickPronounce is
+            built and maintained by a single founder, and it is free for
+            everyone to use. As usage grows, so do the costs of hosting, APIs,
+            and keeping everything running smoothly. If this tool has helped
+            you, consider supporting it using the payment option that is easiest
+            for you.
           </p>
         </section>
 
@@ -115,7 +116,7 @@ const Support = () => {
               rel="noopener noreferrer nofollow"
               className="support-card__button"
             >
-              Continue to Ko-fi
+              Support on Ko-fi
             </a>
             <p className="support-card__hint">
               Ko-fi securely handles checkout and QuickPronounce does not store
