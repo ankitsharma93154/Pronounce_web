@@ -206,6 +206,16 @@ const InputCard = memo(
       }
     };
 
+    const handlePronounceButtonClick = () => {
+      if (window.umami) {
+        window.umami.track("pronounce_button_click", {
+          location: "input_card",
+        });
+      }
+
+      getPronunciation();
+    };
+
     return (
       <div className="card">
         <div className="input-group" style={{ position: "relative" }}>
@@ -301,7 +311,7 @@ const InputCard = memo(
 
         {/* Pronounce button now below the input with full width */}
         <button
-          onClick={getPronunciation}
+          onClick={handlePronounceButtonClick}
           disabled={isLoading}
           className="pronounce-button"
         >
