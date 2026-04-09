@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const REQUIRED_SUCCESS_COUNT = 3;
-const COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
+const SHOWN_COOLDOWN_MS = 3 * 24 * 60 * 60 * 1000;
+const CLICKED_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 const SUCCESS_COUNT_KEY = "successCount";
 const SESSION_SHOWN_KEY = "supportShown";
 const LAST_SHOWN_KEY = "supportLastShown";
@@ -50,8 +51,8 @@ const writeSessionValue = (key, value) => {
   }
 };
 
-const isWithinCooldown = (timestamp, now) =>
-  Number.isFinite(timestamp) && timestamp > 0 && now - timestamp < COOLDOWN_MS;
+const isWithinCooldown = (timestamp, now, cooldownMs) =>
+  Number.isFinite(timestamp) && timestamp > 0 && now - timestamp < cooldownMs;
 
 const SupportBanner = ({ show, successCount = 0 }) => {
   const [mounted, setMounted] = useState(false);
@@ -79,8 +80,8 @@ const SupportBanner = ({ show, successCount = 0 }) => {
     const lastShownAt = readLocalNumber(LAST_SHOWN_KEY, 0);
     const clickedAt = readLocalNumber(CLICKED_AT_KEY, 0);
     if (
-      isWithinCooldown(lastShownAt, now) ||
-      isWithinCooldown(clickedAt, now)
+      isWithinCooldown(lastShownAt, now, SHOWN_COOLDOWN_MS) ||
+      isWithinCooldown(clickedAt, now, CLICKED_COOLDOWN_MS)
     ) {
       return;
     }
