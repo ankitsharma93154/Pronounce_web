@@ -207,12 +207,6 @@ const InputCard = memo(
     };
 
     const handlePronounceButtonClick = () => {
-      if (window.umami) {
-        window.umami.track("pronounce_button_click", {
-          location: "input_card",
-        });
-      }
-
       getPronunciation();
     };
 
