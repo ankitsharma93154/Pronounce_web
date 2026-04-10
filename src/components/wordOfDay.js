@@ -122,12 +122,14 @@ const WordOfDay = memo(({ pronounce }) => {
 
   return (
     <div className="word-of-day-container">
-      <div className="word-of-day-badge">NEW</div>
       <div className="word-of-day-header">
         <div className="word-of-day-title">
           <span>📅 Word of the Day</span>
         </div>
-        <div className="word-of-day-date">{formattedDate}</div>
+        <div className="word-of-day-meta">
+          <div className="word-of-day-date">{formattedDate}</div>
+          <div className="word-of-day-badge">NEW</div>
+        </div>
       </div>
 
       <div className="word-of-day-content">

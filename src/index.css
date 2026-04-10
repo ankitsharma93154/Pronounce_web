@@ -958,13 +958,13 @@ body.dark .accent-tag {
   padding: 1rem 0;
 }
 .word-of-day-badge {
-  position: absolute;
-  top: 0;
-  right: 1rem;
+  display: inline-flex;
+  align-items: center;
   background: #ff9800;
   color: var(--bg-primary);
-  padding: 0.3rem 1rem;
-  border-radius: 0 0 8px 8px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  line-height: 1;
   font-size: 0.8rem;
   font-weight: 700;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -976,6 +976,12 @@ body.dark .accent-tag {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.word-of-day-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
 }
 .word-info,
 .word-of-day-title {
@@ -1724,6 +1730,15 @@ button:focus-visible {
   }
   .word-of-day-content {
     flex-direction: column;
+  }
+  .word-of-day-header {
+    gap: 0.5rem;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .word-of-day-meta {
+    width: 100%;
+    justify-content: space-between;
   }
   .word-of-day-left {
     padding-right: 0;
