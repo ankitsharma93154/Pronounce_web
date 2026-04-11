@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import "./Css/SupportPage.css";
 
-const SUPPORT_URL = "https://ko-fi.com/quickpronounce";
+const SUPPORT_URL = "https://ko-fi.com/quickpronounce/tip";
 
 const Support = () => {
   return (

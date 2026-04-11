@@ -158,7 +158,7 @@ const Contact = () => {
 
             <div className="kofi-support-container">
               <a
-                href="https://ko-fi.com/quickpronounce"
+                href="https://ko-fi.com/quickpronounce/tip"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="kofi-support-link"
