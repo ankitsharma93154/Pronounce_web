@@ -17,6 +17,11 @@ import MobileMenu from "../components/mobileMenu";
 import Hero from "../components/hero";
 import InputCard from "../components/inputCard";
 import ResultsCard from "../components/resultCard";
+import AdcashSkyscraper120x600 from "../components/ads/AdcashSkyscraper120x600";
+import AdcashLeaderboard728x90 from "../components/ads/AdcashLeaderboard728x90";
+import AdcashBanner300x100 from "../components/ads/AdcashBanner300x100";
+import AdcashRectangle336x280 from "../components/ads/AdcashRectangle336x280";
+import AdcashRectangle300x250 from "../components/ads/AdcashRectangle300x250";
 import ExamplesList from "../components/exampleList";
 import useDebouncedCallback from "../hooks/useDebouncedCallback";
 import usePersistentCache from "../hooks/usePersistentCache";
@@ -38,6 +43,12 @@ const RATE_LIMIT_WINDOW_MS = 1000;
 const MAX_REQUESTS_PER_WINDOW = 2;
 const MAX_WORD_LENGTH = 60;
 const SUCCESS_COUNT_KEY = "successCount";
+const DESKTOP_SIDE_AD_BREAKPOINT = 1300;
+const SKYSCRAPER_ZONE_ID = "11183654";
+const LEADERBOARD_728_ZONE_ID = "11183662";
+const BANNER_300X100_ZONE_ID = "11183682";
+const RECTANGLE_336X280_ZONE_ID = "11183690";
+const RECTANGLE_300X250_ZONE_ID = "11183698";
 
 const readSuccessCount = () => {
   if (typeof window === "undefined") return 0;
@@ -160,8 +171,112 @@ const Home = () => {
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isBelowFoldVisible, setIsBelowFoldVisible] = useState(false);
+  const [viewportWidth, setViewportWidth] = useState(() =>
+    typeof window === "undefined" ? 0 : window.innerWidth,
+  );
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
   const [successCount, setSuccessCount] = useState(() => readSuccessCount());
   const belowFoldRef = useRef(null);
+
+  const showDesktopSideAds = viewportWidth >= DESKTOP_SIDE_AD_BREAKPOINT;
+
+  const topBannerZoneId = useMemo(() => {
+    if (viewportWidth >= 1024) return LEADERBOARD_728_ZONE_ID;
+    if (viewportWidth < 768 && viewportWidth > 0) return BANNER_300X100_ZONE_ID;
+    return "";
+  }, [viewportWidth]);
+
+  const rectangleZoneId = useMemo(() => {
+    if (viewportWidth >= 1200) return RECTANGLE_336X280_ZONE_ID;
+    if (viewportWidth >= 768) return RECTANGLE_300X250_ZONE_ID;
+    return "";
+  }, [viewportWidth]);
+
+  const mobileRectangleZoneId = useMemo(() => {
+    if (viewportWidth > 0 && viewportWidth < 768) {
+      return RECTANGLE_300X250_ZONE_ID;
+    }
+    return "";
+  }, [viewportWidth]);
+
+  const renderDesktopTopBannerAd = () => {
+    if (!hasPronounced || !topBannerZoneId) {
+      return null;
+    }
+
+    if (viewportWidth >= 1024) {
+      return (
+        <AdcashLeaderboard728x90
+          zoneId={topBannerZoneId}
+          className="adcash-leaderboard"
+        />
+      );
+    }
+
+    return null;
+  };
+
+  const renderMobileTopBannerAd = () => {
+    if (!hasPronounced || !topBannerZoneId || viewportWidth >= 768) {
+      return null;
+    }
+
+    return (
+      <AdcashBanner300x100
+        zoneId={topBannerZoneId}
+        className="adcash-leaderboard"
+      />
+    );
+  };
+
+  const renderRectangleAd = () => {
+    if (!rectangleZoneId) {
+      return null;
+    }
+
+    if (viewportWidth >= 1200) {
+      return (
+        <AdcashRectangle336x280
+          zoneId={rectangleZoneId}
+          className="adcash-rectangle"
+        />
+      );
+    }
+
+    if (viewportWidth >= 992) {
+      return (
+        <AdcashRectangle300x250
+          zoneId={rectangleZoneId}
+          className="adcash-rectangle"
+        />
+      );
+    }
+
+    return (
+      <AdcashRectangle300x250
+        zoneId={rectangleZoneId}
+        className="adcash-rectangle"
+      />
+    );
+  };
+
+  const renderMobileRectangleAd = () => {
+    if (!hasPronounced || !mobileRectangleZoneId) {
+      return null;
+    }
+
+    return (
+      <AdcashRectangle300x250
+        zoneId={mobileRectangleZoneId}
+        className="mobile-results-rectangle-ad"
+      />
+    );
+  };
+
+  const desktopTopBannerAdNode = renderDesktopTopBannerAd();
+  const mobileTopBannerAdNode = renderMobileTopBannerAd();
+  const rectangleAdNode = renderRectangleAd();
+  const mobileRectangleAdNode = renderMobileRectangleAd();
 
   const incrementSuccessCount = useCallback(() => {
     setSuccessCount((prev) => {
@@ -507,7 +622,25 @@ const Home = () => {
   );
 
   useEffect(() => {
+    const footerEl = document.querySelector(".footer");
+    if (!footerEl || !("IntersectionObserver" in window)) {
+      return;
+    }
+
+    const footerObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsFooterVisible(entry.isIntersecting);
+      },
+      { rootMargin: "0px 0px 100px 0px" },
+    );
+
+    footerObserver.observe(footerEl);
+    return () => footerObserver.disconnect();
+  }, []);
+
+  useEffect(() => {
     const handleResize = () => {
+      setViewportWidth(window.innerWidth);
       document.documentElement.style.setProperty(
         "--app-height",
         `${window.innerHeight}px`,
@@ -598,55 +731,102 @@ const Home = () => {
 
       {isMobileMenuOpen && <MobileMenu />}
 
-      <main className="main container" id="home">
-        {!hasPronounced && <Hero />}
-        {hasPronounced && (
-          <SupportBanner show={true} successCount={successCount} />
+      <div className="home-main-shell">
+        {showDesktopSideAds && !isFooterVisible && (
+          <aside className="home-side-ad home-side-ad--left">
+            <AdcashSkyscraper120x600
+              zoneId={SKYSCRAPER_ZONE_ID}
+              className="adcash-skyscraper"
+            />
+          </aside>
         )}
 
-        <div className="interface-grid">
-          <InputCard
+        <main className="main container" id="home">
+          {!hasPronounced && <Hero />}
+          {hasPronounced && (
+            <SupportBanner show={true} successCount={successCount} />
+          )}
+
+          <div className="interface-grid">
+            <InputCard
+              word={word}
+              setWord={(nextWord) =>
+                updateState({ word: sanitizeWord(nextWord) })
+              }
+              handleKeyDown={handleKeyDown}
+              getPronunciation={getPronunciation}
+              pronounce={pronounce}
+              isLoading={isLoading}
+              accent={accent}
+              setAccent={(accent) => updateState({ accent })}
+              isMale={isMale}
+              setIsMale={(isMale) => updateState({ isMale })}
+              speed={speed}
+              setSpeed={(speed) => updateState({ speed })}
+              hasPronounced={hasPronounced}
+              synonyms={synonyms}
+              antonyms={antonyms}
+              handleRelationToggle={handleRelationToggle}
+              maxWordLength={MAX_WORD_LENGTH}
+            />
+
+            {mobileTopBannerAdNode && (
+              <section
+                className="mobile-phonetic-ad-wrap"
+                aria-label="Advertisement"
+              >
+                {mobileTopBannerAdNode}
+              </section>
+            )}
+
+            <ResultsCard
+              isLoading={isLoading}
+              hasPronounced={hasPronounced}
+              phonetic={phonetic}
+              meanings={meanings}
+              getPronunciation={getPronunciation}
+              toggleFavorite={togglers.favorite}
+              isFavorite={isFavorite}
+              isPlaying={isPlaying}
+              syllables={syllables}
+            />
+
+            {mobileRectangleAdNode && (
+              <section
+                className="mobile-results-rectangle-ad-wrap"
+                aria-label="Advertisement"
+              >
+                {mobileRectangleAdNode}
+              </section>
+            )}
+          </div>
+
+          <FloatButton
+            onClick={getPronunciation}
+            disabled={isLoading}
+            isLoading={isLoading}
             word={word}
-            setWord={(nextWord) =>
-              updateState({ word: sanitizeWord(nextWord) })
-            }
-            handleKeyDown={handleKeyDown}
-            getPronunciation={getPronunciation}
-            pronounce={pronounce}
-            isLoading={isLoading}
-            accent={accent}
-            setAccent={(accent) => updateState({ accent })}
-            isMale={isMale}
-            setIsMale={(isMale) => updateState({ isMale })}
-            speed={speed}
-            setSpeed={(speed) => updateState({ speed })}
-            hasPronounced={hasPronounced}
-            synonyms={synonyms}
-            antonyms={antonyms}
-            handleRelationToggle={handleRelationToggle}
-            maxWordLength={MAX_WORD_LENGTH}
           />
+        </main>
 
-          <ResultsCard
-            isLoading={isLoading}
-            hasPronounced={hasPronounced}
-            phonetic={phonetic}
-            meanings={meanings}
-            getPronunciation={getPronunciation}
-            toggleFavorite={togglers.favorite}
-            isFavorite={isFavorite}
-            isPlaying={isPlaying}
-            syllables={syllables}
-          />
-        </div>
+        {showDesktopSideAds && !isFooterVisible && (
+          <aside className="home-side-ad home-side-ad--right">
+            <AdcashSkyscraper120x600
+              zoneId={SKYSCRAPER_ZONE_ID}
+              className="adcash-skyscraper"
+            />
+          </aside>
+        )}
+      </div>
 
-        <FloatButton
-          onClick={getPronunciation}
-          disabled={isLoading}
-          isLoading={isLoading}
-          word={word}
-        />
-      </main>
+      {desktopTopBannerAdNode && (
+        <section
+          className="leaderboard-ad-wrap container"
+          aria-label="Advertisement"
+        >
+          {desktopTopBannerAdNode}
+        </section>
+      )}
 
       <Suspense fallback={null}>
         {hasPronounced && <ExamplesList examples={examples} />}
@@ -691,6 +871,15 @@ const Home = () => {
           >
             <QuickPronounceTips />
           </Suspense>
+
+          {rectangleAdNode && (
+            <section
+              className="content-rectangle-ad-wrap container"
+              aria-label="Advertisement"
+            >
+              {rectangleAdNode}
+            </section>
+          )}
 
           <div className="about-page-divider"></div>
 

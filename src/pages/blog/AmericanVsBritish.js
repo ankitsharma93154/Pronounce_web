@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "../Css/Blog_3.css";
 import BlogArticleTemplate from "../../components/BlogArticleTemplate";
+import AdcashLeaderboard728x90 from "../../components/ads/AdcashLeaderboard728x90";
+import AdcashBanner300x100 from "../../components/ads/AdcashBanner300x100";
+import AdcashRectangle336x280 from "../../components/ads/AdcashRectangle336x280";
+import AdcashRectangle300x250 from "../../components/ads/AdcashRectangle300x250";
 import im1 from "../../images/blogs/american-vs-british/im1.webp";
 import im2 from "../../images/blogs/american-vs-british/im2.webp";
 import im3 from "../../images/blogs/american-vs-british/im3.webp";
 import im4 from "../../images/blogs/american-vs-british/im4.webp";
+
+const LEADERBOARD_728_ZONE_ID = "11183662";
+const BANNER_300X100_ZONE_ID = "11183682";
+const RECTANGLE_336X280_ZONE_ID = "11183690";
+const RECTANGLE_300X250_ZONE_ID = "11183698";
 
 const imageMap = {
   "rhotic_vs_nonrhotic.webp": im1,
@@ -262,6 +271,107 @@ const confusingWords = [
 ];
 
 const PronunciationComparison = () => {
+  const [viewportWidth, setViewportWidth] = useState(() =>
+    typeof window === "undefined" ? 0 : window.innerWidth,
+  );
+
+  const topBannerZoneId = useMemo(() => {
+    if (viewportWidth >= 1024) return LEADERBOARD_728_ZONE_ID;
+    if (viewportWidth < 768 && viewportWidth > 0) return BANNER_300X100_ZONE_ID;
+    return "";
+  }, [viewportWidth]);
+
+  const rectangleZoneId = useMemo(() => {
+    if (viewportWidth >= 1200) return RECTANGLE_336X280_ZONE_ID;
+    if (viewportWidth >= 768) return RECTANGLE_300X250_ZONE_ID;
+    return "";
+  }, [viewportWidth]);
+
+  const mobileRectangleZoneId = useMemo(() => {
+    if (viewportWidth > 0 && viewportWidth < 768) {
+      return RECTANGLE_300X250_ZONE_ID;
+    }
+    return "";
+  }, [viewportWidth]);
+
+  const renderTopBannerAd = () => {
+    if (!topBannerZoneId) {
+      return null;
+    }
+
+    if (viewportWidth >= 1024) {
+      return (
+        <AdcashLeaderboard728x90
+          zoneId={topBannerZoneId}
+          className="blog-inline-ad"
+        />
+      );
+    }
+
+    return (
+      <AdcashBanner300x100
+        zoneId={topBannerZoneId}
+        className="blog-inline-ad"
+      />
+    );
+  };
+
+  const renderRectangleAd = () => {
+    if (!rectangleZoneId) {
+      return null;
+    }
+
+    if (viewportWidth >= 1200) {
+      return (
+        <AdcashRectangle336x280
+          zoneId={rectangleZoneId}
+          className="blog-rectangle-ad"
+        />
+      );
+    }
+
+    if (viewportWidth >= 992) {
+      return (
+        <AdcashRectangle300x250
+          zoneId={rectangleZoneId}
+          className="blog-rectangle-ad"
+        />
+      );
+    }
+
+    return (
+      <AdcashRectangle300x250
+        zoneId={rectangleZoneId}
+        className="blog-rectangle-ad"
+      />
+    );
+  };
+
+  const renderMobileRectangleAd = () => {
+    if (!mobileRectangleZoneId) {
+      return null;
+    }
+
+    return (
+      <AdcashRectangle300x250
+        zoneId={mobileRectangleZoneId}
+        className="blog-mobile-rectangle-ad"
+      />
+    );
+  };
+
+  const mobileRectangleAdNode = renderMobileRectangleAd();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -382,6 +492,12 @@ const PronunciationComparison = () => {
             </div>
           </section>
 
+          {topBannerZoneId && (
+            <section className="blog-inline-ad-wrap" aria-label="Advertisement">
+              {renderTopBannerAd()}
+            </section>
+          )}
+
           <section className="avb-difference-section">
             <h2 className="avb-section-title">
               🗣️ The 4 Fundamental Sound Differences
@@ -433,6 +549,15 @@ const PronunciationComparison = () => {
             </div>
           </section>
 
+          {mobileRectangleAdNode && (
+            <section
+              className="blog-mobile-rectangle-ad-wrap"
+              aria-label="Advertisement"
+            >
+              {mobileRectangleAdNode}
+            </section>
+          )}
+
           <section className="confusing-section">
             <h2 className="section-title">
               📚 12 Words That Change Dramatically
@@ -461,6 +586,15 @@ const PronunciationComparison = () => {
               ))}
             </div>
           </section>
+
+          {rectangleZoneId && (
+            <section
+              className="blog-rectangle-ad-wrap"
+              aria-label="Advertisement"
+            >
+              {renderRectangleAd()}
+            </section>
+          )}
 
           <section className="conclusion-section">
             <h2 className="section-title">🎯 How to Practice Effectively</h2>

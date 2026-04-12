@@ -1,7 +1,17 @@
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "../Css/IPA_Guide.css";
 import BlogArticleTemplate from "../../components/BlogArticleTemplate";
+import AdcashLeaderboard728x90 from "../../components/ads/AdcashLeaderboard728x90";
+import AdcashBanner300x100 from "../../components/ads/AdcashBanner300x100";
+import AdcashRectangle336x280 from "../../components/ads/AdcashRectangle336x280";
+import AdcashRectangle300x250 from "../../components/ads/AdcashRectangle300x250";
 import IPA_img from "../../images/blogs/ipa-guide/IPA_GUIDE_img.webp";
+
+const LEADERBOARD_728_ZONE_ID = "11183662";
+const BANNER_300X100_ZONE_ID = "11183682";
+const RECTANGLE_336X280_ZONE_ID = "11183690";
+const RECTANGLE_300X250_ZONE_ID = "11183698";
 
 // Helper component for the IPA symbols grid
 const IPASymbolCard = ({ symbol, example, description }) => (
@@ -13,6 +23,107 @@ const IPASymbolCard = ({ symbol, example, description }) => (
 );
 
 const IPAGuide = () => {
+  const [viewportWidth, setViewportWidth] = useState(() =>
+    typeof window === "undefined" ? 0 : window.innerWidth,
+  );
+
+  const topBannerZoneId = useMemo(() => {
+    if (viewportWidth >= 1024) return LEADERBOARD_728_ZONE_ID;
+    if (viewportWidth < 768 && viewportWidth > 0) return BANNER_300X100_ZONE_ID;
+    return "";
+  }, [viewportWidth]);
+
+  const rectangleZoneId = useMemo(() => {
+    if (viewportWidth >= 1200) return RECTANGLE_336X280_ZONE_ID;
+    if (viewportWidth >= 768) return RECTANGLE_300X250_ZONE_ID;
+    return "";
+  }, [viewportWidth]);
+
+  const mobileRectangleZoneId = useMemo(() => {
+    if (viewportWidth > 0 && viewportWidth < 768) {
+      return RECTANGLE_300X250_ZONE_ID;
+    }
+    return "";
+  }, [viewportWidth]);
+
+  const renderTopBannerAd = () => {
+    if (!topBannerZoneId) {
+      return null;
+    }
+
+    if (viewportWidth >= 1024) {
+      return (
+        <AdcashLeaderboard728x90
+          zoneId={topBannerZoneId}
+          className="blog-inline-ad"
+        />
+      );
+    }
+
+    return (
+      <AdcashBanner300x100
+        zoneId={topBannerZoneId}
+        className="blog-inline-ad"
+      />
+    );
+  };
+
+  const renderRectangleAd = () => {
+    if (!rectangleZoneId) {
+      return null;
+    }
+
+    if (viewportWidth >= 1200) {
+      return (
+        <AdcashRectangle336x280
+          zoneId={rectangleZoneId}
+          className="blog-rectangle-ad"
+        />
+      );
+    }
+
+    if (viewportWidth >= 992) {
+      return (
+        <AdcashRectangle300x250
+          zoneId={rectangleZoneId}
+          className="blog-rectangle-ad"
+        />
+      );
+    }
+
+    return (
+      <AdcashRectangle300x250
+        zoneId={rectangleZoneId}
+        className="blog-rectangle-ad"
+      />
+    );
+  };
+
+  const renderMobileRectangleAd = () => {
+    if (!mobileRectangleZoneId) {
+      return null;
+    }
+
+    return (
+      <AdcashRectangle300x250
+        zoneId={mobileRectangleZoneId}
+        className="blog-mobile-rectangle-ad"
+      />
+    );
+  };
+
+  const mobileRectangleAdNode = renderMobileRectangleAd();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Data for Consonants (Revised with more examples)
   const consonants = [
     {
@@ -283,6 +394,12 @@ const IPAGuide = () => {
             </p>
           </section>
 
+          {topBannerZoneId && (
+            <section className="blog-inline-ad-wrap" aria-label="Advertisement">
+              {renderTopBannerAd()}
+            </section>
+          )}
+
           <section className="ipa-why-section">
             <h2>What is the IPA and Why Should You Care?</h2>
             <p>
@@ -313,6 +430,15 @@ const IPAGuide = () => {
               </ul>
             </div>
           </section>
+
+          {mobileRectangleAdNode && (
+            <section
+              className="blog-mobile-rectangle-ad-wrap"
+              aria-label="Advertisement"
+            >
+              {mobileRectangleAdNode}
+            </section>
+          )}
 
           <section className="ipa-decoding-section">
             <h2>Decoding the English IPA Chart: The Key Symbols</h2>
@@ -458,6 +584,15 @@ const IPAGuide = () => {
               </p>
             </div>
           </section>
+
+          {rectangleZoneId && (
+            <section
+              className="blog-rectangle-ad-wrap"
+              aria-label="Advertisement"
+            >
+              {renderRectangleAd()}
+            </section>
+          )}
 
           {/* NEW: Visual Mouth Position Guide Section */}
           <section className="ipa-mouth-position">

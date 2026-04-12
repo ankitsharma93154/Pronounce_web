@@ -334,6 +334,136 @@ body.dark {
   padding: calc(64px + 0.75rem) 1rem 2rem;
   width: 100%;
 }
+
+.home-main-shell {
+  position: relative;
+}
+
+.home-side-ad {
+  position: fixed;
+  top: 84px;
+  width: 120px;
+  z-index: 6;
+}
+
+.home-side-ad--left {
+  left: max(0.75rem, calc((100vw - 64rem) / 2 - 132px));
+}
+
+.home-side-ad--right {
+  right: max(0.75rem, calc((100vw - 64rem) / 2 - 132px));
+}
+
+.adcash-skyscraper {
+  min-height: 600px;
+}
+
+.leaderboard-ad-wrap {
+  max-width: 64rem;
+  margin: 0.5rem auto 1.25rem;
+}
+
+.adcash-leaderboard {
+  min-height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-phonetic-ad-wrap {
+  width: 100%;
+}
+
+.content-rectangle-ad-wrap {
+  max-width: 64rem;
+  margin: 0 auto 1.25rem;
+}
+
+.adcash-rectangle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;
+}
+
+.adcash-slot {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.blog-inline-ad-wrap {
+  margin: 0.75rem 0 1.5rem;
+}
+
+.blog-inline-ad {
+  min-height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-rectangle-ad-wrap {
+  margin: 1.5rem 0;
+}
+
+.blog-rectangle-ad {
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-results-rectangle-ad-wrap,
+.blog-mobile-rectangle-ad-wrap {
+  width: 100%;
+  margin: 0.25rem 0 1rem;
+}
+
+.mobile-results-rectangle-ad,
+.blog-mobile-rectangle-ad {
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1199px) {
+  .adcash-rectangle {
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .adcash-leaderboard {
+    min-height: 90px;
+  }
+}
+
+@media (max-width: 767px) {
+  .adcash-leaderboard {
+    min-height: 100px;
+  }
+
+  .blog-inline-ad {
+    min-height: 100px;
+  }
+
+  .content-rectangle-ad-wrap {
+    display: none;
+  }
+
+  .blog-rectangle-ad-wrap {
+    display: none;
+  }
+}
+
+@media (max-width: 1299px) {
+  .home-side-ad {
+    display: none;
+  }
+}
+
 .hero {
   margin-bottom: 1.5rem;
 }
@@ -746,6 +876,7 @@ body.dark {
 }
 .page-content {
   width: 100%;
+  max-width: 64rem;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
@@ -755,6 +886,11 @@ body.dark {
   background: var(--primary-gradient);
   background-clip: text;
   color: transparent;
+}
+
+.page-title--features span {
+  display: block;
+  line-height: 1.05;
 }
 .about-page-divider {
   max-width: 100rem;
