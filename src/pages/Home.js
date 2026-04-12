@@ -49,6 +49,7 @@ const LEADERBOARD_728_ZONE_ID = "11183662";
 const BANNER_300X100_ZONE_ID = "11183682";
 const RECTANGLE_336X280_ZONE_ID = "11183690";
 const RECTANGLE_300X250_ZONE_ID = "11183698";
+const DUAL_RECTANGLE_AD_BREAKPOINT = 1400;
 
 const readSuccessCount = () => {
   if (typeof window === "undefined") return 0;
@@ -232,6 +233,21 @@ const Home = () => {
   const renderRectangleAd = () => {
     if (!rectangleZoneId) {
       return null;
+    }
+
+    if (viewportWidth >= DUAL_RECTANGLE_AD_BREAKPOINT) {
+      return (
+        <div className="content-rectangle-ad-grid">
+          <AdcashRectangle336x280
+            zoneId={rectangleZoneId}
+            className="adcash-rectangle"
+          />
+          <AdcashRectangle336x280
+            zoneId={rectangleZoneId}
+            className="adcash-rectangle"
+          />
+        </div>
+      );
     }
 
     if (viewportWidth >= 1200) {
