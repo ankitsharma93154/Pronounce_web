@@ -347,11 +347,11 @@ body.dark {
 }
 
 .home-side-ad--left {
-  left: max(0.75rem, calc((100vw - 64rem) / 2 - 132px));
+  left: max(0.75rem, calc((100vw - 64rem) / 2 - 152px));
 }
 
 .home-side-ad--right {
-  right: max(0.75rem, calc((100vw - 64rem) / 2 - 132px));
+  right: max(0.75rem, calc((100vw - 64rem) / 2 - 152px));
 }
 
 .adcash-skyscraper {
