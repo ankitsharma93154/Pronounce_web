@@ -1,47 +1,31 @@
 import React, { memo, useEffect, useRef } from "react";
 
-const RETRY_DELAY_MS = 250;
-const MAX_RETRIES = 20;
-
 const AdcashSlot = memo(({ zoneId, className = "", width, height }) => {
-  const containerRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const hasRenderedRef = useRef(false);
 
   useEffect(() => {
-    const containerEl = containerRef.current;
+    const wrapperEl = wrapperRef.current;
 
-    if (!zoneId || !containerEl) {
+    if (!zoneId || !wrapperEl || hasRenderedRef.current) {
       return;
     }
 
-    let retryTimer = null;
-    let retryCount = 0;
-    let cancelled = false;
+    if (!window.aclib || typeof window.aclib.runBanner !== "function") {
+      return;
+    }
 
-    const tryRenderBanner = () => {
-      if (cancelled) {
-        return;
-      }
+    const scriptEl = document.createElement("script");
+    scriptEl.type = "text/javascript";
+    scriptEl.text = `aclib.runBanner({ zoneId: ${JSON.stringify(String(zoneId))} });`;
 
-      if (window.aclib && typeof window.aclib.runBanner === "function") {
-        containerEl.innerHTML = "";
-        window.aclib.runBanner({ zoneId: String(zoneId) });
-        return;
-      }
-
-      retryCount += 1;
-      if (retryCount <= MAX_RETRIES) {
-        retryTimer = window.setTimeout(tryRenderBanner, RETRY_DELAY_MS);
-      }
-    };
-
-    tryRenderBanner();
+    hasRenderedRef.current = true;
+    wrapperEl.appendChild(scriptEl);
 
     return () => {
-      cancelled = true;
-      if (retryTimer) {
-        window.clearTimeout(retryTimer);
+      if (scriptEl.parentElement === wrapperEl) {
+        wrapperEl.removeChild(scriptEl);
       }
-      containerEl.innerHTML = "";
     };
   }, [zoneId]);
 
@@ -51,16 +35,15 @@ const AdcashSlot = memo(({ zoneId, className = "", width, height }) => {
 
   return (
     <div
+      ref={wrapperRef}
       className={`${className} adcash-slot`.trim()}
       aria-label="Advertisement"
       style={{
-        width: `${width}px`,
-        minHeight: `${height}px`,
+        width,
+        minHeight: height,
         maxWidth: "100%",
       }}
-    >
-      <div ref={containerRef} />
-    </div>
+    ></div>
   );
 });
 
