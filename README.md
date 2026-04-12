@@ -51,6 +51,48 @@ Development app URL
 
 - Production build completed successfully.
 
+## Project Updates (2026-04-12)
+
+### Ad Strategy Refactor
+
+- Standardized ad rendering through a single slot renderer component.
+- Kept desktop side rails as 120x600 only for wide screens (>=1300px).
+- Preserved footer-intersection logic so side rails hide before footer overlap.
+
+### Format and Breakpoint Changes
+
+- Removed low-performing formats from usage: 468x60 and 250x250.
+- Top banner policy is now:
+  - Desktop: 728x90
+  - Tablet: hidden
+  - Mobile: 300x100
+- Rectangle policy is now:
+  - Primary: 300x250
+  - Optional large desktop: 336x280
+
+### Placement Updates
+
+- Home page:
+  - Mobile 300x100 moved before phonetics/results section.
+  - Added mobile 300x250 after results/phonetics section.
+  - Kept desktop/tablet 728x90 before examples section (tablet hidden by new policy).
+- Blog pages (American vs British, IPA Guide):
+  - Added mobile 300x250 after the first major content block.
+  - Kept in-content rectangle slot for >=768 with 300x250 primary and 336x280 on large desktop.
+
+### Footer Ad Change
+
+- Disabled global footer ad placement in app shell for cleaner layout and stronger in-content visibility.
+
+### UI/Layout Consistency
+
+- Features section content container now uses max-width 64rem.
+- Features title was updated to two lines using a single heading element with tight line spacing.
+
+### Verification
+
+- `npm run build` completed successfully after the full ad refactor.
+
 ## Notes on Documentation
 
 Documenting in README is good for:
