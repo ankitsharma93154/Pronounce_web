@@ -12,8 +12,7 @@
     "react-helmet": "^6.1.0",
     "react-lazy-load-image-component": "^1.6.3",
     "react-router-dom": "^7.4.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^4.2.4"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
