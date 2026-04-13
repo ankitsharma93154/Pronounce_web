@@ -5,6 +5,7 @@ import AdcashLeaderboard728x90 from "../../components/ads/AdcashLeaderboard728x9
 import AdcashBanner300x100 from "../../components/ads/AdcashBanner300x100";
 import AdcashRectangle336x280 from "../../components/ads/AdcashRectangle336x280";
 import AdcashRectangle300x250 from "../../components/ads/AdcashRectangle300x250";
+import SponsoredAdBlock from "../../components/ads/SponsoredAdBlock";
 import im1 from "../../images/blogs/american-vs-british/im1.webp";
 import im2 from "../../images/blogs/american-vs-british/im2.webp";
 import im3 from "../../images/blogs/american-vs-british/im3.webp";
@@ -492,9 +493,12 @@ const PronunciationComparison = () => {
           </section>
 
           {topBannerZoneId && (
-            <section className="blog-inline-ad-wrap" aria-label="Advertisement">
+            <SponsoredAdBlock
+              className="blog-inline-ad-wrap"
+              placement="inline"
+            >
               {renderTopBannerAd()}
-            </section>
+            </SponsoredAdBlock>
           )}
 
           <section className="avb-difference-section">
@@ -549,12 +553,12 @@ const PronunciationComparison = () => {
           </section>
 
           {mobileRectangleAdNode && (
-            <section
+            <SponsoredAdBlock
               className="blog-mobile-rectangle-ad-wrap"
-              aria-label="Advertisement"
+              placement="inline"
             >
               {mobileRectangleAdNode}
-            </section>
+            </SponsoredAdBlock>
           )}
 
           <section className="confusing-section">
@@ -587,12 +591,12 @@ const PronunciationComparison = () => {
           </section>
 
           {rectangleZoneId && (
-            <section
+            <SponsoredAdBlock
               className="blog-rectangle-ad-wrap"
-              aria-label="Advertisement"
+              placement="bottom"
             >
               {renderRectangleAd()}
-            </section>
+            </SponsoredAdBlock>
           )}
 
           <section className="conclusion-section">

@@ -160,6 +160,22 @@ Pages updated in this SEO rollout:
 
 - `npm run build` completed successfully after the static SEO optimization pass.
 
+## Project Updates (2026-04-13 - current)
+
+### Homepage UI Polish
+
+- Refined the main pronunciation input with cleaner spacing, a clearer primary action, and a more polished card treatment.
+- Kept the existing ad placements intact while making the homepage feel less cramped on desktop and mobile.
+- Fixed the mobile layout so the empty-state pronunciation prompt no longer gets clipped on small screens.
+
+### Console Error Fix
+
+- Updated the web-vitals integration to the current API so the `getCLS is not a function` runtime error no longer appears.
+
+### Verification
+
+- Updated the relevant source files and validated the edited files with no reported errors.
+
 ## Notes on Documentation
 
 Documenting in README is good for:
@@ -173,3 +189,22 @@ For long-term maintainability, keep README concise and move deep details to docs
 - docs/architecture.md
 - docs/changelog.md
 - docs/analytics.md
+
+## Project Updates (2026-04-13 - ad presentation polish)
+
+### Ad Container Integration Pass
+
+- Added a reusable ad presentation wrapper component to standardize ad UI treatment across Home and blog placements.
+- Added a dedicated ad stylesheet and moved ad-specific presentational rules out of the global stylesheet.
+- Kept existing ad rendering logic and zone behavior unchanged while improving visual consistency.
+
+### Label and Spacing Refinement
+
+- Updated ad disclosure text from "Sponsored" to "Ad" for a cleaner, lower-friction label.
+- Tightened ad wrapper spacing and internal padding to better match the card rhythm of the main UI.
+- Reduced desktop top margin for the top post-query Home ad block so it sits more naturally within the flow.
+- Adjusted label spacing so the label remains visible without covering ad content.
+
+### Verification
+
+- Updated files were checked with JSX/CSS diagnostics and reported no errors.

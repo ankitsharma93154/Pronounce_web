@@ -19,6 +19,7 @@ import InputCard from "../components/inputCard";
 import ResultsCard from "../components/resultCard";
 import AdcashLeaderboard728x90 from "../components/ads/AdcashLeaderboard728x90";
 import AdcashRectangle300x250 from "../components/ads/AdcashRectangle300x250";
+import SponsoredAdBlock from "../components/ads/SponsoredAdBlock";
 import ExamplesList from "../components/exampleList";
 import useDebouncedCallback from "../hooks/useDebouncedCallback";
 import usePersistentCache from "../hooks/usePersistentCache";
@@ -628,12 +629,12 @@ const Home = () => {
           {!hasPronounced && <Hero />}
 
           {queryLeaderboardAdNode && (
-            <section
+            <SponsoredAdBlock
               className="leaderboard-ad-wrap container"
-              aria-label="Advertisement"
+              placement="inline"
             >
               {queryLeaderboardAdNode}
-            </section>
+            </SponsoredAdBlock>
           )}
 
           <div className="interface-grid">
@@ -660,15 +661,15 @@ const Home = () => {
             />
 
             {showMobileSquareAds && (
-              <section
+              <SponsoredAdBlock
                 className="mobile-results-rectangle-ad-wrap"
-                aria-label="Advertisement"
+                placement="inline"
               >
                 <AdcashRectangle300x250
                   zoneId={mobileRectangleZoneId}
                   className="mobile-results-rectangle-ad"
                 />
-              </section>
+              </SponsoredAdBlock>
             )}
 
             <ResultsCard
@@ -698,24 +699,24 @@ const Home = () => {
       </Suspense>
 
       {showMobileSquareAds && (
-        <section
+        <SponsoredAdBlock
           className="mobile-results-rectangle-ad-wrap container"
-          aria-label="Advertisement"
+          placement="bottom"
         >
           <AdcashRectangle300x250
             zoneId={mobileRectangleZoneId}
             className="mobile-results-rectangle-ad"
           />
-        </section>
+        </SponsoredAdBlock>
       )}
 
       {alwaysVisibleLeaderboardAdNode && (
-        <section
+        <SponsoredAdBlock
           className="leaderboard-ad-wrap container"
-          aria-label="Advertisement"
+          placement="bottom"
         >
           {alwaysVisibleLeaderboardAdNode}
-        </section>
+        </SponsoredAdBlock>
       )}
 
       {/* Sentinel: below-fold content loads once this enters the viewport */}
@@ -759,12 +760,12 @@ const Home = () => {
           </Suspense>
 
           {belowTipsLeaderboardAdNode && (
-            <section
+            <SponsoredAdBlock
               className="leaderboard-ad-wrap container"
-              aria-label="Advertisement"
+              placement="bottom"
             >
               {belowTipsLeaderboardAdNode}
-            </section>
+            </SponsoredAdBlock>
           )}
 
           <div className="about-page-divider"></div>

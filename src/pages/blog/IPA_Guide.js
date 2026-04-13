@@ -6,6 +6,7 @@ import AdcashLeaderboard728x90 from "../../components/ads/AdcashLeaderboard728x9
 import AdcashBanner300x100 from "../../components/ads/AdcashBanner300x100";
 import AdcashRectangle336x280 from "../../components/ads/AdcashRectangle336x280";
 import AdcashRectangle300x250 from "../../components/ads/AdcashRectangle300x250";
+import SponsoredAdBlock from "../../components/ads/SponsoredAdBlock";
 import IPA_img from "../../images/blogs/ipa-guide/IPA_GUIDE_img.webp";
 
 const LEADERBOARD_728_ZONE_ID = "11183662";
@@ -394,9 +395,12 @@ const IPAGuide = () => {
           </section>
 
           {topBannerZoneId && (
-            <section className="blog-inline-ad-wrap" aria-label="Advertisement">
+            <SponsoredAdBlock
+              className="blog-inline-ad-wrap"
+              placement="inline"
+            >
               {renderTopBannerAd()}
-            </section>
+            </SponsoredAdBlock>
           )}
 
           <section className="ipa-why-section">
@@ -431,12 +435,12 @@ const IPAGuide = () => {
           </section>
 
           {mobileRectangleAdNode && (
-            <section
+            <SponsoredAdBlock
               className="blog-mobile-rectangle-ad-wrap"
-              aria-label="Advertisement"
+              placement="inline"
             >
               {mobileRectangleAdNode}
-            </section>
+            </SponsoredAdBlock>
           )}
 
           <section className="ipa-decoding-section">
@@ -585,12 +589,12 @@ const IPAGuide = () => {
           </section>
 
           {rectangleZoneId && (
-            <section
+            <SponsoredAdBlock
               className="blog-rectangle-ad-wrap"
-              aria-label="Advertisement"
+              placement="bottom"
             >
               {renderRectangleAd()}
-            </section>
+            </SponsoredAdBlock>
           )}
 
           {/* NEW: Visual Mouth Position Guide Section */}

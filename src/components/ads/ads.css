@@ -1,0 +1,195 @@
+.ad-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 1.25rem auto 1.5rem;
+}
+
+.ad-inline {
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.ad-bottom {
+  margin-top: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.ad-shell {
+  width: min(100%, 22.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.625rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--bg-secondary);
+  box-shadow: var(--shadow-sm);
+  transition:
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+.ad-section:hover .ad-shell {
+  box-shadow: var(--shadow-sm);
+}
+
+.ad-label {
+  width: 100%;
+  margin: 0;
+  margin-bottom: 0.125rem;
+  text-align: left;
+  font-size: 0.66rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+
+.ad-inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-height: 90px;
+}
+
+.adcash-slot {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.adcash-leaderboard,
+.blog-inline-ad {
+  min-height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adcash-rectangle,
+.blog-rectangle-ad,
+.mobile-results-rectangle-ad,
+.blog-mobile-rectangle-ad {
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-results-rectangle-ad-wrap,
+.blog-mobile-rectangle-ad-wrap {
+  width: 100%;
+}
+
+.leaderboard-ad-wrap {
+  max-width: 64rem;
+}
+
+.leaderboard-ad-wrap .ad-shell,
+.blog-inline-ad-wrap .ad-shell {
+  width: min(100%, 48rem);
+}
+
+.blog-inline-ad-wrap {
+  margin-top: 0.5rem;
+}
+
+.home-main-shell {
+  position: relative;
+}
+
+.mobile-phonetic-ad-wrap {
+  width: 100%;
+}
+
+.content-rectangle-ad-wrap {
+  max-width: 64rem;
+}
+
+.content-rectangle-ad-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.home-side-ad {
+  position: fixed;
+  top: 84px;
+  width: 120px;
+  z-index: 6;
+}
+
+.home-side-ad--left {
+  left: max(0.75rem, calc((100vw - 64rem) / 2 - 152px));
+}
+
+.home-side-ad--right {
+  right: max(0.75rem, calc((100vw - 64rem) / 2 - 152px));
+}
+
+.adcash-skyscraper {
+  min-height: 600px;
+}
+
+@media (max-width: 1299px) {
+  .home-side-ad {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-main-shell .main > .leaderboard-ad-wrap.ad-inline:first-of-type {
+    margin-top: 0.75rem;
+  }
+
+  .leaderboard-ad-wrap .adcash-leaderboard {
+    min-height: 90px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .adcash-rectangle,
+  .blog-rectangle-ad {
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .adcash-leaderboard,
+  .blog-inline-ad {
+    min-height: 90px;
+  }
+}
+
+@media (max-width: 767px) {
+  .ad-section {
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .ad-shell {
+    padding: 0.5rem 0.625rem;
+    border-radius: 0.5rem;
+  }
+
+  .ad-label {
+    font-size: 0.62rem;
+  }
+
+  .adcash-leaderboard,
+  .blog-inline-ad {
+    min-height: 100px;
+  }
+
+  .content-rectangle-ad-wrap,
+  .blog-rectangle-ad-wrap {
+    display: none;
+  }
+}
