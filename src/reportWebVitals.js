@@ -21,7 +21,7 @@ const withAdContext = (metric) => ({
 
 const reportWebVitals = (onPerfEntry) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
-    import("web-vitals").then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+    import("web-vitals").then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
       const wrapped = (metric) => {
         const metricWithContext = withAdContext(metric);
         const budget = VITAL_BUDGETS[metricWithContext.name];
@@ -39,11 +39,11 @@ const reportWebVitals = (onPerfEntry) => {
         onPerfEntry(metricWithContext);
       };
 
-      getCLS(wrapped);
-      getFID(wrapped);
-      getFCP(wrapped);
-      getLCP(wrapped);
-      getTTFB(wrapped);
+      onCLS(wrapped);
+      onINP(wrapped);
+      onFCP(wrapped);
+      onLCP(wrapped);
+      onTTFB(wrapped);
     });
   }
 };

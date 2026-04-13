@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Play, Globe, Zap } from "lucide-react";
+import { ChevronDown, Play, Globe, Zap, Search, X } from "lucide-react";
 import WordRelations from "./WordRelations";
 
 // Move static data outside the component
@@ -210,42 +210,73 @@ const InputCard = memo(
       getPronunciation();
     };
 
-    return (
-      <div className="card">
-        <div className="input-group" style={{ position: "relative" }}>
-          <input
-            ref={inputRef}
-            type="text"
-            className="word-input"
-            value={word}
-            maxLength={maxWordLength}
-            onChange={(e) => {
-              if (!wordListLoaded && !isLoadingDict) {
-                loadWordList();
-              }
-              setWord(e.target.value.slice(0, maxWordLength));
-            }}
-            onKeyDown={handleSuggestionKeyDown}
-            onFocus={() => {
-              // Lazy load wordlist on first focus
-              if (!wordListLoaded && !isLoadingDict) {
-                loadWordList();
-              }
+    const clearWord = () => {
+      setWord("");
+      setSuggestions([]);
+      setShowSuggestions(false);
+      setSelectedSuggestionIndex(-1);
 
-              if (word && suggestions.length > 0) {
-                // Only show suggestions if the word doesn't exactly match any suggestion
-                const exactMatch = suggestions.some(
-                  (s) => s.toLowerCase() === word.toLowerCase(),
-                );
-                if (!exactMatch) {
-                  setShowSuggestions(true);
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    };
+
+    const hasWord = Boolean(word.trim());
+
+    return (
+      <div className="card input-card">
+        <div className="input-group">
+          <div className="word-input-shell">
+            <Search className="word-input-icon" size={18} aria-hidden="true" />
+            <input
+              ref={inputRef}
+              type="text"
+              className="word-input"
+              value={word}
+              maxLength={maxWordLength}
+              onChange={(e) => {
+                if (!wordListLoaded && !isLoadingDict) {
+                  loadWordList();
                 }
+                setWord(e.target.value.slice(0, maxWordLength));
+              }}
+              onKeyDown={handleSuggestionKeyDown}
+              onFocus={() => {
+                // Lazy load wordlist on first focus
+                if (!wordListLoaded && !isLoadingDict) {
+                  loadWordList();
+                }
+
+                if (word && suggestions.length > 0) {
+                  // Only show suggestions if the word doesn't exactly match any suggestion
+                  const exactMatch = suggestions.some(
+                    (s) => s.toLowerCase() === word.toLowerCase(),
+                  );
+                  if (!exactMatch) {
+                    setShowSuggestions(true);
+                  }
+                }
+              }}
+              placeholder={
+                isLoadingDict
+                  ? "Loading dictionary..."
+                  : "Enter a word to hear its pronunciation"
               }
-            }}
-            placeholder={
-              isLoadingDict ? "Loading dictionary..." : "Enter text ..."
-            }
-          />
+              aria-label="Word to pronounce"
+            />
+
+            {hasWord && (
+              <button
+                type="button"
+                className="word-input-clear"
+                onClick={clearWord}
+                aria-label="Clear input"
+                title="Clear input"
+              >
+                <X size={16} aria-hidden="true" />
+              </button>
+            )}
+          </div>
 
           {/* Suggestions dropdown */}
           {showSuggestions && suggestions.length > 0 && (

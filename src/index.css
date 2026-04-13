@@ -498,7 +498,7 @@ body.dark {
 }
 .interface-grid {
   display: grid;
-  gap: 2rem;
+  gap: 2.25rem;
   max-width: 64rem;
   margin: 0 auto;
   width: 100%;
@@ -516,6 +516,26 @@ body.dark {
 .card {
   padding: 2rem;
 }
+
+.input-card,
+.results-card {
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+}
+
+.input-card {
+  padding: 1.75rem;
+}
+
+.results-card {
+  padding: 1.5rem 1.5rem 1.75rem;
+}
+
+.input-card:hover,
+.results-card:hover {
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07);
+}
+
 .accent-select,
 .pronounce-button,
 .word-input {
@@ -539,16 +559,70 @@ body.dark {
   cursor: pointer;
 }
 .word-input {
-  border-radius: 0.5rem;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: border-color 0.15s ease-in-out;
+  min-height: 56px;
+  padding: 0.875rem 3rem 0.875rem 2.75rem;
+  border-radius: 0.875rem;
+  border: 1.5px solid #d6dbe6;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
+
+.word-input-shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.word-input-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.word-input-clear {
+  position: absolute;
+  right: 0.75rem;
+  min-width: 32px;
+  min-height: 32px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.word-input-clear:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+}
+
+.word-input-clear:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.35);
+  outline-offset: 2px;
+}
+
 .word-input:focus {
   outline: 0;
   border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
+
+.word-input-shell:focus-within .word-input {
+  transform: translateY(-1px);
+}
+
 .float-button,
 .pronounce-button,
 .try-button {
@@ -557,23 +631,31 @@ body.dark {
   border: none;
   cursor: pointer;
 }
+
 .pronounce-button {
-  border-radius: 0.5rem;
+  min-height: 56px;
+  border-radius: 0.875rem;
   font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: 0.2s;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
   margin-top: -0.5rem;
   margin-bottom: 1.25rem;
-  box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 8px 18px rgba(99, 102, 241, 0.18);
 }
+
 .pronounce-button:hover {
   background: var(--primary-gradient-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 6px rgba(99, 102, 241, 0.25);
+  box-shadow: 0 12px 22px rgba(99, 102, 241, 0.22);
 }
+
 .pronounce-button:disabled {
   opacity: 0.9;
   cursor: not-allowed;
@@ -769,6 +851,23 @@ body.dark {
 }
 .results-content {
   gap: 1.5rem;
+}
+
+.results-card .results-content,
+.results-card .results-empty {
+  animation: home-result-fade-in 180ms ease-out;
+}
+
+@keyframes home-result-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .phonetic-section {
   padding-bottom: 1.5rem;
@@ -1825,9 +1924,15 @@ button:focus-visible {
     padding-top: 5rem;
   }
   .card {
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-    width: calc(100% + 1rem);
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+  .input-card,
+  .results-card {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
   }
   .interface-grid {
     display: flex;
@@ -1851,6 +1956,18 @@ button:focus-visible {
   .word-box {
     padding: 0.5rem;
     font-size: 0.9rem;
+  }
+  .results-empty {
+    height: auto;
+    min-height: 14rem;
+    padding: 0.25rem 0;
+  }
+  .results-empty .cta-text {
+    overflow-wrap: anywhere;
+    line-height: 1.45;
+  }
+  .results-empty .social-cred-subtle {
+    max-width: 100%;
   }
   .mispronounced-container,
   .word-of-day-container {

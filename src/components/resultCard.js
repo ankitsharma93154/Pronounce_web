@@ -14,7 +14,7 @@ const ResultsCard = memo(
     isPlaying,
     syllables,
   }) => (
-    <div className="card">
+    <div className="card results-card">
       {isLoading ? (
         <div className="results-empty">
           <div className="loading-spinner icon-lg" />
