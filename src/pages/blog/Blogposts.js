@@ -18,7 +18,7 @@ import theVsTheeThumb from "../../images/blogs/the-vs-thee-pronunciation/the_vs_
 const blogPostsData = [
   {
     id: 1,
-    title: "How to Pronounce the 50 Most Mispronounced English Words",
+    title: "How to Pronounce 50 Mispronounced English Words",
     description:
       "Master tricky English pronunciation with this detailed audio guide. Learn to say difficult words correctly and never make common mistakes again!",
     imageUrl: mispronouncedWordsImage,
@@ -29,7 +29,7 @@ const blogPostsData = [
   },
   {
     id: 2,
-    title: "10 Tips to Perfect Your English Pronunciation & Audio Clarity",
+    title: "How to Pronounce English Words Better: 10 Practical Tips",
     description:
       "Improve your speaking skills with 10 actionable tips on phonetics, word stress, and intonation. Perfect for ESL learners who want to sound more natural.",
     imageUrl: tenTipsImage,
@@ -40,9 +40,9 @@ const blogPostsData = [
   },
   {
     id: 3,
-    title: "American vs. British Pronunciation: Audio & Accent Sound Rules",
+    title: "How to Pronounce American vs British English: 4 Core Sound Rules",
     description:
-      "Compare American vs. British accent differences with real audio examples. Master the 4 fundamental rules of rhoticity and vowel shifts.",
+      "Compare American vs British pronunciation audio side by side. Learn 4 core sound rules with IPA and real examples.",
     imageUrl: AmeVsBreIMG,
     date: "October 28, 2025",
     category: "Accent Training",
@@ -51,9 +51,9 @@ const blogPostsData = [
   },
   {
     id: 4,
-    title: "The Ultimate IPA Guide: Master Phonetic Pronunciation Symbols",
+    title: "How to Read IPA and Pronounce English Words Correctly",
     description:
-      "Learn to read the International Phonetic Alphabet (IPA). Decode phonetic transcriptions and use QuickPronounce to check the IPA of any English word.",
+      "Learn how to read IPA for English pronunciation. Decode key symbols, practice sounds, and check word pronunciation with audio.",
     imageUrl: IPA_img,
     date: "December 14, 2025",
     category: "Phonetics",
@@ -62,9 +62,9 @@ const blogPostsData = [
   },
   {
     id: 5,
-    title: "Silent Letters in English: Audio Pronunciation Rules for Learners",
+    title: "How to Pronounce Silent Letters in English Correctly",
     description:
-      "Master 50+ words with silent letters. Learn the pronunciation rules for silent 'K', 'B', and 'T' backed by IPA phonetic guides.",
+      "Learn silent letter pronunciation rules for B, K, L, P, G, H, T, and W with IPA examples and common words.",
     imageUrl: silentLettersImage,
     date: "January 9, 2026",
     category: "Pronunciation Guide",
@@ -74,9 +74,9 @@ const blogPostsData = [
   {
     id: 6,
     title:
-      "Mastering IELTS Speaking Pronunciation: How to Reach a Band 9 Without Sounding 'Fake'",
+      "How to Improve IELTS Speaking Pronunciation: Practical Training Plan",
     description:
-      "Achieve Band 9 in IELTS Speaking with expert pronunciation tips. Learn clarity, stress, and connected speech techniques for natural fluency.",
+      "Learn how to improve IELTS speaking pronunciation with drills for stress, connected speech, and fluency in exam responses.",
     imageUrl: IELTS_header,
     date: "January 22, 2026",
     category: "Exam Preparation",
@@ -85,8 +85,7 @@ const blogPostsData = [
   },
   {
     id: 7,
-    title:
-      "Schwa Sound in English: The Relaxed Vowel That Makes You Sound Natural",
+    title: "How to Pronounce the Schwa Sound: The Relaxed English Vowel",
     description:
       "Learn the most common English vowel sound with practical examples, analogies, and a 5-minute daily drill.",
     imageUrl: schwaThumb,
@@ -97,7 +96,7 @@ const blogPostsData = [
   },
   {
     id: 8,
-    title: "How to Pronounce -ed Endings Without Guessing",
+    title: "How to Pronounce -ed Endings Without Guessing the Sound",
     description:
       "Master /t/, /d/, and /id/ past-tense endings with a simple rule system and quick speaking drills.",
     imageUrl: edEndingsThumb,
@@ -108,8 +107,7 @@ const blogPostsData = [
   },
   {
     id: 9,
-    title:
-      "Connected Speech: Why Native English Sounds Fast and How to Train It",
+    title: "How to Pronounce Connected Speech in Natural English",
     description:
       "Understand linking, elision, and assimilation with examples, analogies, and a repeatable 7-minute drill.",
     imageUrl: connectedSpeechThumb,
@@ -120,7 +118,7 @@ const blogPostsData = [
   },
   {
     id: 10,
-    title: "Word Stress in English: The Hidden Rule That Changes Meaning",
+    title: "How to Pronounce Words with Correct English Word Stress",
     description:
       "Learn practical word stress rules with real examples and drills to sound clearer in conversations, meetings, and exams.",
     imageUrl: wordStressThumb,
@@ -131,8 +129,7 @@ const blogPostsData = [
   },
   {
     id: 11,
-    title:
-      "Minimal Pairs Training Plan: The Fastest Way to Fix Confusing Sounds",
+    title: "How to Pronounce Confusing English Sounds with Minimal Pairs",
     description:
       "Train high-impact sound contrasts with a practical system that improves both listening precision and speaking clarity.",
     imageUrl: minimalPairsThumb,
@@ -143,8 +140,7 @@ const blogPostsData = [
   },
   {
     id: 12,
-    title:
-      "The vs Thee: A Small Pronunciation Rule That Makes a Big Difference",
+    title: "How to Pronounce 'The' Correctly: /ðə/ vs /ðiː/ Rule",
     description:
       "Master when to say /ðə/ vs /ðiː/ with sound-first rules, natural examples, and rhythm-friendly practice.",
     imageUrl: theVsTheeThumb,
@@ -281,7 +277,7 @@ const BlogPosts = () => {
             </li>
             <li>
               <strong>Contrast training:</strong> use pair-based guides such as
-              can vs can&apos;t and the vs thee to sharpen listening precision.
+              minimal pairs and the vs thee to sharpen listening precision.
             </li>
             <li>
               <strong>Fluency layer:</strong> add connected speech, schwa, and

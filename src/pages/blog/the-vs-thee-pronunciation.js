@@ -28,10 +28,9 @@ const imageCaptionStyle = {
 
 const TheVsTheePronunciation = () => {
   const seo = {
-    pageTitle:
-      "The vs Thee Pronunciation: When to Use Each Naturally in Real Speech",
+    pageTitle: "How to Pronounce 'The': /ðə/ vs /ðiː/ in English",
     description:
-      "Learn the simple rule for pronouncing 'the' as /ðə/ or /ðiː/ with clear examples, natural-speech notes, and practical speaking drills.",
+      "Learn how to pronounce 'the' as /ðə/ or /ðiː/ with clear rules, real examples, and quick speaking drills for natural English rhythm.",
     canonicalUrl:
       "https://www.quickpronounce.site/blog/the-vs-thee-pronunciation",
     ogTitle: "The vs Thee: Simple Rule, Natural Sound",
@@ -66,7 +65,7 @@ const TheVsTheePronunciation = () => {
     <BlogArticleTemplate
       seo={seo}
       category="Pronunciation Guide"
-      title="The vs Thee: A Small Pronunciation Rule That Makes a Big Difference"
+      title="How to Pronounce 'The' Correctly: /ðə/ vs /ðiː/ Rule"
       author="QuickPronounce Team"
       readTime="12-14 min read"
       date="March 15, 2026"

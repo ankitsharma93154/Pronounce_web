@@ -199,10 +199,9 @@ const SilentKillers = () => {
   };
 
   const seo = {
-    pageTitle:
-      "Silent Letters in English: Complete Guide to Pronunciation Rules & Common Words (2025)",
+    pageTitle: "How to Pronounce Silent Letters in English: Rules + Examples",
     description:
-      "Master silent letters in English pronunciation! Learn rules for silent B, K, L, P, G, H, T, W with IPA examples. Stop mispronouncing debt, island, knife & more. Free pronunciation checker included.",
+      "Learn how to pronounce silent letters in English with rules for silent B, K, L, P, G, H, T, and W plus IPA examples and common words.",
     canonicalUrl: "https://www.quickpronounce.site/blog/silent-letters",
     ogTitle: "Silent Letters in English: Complete Pronunciation Guide",
     ogDescription:
@@ -229,7 +228,7 @@ const SilentKillers = () => {
     <BlogArticleTemplate
       seo={seo}
       category="Pronunciation Guide"
-      title="Silent Letters in English: Complete Pronunciation Guide for Learners & Native Speakers"
+      title="How to Pronounce Silent Letters in English Correctly"
       author="By QuickPronounce Team"
       readTime="10 min read"
       date="January 2026"

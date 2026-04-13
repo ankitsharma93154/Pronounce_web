@@ -240,10 +240,9 @@ const PronunciationBlog = () => {
   };
 
   const seo = {
-    pageTitle:
-      "10 English Pronunciation Tips: Master Accents & Audio Clarity Fast",
+    pageTitle: "How to Pronounce English Words Better: 10 Practical Tips",
     description:
-      "Improve your English pronunciation with 10 actionable tips. Learn how to use IPA, master word stress, and compare 4 accents with our free audio tool.",
+      "Improve English word pronunciation with 10 practical tips. Learn how to pronounce words clearly using IPA, stress patterns, and accent audio.",
     canonicalUrl: "https://www.quickpronounce.site/blog/pronunciation-tips",
     ogTitle:
       "10 Tips to Instantly Improve English Pronunciation (4 Accents & IPA)",
@@ -305,12 +304,14 @@ const PronunciationBlog = () => {
             mastering the sounds of English can make a world of difference. In
             this guide, we'll share 10 actionable tips to help you pronounce
             English words more accurately and communicate with confidence.
+            You'll also learn how to pronounce difficult words correctly in real
+            speaking situations.
           </p>
         </div>
 
         <div className="container">
           <div className="table-of-contents">
-            <h3>Table of Contents</h3>
+            <h3>Table of Contents: English Pronunciation Tips</h3>
             <ol className="toc-list">
               {tips.map((tip) => (
                 <li key={tip.id}>

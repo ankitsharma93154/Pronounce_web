@@ -396,10 +396,9 @@ const PronunciationComparison = () => {
   };
 
   const seo = {
-    pageTitle:
-      "American vs British Pronunciation Audio: 4 Sound Rules & IPA Guide",
+    pageTitle: "How to Pronounce American vs British English: Audio + IPA",
     description:
-      "Compare American vs British accent audio side-by-side. Master the 4 fundamental phonetic rules, IPA symbols, and hear correct pronunciations for confusing words.",
+      "Compare American vs British pronunciation audio side by side. Learn how to pronounce key differences with 4 sound rules, IPA symbols, and examples.",
     canonicalUrl: "https://www.quickpronounce.site/blog/american-vs-british",
     ogTitle: "American vs. British Pronunciation: Audio Guide to 4 Key Rules",
     ogDescription:
@@ -424,7 +423,7 @@ const PronunciationComparison = () => {
     <BlogArticleTemplate
       seo={seo}
       category="Accent Training"
-      title="American vs. British Pronunciation: The 4 Sound Rules That Explain Everything"
+      title="How to Pronounce American vs British English: 4 Core Sound Rules"
       author="By QuickPronounce Team"
       readTime="12 min read"
       date="October 2025"

@@ -28,10 +28,9 @@ const imageCaptionStyle = {
 
 const MinimalPairsTrainingPlan = () => {
   const seo = {
-    pageTitle:
-      "Minimal Pairs Training Plan: Hear and Speak Similar English Sounds Clearly",
+    pageTitle: "Minimal Pairs Pronunciation Training: Hear and Speak Clearly",
     description:
-      "A practical minimal pairs plan with high-impact sound contrasts, real-life examples, and daily drills for clearer English speech.",
+      "Train minimal pairs to pronounce confusing English sounds clearly with high-impact contrasts, sentence examples, and daily drills.",
     canonicalUrl:
       "https://www.quickpronounce.site/blog/minimal-pairs-training-plan",
     ogTitle: "Minimal Pairs Training Plan for Clearer English",
@@ -66,7 +65,7 @@ const MinimalPairsTrainingPlan = () => {
     <BlogArticleTemplate
       seo={seo}
       category="Fluency Training"
-      title="Minimal Pairs Training Plan: The Fastest Way to Fix Confusing Sounds"
+      title="How to Pronounce Confusing English Sounds with Minimal Pairs"
       author="QuickPronounce Team"
       readTime="15-17 min read"
       date="March 15, 2026"

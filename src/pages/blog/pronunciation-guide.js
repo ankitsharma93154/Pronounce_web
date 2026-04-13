@@ -78,10 +78,9 @@ const PronunciationGuide = () => {
   };
 
   const seo = {
-    pageTitle:
-      "How to Pronounce the 50 Most Mispronounced English Words Correctly",
+    pageTitle: "How to Pronounce 50 Mispronounced English Words Correctly",
     description:
-      "Learn how to pronounce the 50 most mispronounced English words with audio. Master tricky words like 'Worcestershire' using IPA phonetics and memory tricks.",
+      "Learn how to pronounce 50 mispronounced English words with audio and IPA. Improve English word pronunciation with stress, syllables, and memory tricks.",
     canonicalUrl: "https://www.quickpronounce.site/blog/pronunciation-guide",
     ogTitle:
       "50 Mispronounced Words: Master Them with Audio in 4 English Accents",
@@ -134,7 +133,8 @@ const PronunciationGuide = () => {
               "Worcestershire" (definitely not how it's spelled). This
               comprehensive guide covers the{" "}
               <strong>50 most frequently mispronounced English words</strong>,
-              organized by category for easy reference.
+              organized by category for easy reference. Use this page to learn
+              the correct pronunciation of each word with practical guidance.
             </p>
 
             <div className="seo-rich-box">
@@ -172,7 +172,7 @@ const PronunciationGuide = () => {
           {/* Section 1: Everyday Words (1-20) */}
           <section className="words-section">
             <h2 className="section-title">
-              🧾 Everyday Words People Get Wrong
+              🧾 How to Pronounce Everyday Words Correctly
             </h2>
             <p className="section-description">
               These common words are mispronounced more often than you'd think.
@@ -189,7 +189,9 @@ const PronunciationGuide = () => {
 
           {/* Section 2: Business & Academic Words */}
           <section className="words-section">
-            <h2 className="section-title">🏢 Business & Academic Terms</h2>
+            <h2 className="section-title">
+              🏢 Business & Academic Word Pronunciation
+            </h2>
             <p className="section-description">
               Impress colleagues and professors by nailing these frequently
               butchered professional and academic terms.
@@ -204,7 +206,9 @@ const PronunciationGuide = () => {
 
           {/* Section 3: Geography & Culture */}
           <section className="words-section">
-            <h2 className="section-title">🌍 Geography & Cultural Terms</h2>
+            <h2 className="section-title">
+              🌍 Pronunciation of Geography & Cultural Terms
+            </h2>
             <p className="section-description">
               Place names and cultural terms often retain their original
               pronunciations. Show respect by saying them correctly.
@@ -219,7 +223,9 @@ const PronunciationGuide = () => {
 
           {/* Section 4: Brand Names */}
           <section className="words-section">
-            <h2 className="section-title">🧢 Brand Name Pronunciation</h2>
+            <h2 className="section-title">
+              🧢 How to Pronounce Brand Names Correctly
+            </h2>
             <p className="section-description">
               Many globally recognized brands are routinely mispronounced. Get
               these right to sound like an informed consumer.

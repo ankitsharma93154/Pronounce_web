@@ -17,9 +17,7 @@ import MobileMenu from "../components/mobileMenu";
 import Hero from "../components/hero";
 import InputCard from "../components/inputCard";
 import ResultsCard from "../components/resultCard";
-import AdcashSkyscraper120x600 from "../components/ads/AdcashSkyscraper120x600";
 import AdcashLeaderboard728x90 from "../components/ads/AdcashLeaderboard728x90";
-import AdcashBanner300x100 from "../components/ads/AdcashBanner300x100";
 import AdcashRectangle300x250 from "../components/ads/AdcashRectangle300x250";
 import ExamplesList from "../components/exampleList";
 import useDebouncedCallback from "../hooks/useDebouncedCallback";
@@ -40,10 +38,7 @@ const CACHE_MAX_ENTRIES = 100;
 const RATE_LIMIT_WINDOW_MS = 1000;
 const MAX_REQUESTS_PER_WINDOW = 2;
 const MAX_WORD_LENGTH = 60;
-const DESKTOP_SIDE_AD_BREAKPOINT = 1300;
-const SKYSCRAPER_ZONE_ID = "11183642";
 const LEADERBOARD_728_ZONE_ID = "11183662";
-const BANNER_300X100_ZONE_ID = "11183682";
 const RECTANGLE_300X250_ZONE_ID = "11183698";
 
 // Create and memoize static components
@@ -158,14 +153,10 @@ const Home = () => {
   const [viewportWidth, setViewportWidth] = useState(() =>
     typeof window === "undefined" ? 0 : window.innerWidth,
   );
-  const [isFooterVisible, setIsFooterVisible] = useState(false);
   const belowFoldRef = useRef(null);
-
-  const showDesktopSideAds = viewportWidth >= DESKTOP_SIDE_AD_BREAKPOINT;
 
   const leaderboardZoneId = useMemo(() => {
     if (viewportWidth >= 1024) return LEADERBOARD_728_ZONE_ID;
-    if (viewportWidth < 768 && viewportWidth > 0) return BANNER_300X100_ZONE_ID;
     return "";
   }, [viewportWidth]);
 
@@ -181,52 +172,26 @@ const Home = () => {
       return null;
     }
 
-    if (viewportWidth >= 1024) {
-      return (
-        <AdcashLeaderboard728x90
-          zoneId={leaderboardZoneId}
-          className="adcash-leaderboard"
-        />
-      );
-    }
-
-    if (viewportWidth < 768) {
-      return (
-        <AdcashBanner300x100
-          zoneId={leaderboardZoneId}
-          className="adcash-leaderboard"
-        />
-      );
-    }
-
-    return null;
-  }, [hasPronounced, leaderboardZoneId, viewportWidth]);
+    return (
+      <AdcashLeaderboard728x90
+        zoneId={leaderboardZoneId}
+        className="adcash-leaderboard"
+      />
+    );
+  }, [hasPronounced, leaderboardZoneId]);
 
   const alwaysVisibleLeaderboardAdNode = useMemo(() => {
     if (!leaderboardZoneId) {
       return null;
     }
 
-    if (viewportWidth >= 1024) {
-      return (
-        <AdcashLeaderboard728x90
-          zoneId={leaderboardZoneId}
-          className="adcash-leaderboard"
-        />
-      );
-    }
-
-    if (viewportWidth < 768) {
-      return (
-        <AdcashBanner300x100
-          zoneId={leaderboardZoneId}
-          className="adcash-leaderboard"
-        />
-      );
-    }
-
-    return null;
-  }, [leaderboardZoneId, viewportWidth]);
+    return (
+      <AdcashLeaderboard728x90
+        zoneId={leaderboardZoneId}
+        className="adcash-leaderboard"
+      />
+    );
+  }, [leaderboardZoneId]);
   const belowTipsLeaderboardAdNode = useMemo(() => {
     if (viewportWidth < 1024) {
       return null;
@@ -240,18 +205,7 @@ const Home = () => {
     );
   }, [viewportWidth]);
 
-  const mobileRectangleAdNode = useMemo(() => {
-    if (!hasPronounced || !mobileRectangleZoneId) {
-      return null;
-    }
-
-    return (
-      <AdcashRectangle300x250
-        zoneId={mobileRectangleZoneId}
-        className="mobile-results-rectangle-ad"
-      />
-    );
-  }, [hasPronounced, mobileRectangleZoneId]);
+  const showMobileSquareAds = Boolean(mobileRectangleZoneId);
 
   const handleRelationToggle = useCallback(
     (type) => {
@@ -579,23 +533,6 @@ const Home = () => {
   );
 
   useEffect(() => {
-    const footerEl = document.querySelector(".footer");
-    if (!footerEl || !("IntersectionObserver" in window)) {
-      return;
-    }
-
-    const footerObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsFooterVisible(entry.isIntersecting);
-      },
-      { rootMargin: "0px 0px 100px 0px" },
-    );
-
-    footerObserver.observe(footerEl);
-    return () => footerObserver.disconnect();
-  }, []);
-
-  useEffect(() => {
     const handleResize = () => {
       setViewportWidth(window.innerWidth);
       document.documentElement.style.setProperty(
@@ -622,22 +559,20 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>
-          Pronounce Words Audio | Word Pronouncer &amp; Pronunciation Tool
-        </title>
+        <title>Pronounce Words Audio | How to Pronounce Words in English</title>
         <meta
           name="description"
-          content="Pronounce words with free audio in American, British, Australian, and Indian English. Use our word pronouncer tool with IPA to hear any word instantly."
+          content="Pronounce words with free audio and IPA in American, British, Australian, and Indian English. Learn how to pronounce words correctly with meaning."
         />
         <link rel="canonical" href="https://www.quickpronounce.site/" />
 
         <meta
           property="og:title"
-          content="Pronounce Words with Free Audio in 4 English Accents"
+          content="How to Pronounce Words Correctly with Audio and IPA"
         />
         <meta
           property="og:description"
-          content="Hear word pronunciation audio instantly, compare accents, and check IPA phonetics with one free pronunciation tool."
+          content="Hear pronunciation audio instantly, compare accents, and check IPA phonetics with one free pronunciation tool."
         />
         <meta property="og:url" content="https://www.quickpronounce.site/" />
         <meta property="og:type" content="website" />
@@ -689,15 +624,6 @@ const Home = () => {
       {isMobileMenuOpen && <MobileMenu />}
 
       <div className="home-main-shell">
-        {showDesktopSideAds && !isFooterVisible && (
-          <aside className="home-side-ad home-side-ad--left">
-            <AdcashSkyscraper120x600
-              zoneId={SKYSCRAPER_ZONE_ID}
-              className="adcash-skyscraper"
-            />
-          </aside>
-        )}
-
         <main className="main container" id="home">
           {!hasPronounced && <Hero />}
 
@@ -733,6 +659,18 @@ const Home = () => {
               maxWordLength={MAX_WORD_LENGTH}
             />
 
+            {showMobileSquareAds && (
+              <section
+                className="mobile-results-rectangle-ad-wrap"
+                aria-label="Advertisement"
+              >
+                <AdcashRectangle300x250
+                  zoneId={mobileRectangleZoneId}
+                  className="mobile-results-rectangle-ad"
+                />
+              </section>
+            )}
+
             <ResultsCard
               isLoading={isLoading}
               hasPronounced={hasPronounced}
@@ -744,15 +682,6 @@ const Home = () => {
               isPlaying={isPlaying}
               syllables={syllables}
             />
-
-            {mobileRectangleAdNode && (
-              <section
-                className="mobile-results-rectangle-ad-wrap"
-                aria-label="Advertisement"
-              >
-                {mobileRectangleAdNode}
-              </section>
-            )}
           </div>
 
           <FloatButton
@@ -762,20 +691,23 @@ const Home = () => {
             word={word}
           />
         </main>
-
-        {showDesktopSideAds && !isFooterVisible && (
-          <aside className="home-side-ad home-side-ad--right">
-            <AdcashSkyscraper120x600
-              zoneId={SKYSCRAPER_ZONE_ID}
-              className="adcash-skyscraper"
-            />
-          </aside>
-        )}
       </div>
 
       <Suspense fallback={null}>
         {hasPronounced && <ExamplesList examples={examples} />}
       </Suspense>
+
+      {showMobileSquareAds && (
+        <section
+          className="mobile-results-rectangle-ad-wrap container"
+          aria-label="Advertisement"
+        >
+          <AdcashRectangle300x250
+            zoneId={mobileRectangleZoneId}
+            className="mobile-results-rectangle-ad"
+          />
+        </section>
+      )}
 
       {alwaysVisibleLeaderboardAdNode && (
         <section
@@ -851,7 +783,7 @@ const Home = () => {
             <div className="home-seo-stack">
               <div className="home-seo-panel home-seo-intent-panel">
                 <h2 className="about-page-section-title" id="home-intent-title">
-                  How to pronounce a word correctly
+                  How to pronounce words correctly in English
                 </h2>
                 <div className="home-intent-grid">
                   <div className="home-seo-card">

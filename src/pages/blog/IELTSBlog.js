@@ -7,10 +7,9 @@ import stressImg from "../../images/blogs/ielts/IELTS_stress_reduction.webp";
 
 const IELTSBlog = () => {
   const seo = {
-    pageTitle:
-      "IELTS Speaking Pronunciation: Practical Training for Higher Scores",
+    pageTitle: "IELTS Speaking Pronunciation: How to Improve for Higher Scores",
     description:
-      "Learn what IELTS examiners score for pronunciation and train with clear steps for stress, connected speech, and fluency.",
+      "Learn how to improve IELTS speaking pronunciation with clear drills for stress, connected speech, and fluency in real exam responses.",
     canonicalUrl: "https://www.quickpronounce.site/blog/ielts",
     ogTitle: "IELTS Pronunciation Guide: Clear, Practical Training Plan",
     ogDescription:
@@ -42,7 +41,7 @@ const IELTSBlog = () => {
     <BlogArticleTemplate
       seo={{ ...seo, structuredData: articleSchema }}
       category="Exam Preparation"
-      title="Mastering IELTS Speaking Pronunciation: A Practical Training Plan"
+      title="How to Improve IELTS Speaking Pronunciation: Practical Training Plan"
       author="By QuickPronounce Team"
       readTime="12-14 min read"
       date="January 2026"

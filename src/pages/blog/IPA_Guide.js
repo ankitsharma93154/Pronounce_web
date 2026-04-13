@@ -333,10 +333,9 @@ const IPAGuide = () => {
   };
 
   const seo = {
-    pageTitle:
-      "The Ultimate Guide to IPA: Read Phonetic Transcriptions & Master English Pronunciation",
+    pageTitle: "How to Read IPA for English Pronunciation (Audio + Examples)",
     description:
-      "Decode the International Phonetic Alphabet (IPA) for English. Learn the key symbols, master vowel and consonant sounds, and use QuickPronounce to instantly check any word's IPA.",
+      "Learn how to read IPA for English pronunciation. Decode key symbols, practice vowel and consonant sounds, and check word pronunciation with audio.",
     canonicalUrl: "https://www.quickpronounce.site/blog/ipa-guide",
     ogImage: "https://www.quickpronounce.site/images/ipa-guide-banner.jpg",
     extraMeta: [
@@ -352,7 +351,7 @@ const IPAGuide = () => {
     <BlogArticleTemplate
       seo={seo}
       category="Phonetics"
-      title="The Ultimate Guide to IPA: How to Read Phonetic Transcriptions and Master Any English Word"
+      title="How to Read IPA and Pronounce English Words Correctly"
       author="By QuickPronounce Team"
       readTime="8 min read"
       date="December 2025"

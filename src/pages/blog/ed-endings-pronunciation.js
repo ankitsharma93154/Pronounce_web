@@ -27,9 +27,9 @@ const imageCaptionStyle = {
 
 const EdEndingsPronunciation = () => {
   const seo = {
-    pageTitle: "How to Pronounce -ed Endings: /t/, /d/, and /id/ Made Easy",
+    pageTitle: "How to Pronounce -ed Endings Correctly: /t/, /d/, /id/",
     description:
-      "Master English -ed ending pronunciation with practical rules, examples, analogies, and drills.",
+      "Learn how to pronounce -ed endings correctly with /t/, /d/, and /id/ rules, examples, and practical speaking drills.",
     canonicalUrl:
       "https://www.quickpronounce.site/blog/ed-endings-pronunciation",
     ogTitle: "How to Pronounce -ed Endings Correctly",
@@ -63,7 +63,7 @@ const EdEndingsPronunciation = () => {
     <BlogArticleTemplate
       seo={seo}
       category="Grammar + Pronunciation"
-      title="How to Pronounce -ed Endings Without Guessing"
+      title="How to Pronounce -ed Endings Without Guessing the Sound"
       author="QuickPronounce Team"
       readTime="15-17 min read"
       date="March 9, 2026"

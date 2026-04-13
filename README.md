@@ -113,6 +113,53 @@ Development app URL
 
 - JSX/CSS diagnostics report no errors in updated Home and support CTA files.
 
+### Ad Performance Optimization Update
+
+- Added near-viewport lazy activation for ad slots using IntersectionObserver to reduce initial render pressure.
+- Deferred ad banner execution until browser idle (with fallback timeout) and after page load to improve early interactivity.
+- Improved layout-shift prevention by reserving slot dimensions and strengthening leaderboard/mobile rectangle min-heights.
+- Reduced ad rerender churn on Home by memoizing ad node creation with dependency-safe `useMemo` blocks.
+- Added Web Vitals tagging by ad state (`ads-active` vs `ads-inactive`) and ad slot count for performance analysis.
+- Added local budget warnings for key vitals (CLS, FID, LCP) to surface regressions quickly.
+
+### Verification
+
+- `npm run build` completed successfully after the ad performance optimization pass.
+
+### Static SEO Keyword Optimization Update (latest)
+
+- Kept homepage SEO broad and static (no query-driven dynamic SEO blocks).
+- Upgraded weak phrasing to higher-intent wording in crawlable blog pages and blog hub cards.
+- Preserved existing ranking intent around pronunciation, IPA, audio, accents, and word-level practice.
+
+Primary keyword themes added/upgraded:
+
+- how to pronounce words
+- how to pronounce words correctly in English
+- word pronunciation audio
+- pronunciation in English
+- correct pronunciation
+- how to read IPA for English pronunciation
+- American vs British pronunciation audio
+- silent letters pronunciation rules
+- IELTS speaking pronunciation
+- connected speech pronunciation
+- English word stress rules
+- minimal pairs pronunciation training
+- schwa sound pronunciation
+- /ðə/ vs /ðiː/ pronunciation rule
+- -ed endings pronunciation (/t/, /d/, /id/)
+
+Pages updated in this SEO rollout:
+
+- Home (`src/pages/Home.js`) with static broad metadata and refined on-page intent copy
+- Blog hub (`src/pages/blog/Blogposts.js`) for title/description consistency
+- Dedicated blog pages for pronunciation guide, pronunciation tips, American vs British, IPA guide, IELTS, connected speech, -ed endings, minimal pairs, schwa, word stress, the vs thee, and silent letters
+
+### Verification
+
+- `npm run build` completed successfully after the static SEO optimization pass.
+
 ## Notes on Documentation
 
 Documenting in README is good for:
