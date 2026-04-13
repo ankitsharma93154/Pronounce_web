@@ -20,7 +20,6 @@ import ResultsCard from "../components/resultCard";
 import AdcashSkyscraper120x600 from "../components/ads/AdcashSkyscraper120x600";
 import AdcashLeaderboard728x90 from "../components/ads/AdcashLeaderboard728x90";
 import AdcashBanner300x100 from "../components/ads/AdcashBanner300x100";
-import AdcashRectangle336x280 from "../components/ads/AdcashRectangle336x280";
 import AdcashRectangle300x250 from "../components/ads/AdcashRectangle300x250";
 import ExamplesList from "../components/exampleList";
 import useDebouncedCallback from "../hooks/useDebouncedCallback";
@@ -31,7 +30,6 @@ const FeaturesPage = lazy(() => import("../components/features"));
 const MispronouncedWords = lazy(() => import("../components/mispronounce"));
 const WordOfDay = lazy(() => import("../components/wordOfDay"));
 const QuickPronounceTips = lazy(() => import("../components/tips"));
-const SupportBanner = lazy(() => import("../components/SupportBanner"));
 
 const BACKEND_PRONUNCIATION_URL =
   "https://backend-8isq.vercel.app/get-pronunciation";
@@ -42,26 +40,11 @@ const CACHE_MAX_ENTRIES = 100;
 const RATE_LIMIT_WINDOW_MS = 1000;
 const MAX_REQUESTS_PER_WINDOW = 2;
 const MAX_WORD_LENGTH = 60;
-const SUCCESS_COUNT_KEY = "successCount";
 const DESKTOP_SIDE_AD_BREAKPOINT = 1300;
 const SKYSCRAPER_ZONE_ID = "11183642";
 const LEADERBOARD_728_ZONE_ID = "11183662";
 const BANNER_300X100_ZONE_ID = "11183682";
-const RECTANGLE_336X280_ZONE_ID = "11183690";
 const RECTANGLE_300X250_ZONE_ID = "11183698";
-const DUAL_RECTANGLE_AD_BREAKPOINT = 1400;
-
-const readSuccessCount = () => {
-  if (typeof window === "undefined") return 0;
-
-  try {
-    const raw = window.localStorage.getItem(SUCCESS_COUNT_KEY);
-    const parsed = Number.parseInt(raw || "0", 10);
-    return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
-  } catch (_) {
-    return 0;
-  }
-};
 
 // Create and memoize static components
 const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
@@ -176,20 +159,13 @@ const Home = () => {
     typeof window === "undefined" ? 0 : window.innerWidth,
   );
   const [isFooterVisible, setIsFooterVisible] = useState(false);
-  const [successCount, setSuccessCount] = useState(() => readSuccessCount());
   const belowFoldRef = useRef(null);
 
   const showDesktopSideAds = viewportWidth >= DESKTOP_SIDE_AD_BREAKPOINT;
 
-  const topBannerZoneId = useMemo(() => {
+  const leaderboardZoneId = useMemo(() => {
     if (viewportWidth >= 1024) return LEADERBOARD_728_ZONE_ID;
     if (viewportWidth < 768 && viewportWidth > 0) return BANNER_300X100_ZONE_ID;
-    return "";
-  }, [viewportWidth]);
-
-  const rectangleZoneId = useMemo(() => {
-    if (viewportWidth >= 1200) return RECTANGLE_336X280_ZONE_ID;
-    if (viewportWidth >= 768) return RECTANGLE_300X250_ZONE_ID;
     return "";
   }, [viewportWidth]);
 
@@ -200,83 +176,71 @@ const Home = () => {
     return "";
   }, [viewportWidth]);
 
-  const renderDesktopTopBannerAd = () => {
-    if (!hasPronounced || !topBannerZoneId) {
+  const queryLeaderboardAdNode = useMemo(() => {
+    if (!hasPronounced || !leaderboardZoneId) {
       return null;
     }
 
     if (viewportWidth >= 1024) {
       return (
         <AdcashLeaderboard728x90
-          zoneId={topBannerZoneId}
+          zoneId={leaderboardZoneId}
+          className="adcash-leaderboard"
+        />
+      );
+    }
+
+    if (viewportWidth < 768) {
+      return (
+        <AdcashBanner300x100
+          zoneId={leaderboardZoneId}
           className="adcash-leaderboard"
         />
       );
     }
 
     return null;
-  };
+  }, [hasPronounced, leaderboardZoneId, viewportWidth]);
 
-  const renderMobileTopBannerAd = () => {
-    if (!hasPronounced || !topBannerZoneId || viewportWidth >= 768) {
+  const alwaysVisibleLeaderboardAdNode = useMemo(() => {
+    if (!leaderboardZoneId) {
+      return null;
+    }
+
+    if (viewportWidth >= 1024) {
+      return (
+        <AdcashLeaderboard728x90
+          zoneId={leaderboardZoneId}
+          className="adcash-leaderboard"
+        />
+      );
+    }
+
+    if (viewportWidth < 768) {
+      return (
+        <AdcashBanner300x100
+          zoneId={leaderboardZoneId}
+          className="adcash-leaderboard"
+        />
+      );
+    }
+
+    return null;
+  }, [leaderboardZoneId, viewportWidth]);
+  const belowTipsLeaderboardAdNode = useMemo(() => {
+    if (viewportWidth < 1024) {
       return null;
     }
 
     return (
-      <AdcashBanner300x100
-        zoneId={topBannerZoneId}
+      <AdcashLeaderboard728x90
+        zoneId={LEADERBOARD_728_ZONE_ID}
         className="adcash-leaderboard"
       />
     );
-  };
+  }, [viewportWidth]);
 
-  const renderRectangleAd = () => {
-    if (!rectangleZoneId) {
-      return null;
-    }
-
-    if (viewportWidth >= DUAL_RECTANGLE_AD_BREAKPOINT) {
-      return (
-        <div className="content-rectangle-ad-grid">
-          <AdcashRectangle336x280
-            zoneId={rectangleZoneId}
-            className="adcash-rectangle"
-          />
-          <AdcashRectangle336x280
-            zoneId={rectangleZoneId}
-            className="adcash-rectangle"
-          />
-        </div>
-      );
-    }
-
-    if (viewportWidth >= 1200) {
-      return (
-        <AdcashRectangle336x280
-          zoneId={rectangleZoneId}
-          className="adcash-rectangle"
-        />
-      );
-    }
-
-    if (viewportWidth >= 992) {
-      return (
-        <AdcashRectangle300x250
-          zoneId={rectangleZoneId}
-          className="adcash-rectangle"
-        />
-      );
-    }
-
-    return (
-      <AdcashRectangle300x250
-        zoneId={rectangleZoneId}
-        className="adcash-rectangle"
-      />
-    );
-  };
-
-  const renderMobileRectangleAd = () => {
+  const mobileRectangleAdNode = useMemo(() => {
     if (!hasPronounced || !mobileRectangleZoneId) {
       return null;
     }
@@ -287,26 +251,7 @@ const Home = () => {
         className="mobile-results-rectangle-ad"
       />
     );
-  };
-
-  const desktopTopBannerAdNode = renderDesktopTopBannerAd();
-  const mobileTopBannerAdNode = renderMobileTopBannerAd();
-  const rectangleAdNode = renderRectangleAd();
-  const mobileRectangleAdNode = renderMobileRectangleAd();
-
-  const incrementSuccessCount = useCallback(() => {
-    setSuccessCount((prev) => {
-      const nextCount = prev + 1;
-
-      try {
-        window.localStorage.setItem(SUCCESS_COUNT_KEY, String(nextCount));
-      } catch (_) {
-        // Ignore storage errors so query flow never breaks.
-      }
-
-      return nextCount;
-    });
-  }, []);
+  }, [hasPronounced, mobileRectangleZoneId]);
 
   const handleRelationToggle = useCallback(
     (type) => {
@@ -440,7 +385,6 @@ const Home = () => {
             isLoading: false,
           });
           playAudioFromContent(cached.audioContent);
-          incrementSuccessCount();
         }
         return;
       }
@@ -463,7 +407,6 @@ const Home = () => {
 
         playAudioFromContent(cached.audioContent);
         lastRequestKeyRef.current = requestKey;
-        incrementSuccessCount();
         return;
       }
 
@@ -536,7 +479,6 @@ const Home = () => {
 
         const data = await response.json();
         applyPronunciationResult(data, requestKey, normalizedWord);
-        incrementSuccessCount();
       } catch (error) {
         if (error?.name !== "AbortError") {
           setIsPlaying(false);
@@ -560,7 +502,6 @@ const Home = () => {
       isMale,
       speed,
       applyPronunciationResult,
-      incrementSuccessCount,
     ],
   );
 
@@ -759,8 +700,14 @@ const Home = () => {
 
         <main className="main container" id="home">
           {!hasPronounced && <Hero />}
-          {hasPronounced && (
-            <SupportBanner show={true} successCount={successCount} />
+
+          {queryLeaderboardAdNode && (
+            <section
+              className="leaderboard-ad-wrap container"
+              aria-label="Advertisement"
+            >
+              {queryLeaderboardAdNode}
+            </section>
           )}
 
           <div className="interface-grid">
@@ -785,15 +732,6 @@ const Home = () => {
               handleRelationToggle={handleRelationToggle}
               maxWordLength={MAX_WORD_LENGTH}
             />
-
-            {mobileTopBannerAdNode && (
-              <section
-                className="mobile-phonetic-ad-wrap"
-                aria-label="Advertisement"
-              >
-                {mobileTopBannerAdNode}
-              </section>
-            )}
 
             <ResultsCard
               isLoading={isLoading}
@@ -835,18 +773,18 @@ const Home = () => {
         )}
       </div>
 
-      {desktopTopBannerAdNode && (
+      <Suspense fallback={null}>
+        {hasPronounced && <ExamplesList examples={examples} />}
+      </Suspense>
+
+      {alwaysVisibleLeaderboardAdNode && (
         <section
           className="leaderboard-ad-wrap container"
           aria-label="Advertisement"
         >
-          {desktopTopBannerAdNode}
+          {alwaysVisibleLeaderboardAdNode}
         </section>
       )}
-
-      <Suspense fallback={null}>
-        {hasPronounced && <ExamplesList examples={examples} />}
-      </Suspense>
 
       {/* Sentinel: below-fold content loads once this enters the viewport */}
       <div ref={belowFoldRef} />
@@ -888,12 +826,12 @@ const Home = () => {
             <QuickPronounceTips />
           </Suspense>
 
-          {rectangleAdNode && (
+          {belowTipsLeaderboardAdNode && (
             <section
-              className="content-rectangle-ad-wrap container"
+              className="leaderboard-ad-wrap container"
               aria-label="Advertisement"
             >
-              {rectangleAdNode}
+              {belowTipsLeaderboardAdNode}
             </section>
           )}
 

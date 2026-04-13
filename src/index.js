@@ -8,10 +8,21 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Tag vitals by ad state so ad impact can be measured explicitly.
+reportWebVitals((metric) => {
+  if (window.umami) {
+    window.umami.track("web_vital", {
+      name: metric.name,
+      value: metric.value,
+      rating: metric.rating,
+      adState: metric.adState,
+      adSlotsMounted: metric.adSlotsMounted,
+    });
+    return;
+  }
+
+  console.log("web-vital", metric);
+});

@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import PhoneticSection from "./phoneticSection";
 import MeaningsSection from "./meaningSection";
+import SupportBanner from "./SupportBanner";
 
 const ResultsContent = memo(
   ({
@@ -22,6 +23,7 @@ const ResultsContent = memo(
         syllables={syllables}
       />
       <MeaningsSection meanings={meanings} />
+      <SupportBanner />
     </div>
   ),
 );

@@ -93,6 +93,26 @@ Development app URL
 
 - `npm run build` completed successfully after the full ad refactor.
 
+## Project Updates (2026-04-13)
+
+### Home Ad Placement Updates
+
+- Added a query-gated top leaderboard on Home that appears below the header only after a successful pronunciation query.
+- Added an always-visible leaderboard above the Word of the Day section.
+- Replaced the larger-screen rectangle slot below the "Get the Most Out of QuickPronounce" tips block with a desktop leaderboard.
+- Kept the mobile results rectangle placement after results for small screens.
+
+### Support CTA Update
+
+- Removed the previous popup/cooldown support-banner behavior from Home.
+- Moved support messaging into the results flow below meanings in the phonetic/results area.
+- Converted support messaging to a single inline CTA line with a heart icon and a compact "Support" button.
+- Updated responsive styling to avoid small-screen line-break/layout issues.
+
+### Verification
+
+- JSX/CSS diagnostics report no errors in updated Home and support CTA files.
+
 ## Notes on Documentation
 
 Documenting in README is good for:
