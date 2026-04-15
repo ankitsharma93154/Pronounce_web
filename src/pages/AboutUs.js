@@ -1,5 +1,4 @@
 import React from "react";
-import { Palette, Type, ExternalLink } from "lucide-react";
 import "./Css/AboutPage.css";
 import { Helmet } from "react-helmet";
 
@@ -82,8 +81,8 @@ const AboutUs = () => {
               There were days when I wanted to shut it down and try something
               else, but I stayed with it and it was worth it. If QuickPronounce
               has helped you in any way, feel free to email me directly at{" "}
-              <strong>hello.quickpronounce@gmail.com</strong>. Any feedback is
-              truly appreciated.
+              <strong>hello@quickpronounce.site</strong>. Any feedback is truly
+              appreciated.
             </p>
           </div>
         </section>
@@ -154,57 +153,100 @@ const AboutUs = () => {
 
         <div className="about-page-divider"></div>
 
-        {/* Other Projects Section */}
-        <section className="about-page-section">
-          <h2 className="about-page-section-title">More Developer Tools</h2>
-          <div className="about-page-content">
-            <p className="about-page-section-text">
-              I build web tools designed to solve specific creative and
-              technical problems. Explore my other projects:
-            </p>
-          </div>
+        {/* Editorial Policy Section */}
+        <section className="about-page-section about-page-section--policy">
+          <h2 className="about-page-section-title">Editorial Policy</h2>
 
           <div className="about-page-features-grid">
-            {/* ColorCura Project */}
             <section className="about-page-feature">
-              <h3 className="about-page-feature-title">
-                <a
-                  href="https://colorcura.site"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link"
-                >
-                  <Palette size={20} />
-                  ColorCura
-                  <ExternalLink size={18} />
-                </a>
-              </h3>
+              <h3 className="about-page-feature-title">Our Mission</h3>
               <div className="about-page-feature-content">
-                <p className="about-page-text">
-                  A visual color palette generator with live UI previews and
-                  gradient tools for designers and MERN stack developers.
+                <p className="about-page-section-text">
+                  QuickPronounce publishes practical pronunciation content to
+                  help learners speak clearly and confidently in real
+                  conversations.
                 </p>
               </div>
             </section>
 
-            {/* LushFonts Project */}
+            <section className="about-page-feature">
+              <h3 className="about-page-feature-title">Content Standards</h3>
+              <div className="about-page-feature-content">
+                <ul className="about-page-feature-list">
+                  <li>
+                    Content must be original, useful, and written for learners
+                    first.
+                  </li>
+                  <li>
+                    Guides should include practical examples, drills, and clear
+                    context for everyday communication.
+                  </li>
+                  <li>
+                    We avoid deceptive, auto-generated, or low-value pages.
+                  </li>
+                </ul>
+              </div>
+            </section>
+
             <section className="about-page-feature">
               <h3 className="about-page-feature-title">
-                <a
-                  href="https://lushfonts.site"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link"
-                >
-                  <Type size={20} />
-                  LushFonts
-                  <ExternalLink size={18} />
-                </a>
+                Research and Fact Checking
               </h3>
               <div className="about-page-feature-content">
-                <p className="about-page-text">
-                  Instantly generate fancy text and font styles for social media
-                  bios and creative design layouts.
+                <p className="about-page-section-text">
+                  We review phonetics references, dictionary conventions, and
+                  common learner patterns before publishing new guides. We
+                  update content when better examples or clearer explanations
+                  become available.
+                </p>
+              </div>
+            </section>
+
+            <section className="about-page-feature">
+              <h3 className="about-page-feature-title">
+                Author and Review Process
+              </h3>
+              <div className="about-page-feature-content">
+                <p className="about-page-section-text">
+                  QuickPronounce is founder-led by{" "}
+                  <strong>Ankit Kumar Sharma</strong>. Content is written,
+                  reviewed, and updated with a learner-first process focused on
+                  clarity, practical usage, and factual accuracy before
+                  publication.
+                </p>
+              </div>
+            </section>
+
+            <section className="about-page-feature">
+              <h3 className="about-page-feature-title">
+                Updates and Corrections
+              </h3>
+              <div className="about-page-feature-content">
+                <p className="about-page-section-text">
+                  If we discover inaccuracies, we revise the page and update the
+                  content date when needed. You can report a correction request
+                  through our contact page or by email.
+                </p>
+              </div>
+            </section>
+
+            <section className="about-page-feature">
+              <h3 className="about-page-feature-title">AI Use Disclosure</h3>
+              <div className="about-page-feature-content">
+                <p className="about-page-section-text">
+                  AI tools may be used to assist brainstorming, drafting, and
+                  editing. Final content decisions, examples, and publication
+                  are human-reviewed and controlled by the founder.
+                </p>
+              </div>
+            </section>
+
+            <section className="about-page-feature">
+              <h3 className="about-page-feature-title">Contact</h3>
+              <div className="about-page-feature-content">
+                <p className="about-page-section-text">
+                  Editorial questions or correction requests:{" "}
+                  <strong>hello@quickpronounce.site</strong>
                 </p>
               </div>
             </section>

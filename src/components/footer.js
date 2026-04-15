@@ -17,8 +17,8 @@ const Footer = memo(() => (
           Disclaimer
         </Link>
         <span className="footer-separator">|</span>
-        <Link to="/editorial-policy" className="footer-link">
-          Editorial Policy
+        <Link to="/advertise" className="footer-link">
+          Advertise With Us
         </Link>
         <span className="footer-separator">|</span>
         <span className="footer-copyright">

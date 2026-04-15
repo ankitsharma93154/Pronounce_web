@@ -1,0 +1,220 @@
+.advertise-page {
+  min-height: calc(100vh - 70px);
+  padding: 6.25rem 0 2.6rem;
+  background-color: var(--bg-secondary);
+}
+
+.advertise-page__container {
+  max-width: 72rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.advertise-section {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1rem, 1.8vw, 1.55rem);
+}
+
+.advertise-section h1 {
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.advertise-section h2 {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  margin-bottom: 0.55rem;
+  color: var(--text-primary);
+}
+
+.advertise-section h3 {
+  font-size: 1.06rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.advertise-section p {
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.advertise-section__support-line {
+  margin-top: 0.55rem;
+  font-size: 0.95rem;
+}
+
+.advertise-section__label {
+  display: inline-block;
+  margin-bottom: 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+}
+
+.advertise-stats-grid,
+.advertise-opportunities-grid,
+.advertise-faq-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 0.75rem;
+}
+
+.advertise-card {
+  border: 1px solid var(--border-color);
+  border-radius: 0.65rem;
+  background: var(--bg-secondary);
+  padding: 0.9rem;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.advertise-card:hover {
+  border-color: rgba(110, 69, 226, 0.35);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.advertise-card p {
+  margin: 0;
+}
+
+.advertise-stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 104px;
+}
+
+.advertise-stat-card__value {
+  color: var(--text-primary);
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.advertise-stat-card__label {
+  margin-top: 0.3rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.advertise-audience-layout,
+.advertise-partnership-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+}
+
+.advertise-subblock {
+  border: 1px solid var(--border-color);
+  border-radius: 0.65rem;
+  padding: 0.9rem;
+  background: var(--bg-secondary);
+}
+
+.advertise-subblock h3 {
+  margin-bottom: 0.45rem;
+}
+
+.advertise-audience-grid {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.65rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.advertise-audience-grid .advertise-card {
+  background: var(--bg-primary);
+}
+
+.advertise-list {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+  padding-left: 0;
+}
+
+.advertise-list--compact {
+  margin-top: 0.35rem;
+}
+
+.advertise-list li {
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 1rem;
+}
+
+.advertise-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.64rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.advertise-card--pricing {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1.05rem;
+}
+
+.advertise-section--cta {
+  border-color: rgba(110, 69, 226, 0.25);
+}
+
+.advertise-contact-link {
+  display: inline-block;
+  margin-top: 0.2rem;
+  margin-bottom: 0.35rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    color var(--transition),
+    border-color var(--transition);
+}
+
+.advertise-contact-link:hover,
+.advertise-contact-link:focus-visible {
+  color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.advertise-section__text--small {
+  font-size: 0.92rem;
+}
+
+@media (max-width: 640px) {
+  .advertise-page {
+    padding-top: 5.8rem;
+  }
+
+  .advertise-audience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .advertise-audience-layout,
+  .advertise-partnership-layout {
+    grid-template-columns: 1fr;
+  }
+}

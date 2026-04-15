@@ -203,7 +203,7 @@ const TermsAndConditions = () => {
             and Conditions, please contact us:
           </p>
           <p className="tc-text">
-            <strong>Email:</strong> hello.quickpronounce@gmail.com
+            <strong>Email:</strong> hello@quickpronounce.site
           </p>
           <p className="tc-text">
             You can also reach us through our{" "}

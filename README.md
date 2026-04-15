@@ -208,3 +208,19 @@ For long-term maintainability, keep README concise and move deep details to docs
 ### Verification
 
 - Updated files were checked with JSX/CSS diagnostics and reported no errors.
+
+## Project Updates (2026-04-15)
+
+### Advertise Page Launch
+
+- Added a dedicated `Advertise With Us` page at `/advertise` with a premium, minimal layout for sponsorship inquiries.
+- Added `Advertise With Us` to footer links.
+- Updated `public/sitemap.xml` to include the new `/advertise` URL.
+
+### Contact Email Migration
+
+- Migrated public contact email references from `hello.quickpronounce@gmail.com` to `hello@quickpronounce.site` across user-facing pages and mailto links.
+
+### Verification
+
+- `npm run build` completed successfully.

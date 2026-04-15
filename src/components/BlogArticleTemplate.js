@@ -457,8 +457,6 @@ const BlogArticleTemplate = ({
           <p className="bt-author-links">
             <Link to="/about">About</Link>
             <span aria-hidden="true">|</span>
-            <Link to="/editorial-policy">Editorial Policy</Link>
-            <span aria-hidden="true">|</span>
             <Link to="/contact">Contact</Link>
           </p>
         </section>

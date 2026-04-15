@@ -56,7 +56,7 @@ const Contact = () => {
               "@type": "Organization",
               name: "QuickPronounce",
               url: "https://www.quickpronounce.site",
-              email: "hello.quickpronounce@gmail.com",
+              email: "hello@quickpronounce.site",
               contactType: "customer support",
               sameAs: [
                 "https://twitter.com/AnkitKumar11451",
@@ -83,9 +83,7 @@ const Contact = () => {
               <strong>Founder:</strong> Ankit Kumar Sharma (B.Tech Computer
               Science student) <br />
               <strong>Project started:</strong> February 2025 <br />
-              <strong>
-                Primary contact:
-              </strong> hello.quickpronounce@gmail.com <br />
+              <strong>Primary contact:</strong> hello@quickpronounce.site <br />
               <strong>Typical reply window:</strong> within 24-48 hours
             </p>
             <p className="about-page-section-text">
@@ -107,7 +105,7 @@ const Contact = () => {
 
             <div className="about-page-contact-icons">
               <a
-                href="mailto:hello.quickpronounce@gmail.com"
+                href="mailto:hello@quickpronounce.site"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="about-page-icon-link"

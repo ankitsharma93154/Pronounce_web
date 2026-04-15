@@ -78,7 +78,7 @@ const Disclaimer = () => {
           <h2 className="tc-section-title">6. Contact</h2>
           <p className="tc-text">
             For questions about this disclaimer, contact:{" "}
-            <strong>hello.quickpronounce@gmail.com</strong>
+            <strong>hello@quickpronounce.site</strong>
           </p>
         </section>
       </div>

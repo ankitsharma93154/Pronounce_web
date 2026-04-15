@@ -53,6 +53,12 @@
   color: #000;
   font-weight: 600;
 }
+.about-page-section--policy .about-page-section-text {
+  color: var(--text-secondary);
+}
+.about-page-section--policy .about-page-section-text strong {
+  color: var(--text-primary);
+}
 .about-page-features-grid {
   display: grid;
   grid-template-columns: 1fr;

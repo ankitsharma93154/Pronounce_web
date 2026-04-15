@@ -191,7 +191,7 @@ const PrivacyPolicy = () => {
           </ul>
           <p className="pp-text">
             To make a privacy-related request, contact us at
-            <strong> hello.quickpronounce@gmail.com</strong>. We will review and
+            <strong> hello@quickpronounce.site</strong>. We will review and
             respond within a reasonable time in accordance with applicable law.
           </p>
         </section>
@@ -213,7 +213,7 @@ const PrivacyPolicy = () => {
             feel free to contact us:
           </p>
           <p className="pp-text">
-            <strong>Email:</strong> hello.quickpronounce@gmail.com
+            <strong>Email:</strong> hello@quickpronounce.site
           </p>
         </section>
 
