@@ -405,6 +405,279 @@
   font-size: 0.9rem;
   text-align: center;
 }
+
+/* =============================================
+   Sound Rule Explorer
+   ============================================= */
+
+.avb-explorer {
+  margin: 1.5rem 0;
+}
+
+.avb-explorer-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.avb-explorer-tab {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.avb-explorer-tab:hover {
+  border-color: #afa9ec;
+  color: #3c3489;
+}
+
+.avb-explorer-tab.active {
+  background: #eeedfe;
+  border-color: #afa9ec;
+  color: #3c3489;
+  font-weight: 500;
+}
+
+.avb-explorer-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.avb-explorer-rule-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+
+.avb-explorer-overview {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.avb-ipa-pair {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.avb-ipa-chip {
+  flex: 1;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+}
+
+.avb-ipa-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.avb-ipa-label.am {
+  color: #185fa5;
+}
+
+.avb-ipa-label.br {
+  color: #3c3489;
+}
+
+.avb-ipa-val {
+  font-family: monospace;
+  font-size: 16px;
+  color: #111827;
+}
+
+.avb-practical-note {
+  font-size: 14px;
+  color: #4b5563;
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 1rem;
+  border-left: 3px solid #afa9ec;
+}
+
+.avb-words-prompt {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  margin: 0 0 8px;
+}
+
+.avb-words-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.avb-word-pill {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+  font-family: inherit;
+  color: #374151;
+}
+
+.avb-word-pill:hover {
+  border-color: #afa9ec;
+}
+
+.avb-word-pill.selected {
+  border-color: #afa9ec;
+  background: #eeedfe;
+  color: #3c3489;
+  font-weight: 500;
+}
+
+.avb-word-detail {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.avb-word-detail-name {
+  font-size: 20px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.avb-word-detail-prons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.avb-word-detail-pron {
+  flex: 1;
+}
+
+.avb-word-detail-ipa {
+  display: block;
+  font-family: monospace;
+  font-size: 15px;
+  color: #111827;
+  margin-top: 3px;
+}
+
+.avb-word-detail-tip {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 8px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .avb-explorer-tab {
+    background: #1f2937;
+    border-color: #374151;
+    color: #9ca3af;
+  }
+
+  .avb-explorer-tab.active {
+    background: #26215c;
+    border-color: #534ab7;
+    color: #cecbf6;
+  }
+
+  .avb-explorer-card {
+    background: #1f2937;
+    border-color: #374151;
+  }
+
+  .avb-explorer-rule-title {
+    color: #f9fafb;
+  }
+
+  .avb-explorer-overview {
+    color: #d1d5db;
+  }
+
+  .avb-ipa-chip {
+    background: #111827;
+    border-color: #374151;
+  }
+
+  .avb-ipa-val {
+    color: #f9fafb;
+  }
+
+  .avb-practical-note {
+    background: #111827;
+    color: #d1d5db;
+  }
+
+  .avb-word-pill {
+    background: #111827;
+    border-color: #374151;
+    color: #d1d5db;
+  }
+
+  .avb-word-pill.selected {
+    background: #26215c;
+    border-color: #534ab7;
+    color: #cecbf6;
+  }
+
+  .avb-word-detail {
+    background: #111827;
+    border-color: #374151;
+  }
+
+  .avb-word-detail-name {
+    color: #f9fafb;
+  }
+
+  .avb-word-detail-ipa {
+    color: #f9fafb;
+  }
+
+  .avb-word-detail-tip {
+    color: #9ca3af;
+    border-top-color: #374151;
+  }
+}
+
 @media (max-width: 768px) {
   .avb-header h1 {
     font-size: 2rem;

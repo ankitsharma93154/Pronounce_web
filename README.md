@@ -224,3 +224,22 @@ For long-term maintainability, keep README concise and move deep details to docs
 ### Verification
 
 - `npm run build` completed successfully.
+
+## Project Updates (2026-04-16)
+
+### GA4 Analytics Integration
+
+- Added Google Analytics 4 integration with measurement ID `G-MY7J3QZ8Q7`.
+- Implemented client analytics utility in `src/lib/analytics.js`.
+- Wired SPA route tracking in `src/App.js` so page views are tracked on route changes.
+
+### Performance-Safe Loading Strategy
+
+- GA script is loaded asynchronously.
+- Script loading is delayed until after `window.load`, then scheduled during browser idle time when available.
+- Tracking initialization is production-only to avoid development noise and overhead.
+- Enabled beacon transport and disabled automatic pageview sending to keep control over route-based tracking.
+
+### Privacy/Consent Status
+
+- No consent banner was added in this update (by request).
