@@ -1,14 +1,16 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useRef } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Home from "./pages/Home"; // Direct import for Home
+import { bootstrapAnalytics, trackPageView } from "./lib/analytics";
 
 // Lazy load only secondary pages
 const FAQPage = lazy(() => import("./pages/faqs"));
@@ -54,9 +56,32 @@ const Loading = () => (
   </div>
 );
 
+const AnalyticsTracker = () => {
+  const location = useLocation();
+  const lastTrackedPath = useRef("");
+
+  useEffect(() => {
+    bootstrapAnalytics();
+  }, []);
+
+  useEffect(() => {
+    const currentPath = `${location.pathname}${location.search}${location.hash}`;
+
+    if (lastTrackedPath.current === currentPath) {
+      return;
+    }
+
+    lastTrackedPath.current = currentPath;
+    trackPageView(currentPath);
+  }, [location]);
+
+  return null;
+};
+
 const App = () => {
   return (
     <Router>
+      <AnalyticsTracker />
       <div className="app">
         <Header />
 
