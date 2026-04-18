@@ -227,6 +227,14 @@ For long-term maintainability, keep README concise and move deep details to docs
 
 ## Project Updates (2026-04-16)
 
+### American vs British Blog Improvements
+
+- Added an interactive Sound Rule Explorer to make the four core pronunciation differences easier to browse and compare.
+- Swapped the blog hero image to a dedicated thumbnail so the page no longer repeats the first rule image.
+- Added a full visual treatment in `Blog_3.css` for the explorer tabs, IPA chips, word pills, and detail panel.
+- Included dark mode styling for the new explorer UI so it stays readable across themes.
+- Kept the existing ad placements and comparison content while making the article feel more polished and interactive.
+
 ### GA4 Analytics Integration
 
 - Added Google Analytics 4 integration with measurement ID `G-MY7J3QZ8Q7`.

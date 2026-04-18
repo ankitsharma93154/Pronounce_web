@@ -13,10 +13,8 @@ const SponsoredAdBlock = ({
       className={`ad-section ${placementClass} ${className}`.trim()}
       aria-label="Advertisement"
     >
-      <div className="ad-shell">
-        <p className="ad-label">{label}</p>
-        <div className="ad-inner">{children}</div>
-      </div>
+      <p className="ad-label">{label}</p>
+      <div className="ad-inner">{children}</div>
     </section>
   );
 };

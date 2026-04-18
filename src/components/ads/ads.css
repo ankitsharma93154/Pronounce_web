@@ -1,8 +1,18 @@
 .ad-section {
-  width: 100%;
+  width: min(100%, 22.5rem);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
   margin: 1.25rem auto 1.5rem;
+  padding: 0.625rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--bg-secondary);
+  box-shadow: var(--shadow-sm);
+  transition:
+    box-shadow var(--transition),
+    background-color var(--transition);
 }
 
 .ad-inline {
@@ -15,23 +25,7 @@
   margin-bottom: 1.75rem;
 }
 
-.ad-shell {
-  width: min(100%, 22.5rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.625rem;
-  border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
-  background-color: var(--bg-secondary);
-  box-shadow: var(--shadow-sm);
-  transition:
-    box-shadow var(--transition),
-    background-color var(--transition);
-}
-
-.ad-section:hover .ad-shell {
+.ad-section:hover {
   box-shadow: var(--shadow-sm);
 }
 
@@ -91,8 +85,8 @@
   max-width: 64rem;
 }
 
-.leaderboard-ad-wrap .ad-shell,
-.blog-inline-ad-wrap .ad-shell {
+.leaderboard-ad-wrap.ad-section,
+.blog-inline-ad-wrap.ad-section {
   width: min(100%, 48rem);
 }
 
@@ -174,7 +168,7 @@
     margin-bottom: 1.25rem;
   }
 
-  .ad-shell {
+  .ad-section {
     padding: 0.5rem 0.625rem;
     border-radius: 0.5rem;
   }
