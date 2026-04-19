@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import "./Css/FaqPage.css";
+import SEO from "../components/SEO";
 
 const FAQPage = () => {
   const faqData = useMemo(
@@ -208,13 +209,17 @@ const FAQPage = () => {
 
   return (
     <div className="faq-container">
+      <SEO
+        title="How to Pronounce Words: FAQ for Audio, IPA & Accents"
+        description="Get answers about how to pronounce words, use word pronunciation audio, compare accents, and read IPA with QuickPronounce."
+        path="/faq"
+        ogType="website"
+        ogTitle="How to Pronounce Words FAQ | QuickPronounce"
+        ogDescription="Find quick answers about pronunciation audio, IPA symbols, accent differences, and effective speaking practice."
+        keywords="pronunciation FAQ, how to pronounce words, IPA symbols FAQ, accent differences, English pronunciation questions"
+      />
+
       <Helmet>
-        <title>How to Pronounce Words: FAQ for Audio, IPA & Accents</title>
-        <meta
-          name="description"
-          content="Get answers about how to pronounce words, use word pronunciation audio, compare accents, and read IPA with QuickPronounce."
-        />
-        <link rel="canonical" href="https://www.quickpronounce.site/faq" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 

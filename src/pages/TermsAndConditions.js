@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import "./Css/TermsAndConditions.css";
+import SEO from "../components/SEO";
 
 const TermsAndConditions = () => {
   const lastUpdated = "March 22, 2026";
@@ -12,17 +13,17 @@ const TermsAndConditions = () => {
 
   return (
     <div className="tc-page-wrapper">
-      <Helmet>
-        <title>Terms and Conditions - QuickPronounce</title>
-        <meta
-          name="description"
-          content="Read the terms and conditions for using QuickPronounce, your free English pronunciation tool."
-        />
-        <link
-          rel="canonical"
-          href="https://www.quickpronounce.site/terms-and-conditions"
-        />
-      </Helmet>
+      <SEO
+        title="Terms and Conditions - QuickPronounce"
+        description="Read the terms and conditions for using QuickPronounce, your free English pronunciation tool."
+        path="/terms-and-conditions"
+        ogType="website"
+        ogTitle="Terms and Conditions | QuickPronounce"
+        ogDescription="Review QuickPronounce service terms, acceptable use rules, intellectual property, and liability limitations."
+        keywords="terms and conditions, QuickPronounce terms, acceptable use policy, intellectual property, liability disclaimer"
+      />
+
+      <Helmet></Helmet>
 
       <div className="tc-content-container">
         <h1 className="tc-main-title">Terms and Conditions</h1>

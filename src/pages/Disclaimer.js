@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import "./Css/TermsAndConditions.css";
+import SEO from "../components/SEO";
 
 const Disclaimer = () => {
   const lastUpdated = "March 22, 2026";
@@ -11,17 +12,17 @@ const Disclaimer = () => {
 
   return (
     <div className="tc-page-wrapper">
-      <Helmet>
-        <title>Disclaimer - QuickPronounce</title>
-        <meta
-          name="description"
-          content="Read the QuickPronounce disclaimer for educational use, content accuracy limits, and third-party link and ad disclosures."
-        />
-        <link
-          rel="canonical"
-          href="https://www.quickpronounce.site/disclaimer"
-        />
-      </Helmet>
+      <SEO
+        title="Disclaimer - QuickPronounce"
+        description="Read the QuickPronounce disclaimer for educational use, content accuracy limits, and third-party link and ad disclosures."
+        path="/disclaimer"
+        ogType="website"
+        ogTitle="Disclaimer | QuickPronounce"
+        ogDescription="Understand QuickPronounce educational-use limits, content accuracy boundaries, and third-party service disclosures."
+        keywords="disclaimer, educational disclaimer, QuickPronounce terms, third-party links, ad disclosure"
+      />
+
+      <Helmet></Helmet>
 
       <div className="tc-content-container">
         <h1 className="tc-main-title">Disclaimer</h1>

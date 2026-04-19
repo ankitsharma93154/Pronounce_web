@@ -2,45 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Mail, Linkedin, Twitter } from "lucide-react";
 import "./Css/AboutPage.css";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 
 const Contact = () => {
   return (
     <div className="about-page-container" id="contact-page">
+      <SEO
+        title="Contact QuickPronounce | Support & English Accent Help"
+        description="Reach QuickPronounce for help with English pronunciation, audio accents, or IPA tips. Free support for learners worldwide."
+        path="/contact"
+        ogType="website"
+        image="https://www.quickpronounce.site/images/quickpronounce-contact-banner.jpg"
+        ogTitle="QuickPronounce Support: Feedback & Accents"
+        ogDescription="Reach out for help with American, British, Indian, and Australian audio pronunciations. We value your feedback on our free learning tool."
+      />
+
       <Helmet>
-        {/* OPTIMIZED TITLE TAG */}
-        <title>Contact QuickPronounce | Support & English Accent Help</title>
-
-        {/* OPTIMIZED META DESCRIPTION */}
-        <meta
-          name="description"
-          content="Reach QuickPronounce for help with English pronunciation, audio accents, or IPA tips. Free support for learners worldwide."
-        />
-
-        <link rel="canonical" href="https://www.quickpronounce.site/contact" />
-
-        {/* OPEN GRAPH */}
-        <meta
-          property="og:title"
-          content="QuickPronounce Support: Feedback & Accents"
-        />
-        <meta
-          property="og:description"
-          content="Reach out for help with American, British, Indian, and Australian audio pronunciations. We value your feedback on our free learning tool."
-        />
-        <meta
-          property="og:image"
-          content="https://www.quickpronounce.site/images/quickpronounce-contact-banner.jpg"
-        />
         <meta
           property="og:image:alt"
           content="QuickPronounce contact support page banner"
         />
-        <meta
-          property="og:url"
-          content="https://www.quickpronounce.site/contact"
-        />
-        <meta property="og:type" content="website" />
         <meta property="og:site_name" content="QuickPronounce" />
 
         {/* JSON-LD Structured Data */}

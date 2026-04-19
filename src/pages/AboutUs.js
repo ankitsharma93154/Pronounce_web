@@ -1,37 +1,22 @@
 import React from "react";
 import "./Css/AboutPage.css";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 
 const AboutUs = () => {
   return (
     <div className="about-page-container" id="about">
+      <SEO
+        title="About QuickPronounce: English Pronunciation Tool"
+        description="Learn about QuickPronounce, a free tool for mastering English pronunciation with audio in 4 accents and IPA transcriptions."
+        path="/about"
+        ogType="website"
+        image="https://www.quickpronounce.site/images/quickpronounce-about-banner.jpg"
+        ogTitle="About QuickPronounce"
+        ogDescription="Discover how QuickPronounce helps learners master English pronunciation with instant audio and phonetic transcriptions."
+      />
+
       <Helmet>
-        {/* OPTIMIZED TITLE TAG */}
-        <title>About QuickPronounce: English Pronunciation Tool</title>
-
-        {/* OPTIMIZED META DESCRIPTION */}
-        <meta
-          name="description"
-          content="Learn about QuickPronounce, a free tool for mastering English pronunciation with audio in 4 accents and IPA transcriptions."
-        />
-
-        <link rel="canonical" href="https://www.quickpronounce.site/about" />
-
-        {/* OPEN GRAPH */}
-        <meta property="og:title" content="About QuickPronounce" />
-        <meta
-          property="og:description"
-          content="Discover how QuickPronounce helps learners master English pronunciation with instant audio and phonetic transcriptions."
-        />
-        <meta
-          property="og:image"
-          content="https://www.quickpronounce.site/images/quickpronounce-about-banner.jpg"
-        />
-        <meta
-          property="og:url"
-          content="https://www.quickpronounce.site/about"
-        />
-        <meta property="og:type" content="website" />
         <meta property="og:site_name" content="QuickPronounce" />
 
         {/* JSON-LD Structured Data */}

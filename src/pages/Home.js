@@ -10,7 +10,8 @@ import React, {
 } from "react";
 import { Link } from "react-router-dom";
 import { Volume2 } from "lucide-react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 
 // Keep critical components for initial render
 import MobileMenu from "../components/mobileMenu";
@@ -559,29 +560,17 @@ const Home = () => {
 
   return (
     <>
+      <SEO
+        title="Pronounce Words Audio | How to Pronounce Words in English"
+        description="Pronounce words with free audio and IPA in American, British, Australian, and Indian English. Learn how to pronounce words correctly with meaning."
+        path="/"
+        ogType="website"
+        ogTitle="Pronounce Words Audio | How to Pronounce Words in English"
+        ogDescription="Pronounce words with free audio and IPA in American, British, Australian, and Indian English. Learn how to pronounce words correctly with meaning."
+        image="https://www.quickpronounce.site/og-preview.png"
+      />
+
       <Helmet>
-        <title>Pronounce Words Audio | How to Pronounce Words in English</title>
-        <meta
-          name="description"
-          content="Pronounce words with free audio and IPA in American, British, Australian, and Indian English. Learn how to pronounce words correctly with meaning."
-        />
-        <link rel="canonical" href="https://www.quickpronounce.site/" />
-
-        <meta
-          property="og:title"
-          content="How to Pronounce Words Correctly with Audio and IPA"
-        />
-        <meta
-          property="og:description"
-          content="Hear pronunciation audio instantly, compare accents, and check IPA phonetics with one free pronunciation tool."
-        />
-        <meta property="og:url" content="https://www.quickpronounce.site/" />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content="https://www.quickpronounce.site/og-preview.png"
-        />
-
         <script type="application/ld+json">
           {JSON.stringify([
             {

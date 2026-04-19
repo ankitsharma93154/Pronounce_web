@@ -1,6 +1,7 @@
 // src/components/BlogPosts.js
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+import SEO from "../../components/SEO";
 import "../Css/BlogPosts.css";
 import mispronouncedWordsImage from "../../images/blogs/pronunciation-guide/mispronounced-image.jpg";
 import tenTipsImage from "../../images/blogs/pronunciation-tips/header.jpg";
@@ -171,29 +172,16 @@ const BlogPosts = () => {
 
   return (
     <div className="blog-posts-page">
+      <SEO
+        title="How to Pronounce Words: Audio, IPA & Accent Guides"
+        description="Explore guides on how to pronounce words, compare pronunciation audio, read IPA, and improve English accent clarity with QuickPronounce."
+        path="/blog"
+        ogType="blog"
+        ogTitle="How to Pronounce Words: Audio, IPA & Accent Guides"
+        ogDescription="Master English sounds with practical guides on word pronunciation audio, IPA, silent letters, and accent differences."
+      />
+
       <Helmet>
-        <title>How to Pronounce Words: Audio, IPA & Accent Guides</title>
-        <meta
-          name="description"
-          content="Explore guides on how to pronounce words, compare pronunciation audio, read IPA, and improve English accent clarity with QuickPronounce."
-        />
-        <link rel="canonical" href="https://www.quickpronounce.site/blog" />
-
-        {/* OPEN GRAPH */}
-        <meta
-          property="og:title"
-          content="How to Pronounce Words: Audio, IPA & Accent Guides"
-        />
-        <meta
-          property="og:description"
-          content="Master English sounds with practical guides on word pronunciation audio, IPA, silent letters, and accent differences."
-        />
-        <meta
-          property="og:url"
-          content="https://www.quickpronounce.site/blog"
-        />
-        <meta property="og:type" content="blog" />
-
         <script type="application/ld+json">
           {JSON.stringify([
             {

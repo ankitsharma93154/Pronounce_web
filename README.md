@@ -251,3 +251,21 @@ For long-term maintainability, keep README concise and move deep details to docs
 ### Privacy/Consent Status
 
 - No consent banner was added in this update (by request).
+
+## Project Updates (2026-04-18)
+
+### IPA Guide Styling Refresh
+
+- Reworked the IPA Guide stylesheet to use the shared theme variables so the page now adapts cleanly to light and dark mode.
+- Added more color and section contrast to the IPA article without changing the existing content structure.
+- Restored the IPA content width to `64rem` for a better reading measure.
+
+### IPA Guide Ad Layout
+
+- Matched the IPA page ad layout to the homepage pattern so the ad wrappers behave consistently across the site.
+- Switched the vowels-section ad to a leaderboard on tablet and desktop, with a square ad on mobile.
+- Removed extra IPA-specific ad wrapper nesting so the shared `SponsoredAdBlock` component remains the only ad container pattern used site-wide.
+
+### Verification
+
+- Updated files were checked with diagnostics and reported no errors.

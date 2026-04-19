@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import "./Css/AdvertisePage.css";
+import SEO from "../components/SEO";
 
 const stats = [
   { value: "75,000+", label: "Monthly Users" },
@@ -56,30 +57,16 @@ const Advertise = () => {
 
   return (
     <div className="advertise-page" id="advertise-page">
-      <Helmet>
-        <title>Advertise With Us - QuickPronounce</title>
-        <meta
-          name="description"
-          content="Explore sponsorship opportunities with QuickPronounce and reach a global English-learning audience through clean, high-intent placements."
-        />
-        <link
-          rel="canonical"
-          href="https://www.quickpronounce.site/advertise"
-        />
+      <SEO
+        title="Advertise With Us - QuickPronounce"
+        description="Explore sponsorship opportunities with QuickPronounce and reach a global English-learning audience through clean, high-intent placements."
+        path="/advertise"
+        ogType="website"
+        ogTitle="Advertise With Us | QuickPronounce"
+        ogDescription="Partner with QuickPronounce to reach students, professionals, and global learners focused on improving English pronunciation."
+      />
 
-        <meta
-          property="og:title"
-          content="Advertise With Us | QuickPronounce"
-        />
-        <meta
-          property="og:description"
-          content="Partner with QuickPronounce to reach students, professionals, and global learners focused on improving English pronunciation."
-        />
-        <meta
-          property="og:url"
-          content="https://www.quickpronounce.site/advertise"
-        />
-        <meta property="og:type" content="website" />
+      <Helmet>
         <meta property="og:site_name" content="QuickPronounce" />
       </Helmet>
 

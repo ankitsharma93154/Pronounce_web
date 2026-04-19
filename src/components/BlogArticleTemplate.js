@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+import SEO from "./SEO";
 import "./Css/BlogArticleTemplate.css";
 
 const BlogArticleTemplate = ({
@@ -84,6 +85,8 @@ const BlogArticleTemplate = ({
     ogDescription,
     ogImage,
     ogType = "article",
+    keywords,
+    tags,
     extraMeta = [],
     structuredData,
   } = seo;
@@ -147,21 +150,19 @@ const BlogArticleTemplate = ({
 
   return (
     <article className="bt-page-wrapper">
+      <SEO
+        title={pageTitle || title}
+        description={description}
+        path={canonicalUrl || location.pathname}
+        image={ogImage}
+        ogType={ogType}
+        ogTitle={ogTitle || pageTitle || title}
+        ogDescription={ogDescription || description}
+        keywords={keywords}
+        tags={tags}
+      />
+
       <Helmet>
-        {pageTitle ? <title>{pageTitle}</title> : null}
-        {description ? <meta name="description" content={description} /> : null}
-        {canonicalUrl ? <link rel="canonical" href={canonicalUrl} /> : null}
-
-        {ogTitle ? <meta property="og:title" content={ogTitle} /> : null}
-        {ogDescription ? (
-          <meta property="og:description" content={ogDescription} />
-        ) : null}
-        {canonicalUrl ? (
-          <meta property="og:url" content={canonicalUrl} />
-        ) : null}
-        {ogType ? <meta property="og:type" content={ogType} /> : null}
-        {ogImage ? <meta property="og:image" content={ogImage} /> : null}
-
         {extraMeta.map((metaTag, index) => {
           if (metaTag?.name) {
             return (

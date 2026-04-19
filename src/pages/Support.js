@@ -1,34 +1,24 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import "./Css/SupportPage.css";
+import SEO from "../components/SEO";
 
 const SUPPORT_URL = "https://ko-fi.com/quickpronounce/tip";
 
 const Support = () => {
   return (
     <div className="support-page" id="support-page">
-      <Helmet>
-        <title>Support QuickPronounce | UPI, PayPal, Debit & Credit Card</title>
-        <meta
-          name="description"
-          content="QuickPronounce is an independent project run by a single founder. Support using UPI (India) or Ko-fi with PayPal and cards to help cover hosting and maintenance costs."
-        />
-        <link rel="canonical" href="https://www.quickpronounce.site/support" />
+      <SEO
+        title="Support QuickPronounce | UPI, PayPal, Debit & Credit Card"
+        description="QuickPronounce is an independent project run by a single founder. Support using UPI (India) or Ko-fi with PayPal and cards to help cover hosting and maintenance costs."
+        path="/support"
+        ogType="website"
+        image="https://www.quickpronounce.site/og-preview.png"
+        ogTitle="Support QuickPronounce"
+        ogDescription="Support an independently built pronunciation tool by covering growing hosting and maintenance costs via UPI or Ko-fi."
+      />
 
-        <meta property="og:title" content="Support QuickPronounce" />
-        <meta
-          property="og:description"
-          content="Support an independently built pronunciation tool by covering growing hosting and maintenance costs via UPI or Ko-fi."
-        />
-        <meta
-          property="og:image"
-          content="https://www.quickpronounce.site/og-preview.png"
-        />
-        <meta
-          property="og:url"
-          content="https://www.quickpronounce.site/support"
-        />
-        <meta property="og:type" content="website" />
+      <Helmet>
         <meta property="og:site_name" content="QuickPronounce" />
 
         <script type="application/ld+json">

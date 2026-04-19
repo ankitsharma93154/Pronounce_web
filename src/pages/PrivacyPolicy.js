@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import "./Css/PrivacyPolicy.css";
+import SEO from "../components/SEO";
 
 const PrivacyPolicy = () => {
   const lastUpdated = "March 22, 2026";
@@ -11,17 +12,17 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="pp-page-wrapper">
-      <Helmet>
-        <title>Privacy Policy - QuickPronounce</title>
-        <meta
-          name="description"
-          content="Read the QuickPronounce privacy policy to learn how we collect, use, and protect your data, including our use of cookies and third-party advertising technologies."
-        />
-        <link
-          rel="canonical"
-          href="https://www.quickpronounce.site/privacy-policy"
-        />
-      </Helmet>
+      <SEO
+        title="Privacy Policy - QuickPronounce"
+        description="Read the QuickPronounce privacy policy to learn how we collect, use, and protect your data, including our use of cookies and third-party advertising technologies."
+        path="/privacy-policy"
+        ogType="website"
+        ogTitle="Privacy Policy | QuickPronounce"
+        ogDescription="Learn how QuickPronounce collects, uses, and protects data, including cookies and advertising partner disclosures."
+        keywords="privacy policy, QuickPronounce privacy, cookies policy, data protection, AdSense privacy"
+      />
+
+      <Helmet></Helmet>
       <div className="pp-content-container">
         <h1 className="pp-main-title">Privacy Policy</h1>
         <span className="pp-last-updated">Last Updated: {lastUpdated}</span>
@@ -31,7 +32,7 @@ const PrivacyPolicy = () => {
           <p className="pp-text">
             Welcome to{" "}
             <a
-              href="https://quickpronounce.site"
+              href="https://www.quickpronounce.site"
               className="pp-link"
               target="_blank"
               rel="noopener noreferrer"
