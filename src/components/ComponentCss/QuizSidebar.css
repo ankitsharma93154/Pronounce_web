@@ -1,0 +1,118 @@
+.qz-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 96px;
+  align-self: stretch;
+  width: 100%;
+}
+
+.qz-sidebar-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.4)
+  );
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 0;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.qz-sidebar-card--accent {
+  background: var(--primary-gradient);
+  color: var(--text-white);
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.qz-sidebar-card--explanation {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  min-height: 220px;
+}
+
+.qz-sidebar .qz-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.qz-sidebar .qz-card-head h4 {
+  font-size: 0.95rem;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.qz-score-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--primary-gradient);
+  color: var(--text-white);
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(110, 69, 226, 0.12);
+}
+
+.qz-word-meaning {
+  margin: 8px 0 10px 0;
+  padding: 8px 10px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.qz-sidebar-feedback,
+.qz-sidebar-muted {
+  min-height: 150px;
+}
+
+.qz-sidebar-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.qz-sidebar .qz-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* Mobile: make sidebar stack with content and become full-width */
+@media (max-width: 980px) {
+  .qz-sidebar {
+    position: static;
+    top: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .qz-sidebar-card,
+  .qz-sidebar-card--explanation,
+  .qz-sidebar-card--accent {
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .qz-score-badge {
+    min-width: 36px;
+    height: 24px;
+    font-size: 0.85rem;
+  }
+}

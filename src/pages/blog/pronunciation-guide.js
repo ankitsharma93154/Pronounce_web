@@ -954,14 +954,14 @@ const WordCard = ({ word, correct, wrong, tip, example }) => {
         <div className="pronunciation correct">
           <span className="icon">✓</span>
           <div>
-            <label>Correct: </label>
+            <span className="pronunciation-label">Correct: </span>
             <span>{correct}</span>
           </div>
         </div>
         <div className="pronunciation wrong">
           <span className="icon">✗</span>
           <div>
-            <label>Common Error: </label>
+            <span className="pronunciation-label">Common Error: </span>
             <span>{wrong}</span>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useRef } from "react";
+import React, { memo, useState, useEffect, useRef, useId } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Play, Globe, Zap, Search, X } from "lucide-react";
 import WordRelations from "./WordRelations";
@@ -44,6 +44,7 @@ const InputCard = memo(
     const [justSelected, setJustSelected] = useState(false);
     const suggestionsRef = useRef(null);
     const inputRef = useRef(null);
+    const accentSelectId = useId();
 
     // Load wordlist lazily - only when needed
     const loadWordList = async () => {
@@ -353,7 +354,7 @@ const InputCard = memo(
         <div className="controls-section">
           {/* Accent selection remains the same */}
           <div className="control-group">
-            <label className="control-label">
+            <label className="control-label" htmlFor={accentSelectId}>
               <span>Accent</span>
               <span className="accent-count">
                 <Globe size={16} />
@@ -362,6 +363,7 @@ const InputCard = memo(
             </label>
             <div className="select-wrapper">
               <select
+                id={accentSelectId}
                 value={accent}
                 onChange={handleAccentChange}
                 className="accent-select"
@@ -385,7 +387,9 @@ const InputCard = memo(
 
           {/* Voice Gender Toggle */}
           <div className="control-group">
-            <label className="control-label">Voice Gender</label>
+            <div className="control-label" role="heading" aria-level="3">
+              Voice Gender
+            </div>
             <div className="voice-buttons">
               <button
                 onClick={handleToggleGender}
@@ -430,10 +434,10 @@ const InputCard = memo(
 
           {/* Speech Speed Toggle */}
           <div className="control-group">
-            <label className="control-label">
+            <div className="control-label" role="heading" aria-level="3">
               <span>Speech Speed</span>
               <Zap size={16} />
-            </label>
+            </div>
             <div className="voice-buttons">
               <button
                 onClick={() => handleToggleSpeed("slow")}

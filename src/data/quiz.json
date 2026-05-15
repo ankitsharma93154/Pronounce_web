@@ -1,0 +1,1502 @@
+[
+  {
+    "id": 1,
+    "level": 1,
+    "type": "synonym",
+    "prompt": "happy",
+    "options": [
+      "tired",
+      "joyful",
+      "sad",
+      "angry"
+    ],
+    "answerIndex": 1,
+    "explanation": "Joyful is a synonym of happy.",
+    "meaning": "feeling pleasure or contentment"
+  },
+  {
+    "id": 2,
+    "level": 1,
+    "type": "antonym",
+    "prompt": "increase",
+    "options": [
+      "expand",
+      "grow",
+      "decrease",
+      "raise"
+    ],
+    "answerIndex": 2,
+    "explanation": "Decrease is the opposite (antonym) of increase.",
+    "meaning": "to make or become larger or greater"
+  },
+  {
+    "id": 3,
+    "level": 1,
+    "type": "synonym",
+    "prompt": "quick",
+    "options": [
+      "slow",
+      "late",
+      "calm",
+      "rapid"
+    ],
+    "answerIndex": 3,
+    "explanation": "Rapid is a synonym of quick.",
+    "meaning": "moving fast or acting with speed"
+  },
+  {
+    "id": 4,
+    "level": 1,
+    "type": "antonym",
+    "prompt": "begin",
+    "options": [
+      "start",
+      "initiate",
+      "end",
+      "commence"
+    ],
+    "answerIndex": 2,
+    "explanation": "End is the opposite of begin.",
+    "meaning": "to start or commence something"
+  },
+  {
+    "id": 5,
+    "level": 1,
+    "type": "synonym",
+    "prompt": "small",
+    "options": [
+      "giant",
+      "huge",
+      "vast",
+      "tiny"
+    ],
+    "answerIndex": 3,
+    "explanation": "Tiny is a synonym of small.",
+    "meaning": "little in size or extent"
+  },
+  {
+    "id": 6,
+    "level": 1,
+    "type": "antonym",
+    "prompt": "noisy",
+    "options": [
+      "boisterous",
+      "quiet",
+      "loud",
+      "rowdy"
+    ],
+    "answerIndex": 1,
+    "explanation": "Quiet is an antonym of noisy.",
+    "meaning": "making a lot of loud sound"
+  },
+  {
+    "id": 7,
+    "level": 1,
+    "type": "synonym",
+    "prompt": "smart",
+    "options": [
+      "foolish",
+      "slow",
+      "clever",
+      "dumb"
+    ],
+    "answerIndex": 2,
+    "explanation": "Clever is a synonym of smart.",
+    "meaning": "intelligent or mentally sharp"
+  },
+  {
+    "id": 8,
+    "level": 1,
+    "type": "antonym",
+    "prompt": "happy",
+    "options": [
+      "sad",
+      "cheerful",
+      "glad",
+      "merry"
+    ],
+    "answerIndex": 0,
+    "explanation": "Sad is an antonym of happy.",
+    "meaning": "feeling pleasure or contentment"
+  },
+  {
+    "id": 9,
+    "level": 1,
+    "type": "synonym",
+    "prompt": "angry",
+    "options": [
+      "pleasant",
+      "happy",
+      "irate",
+      "calm"
+    ],
+    "answerIndex": 2,
+    "explanation": "Irate is a synonym of angry.",
+    "meaning": "feeling strong displeasure or rage"
+  },
+  {
+    "id": 10,
+    "level": 1,
+    "type": "antonym",
+    "prompt": "arrive",
+    "options": [
+      "depart",
+      "come",
+      "appear",
+      "reach"
+    ],
+    "answerIndex": 0,
+    "explanation": "Depart is an antonym of arrive.",
+    "meaning": "to reach or come to a destination"
+  },
+  {
+    "id": 11,
+    "level": 2,
+    "type": "synonym",
+    "prompt": "brave",
+    "options": [
+      "timid",
+      "bold",
+      "afraid",
+      "cowardly"
+    ],
+    "answerIndex": 1,
+    "explanation": "Bold is a synonym of brave.",
+    "meaning": "showing courage or fearlessness"
+  },
+  {
+    "id": 12,
+    "level": 2,
+    "type": "antonym",
+    "prompt": "accept",
+    "options": [
+      "allow",
+      "receive",
+      "decline",
+      "take"
+    ],
+    "answerIndex": 2,
+    "explanation": "Decline is an antonym of accept.",
+    "meaning": "to receive or take willingly"
+  },
+  {
+    "id": 13,
+    "level": 2,
+    "type": "synonym",
+    "prompt": "ancient",
+    "options": [
+      "old",
+      "modern",
+      "new",
+      "recent"
+    ],
+    "answerIndex": 0,
+    "explanation": "Old is a synonym of ancient.",
+    "meaning": "very old or belonging to the distant past"
+  },
+  {
+    "id": 14,
+    "level": 2,
+    "type": "antonym",
+    "prompt": "success",
+    "options": [
+      "triumph",
+      "failure",
+      "victory",
+      "achievement"
+    ],
+    "answerIndex": 1,
+    "explanation": "Failure is an antonym of success.",
+    "meaning": "achieving a desired goal or favorable outcome"
+  },
+  {
+    "id": 15,
+    "level": 2,
+    "type": "synonym",
+    "prompt": "calm",
+    "options": [
+      "angry",
+      "loud",
+      "peaceful",
+      "noisy"
+    ],
+    "answerIndex": 2,
+    "explanation": "Peaceful is a synonym of calm.",
+    "meaning": "peaceful and free from disturbance"
+  },
+  {
+    "id": 16,
+    "level": 2,
+    "type": "antonym",
+    "prompt": "generous",
+    "options": [
+      "bountiful",
+      "stingy",
+      "kind",
+      "giving"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stingy is an antonym of generous.",
+    "meaning": "willing to give and share freely"
+  },
+  {
+    "id": 17,
+    "level": 2,
+    "type": "synonym",
+    "prompt": "honest",
+    "options": [
+      "fraudulent",
+      "shady",
+      "deceitful",
+      "truthful"
+    ],
+    "answerIndex": 3,
+    "explanation": "Truthful is a synonym of honest.",
+    "meaning": "truthful and sincere in communication"
+  },
+  {
+    "id": 18,
+    "level": 2,
+    "type": "antonym",
+    "prompt": "empty",
+    "options": [
+      "bare",
+      "hollow",
+      "full",
+      "vacant"
+    ],
+    "answerIndex": 2,
+    "explanation": "Full is an antonym of empty.",
+    "meaning": "containing nothing or devoid of contents"
+  },
+  {
+    "id": 19,
+    "level": 2,
+    "type": "synonym",
+    "prompt": "difficult",
+    "options": [
+      "hard",
+      "clear",
+      "simple",
+      "easy"
+    ],
+    "answerIndex": 0,
+    "explanation": "Hard is a synonym of difficult.",
+    "meaning": "hard to do, understand, or deal with"
+  },
+  {
+    "id": 20,
+    "level": 2,
+    "type": "antonym",
+    "prompt": "arrange",
+    "options": [
+      "organize",
+      "order",
+      "sort",
+      "scatter"
+    ],
+    "answerIndex": 3,
+    "explanation": "Scatter is an antonym of arrange.",
+    "meaning": "to put in a particular order or organization"
+  },
+  {
+    "id": 21,
+    "level": 3,
+    "type": "synonym",
+    "prompt": "frigid",
+    "options": [
+      "warm",
+      "freezing",
+      "hot",
+      "balmy"
+    ],
+    "answerIndex": 1,
+    "explanation": "Freezing is a synonym of frigid.",
+    "meaning": "extremely cold in temperature"
+  },
+  {
+    "id": 22,
+    "level": 3,
+    "type": "antonym",
+    "prompt": "complex",
+    "options": [
+      "complicated",
+      "intricate",
+      "elaborate",
+      "simple"
+    ],
+    "answerIndex": 3,
+    "explanation": "Simple is an antonym of complex.",
+    "meaning": "complicated or made of many parts"
+  },
+  {
+    "id": 23,
+    "level": 3,
+    "type": "synonym",
+    "prompt": "rapid",
+    "options": [
+      "swift",
+      "sluggish",
+      "slow",
+      "delayed"
+    ],
+    "answerIndex": 0,
+    "explanation": "Swift is a synonym of rapid.",
+    "meaning": "happening or moving very quickly"
+  },
+  {
+    "id": 24,
+    "level": 3,
+    "type": "antonym",
+    "prompt": "victory",
+    "options": [
+      "success",
+      "defeat",
+      "win",
+      "triumph"
+    ],
+    "answerIndex": 1,
+    "explanation": "Defeat is an antonym of victory.",
+    "meaning": "a success or triumph in competition"
+  },
+  {
+    "id": 25,
+    "level": 3,
+    "type": "synonym",
+    "prompt": "vivid",
+    "options": [
+      "faint",
+      "dull",
+      "pale",
+      "bright"
+    ],
+    "answerIndex": 3,
+    "explanation": "Bright is a synonym of vivid.",
+    "meaning": "bright, striking, or producing sharp images"
+  },
+  {
+    "id": 26,
+    "level": 3,
+    "type": "antonym",
+    "prompt": "scarce",
+    "options": [
+      "sparse",
+      "plentiful",
+      "limited",
+      "rare"
+    ],
+    "answerIndex": 1,
+    "explanation": "Plentiful is an antonym of scarce.",
+    "meaning": "insufficient in quantity or hard to find"
+  },
+  {
+    "id": 27,
+    "level": 3,
+    "type": "synonym",
+    "prompt": "mend",
+    "options": [
+      "repair",
+      "damage",
+      "shatter",
+      "break"
+    ],
+    "answerIndex": 0,
+    "explanation": "Repair is a synonym of mend.",
+    "meaning": "to repair or fix something broken"
+  },
+  {
+    "id": 28,
+    "level": 3,
+    "type": "antonym",
+    "prompt": "permit",
+    "options": [
+      "allow",
+      "let",
+      "authorize",
+      "forbid"
+    ],
+    "answerIndex": 3,
+    "explanation": "Forbid is an antonym of permit.",
+    "meaning": "to allow or give permission for"
+  },
+  {
+    "id": 29,
+    "level": 3,
+    "type": "synonym",
+    "prompt": "conceal",
+    "options": [
+      "hide",
+      "display",
+      "show",
+      "reveal"
+    ],
+    "answerIndex": 0,
+    "explanation": "Hide is a synonym of conceal.",
+    "meaning": "to hide or keep secret from view"
+  },
+  {
+    "id": 30,
+    "level": 3,
+    "type": "antonym",
+    "prompt": "sincere",
+    "options": [
+      "truthful",
+      "insincere",
+      "genuine",
+      "honest"
+    ],
+    "answerIndex": 1,
+    "explanation": "Insincere is an antonym of sincere.",
+    "meaning": "genuine and honest without deception"
+  },
+  {
+    "id": 31,
+    "level": 4,
+    "type": "synonym",
+    "prompt": "eloquent",
+    "options": [
+      "inarticulate",
+      "tongue-tied",
+      "awkward",
+      "articulate"
+    ],
+    "answerIndex": 3,
+    "explanation": "Articulate is a synonym of eloquent.",
+    "meaning": "fluent, persuasive, and expressive in speech"
+  },
+  {
+    "id": 32,
+    "level": 4,
+    "type": "antonym",
+    "prompt": "abundant",
+    "options": [
+      "bountiful",
+      "scarce",
+      "plentiful",
+      "ample"
+    ],
+    "answerIndex": 1,
+    "explanation": "Scarce is an antonym of abundant.",
+    "meaning": "existing or available in large quantities"
+  },
+  {
+    "id": 33,
+    "level": 4,
+    "type": "synonym",
+    "prompt": "meticulous",
+    "options": [
+      "sloppy",
+      "negligent",
+      "careless",
+      "careful"
+    ],
+    "answerIndex": 3,
+    "explanation": "Careful is a synonym of meticulous.",
+    "meaning": "showing great attention to detail and accuracy"
+  },
+  {
+    "id": 34,
+    "level": 4,
+    "type": "antonym",
+    "prompt": "opaque",
+    "options": [
+      "obscure",
+      "transparent",
+      "murky",
+      "cloudy"
+    ],
+    "answerIndex": 1,
+    "explanation": "Transparent is an antonym of opaque.",
+    "meaning": "not able to be seen through; not transparent"
+  },
+  {
+    "id": 35,
+    "level": 4,
+    "type": "synonym",
+    "prompt": "succinct",
+    "options": [
+      "verbose",
+      "wordy",
+      "concise",
+      "long-winded"
+    ],
+    "answerIndex": 2,
+    "explanation": "Concise is a synonym of succinct.",
+    "meaning": "briefly and clearly expressed; concise"
+  },
+  {
+    "id": 36,
+    "level": 4,
+    "type": "antonym",
+    "prompt": "ascend",
+    "options": [
+      "climb",
+      "mount",
+      "rise",
+      "descend"
+    ],
+    "answerIndex": 3,
+    "explanation": "Descend is an antonym of ascend.",
+    "meaning": "to move up or climb higher"
+  },
+  {
+    "id": 37,
+    "level": 4,
+    "type": "synonym",
+    "prompt": "serene",
+    "options": [
+      "chaotic",
+      "tranquil",
+      "noisy",
+      "turbulent"
+    ],
+    "answerIndex": 1,
+    "explanation": "Tranquil is a synonym of serene.",
+    "meaning": "calm, peaceful, and undisturbed"
+  },
+  {
+    "id": 38,
+    "level": 4,
+    "type": "antonym",
+    "prompt": "frugal",
+    "options": [
+      "extravagant",
+      "economical",
+      "sparing",
+      "thrifty"
+    ],
+    "answerIndex": 0,
+    "explanation": "Extravagant is an antonym of frugal.",
+    "meaning": "sparing in spending; economical"
+  },
+  {
+    "id": 39,
+    "level": 4,
+    "type": "synonym",
+    "prompt": "deteriorate",
+    "options": [
+      "ameliorate",
+      "worsen",
+      "enhance",
+      "improve"
+    ],
+    "answerIndex": 1,
+    "explanation": "Worsen is a synonym of deteriorate.",
+    "meaning": "to become progressively worse"
+  },
+  {
+    "id": 40,
+    "level": 4,
+    "type": "antonym",
+    "prompt": "transparent",
+    "options": [
+      "clear",
+      "visible",
+      "obvious",
+      "opaque"
+    ],
+    "answerIndex": 3,
+    "explanation": "Opaque is an antonym of transparent.",
+    "meaning": "allowing light to pass through so that objects can be seen clearly"
+  },
+  {
+    "id": 41,
+    "level": 5,
+    "type": "synonym",
+    "prompt": "obfuscate",
+    "options": [
+      "clarify",
+      "explain",
+      "confuse",
+      "illuminate"
+    ],
+    "answerIndex": 2,
+    "explanation": "Confuse is a synonym of obfuscate.",
+    "meaning": "to deliberately make unclear or confusing"
+  },
+  {
+    "id": 42,
+    "level": 5,
+    "type": "antonym",
+    "prompt": "laconic",
+    "options": [
+      "verbose",
+      "succinct",
+      "brief",
+      "concise"
+    ],
+    "answerIndex": 0,
+    "explanation": "Verbose is an antonym of laconic.",
+    "meaning": "using very few words; brief and concise"
+  },
+  {
+    "id": 43,
+    "level": 5,
+    "type": "synonym",
+    "prompt": "esoteric",
+    "options": [
+      "ordinary",
+      "familiar",
+      "arcane",
+      "common"
+    ],
+    "answerIndex": 2,
+    "explanation": "Arcane is a synonym of esoteric.",
+    "meaning": "understood by only a small group; obscure"
+  },
+  {
+    "id": 44,
+    "level": 5,
+    "type": "antonym",
+    "prompt": "innocuous",
+    "options": [
+      "harmless",
+      "harmful",
+      "safe",
+      "benign"
+    ],
+    "answerIndex": 1,
+    "explanation": "Harmful is an antonym of innocuous.",
+    "meaning": "not harmful or likely to cause offense"
+  },
+  {
+    "id": 45,
+    "level": 5,
+    "type": "synonym",
+    "prompt": "acumen",
+    "options": [
+      "foolishness",
+      "ignorance",
+      "insight",
+      "stupidity"
+    ],
+    "answerIndex": 2,
+    "explanation": "Insight is a synonym of acumen.",
+    "meaning": "keen insight and intelligence in a particular field"
+  },
+  {
+    "id": 46,
+    "level": 5,
+    "type": "antonym",
+    "prompt": "conciliate",
+    "options": [
+      "placate",
+      "provoke",
+      "mollify",
+      "appease"
+    ],
+    "answerIndex": 1,
+    "explanation": "Provoke is an antonym of conciliate.",
+    "meaning": "to overcome the hostility of someone"
+  },
+  {
+    "id": 47,
+    "level": 5,
+    "type": "synonym",
+    "prompt": "ubiquitous",
+    "options": [
+      "uncommon",
+      "scarce",
+      "rare",
+      "everywhere"
+    ],
+    "answerIndex": 3,
+    "explanation": "Everywhere is a synonym of ubiquitous.",
+    "meaning": "present, appearing, or found everywhere"
+  },
+  {
+    "id": 48,
+    "level": 5,
+    "type": "antonym",
+    "prompt": "bolster",
+    "options": [
+      "weaken",
+      "support",
+      "reinforce",
+      "strengthen"
+    ],
+    "answerIndex": 0,
+    "explanation": "Weaken is an antonym of bolster.",
+    "meaning": "to strengthen or support emotionally or physically"
+  },
+  {
+    "id": 49,
+    "level": 5,
+    "type": "synonym",
+    "prompt": "vindicate",
+    "options": [
+      "accuse",
+      "blame",
+      "condemn",
+      "exonerate"
+    ],
+    "answerIndex": 3,
+    "explanation": "Exonerate is a synonym of vindicate.",
+    "meaning": "to clear of blame or suspicion"
+  },
+  {
+    "id": 50,
+    "level": 5,
+    "type": "antonym",
+    "prompt": "lucid",
+    "options": [
+      "understandable",
+      "clear",
+      "confused",
+      "transparent"
+    ],
+    "answerIndex": 2,
+    "explanation": "Confused is an antonym of lucid.",
+    "meaning": "clear and easy to understand; bright"
+  },
+  {
+    "id": 51,
+    "level": 1,
+    "type": "synonym",
+    "prompt": "big",
+    "options": [
+      "tiny",
+      "short",
+      "slim",
+      "large"
+    ],
+    "answerIndex": 3,
+    "explanation": "Large is a synonym of big.",
+    "meaning": "of great size or extent"
+  },
+  {
+    "id": 52,
+    "level": 1,
+    "type": "antonym",
+    "prompt": "hot",
+    "options": [
+      "cold",
+      "sunny",
+      "warm",
+      "mild"
+    ],
+    "answerIndex": 0,
+    "explanation": "Cold is an antonym of hot.",
+    "meaning": "having a high temperature"
+  },
+  {
+    "id": 53,
+    "level": 1,
+    "type": "synonym",
+    "prompt": "sad",
+    "options": [
+      "joyful",
+      "glad",
+      "merry",
+      "unhappy"
+    ],
+    "answerIndex": 3,
+    "explanation": "Unhappy is a synonym of sad.",
+    "meaning": "feeling sorrow or distress"
+  },
+  {
+    "id": 54,
+    "level": 1,
+    "type": "antonym",
+    "prompt": "open",
+    "options": [
+      "ajar",
+      "wide",
+      "shut",
+      "unlocked"
+    ],
+    "answerIndex": 2,
+    "explanation": "Shut is an antonym of open.",
+    "meaning": "not closed or blocked"
+  },
+  {
+    "id": 55,
+    "level": 1,
+    "type": "synonym",
+    "prompt": "tired",
+    "options": [
+      "active",
+      "sleepy",
+      "alert",
+      "lively"
+    ],
+    "answerIndex": 1,
+    "explanation": "Sleepy is a synonym of tired.",
+    "meaning": "in need of sleep or rest; fatigued"
+  },
+  {
+    "id": 56,
+    "level": 1,
+    "type": "antonym",
+    "prompt": "clean",
+    "options": [
+      "tidy",
+      "neat",
+      "spotless",
+      "dirty"
+    ],
+    "answerIndex": 3,
+    "explanation": "Dirty is an antonym of clean.",
+    "meaning": "free from dirt, marks, or stains"
+  },
+  {
+    "id": 57,
+    "level": 1,
+    "type": "synonym",
+    "prompt": "old",
+    "options": [
+      "young",
+      "aged",
+      "new",
+      "fresh"
+    ],
+    "answerIndex": 1,
+    "explanation": "Aged is a synonym of old.",
+    "meaning": "having lived or existed for a long time"
+  },
+  {
+    "id": 58,
+    "level": 1,
+    "type": "antonym",
+    "prompt": "day",
+    "options": [
+      "noon",
+      "dawn",
+      "night",
+      "dusk"
+    ],
+    "answerIndex": 2,
+    "explanation": "Night is an antonym of day.",
+    "meaning": "the period of light between sunrise and sunset"
+  },
+  {
+    "id": 59,
+    "level": 1,
+    "type": "synonym",
+    "prompt": "love",
+    "options": [
+      "dislike",
+      "adore",
+      "ignore",
+      "hate"
+    ],
+    "answerIndex": 1,
+    "explanation": "Adore is a synonym of love.",
+    "meaning": "to feel deep affection for someone or something"
+  },
+  {
+    "id": 60,
+    "level": 1,
+    "type": "antonym",
+    "prompt": "light",
+    "options": [
+      "shiny",
+      "bright",
+      "dark",
+      "pale"
+    ],
+    "answerIndex": 2,
+    "explanation": "Dark is an antonym of light.",
+    "meaning": "having a lot of light; not heavy"
+  },
+  {
+    "id": 61,
+    "level": 2,
+    "type": "synonym",
+    "prompt": "wealthy",
+    "options": [
+      "needy",
+      "broke",
+      "poor",
+      "rich"
+    ],
+    "answerIndex": 3,
+    "explanation": "Rich is a synonym of wealthy.",
+    "meaning": "having a great deal of money or assets"
+  },
+  {
+    "id": 62,
+    "level": 2,
+    "type": "antonym",
+    "prompt": "flexible",
+    "options": [
+      "elastic",
+      "supple",
+      "rigid",
+      "bendable"
+    ],
+    "answerIndex": 2,
+    "explanation": "Rigid is an antonym of flexible.",
+    "meaning": "able to bend without breaking; adaptable"
+  },
+  {
+    "id": 63,
+    "level": 2,
+    "type": "synonym",
+    "prompt": "fierce",
+    "options": [
+      "gentle",
+      "calm",
+      "mild",
+      "ferocious"
+    ],
+    "answerIndex": 3,
+    "explanation": "Ferocious is a synonym of fierce.",
+    "meaning": "having or displaying an intense, wild aggression"
+  },
+  {
+    "id": 64,
+    "level": 2,
+    "type": "antonym",
+    "prompt": "narrow",
+    "options": [
+      "thin",
+      "wide",
+      "slim",
+      "slender"
+    ],
+    "answerIndex": 1,
+    "explanation": "Wide is an antonym of narrow.",
+    "meaning": "of small width; not wide"
+  },
+  {
+    "id": 65,
+    "level": 2,
+    "type": "synonym",
+    "prompt": "gleam",
+    "options": [
+      "dim",
+      "dull",
+      "shine",
+      "fade"
+    ],
+    "answerIndex": 2,
+    "explanation": "Shine is a synonym of gleam.",
+    "meaning": "to shine brightly with a soft light"
+  },
+  {
+    "id": 66,
+    "level": 2,
+    "type": "antonym",
+    "prompt": "polite",
+    "options": [
+      "mannerly",
+      "rude",
+      "courteous",
+      "civil"
+    ],
+    "answerIndex": 1,
+    "explanation": "Rude is an antonym of polite.",
+    "meaning": "having good manners and being respectful"
+  },
+  {
+    "id": 67,
+    "level": 2,
+    "type": "synonym",
+    "prompt": "purchase",
+    "options": [
+      "borrow",
+      "return",
+      "buy",
+      "sell"
+    ],
+    "answerIndex": 2,
+    "explanation": "Buy is a synonym of purchase.",
+    "meaning": "to acquire something by paying for it"
+  },
+  {
+    "id": 68,
+    "level": 2,
+    "type": "antonym",
+    "prompt": "remember",
+    "options": [
+      "recall",
+      "memorize",
+      "recollect",
+      "forget"
+    ],
+    "answerIndex": 3,
+    "explanation": "Forget is an antonym of remember.",
+    "meaning": "to have something come back to mind"
+  },
+  {
+    "id": 69,
+    "level": 2,
+    "type": "synonym",
+    "prompt": "afraid",
+    "options": [
+      "scared",
+      "bold",
+      "brave",
+      "daring"
+    ],
+    "answerIndex": 0,
+    "explanation": "Scared is a synonym of afraid.",
+    "meaning": "feeling fear or anxiety"
+  },
+  {
+    "id": 70,
+    "level": 2,
+    "type": "antonym",
+    "prompt": "expand",
+    "options": [
+      "widen",
+      "grow",
+      "shrink",
+      "enlarge"
+    ],
+    "answerIndex": 2,
+    "explanation": "Shrink is an antonym of expand.",
+    "meaning": "to become or make larger in size or extent"
+  },
+  {
+    "id": 71,
+    "level": 3,
+    "type": "synonym",
+    "prompt": "lament",
+    "options": [
+      "cheer",
+      "celebrate",
+      "rejoice",
+      "mourn"
+    ],
+    "answerIndex": 3,
+    "explanation": "Mourn is a synonym of lament.",
+    "meaning": "to express grief or sorrow"
+  },
+  {
+    "id": 72,
+    "level": 3,
+    "type": "antonym",
+    "prompt": "tame",
+    "options": [
+      "docile",
+      "wild",
+      "obedient",
+      "gentle"
+    ],
+    "answerIndex": 1,
+    "explanation": "Wild is an antonym of tame.",
+    "meaning": "not dangerous or frightened; domesticated"
+  },
+  {
+    "id": 73,
+    "level": 3,
+    "type": "synonym",
+    "prompt": "nimble",
+    "options": [
+      "agile",
+      "clumsy",
+      "stiff",
+      "slow"
+    ],
+    "answerIndex": 0,
+    "explanation": "Agile is a synonym of nimble.",
+    "meaning": "quick and light in movement"
+  },
+  {
+    "id": 74,
+    "level": 3,
+    "type": "antonym",
+    "prompt": "praise",
+    "options": [
+      "laud",
+      "criticize",
+      "applaud",
+      "commend"
+    ],
+    "answerIndex": 1,
+    "explanation": "Criticize is an antonym of praise.",
+    "meaning": "to express warm approval or admiration"
+  },
+  {
+    "id": 75,
+    "level": 3,
+    "type": "synonym",
+    "prompt": "eerie",
+    "options": [
+      "uncanny",
+      "normal",
+      "ordinary",
+      "familiar"
+    ],
+    "answerIndex": 0,
+    "explanation": "Uncanny is a synonym of eerie.",
+    "meaning": "strange and unsettling; mysterious"
+  },
+  {
+    "id": 76,
+    "level": 3,
+    "type": "antonym",
+    "prompt": "lenient",
+    "options": [
+      "tolerant",
+      "mild",
+      "easy-going",
+      "strict"
+    ],
+    "answerIndex": 3,
+    "explanation": "Strict is an antonym of lenient.",
+    "meaning": "permissive or not strict about rules"
+  },
+  {
+    "id": 77,
+    "level": 3,
+    "type": "synonym",
+    "prompt": "weary",
+    "options": [
+      "energetic",
+      "vibrant",
+      "exhausted",
+      "lively"
+    ],
+    "answerIndex": 2,
+    "explanation": "Exhausted is a synonym of weary.",
+    "meaning": "feeling very tired, especially after exertion"
+  },
+  {
+    "id": 78,
+    "level": 3,
+    "type": "antonym",
+    "prompt": "sturdy",
+    "options": [
+      "fragile",
+      "solid",
+      "strong",
+      "robust"
+    ],
+    "answerIndex": 0,
+    "explanation": "Fragile is an antonym of sturdy.",
+    "meaning": "strongly and solidly built"
+  },
+  {
+    "id": 79,
+    "level": 3,
+    "type": "synonym",
+    "prompt": "peculiar",
+    "options": [
+      "normal",
+      "odd",
+      "usual",
+      "typical"
+    ],
+    "answerIndex": 1,
+    "explanation": "Odd is a synonym of peculiar.",
+    "meaning": "strange or unusual; different from the norm"
+  },
+  {
+    "id": 80,
+    "level": 3,
+    "type": "antonym",
+    "prompt": "temporary",
+    "options": [
+      "short-lived",
+      "brief",
+      "permanent",
+      "fleeting"
+    ],
+    "answerIndex": 2,
+    "explanation": "Permanent is an antonym of temporary.",
+    "meaning": "lasting for only a limited period of time"
+  },
+  {
+    "id": 81,
+    "level": 4,
+    "type": "synonym",
+    "prompt": "tenacious",
+    "options": [
+      "persistent",
+      "yielding",
+      "submissive",
+      "weak"
+    ],
+    "answerIndex": 0,
+    "explanation": "Persistent is a synonym of tenacious.",
+    "meaning": "holding firmly to a purpose; not giving up"
+  },
+  {
+    "id": 82,
+    "level": 4,
+    "type": "antonym",
+    "prompt": "benevolent",
+    "options": [
+      "generous",
+      "malevolent",
+      "charitable",
+      "kind"
+    ],
+    "answerIndex": 1,
+    "explanation": "Malevolent is an antonym of benevolent.",
+    "meaning": "well-meaning and kindly toward others"
+  },
+  {
+    "id": 83,
+    "level": 4,
+    "type": "synonym",
+    "prompt": "ambiguous",
+    "options": [
+      "unclear",
+      "precise",
+      "definite",
+      "obvious"
+    ],
+    "answerIndex": 0,
+    "explanation": "Unclear is a synonym of ambiguous.",
+    "meaning": "open to more than one interpretation"
+  },
+  {
+    "id": 84,
+    "level": 4,
+    "type": "antonym",
+    "prompt": "diligent",
+    "options": [
+      "devoted",
+      "hardworking",
+      "lazy",
+      "industrious"
+    ],
+    "answerIndex": 2,
+    "explanation": "Lazy is an antonym of diligent.",
+    "meaning": "having or showing care and effort in one's work"
+  },
+  {
+    "id": 85,
+    "level": 4,
+    "type": "synonym",
+    "prompt": "prudent",
+    "options": [
+      "cautious",
+      "careless",
+      "hasty",
+      "reckless"
+    ],
+    "answerIndex": 0,
+    "explanation": "Cautious is a synonym of prudent.",
+    "meaning": "acting with care and thought for the future"
+  },
+  {
+    "id": 86,
+    "level": 4,
+    "type": "antonym",
+    "prompt": "trivial",
+    "options": [
+      "minor",
+      "trifling",
+      "petty",
+      "significant"
+    ],
+    "answerIndex": 3,
+    "explanation": "Significant is an antonym of trivial.",
+    "meaning": "of little importance or value"
+  },
+  {
+    "id": 87,
+    "level": 4,
+    "type": "synonym",
+    "prompt": "adept",
+    "options": [
+      "unskilled",
+      "clumsy",
+      "skilled",
+      "incompetent"
+    ],
+    "answerIndex": 2,
+    "explanation": "Skilled is a synonym of adept.",
+    "meaning": "very skilled or proficient at something"
+  },
+  {
+    "id": 88,
+    "level": 4,
+    "type": "antonym",
+    "prompt": "optimistic",
+    "options": [
+      "upbeat",
+      "hopeful",
+      "positive",
+      "pessimistic"
+    ],
+    "answerIndex": 3,
+    "explanation": "Pessimistic is an antonym of optimistic.",
+    "meaning": "hopeful and confident about the future"
+  },
+  {
+    "id": 89,
+    "level": 4,
+    "type": "synonym",
+    "prompt": "inquisitive",
+    "options": [
+      "curious",
+      "uninterested",
+      "apathetic",
+      "indifferent"
+    ],
+    "answerIndex": 0,
+    "explanation": "Curious is a synonym of inquisitive.",
+    "meaning": "having a strong desire to know or learn"
+  },
+  {
+    "id": 90,
+    "level": 4,
+    "type": "antonym",
+    "prompt": "candid",
+    "options": [
+      "open",
+      "evasive",
+      "frank",
+      "direct"
+    ],
+    "answerIndex": 1,
+    "explanation": "Evasive is an antonym of candid.",
+    "meaning": "truthful and straightforward; frank"
+  },
+  {
+    "id": 91,
+    "level": 5,
+    "type": "synonym",
+    "prompt": "perspicacious",
+    "options": [
+      "naive",
+      "ignorant",
+      "oblivious",
+      "shrewd"
+    ],
+    "answerIndex": 3,
+    "explanation": "Shrewd is a synonym of perspicacious.",
+    "meaning": "having a ready insight; shrewdly perceptive"
+  },
+  {
+    "id": 92,
+    "level": 5,
+    "type": "antonym",
+    "prompt": "sycophantic",
+    "options": [
+      "flattering",
+      "sincere",
+      "fawning",
+      "obsequious"
+    ],
+    "answerIndex": 1,
+    "explanation": "Sincere is an antonym of sycophantic.",
+    "meaning": "excessively complimentary in a self-serving way"
+  },
+  {
+    "id": 93,
+    "level": 5,
+    "type": "synonym",
+    "prompt": "ephemeral",
+    "options": [
+      "permanent",
+      "eternal",
+      "lasting",
+      "transient"
+    ],
+    "answerIndex": 3,
+    "explanation": "Transient is a synonym of ephemeral.",
+    "meaning": "lasting for a very short time"
+  },
+  {
+    "id": 94,
+    "level": 5,
+    "type": "antonym",
+    "prompt": "loquacious",
+    "options": [
+      "taciturn",
+      "talkative",
+      "chatty",
+      "garrulous"
+    ],
+    "answerIndex": 0,
+    "explanation": "Taciturn is an antonym of loquacious.",
+    "meaning": "tending to talk a great deal"
+  },
+  {
+    "id": 95,
+    "level": 5,
+    "type": "synonym",
+    "prompt": "querulous",
+    "options": [
+      "content",
+      "complaining",
+      "cheerful",
+      "satisfied"
+    ],
+    "answerIndex": 1,
+    "explanation": "Complaining is a synonym of querulous.",
+    "meaning": "complaining in a petulant or whining manner"
+  },
+  {
+    "id": 96,
+    "level": 5,
+    "type": "antonym",
+    "prompt": "impetuous",
+    "options": [
+      "rash",
+      "hasty",
+      "impulsive",
+      "cautious"
+    ],
+    "answerIndex": 3,
+    "explanation": "Cautious is an antonym of impetuous.",
+    "meaning": "acting quickly without thinking or care"
+  },
+  {
+    "id": 97,
+    "level": 5,
+    "type": "synonym",
+    "prompt": "magnanimous",
+    "options": [
+      "selfish",
+      "greedy",
+      "generous",
+      "petty"
+    ],
+    "answerIndex": 2,
+    "explanation": "Generous is a synonym of magnanimous.",
+    "meaning": "very generous or forgiving, especially toward rivals"
+  },
+  {
+    "id": 98,
+    "level": 5,
+    "type": "antonym",
+    "prompt": "veracious",
+    "options": [
+      "accurate",
+      "deceitful",
+      "truthful",
+      "honest"
+    ],
+    "answerIndex": 1,
+    "explanation": "Deceitful is an antonym of veracious.",
+    "meaning": "speaking or representing the truth"
+  },
+  {
+    "id": 99,
+    "level": 5,
+    "type": "synonym",
+    "prompt": "recalcitrant",
+    "options": [
+      "obedient",
+      "compliant",
+      "submissive",
+      "defiant"
+    ],
+    "answerIndex": 3,
+    "explanation": "Defiant is a synonym of recalcitrant.",
+    "meaning": "stubbornly resistant to authority or discipline"
+  },
+  {
+    "id": 100,
+    "level": 5,
+    "type": "antonym",
+    "prompt": "insipid",
+    "options": [
+      "bland",
+      "tasteless",
+      "vibrant",
+      "dull"
+    ],
+    "answerIndex": 2,
+    "explanation": "Vibrant is an antonym of insipid.",
+    "meaning": "lacking flavour, interest, or vigor"
+  }
+]

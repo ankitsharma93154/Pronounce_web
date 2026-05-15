@@ -79,6 +79,7 @@ body {
     color 0.3s;
   min-height: 100vh;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -95,6 +96,9 @@ body.dark {
   width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
+}
+.app-content{
+  min-height: 100vh;
 }
 .header {
   position: fixed;
@@ -798,7 +802,7 @@ body.dark {
 .ipa-help-line {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  color: var(--primary);
   gap: 0.35rem;
   margin-top: 0.5rem;
   font-size: 0.88rem;
@@ -809,8 +813,8 @@ body.dark {
   color: var(--primary-hover);
   text-decoration: none;
   transition: color 0.2s;
-  font-weight: 600;
 }
+
 .ipa-help-link:hover {
   color: var(--primary);
 }
@@ -1273,6 +1277,7 @@ body.dark .accent-tag {
   padding: 2rem 0;
   color: var(--text-secondary);
   bottom: 0;
+  margin-top: auto;
 }
 .footer .container {
   display: flex;

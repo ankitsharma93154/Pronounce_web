@@ -9,7 +9,7 @@
 .blog-header,
 .call-to-action {
   text-align: center;
-  color: #fff;
+  color: var(--text-on-primary, #fff);
 }
 .pronunciation-blog {
   max-width: 1200px;
@@ -55,11 +55,13 @@
 .blog-header h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  color: var(--text-on-primary, #fff);
 }
 .blog-header h2 {
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 2rem;
+  color: var(--text-on-primary, #fff);
 }
 .header-graphic {
   max-width: 600px;

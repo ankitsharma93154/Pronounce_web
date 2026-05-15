@@ -1,0 +1,54 @@
+.qz-page {
+  font-family: inherit;
+}
+
+.qz-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.qz-grid--active {
+  align-items: stretch;
+}
+
+.qz-panel {
+  background: var(--bg-primary, white);
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg, 0 6px 20px rgba(0, 0, 0, 0.08));
+  padding: 18px;
+}
+
+.qz-panel--hero {
+  padding: 20px 22px;
+}
+.qz-panel--side {
+  padding: 18px;
+}
+
+@media (max-width: 980px) {
+  .qz-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .qz-panel--side {
+    position: static;
+    width: 100%;
+  }
+
+  .qz-panel--hero {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .qz-grid {
+    gap: 12px;
+  }
+
+  .qz-panel {
+    padding: 12px;
+  }
+}

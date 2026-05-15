@@ -49,6 +49,8 @@ const MinimalPairsTrainingPlan = lazy(
 const TheVsTheePronunciation = lazy(
   () => import("./pages/blog/the-vs-thee-pronunciation"),
 );
+const QuizHubPage = lazy(() => import("./pages/quiz/Quiz"));
+const QuizSlugPage = lazy(() => import("./pages/quiz/QuizSlug"));
 // Loading component with reserved space to reduce route-level layout shifts.
 const Loading = () => (
   <div className="loading loading--route" role="status" aria-live="polite">
@@ -84,82 +86,88 @@ const App = () => {
       <AnalyticsTracker />
       <div className="app">
         <Header />
-
-        <ErrorBoundary>
-          <Suspense fallback={<Loading />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/faq" element={<FAQPage />} />
-              <Route path="/about" element={<AboutUs />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/support" element={<Support />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route
-                path="/terms-and-conditions"
-                element={<TermsAndConditions />}
-              />
-              <Route path="/disclaimer" element={<Disclaimer />} />
-              <Route path="/advertise" element={<Advertise />} />
-              <Route path="*" element={<NotFound />} />
-              <Route path="/blog" element={<BlogPosts />} />
-              <Route
-                path="/blog/pronunciation-guide"
-                element={<PronunciationGuide />}
-              />
-              <Route
-                path="/blog/pronunciation-tips"
-                element={<PronunciationBlog />}
-              />
-              <Route
-                path="/blog/american-vs-british"
-                element={<PronunciationComparison />}
-              />
-              <Route path="/blog/ipa-guide" element={<IPA_GUIDE />} />
-              <Route path="/blog/silent-letters" element={<SilentKillers />} />
-              <Route
-                path="/blog/IPA-guide"
-                element={<Navigate to="/blog/ipa-guide" replace />}
-              />
-              <Route
-                path="/blog/ultimate-guide-to-ipa"
-                element={<Navigate to="/blog/ipa-guide" replace />}
-              />
-              <Route
-                path="/blog/SilentLetters"
-                element={<Navigate to="/blog/silent-letters" replace />}
-              />
-              <Route
-                path="/blog/silent-letters-pronunciation-guide"
-                element={<Navigate to="/blog/silent-letters" replace />}
-              />
-              <Route path="/blog/ielts" element={<IELTSBlog />} />
-              <Route
-                path="/blog/schwa-sound-guide"
-                element={<SchwaSoundGuide />}
-              />
-              <Route
-                path="/blog/ed-endings-pronunciation"
-                element={<EdEndingsPronunciation />}
-              />
-              <Route
-                path="/blog/connected-speech-guide"
-                element={<ConnectedSpeechGuide />}
-              />
-              <Route
-                path="/blog/word-stress-rules-guide"
-                element={<WordStressRulesGuide />}
-              />
-              <Route
-                path="/blog/minimal-pairs-training-plan"
-                element={<MinimalPairsTrainingPlan />}
-              />
-              <Route
-                path="/blog/the-vs-thee-pronunciation"
-                element={<TheVsTheePronunciation />}
-              />
-            </Routes>
-          </Suspense>
-        </ErrorBoundary>
+        <main className="app-content">
+          <ErrorBoundary>
+            <Suspense fallback={<Loading />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/faq" element={<FAQPage />} />
+                <Route path="/about" element={<AboutUs />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/support" element={<Support />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route
+                  path="/terms-and-conditions"
+                  element={<TermsAndConditions />}
+                />
+                <Route path="/disclaimer" element={<Disclaimer />} />
+                <Route path="/advertise" element={<Advertise />} />
+                <Route path="*" element={<NotFound />} />
+                <Route path="/blog" element={<BlogPosts />} />
+                <Route
+                  path="/blog/pronunciation-guide"
+                  element={<PronunciationGuide />}
+                />
+                <Route
+                  path="/blog/pronunciation-tips"
+                  element={<PronunciationBlog />}
+                />
+                <Route
+                  path="/blog/american-vs-british"
+                  element={<PronunciationComparison />}
+                />
+                <Route path="/blog/ipa-guide" element={<IPA_GUIDE />} />
+                <Route
+                  path="/blog/silent-letters"
+                  element={<SilentKillers />}
+                />
+                <Route
+                  path="/blog/IPA-guide"
+                  element={<Navigate to="/blog/ipa-guide" replace />}
+                />
+                <Route
+                  path="/blog/ultimate-guide-to-ipa"
+                  element={<Navigate to="/blog/ipa-guide" replace />}
+                />
+                <Route
+                  path="/blog/SilentLetters"
+                  element={<Navigate to="/blog/silent-letters" replace />}
+                />
+                <Route
+                  path="/blog/silent-letters-pronunciation-guide"
+                  element={<Navigate to="/blog/silent-letters" replace />}
+                />
+                <Route path="/blog/ielts" element={<IELTSBlog />} />
+                <Route
+                  path="/blog/schwa-sound-guide"
+                  element={<SchwaSoundGuide />}
+                />
+                <Route
+                  path="/blog/ed-endings-pronunciation"
+                  element={<EdEndingsPronunciation />}
+                />
+                <Route
+                  path="/blog/connected-speech-guide"
+                  element={<ConnectedSpeechGuide />}
+                />
+                <Route
+                  path="/blog/word-stress-rules-guide"
+                  element={<WordStressRulesGuide />}
+                />
+                <Route
+                  path="/blog/minimal-pairs-training-plan"
+                  element={<MinimalPairsTrainingPlan />}
+                />
+                <Route
+                  path="/blog/the-vs-thee-pronunciation"
+                  element={<TheVsTheePronunciation />}
+                />
+                <Route path="/quiz" element={<QuizHubPage />} />
+                <Route path="/quiz/:slug" element={<QuizSlugPage />} />
+              </Routes>
+            </Suspense>
+          </ErrorBoundary>
+        </main>
 
         <Footer />
       </div>

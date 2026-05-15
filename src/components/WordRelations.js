@@ -39,7 +39,9 @@ const WordRelations = ({ synonyms, antonyms, onToggle, pronounce }) => {
   return (
     <>
       <div className="control-group">
-        <label className="control-label">Word Relations</label>
+        <div className="control-label" role="heading" aria-level="3">
+          Word Relations
+        </div>
         <div className="voice-buttons">
           <button
             onClick={() => handleToggle(true)}
