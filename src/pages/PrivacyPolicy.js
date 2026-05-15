@@ -69,21 +69,6 @@ const PrivacyPolicy = () => {
         <section className="pp-section">
           <h2 className="pp-section-title">3. How We Use Your Information</h2>
           <p className="pp-text">
-            This Site is affiliated with Monumetric (dba for The Blogger
-            Network, LLC) for the purposes of placing advertising on the Site,
-            and Monumetric will collect and use certain data for advertising
-            purposes. To learn more about Monumetric’s data usage, click here:{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="http://www.monumetric.com/publisher-advertising-privacy"
-              className="pp-link"
-            >
-              Publisher Advertising Privacy
-            </a>
-            .
-          </p>
-          <p className="pp-text">
             The information we collect is used for the following purposes:
           </p>
           <ul className="pp-list">
