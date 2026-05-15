@@ -209,6 +209,21 @@ For long-term maintainability, keep README concise and move deep details to docs
 
 - Updated files were checked with JSX/CSS diagnostics and reported no errors.
 
+## Project Updates (2026-05-15)
+
+### Sitemap Update
+
+- Updated `public/sitemap.xml` and `build/sitemap.xml` to include the new quiz routes:
+  - `/quiz`
+  - `/quiz/synonyms`
+  - `/quiz/antonyms`
+- Last modified: 2026-05-15
+- Files changed: `public/sitemap.xml`, `build/sitemap.xml` (see repository `Pronounce_web/public` and `Pronounce_web/build`)
+
+### Notes
+
+- These sitemap entries help crawlers discover the new quiz hub and quiz pages. If you publish a new build or deploy to production, verify the sitemap served at the site root reflects these updates.
+
 ## Project Updates (2026-04-15)
 
 ### Advertise Page Launch
