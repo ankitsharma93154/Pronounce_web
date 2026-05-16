@@ -51,6 +51,13 @@ const TheVsTheePronunciation = lazy(
 );
 const QuizHubPage = lazy(() => import("./pages/quiz/Quiz"));
 const QuizSlugPage = lazy(() => import("./pages/quiz/QuizSlug"));
+
+// Bootstrap GA at module load time — before any React effects can fire.
+// This gives the async script the maximum possible head-start so that
+// the first trackPageView call (which happens in AnalyticsTracker on
+// mount) finds GA ready, or at worst queues correctly.
+bootstrapAnalytics();
+
 // Loading component with reserved space to reduce route-level layout shifts.
 const Loading = () => (
   <div className="loading loading--route" role="status" aria-live="polite">
@@ -61,10 +68,6 @@ const Loading = () => (
 const AnalyticsTracker = () => {
   const location = useLocation();
   const lastTrackedPath = useRef("");
-
-  useEffect(() => {
-    bootstrapAnalytics();
-  }, []);
 
   useEffect(() => {
     const currentPath = `${location.pathname}${location.search}${location.hash}`;
