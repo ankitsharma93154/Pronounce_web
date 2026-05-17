@@ -66,8 +66,8 @@ const AboutUs = () => {
               There were days when I wanted to shut it down and try something
               else, but I stayed with it and it was worth it. If QuickPronounce
               has helped you in any way, feel free to email me directly at{" "}
-              <strong>hello@quickpronounce.site</strong>. Any feedback is truly
-              appreciated.
+              <strong>hello@quickpronounce.site </strong>
+              to share your thoughts. Any feedback is truly appreciated.
             </p>
           </div>
         </section>

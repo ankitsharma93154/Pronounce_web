@@ -183,7 +183,7 @@ const FAQPage = () => {
         id: "faq-105",
         question: "Can I get pronunciation audio for multiple accents?",
         answer:
-          "Yes — choose between American, British, Australian, and Indian English to hear how pronunciation changes across accents. Comparing accents helps with listening flexibility and speaking accuracy.",
+          "Yes, you can choose between American, British, Australian, and Indian English to hear how pronunciation changes across accents. Comparing accents helps with listening flexibility and speaking accuracy.",
         icon: "🌎",
         category: "Features",
       },

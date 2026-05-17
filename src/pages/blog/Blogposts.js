@@ -278,37 +278,6 @@ const BlogPosts = () => {
           </ol>
         </section>
 
-        <section className="blog-hub-section" aria-labelledby="hub-study-plan">
-          <h2 id="hub-study-plan">30-Day Blog-Based Study Plan</h2>
-          <p>
-            This blog can function as a full self-study syllabus when used with
-            deliberate practice. Use a short daily session and one weekly review
-            block to track improvements.
-          </p>
-          <ul>
-            <li>
-              <strong>Week 1:</strong> IPA, basic stress, and the core
-              mispronounced word guide.
-            </li>
-            <li>
-              <strong>Week 2:</strong> accent comparison and contrast drills for
-              difficult sound pairs.
-            </li>
-            <li>
-              <strong>Week 3:</strong> connected speech, schwa, and rhythm-based
-              listening practice.
-            </li>
-            <li>
-              <strong>Week 4:</strong> roleplay transfer for interviews, calls,
-              and real classroom or workplace speaking scenarios.
-            </li>
-          </ul>
-          <p>
-            Measure progress by intelligibility, not perfection. Ask one simple
-            question each week: do listeners ask me to repeat less often?
-          </p>
-        </section>
-
         <section className="blog-hub-section" aria-labelledby="hub-qa">
           <h2 id="hub-qa">Pronunciation Learning FAQ</h2>
           <h3>How many articles should I study per week?</h3>

@@ -135,8 +135,7 @@ body.dark .blog-card-title {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.blog-card-read-time,
-body.dark .blog-header h1 {
+.blog-card-read-time {
   color: var(--primary);
 }
 .blog-card-read-time {
