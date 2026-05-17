@@ -284,3 +284,34 @@ For long-term maintainability, keep README concise and move deep details to docs
 ### Verification
 
 - Updated files were checked with diagnostics and reported no errors.
+
+## Project Updates (2026-05-17)
+
+### SEO micro-enrichments (conservative additions)
+
+- Added small, crawlable Q&A blocks titled "Search Questions & Quick Answers" to multiple high-value blog pages to expand semantic coverage without changing URLs or canonical structure. Files updated include:
+  - `src/pages/blog/pronunciation-guide.js` (SEO micro-note + 3 Q&As)
+  - `src/pages/blog/IPA_Guide.js` (2 Q&As)
+  - `src/pages/blog/schwa-sound-guide.js` (4 Q&As)
+  - `src/pages/blog/word-stress-rules-guide.js` (2 Q&As)
+  - `src/pages/blog/AmericanVsBritish.js` (audio note + 2 Q&As)
+  - `src/pages/blog/minimal-pairs-training-plan.js` (2 Q&As)
+
+- Inserted six query-driven FAQ entries into `src/pages/faqs.js` (IDs `faq-100`..`faq-105`) sourced from recent Google Search Console data; these are exposed in the page FAQ schema.
+
+- Repeated, conservative references to the product (`QuickPronounce`) and phrases such as "pronounce words audio", "free pronunciation audio", and "IPA with audio" across the updated pages to reinforce high-intent keyword themes.
+
+### Why this approach
+
+- Changes are intentionally small and additive (FAQ/Q&A micro-blocks and short notes) to avoid content churn that could affect rankings while broadening semantic coverage for targeted queries.
+
+### Next steps (recommended)
+
+- Generate a CSV→JSON mapping of the new keyword insertions and the exact file locations for auditability (`public/csv_data/search_query_mapping.json`).
+- Add a short SEO intro + FAQ schema to the `/quiz` hub and individual quiz pages to improve discoverability for practice-related queries.
+- Add contextual internal links from the Home page to the prioritized blog posts updated above (hero/link panels). Keep anchor text conservative and intent-aligned.
+- Run visual QA in light/dark mode and across mobile/desktop and capture a few screenshots for verification before committing.
+
+### Audit note
+
+- All edits were applied conservatively and kept away from URLs, routing, or canonical changes. If you want, I can produce a git diff or a commit summary for exact line-level changes next.

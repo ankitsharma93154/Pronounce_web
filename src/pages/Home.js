@@ -87,7 +87,7 @@ const homeFaqs = [
   {
     question: "How do I pronounce a word correctly?",
     answer:
-      "Type the word, play the pronunciation audio, then repeat it while checking the IPA and syllable stress. Practicing with two accents helps you hear the sound pattern more clearly.",
+      "Type the word, play the pronunciation audio, then repeat it while checking the IPA and syllable stress. Practicing with two accents can help you differentiate between accents and give a deeper understanding of the actual sounds.",
   },
   {
     question: "How do you pronounce words in English?",
@@ -778,10 +778,10 @@ const Home = () => {
                 <div className="home-intent-grid">
                   <div className="home-seo-card">
                     <p>
-                      Start with audio, then check IPA, then repeat aloud while
-                      matching stress and rhythm. This simple sequence helps you
-                      hear the target sound first and reproduce it more
-                      naturally.
+                      First start with the audio, then check IPA, then repeat
+                      aloud while matching stress and rhythm. This simple
+                      sequence can be repeated again to help you hear the target
+                      sound first and then reproduce it more naturally.
                     </p>
                     <ol className="home-intent-steps">
                       <li>Enter the word or phrase you want to pronounce.</li>
@@ -789,8 +789,8 @@ const Home = () => {
                         Play the pronunciation audio in your target accent.
                       </li>
                       <li>
-                        Check the IPA and examples, then repeat the word
-                        naturally.
+                        Check the IPA, meaning and examples, then repeat the
+                        word naturally.
                       </li>
                     </ol>
                   </div>
@@ -798,26 +798,26 @@ const Home = () => {
                   <div className="home-seo-card">
                     <h3>Why learners use this pronunciation tool</h3>
                     <p>
-                      QuickPronounce is built for fast daily practice: hear the
-                      word, compare accents, and use phonetic support without
-                      switching between multiple websites.
+                      QuickPronounce is built for fast daily practice: users can
+                      hear the word, compare accents, and use phonetic support
+                      without switching between multiple websites.
                     </p>
                     <ul className="home-intent-points">
                       <li>
-                        Free pronunciation audio for common, academic, and
-                        tricky words
+                        It provides free pronunciation audio for common,
+                        academic, and tricky words.
                       </li>
                       <li>
-                        IPA phonetic transcription to support pronunciation in
-                        English
+                        IPA phonetic transcription and pronunciation breakdown
+                        to support pronunciation in English.
                       </li>
                       <li>
                         Accent switching for American, British, Australian, and
-                        Indian English
+                        Indian English.
                       </li>
                       <li>
                         Word meanings and examples that make pronunciation
-                        easier to remember
+                        easier to remember.
                       </li>
                     </ul>
                   </div>
@@ -874,21 +874,25 @@ const Home = () => {
                 >
                   Practice & Quizzes
                 </h2>
+
                 <p className="home-guides-subtitle">
-                  Reinforce learning with short quizzes and targeted practice
-                  drills — designed to improve accuracy and listening
-                  discrimination.
+                  Improve pronunciation with interactive quizzes, listening
+                  exercises, and minimal-pair practice. Train your ear,
+                  strengthen sound recognition, and build confidence with short
+                  practice sessions designed for English learners.
                 </p>
+
                 <div className="home-practice-cta">
                   <Link to="/quiz" className="cta-button primary">
                     Try a pronunciation quiz
                   </Link>
+
                   <Link
-                    to="/blog/minimal-pairs-training-plan"
+                    to="/blog/american-vs-british"
                     className="cta-button secondary"
                     style={{ marginLeft: "0.75rem" }}
                   >
-                    Try the minimal-pairs training plan
+                    Compare American & British pronunciation
                   </Link>
                 </div>
               </div>
