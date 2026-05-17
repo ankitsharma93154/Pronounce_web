@@ -1,5 +1,7 @@
 import "../Css/Blog_2.css";
-import BlogArticleTemplate from "../../components/BlogArticleTemplate";
+import BlogArticleTemplate, {
+  BlogSection,
+} from "../../components/BlogArticleTemplate";
 
 const PronunciationGuide = () => {
   const articleSchema = {
@@ -331,7 +333,7 @@ const PronunciationGuide = () => {
             </div>
           </section>
 
-          <section className="words-section">
+          <section className="words-section two-by-two">
             <h2 className="section-title">
               ⚠️ Why These Words Get Mispronounced
             </h2>
@@ -369,7 +371,7 @@ const PronunciationGuide = () => {
             </div>
           </section>
 
-          <section className="words-section">
+          <section className="words-section real-world-section two-by-two">
             <h2 className="section-title">🧪 Real-World Use Cases</h2>
             <p className="section-description">
               Practice the right word groups for the situations you actually
@@ -395,36 +397,73 @@ const PronunciationGuide = () => {
             </ul>
           </section>
 
-          <section className="words-section">
+          <section className="words-section quick-faq-section">
             <h2 className="section-title">❓ Quick FAQ</h2>
-            <h3 className="section-description">
-              Do I need to learn all 50 words at once?
-            </h3>
-            <p>
-              No. Start with 10 words you use weekly, then expand in batches.
-              Focused repetition beats volume.
-            </p>
+            <div className="quick-faq">
+              <div className="faq-item">
+                <h4>Do I need to learn all 50 words at once?</h4>
+                <p>
+                  No. Start with 10 words you use weekly, then expand in
+                  batches. Focused repetition beats volume.
+                </p>
+              </div>
 
-            <h3 className="section-description">
-              Should I prioritize American or British pronunciation?
-            </h3>
-            <p>
-              Choose one accent for speaking consistency, then compare the other
-              accent to improve listening flexibility.
-            </p>
+              <div className="faq-item">
+                <h4>Should I prioritize American or British pronunciation?</h4>
+                <p>
+                  Choose one accent for speaking consistency, then compare the
+                  other accent to improve listening flexibility.
+                </p>
+              </div>
 
-            <h3 className="section-description">
-              How can I measure progress objectively?
-            </h3>
-            <p>
-              Track recording clarity, listener comprehension, and how often you
-              self-correct in real conversation.
-            </p>
+              <div className="faq-item">
+                <h4>How can I measure progress objectively?</h4>
+                <p>
+                  Track recording clarity, listener comprehension, and how often
+                  you self-correct in real conversation.
+                </p>
+              </div>
+            </div>
           </section>
 
           <section className="words-section">
             <h2 className="section-title">📚 References</h2>
-            <ul>
+            <div className="seo-keyword-box" style={{ marginBottom: "1rem" }}>
+              <p
+                style={{ color: "var(--text-secondary)", fontSize: "0.95rem" }}
+              >
+                Quick note: this guide pairs with the free QuickPronounce tool
+                for live audio — use it to{" "}
+                <strong>pronounce words audio</strong>
+                and verify tricky stress patterns. The site acts as a
+                lightweight <strong>pronouncer</strong> for instant checks.
+              </p>
+            </div>
+
+            <BlogSection title="Search Questions & Quick Answers">
+              <h3>How do I pronounce this word?</h3>
+              <p>
+                Type the word into QuickPronounce, play the audio, and check the
+                IPA and syllable stress. Start at slow speed, then shadow at
+                normal speed to build muscle memory.
+              </p>
+
+              <h3>Is pronunciation audio available free online?</h3>
+              <p>
+                Yes — this site provides free pronunciation audio for thousands
+                of words with multiple accents; no sign-up required. Use the
+                accent toggle to compare US/UK/AU/IN variants.
+              </p>
+
+              <h3>How should I compare American and British pronunciations?</h3>
+              <p>
+                Listen to both accents for the same word, note vowel and stress
+                differences, and practice the one that matches your target
+                speaking context. Use examples in this guide to focus on common
+                splits like /ɑː/ vs /æ/.
+              </p>
+            </BlogSection>
+            <ul className="references-list">
               <li>International Phonetic Alphabet (IPA) conventions</li>
               <li>Cambridge and Oxford pronunciation dictionaries</li>
               <li>
@@ -438,39 +477,7 @@ const PronunciationGuide = () => {
             </ul>
           </section>
 
-          <section className="words-section">
-            <h2 className="section-title">📅 30-Day Reinforcement Plan</h2>
-            <p className="section-description">
-              To retain these 50 words, use spaced repetition with speaking
-              transfer. This keeps pronunciation stable beyond short-term
-              memory.
-            </p>
-            <ol>
-              <li>
-                <strong>Days 1-7:</strong> Learn 10 words with audio + sentence
-                usage.
-              </li>
-              <li>
-                <strong>Days 8-14:</strong> Add next 10 words and review week-1
-                words on alternating days.
-              </li>
-              <li>
-                <strong>Days 15-21:</strong> Start contrast practice (easy vs
-                commonly mispronounced form) in rapid pairs.
-              </li>
-              <li>
-                <strong>Days 22-30:</strong> Use words in roleplay tasks:
-                meetings, introductions, presentations, and Q&A responses.
-              </li>
-            </ol>
-            <p>
-              This plan works because it combines repetition, retrieval, and
-              context transfer. You are not only memorizing pronunciation; you
-              are making it available in real-time communication.
-            </p>
-          </section>
-
-          <section className="words-section">
+          <section className="words-section two-by-two">
             <h2 className="section-title">🛠️ Pronunciation Triage System</h2>
             <p className="section-description">
               When time is limited, prioritize words that affect clarity most.

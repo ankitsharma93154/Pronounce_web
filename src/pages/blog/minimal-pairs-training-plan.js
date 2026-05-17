@@ -375,6 +375,18 @@ const MinimalPairsTrainingPlan = () => {
           exactly the kind of progress that listeners notice and trust.
         </p>
       </BlogSection>
+
+      <BlogSection title="Search Questions & Quick Answers">
+        <p>
+          <strong>Does minimal pairs training need special tools?</strong> — No;
+          you can practice with audio from QuickPronounce or simple recorded
+          examples, but the key is consistent discrimination and feedback.
+        </p>
+        <p>
+          <strong>How many minutes per day?</strong> — Ten to fifteen focused
+          minutes is enough when done consistently with recording and review.
+        </p>
+      </BlogSection>
     </BlogArticleTemplate>
   );
 };

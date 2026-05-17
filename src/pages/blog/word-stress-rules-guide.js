@@ -391,6 +391,34 @@ const WordStressRulesGuide = () => {
           in every context that matters.
         </p>
       </BlogSection>
+
+      <BlogSection title="Search Questions & Quick Answers">
+        <p>
+          <strong>How can I tell which syllable to stress?</strong> — Use the
+          simple heuristics in this article (two-syllable nouns vs verbs) and
+          verify with IPA and example audio on QuickPronounce.
+        </p>
+        <p>
+          <strong>Does stress change meaning?</strong> — Yes. Many word pairs
+          change category or meaning depending on stress (REcord vs reCORD).
+        </p>
+        <p>
+          <strong>Should I practice stress in sentences?</strong> — Always.
+          Stress helps at the sentence level; isolated words are useful to build
+          patterns, but real transfer requires sentence practice.
+        </p>
+        <p>
+          <strong>How to pronounce a word in English?</strong> — Start with
+          audio and IPA: hear the word, mark the primary stress, and then
+          practise the word in a short sentence. Use QuickPronounce to check
+          different accents and ensure clarity.
+        </p>
+        <p>
+          <strong>Should I practice stress with quizzes?</strong> — Yes. Short
+          quizzes and minimal-pairs drills help sharpen perception and make
+          stress patterns automatic; try the Quiz hub for focused practice.
+        </p>
+      </BlogSection>
     </BlogArticleTemplate>
   );
 };

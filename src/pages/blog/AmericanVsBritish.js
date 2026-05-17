@@ -542,286 +542,317 @@ const PronunciationComparison = () => {
         buttonHref: "/",
       }}
     >
-      <div className="avb-comparison-blog">
-        <main className="container avb-content">
-          {/* Intro */}
-          <section className="avb-intro-section">
-            <p>
-              The funny thing about American and British English is that the gap
-              between them is <em>smaller</em> than most learners think — and
-              also stranger. It's not random drift. Four phonetic shifts, most
-              of them datable to specific centuries, account for the vast
-              majority of what your ear notices. Once you see the pattern, you
-              stop memorizing exceptions and start predicting them.
-            </p>
-            <p>
-              This guide focuses on <strong>General American (GenAm)</strong>{" "}
-              and <strong>Received Pronunciation (RP)</strong> — the reference
-              accents used in international business, broadcast media, and
-              language education. If someone's from Boston or Glasgow, different
-              rules may apply, but these two are the baseline the rest of the
-              world navigates from.
-            </p>
+      <div style={{ maxWidth: "64rem", margin: "0 auto" }}>
+        <div style={{ marginBottom: "1rem", color: "var(--text-secondary)" }}>
+          <strong>Note:</strong> This comparison pairs well with live audio on
+          QuickPronounce — try listening to the same word in both accents to
+          hear the differences discussed below.
+        </div>
 
-            <div className="avb-tip-box">
-              <span className="avb-tip-icon">🎯</span>
+        <section style={{ marginBottom: "1.25rem" }}>
+          <h3>Search Questions & Quick Answers</h3>
+          <div>
+            <h4>How should I compare American vs British pronunciations?</h4>
+            <p>
+              Listen to the same word in both accents on QuickPronounce, note
+              vowel and /r/ differences, then practice the variant matching your
+              target context.
+            </p>
+          </div>
+          <div>
+            <h4>Will accent differences change meaning?</h4>
+            <p>
+              Not usually. Most differences are accentual, not lexical, but
+              stress or vowel changes can occasionally affect recognition.
+            </p>
+          </div>
+        </section>
+        <div className="avb-comparison-blog">
+          <main className="container avb-content">
+            {/* Intro */}
+            <section className="avb-intro-section">
               <p>
-                <strong>How to use this guide:</strong> Don't try to memorize
-                individual words. Understand the 4 rules below and you'll be
-                able to predict how thousands of words differ — including ones
-                you've never seen before.
+                The funny thing about American and British English is that the
+                gap between them is <em>smaller</em> than most learners think —
+                and also stranger. It's not random drift. Four phonetic shifts,
+                most of them datable to specific centuries, account for the vast
+                majority of what your ear notices. Once you see the pattern, you
+                stop memorizing exceptions and start predicting them.
               </p>
-            </div>
-          </section>
+              <p>
+                This guide focuses on <strong>General American (GenAm)</strong>{" "}
+                and <strong>Received Pronunciation (RP)</strong> — the reference
+                accents used in international business, broadcast media, and
+                language education. If someone's from Boston or Glasgow,
+                different rules may apply, but these two are the baseline the
+                rest of the world navigates from.
+              </p>
 
-          {topBannerZoneId && (
-            <SponsoredAdBlock
-              className="blog-inline-ad-wrap"
-              placement="inline"
-            >
-              {renderTopBannerAd()}
-            </SponsoredAdBlock>
-          )}
-
-          {/* Interactive Rule Explorer */}
-          <section className="avb-difference-section">
-            <h2 className="avb-section-title">
-              🗣️ The 4 Fundamental Sound Differences
-            </h2>
-            <p className="avb-section-description">
-              About 90% of the pronunciation differences between American and
-              British English trace back to just four phonetic rules. Tap
-              through each one below, then drill the example words.
-            </p>
-
-            <SoundRuleExplorer />
-          </section>
-
-          {mobileRectangleAdNode && (
-            <SponsoredAdBlock
-              className="blog-mobile-rectangle-ad-wrap"
-              placement="inline"
-            >
-              {mobileRectangleAdNode}
-            </SponsoredAdBlock>
-          )}
-
-          {/* Confusing words table */}
-          <section className="confusing-section">
-            <h2 className="section-title">
-              📚 12 Words That Change Dramatically
-            </h2>
-            <p className="section-description">
-              These words demonstrate multiple sound differences at once — which
-              is exactly what makes them hard. They're grouped by the type of
-              change so patterns are easier to spot.
-            </p>
-
-            <div className="confusing-words-table">
-              <div className="table-header">
-                <span className="col-word">Word</span>
-                <span className="col-am">American (AmE)</span>
-                <span className="col-br">British (BrE)</span>
-                <span className="col-tip">What changed</span>
+              <div className="avb-tip-box">
+                <span className="avb-tip-icon">🎯</span>
+                <p>
+                  <strong>How to use this guide:</strong> Don't try to memorize
+                  individual words. Understand the 4 rules below and you'll be
+                  able to predict how thousands of words differ — including ones
+                  you've never seen before.
+                </p>
               </div>
-              {confusingWords.map((word, index) => (
-                <div key={index} className="table-row">
-                  <span className="col-word word-to-search">{word.word}</span>
-                  <span className="col-am">{word.am}</span>
-                  <span className="col-br">{word.br}</span>
-                  <span className="col-tip">{word.tip}</span>
+            </section>
+
+            {topBannerZoneId && (
+              <SponsoredAdBlock
+                className="blog-inline-ad-wrap"
+                placement="inline"
+              >
+                {renderTopBannerAd()}
+              </SponsoredAdBlock>
+            )}
+
+            {/* Interactive Rule Explorer */}
+            <section className="avb-difference-section">
+              <h2 className="avb-section-title">
+                🗣️ The 4 Fundamental Sound Differences
+              </h2>
+              <p className="avb-section-description">
+                About 90% of the pronunciation differences between American and
+                British English trace back to just four phonetic rules. Tap
+                through each one below, then drill the example words.
+              </p>
+
+              <SoundRuleExplorer />
+            </section>
+
+            {mobileRectangleAdNode && (
+              <SponsoredAdBlock
+                className="blog-mobile-rectangle-ad-wrap"
+                placement="inline"
+              >
+                {mobileRectangleAdNode}
+              </SponsoredAdBlock>
+            )}
+
+            {/* Confusing words table */}
+            <section className="confusing-section">
+              <h2 className="section-title">
+                📚 12 Words That Change Dramatically
+              </h2>
+              <p className="section-description">
+                These words demonstrate multiple sound differences at once —
+                which is exactly what makes them hard. They're grouped by the
+                type of change so patterns are easier to spot.
+              </p>
+
+              <div className="confusing-words-table">
+                <div className="table-header">
+                  <span className="col-word">Word</span>
+                  <span className="col-am">American (AmE)</span>
+                  <span className="col-br">British (BrE)</span>
+                  <span className="col-tip">What changed</span>
                 </div>
-              ))}
-            </div>
-          </section>
+                {confusingWords.map((word, index) => (
+                  <div key={index} className="table-row">
+                    <span className="col-word word-to-search">{word.word}</span>
+                    <span className="col-am">{word.am}</span>
+                    <span className="col-br">{word.br}</span>
+                    <span className="col-tip">{word.tip}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
 
-          {rectangleZoneId && (
-            <SponsoredAdBlock
-              className="blog-rectangle-ad-wrap"
-              placement="bottom"
-            >
-              {renderRectangleAd()}
-            </SponsoredAdBlock>
-          )}
+            {rectangleZoneId && (
+              <SponsoredAdBlock
+                className="blog-rectangle-ad-wrap"
+                placement="bottom"
+              >
+                {renderRectangleAd()}
+              </SponsoredAdBlock>
+            )}
 
-          {/* Practice section */}
-          <section className="conclusion-section">
-            <h2 className="section-title">🎯 How to Practice Effectively</h2>
+            {/* Practice section */}
+            <section className="conclusion-section">
+              <h2 className="section-title">🎯 How to Practice Effectively</h2>
 
-            <div className="practice-tips-grid">
-              <div className="practice-tip-card">
-                <h4>Step 1: One rule at a time</h4>
+              <div className="practice-tips-grid">
+                <div className="practice-tip-card">
+                  <h4>Step 1: One rule at a time</h4>
+                  <p>
+                    Spend a full week on just the rhotic /r/ before touching
+                    anything else. Listen to 20–30 words with that pattern
+                    daily. The goal isn't to know it exists — it's to recognize
+                    it automatically without thinking.
+                  </p>
+                </div>
+                <div className="practice-tip-card">
+                  <h4>Step 2: Use minimal pairs</h4>
+                  <p>
+                    Compare words that differ in one sound only. This trains
+                    your ear to hear distinctions your brain currently treats as
+                    noise. Flashcards with IPA are useful here — seeing the
+                    difference written out reinforces what you're hearing.
+                  </p>
+                </div>
+                <div className="practice-tip-card">
+                  <h4>Step 3: Shadow native speakers</h4>
+                  <p>
+                    Play a short clip of a native speaker, then immediately
+                    repeat it — not word by word, but the whole phrase.
+                    Shadowing forces you to internalize rhythm and intonation
+                    alongside individual sounds. Ten minutes daily beats an hour
+                    once a week.
+                  </p>
+                </div>
+                <div className="practice-tip-card">
+                  <h4>Step 4: Record yourself</h4>
+                  <p>
+                    Say "water," "better," and "schedule" in both accents, then
+                    compare the recording to native speakers on QuickPronounce.
+                    It's uncomfortable at first — but hearing your own voice
+                    reveals things a teacher's correction never quite lands.
+                  </p>
+                </div>
+              </div>
+
+              <div className="avb-tip-box">
+                <span className="avb-tip-icon">⏱️</span>
                 <p>
-                  Spend a full week on just the rhotic /r/ before touching
-                  anything else. Listen to 20–30 words with that pattern daily.
-                  The goal isn't to know it exists — it's to recognize it
-                  automatically without thinking.
+                  <strong>Realistic timeline:</strong> With 15–20 minutes of
+                  focused daily practice, most learners can reliably distinguish
+                  and produce both accents within 2–3 months. Prioritize
+                  recognition first — production follows naturally once your ear
+                  catches up.
                 </p>
               </div>
-              <div className="practice-tip-card">
-                <h4>Step 2: Use minimal pairs</h4>
+            </section>
+
+            {/* Regional variation */}
+            <section className="avb-regional-section">
+              <h2 className="avb-section-title">
+                🌍 Beyond the Standard Accents
+              </h2>
+              <p className="avb-section-description">
+                English has been fragmenting regionally for centuries. The two
+                standard accents in this guide are reference points, not the
+                whole picture. A few variations worth knowing about:
+              </p>
+
+              <div className="avb-regional-grid">
+                <div className="avb-region-card">
+                  <h3>Notable American variations</h3>
+                  <ul className="avb-region-list">
+                    <li>
+                      <strong>New York City:</strong> Older speakers are
+                      non-rhotic — the "pahk the cah" stereotype actually
+                      belongs here as much as Boston. Distinctive vowel shifts
+                      in words like "coffee."
+                    </li>
+                    <li>
+                      <strong>Southern States:</strong> Vowel lengthening,
+                      distinctive diphthongs, and the pin-pen merger (/ɪ/ and
+                      /ɛ/ collapse before nasal consonants).
+                    </li>
+                    <li>
+                      <strong>Boston:</strong> Non-rhotic like RP — one of the
+                      few American dialects that dropped the /r/.
+                    </li>
+                    <li>
+                      <strong>AAVE:</strong> Systematic grammatical and
+                      phonological features with significant cultural influence
+                      on mainstream American English.
+                    </li>
+                  </ul>
+                </div>
+                <div className="avb-region-card">
+                  <h3>Notable British variations</h3>
+                  <ul className="avb-region-list">
+                    <li>
+                      <strong>Cockney (East London):</strong> Th-fronting (/θ/ →
+                      /f/), glottal stops replacing /t/, rhyming slang. "Water"
+                      becomes "wa'er."
+                    </li>
+                    <li>
+                      <strong>Scottish English:</strong> Rhotic — like General
+                      American, Scottish speakers keep their /r/ after vowels.
+                    </li>
+                    <li>
+                      <strong>Northern England:</strong> Uses /æ/ in BATH words,
+                      just like Americans. The TRAP-BATH split is a Southern
+                      English phenomenon, not a British one.
+                    </li>
+                    <li>
+                      <strong>Welsh English:</strong> Distinctive intonation
+                      patterns and some consonant differences influenced by
+                      Welsh.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="avb-tip-box avb-regional-tip">
+                <span className="avb-tip-icon">📖</span>
                 <p>
-                  Compare words that differ in one sound only. This trains your
-                  ear to hear distinctions your brain currently treats as noise.
-                  Flashcards with IPA are useful here — seeing the difference
-                  written out reinforces what you're hearing.
+                  <strong>For learners:</strong> Start with GenAm or RP —
+                  they're the most widely intelligible internationally. Regional
+                  varieties get easier once you have a reference point to
+                  compare against.
                 </p>
               </div>
-              <div className="practice-tip-card">
-                <h4>Step 3: Shadow native speakers</h4>
+            </section>
+
+            {/* FAQ */}
+            <section className="faq-section">
+              <h2 className="section-title">❓ Common Questions</h2>
+
+              <div className="faq-item">
+                <h4>Which accent should I learn as a non-native speaker?</h4>
                 <p>
-                  Play a short clip of a native speaker, then immediately repeat
-                  it — not word by word, but the whole phrase. Shadowing forces
-                  you to internalize rhythm and intonation alongside individual
-                  sounds. Ten minutes daily beats an hour once a week.
+                  Follow your input. If you watch mostly American TV and plan to
+                  work in the US, American English is the obvious choice —
+                  you'll already be absorbing it passively. For British,
+                  Australian, or much of European professional contexts, RP is
+                  more useful. Both are globally understood; consistency matters
+                  more than which one you pick.
                 </p>
               </div>
-              <div className="practice-tip-card">
-                <h4>Step 4: Record yourself</h4>
+
+              <div className="faq-item">
+                <h4>Can I mix American and British pronunciation?</h4>
                 <p>
-                  Say "water," "better," and "schedule" in both accents, then
-                  compare the recording to native speakers on QuickPronounce.
-                  It's uncomfortable at first — but hearing your own voice
-                  reveals things a teacher's correction never quite lands.
+                  It happens, especially with learners — but it creates
+                  friction. The issue isn't correctness, it's predictability:
+                  listeners calibrate to your accent in the first few seconds.
+                  Switching mid-conversation makes them work harder. Aim for
+                  consistency within whichever accent you're practicing.
                 </p>
               </div>
-            </div>
 
-            <div className="avb-tip-box">
-              <span className="avb-tip-icon">⏱️</span>
-              <p>
-                <strong>Realistic timeline:</strong> With 15–20 minutes of
-                focused daily practice, most learners can reliably distinguish
-                and produce both accents within 2–3 months. Prioritize
-                recognition first — production follows naturally once your ear
-                catches up.
-              </p>
-            </div>
-          </section>
-
-          {/* Regional variation */}
-          <section className="avb-regional-section">
-            <h2 className="avb-section-title">
-              🌍 Beyond the Standard Accents
-            </h2>
-            <p className="avb-section-description">
-              English has been fragmenting regionally for centuries. The two
-              standard accents in this guide are reference points, not the whole
-              picture. A few variations worth knowing about:
-            </p>
-
-            <div className="avb-regional-grid">
-              <div className="avb-region-card">
-                <h3>Notable American variations</h3>
-                <ul className="avb-region-list">
-                  <li>
-                    <strong>New York City:</strong> Older speakers are
-                    non-rhotic — the "pahk the cah" stereotype actually belongs
-                    here as much as Boston. Distinctive vowel shifts in words
-                    like "coffee."
-                  </li>
-                  <li>
-                    <strong>Southern States:</strong> Vowel lengthening,
-                    distinctive diphthongs, and the pin-pen merger (/ɪ/ and /ɛ/
-                    collapse before nasal consonants).
-                  </li>
-                  <li>
-                    <strong>Boston:</strong> Non-rhotic like RP — one of the few
-                    American dialects that dropped the /r/.
-                  </li>
-                  <li>
-                    <strong>AAVE:</strong> Systematic grammatical and
-                    phonological features with significant cultural influence on
-                    mainstream American English.
-                  </li>
-                </ul>
+              <div className="faq-item">
+                <h4>
+                  Why does spelling differ (color/colour, realize/realise)?
+                </h4>
+                <p>
+                  Noah Webster deliberately reformed American spelling in the
+                  early 1800s to make it more phonetic and to give the new
+                  country a distinct linguistic identity. British spelling had
+                  already started standardizing in a different direction. The
+                  two systems then hardened separately — pronunciation and
+                  spelling evolved independently from that point.
+                </p>
               </div>
-              <div className="avb-region-card">
-                <h3>Notable British variations</h3>
-                <ul className="avb-region-list">
-                  <li>
-                    <strong>Cockney (East London):</strong> Th-fronting (/θ/ →
-                    /f/), glottal stops replacing /t/, rhyming slang. "Water"
-                    becomes "wa'er."
-                  </li>
-                  <li>
-                    <strong>Scottish English:</strong> Rhotic — like General
-                    American, Scottish speakers keep their /r/ after vowels.
-                  </li>
-                  <li>
-                    <strong>Northern England:</strong> Uses /æ/ in BATH words,
-                    just like Americans. The TRAP-BATH split is a Southern
-                    English phenomenon, not a British one.
-                  </li>
-                  <li>
-                    <strong>Welsh English:</strong> Distinctive intonation
-                    patterns and some consonant differences influenced by Welsh.
-                  </li>
-                </ul>
+
+              <div className="faq-item">
+                <h4>Do native speakers always follow these rules?</h4>
+                <p>
+                  The rules describe standard accents — they hold for the vast
+                  majority of speakers in each variety. But region, age,
+                  education, and social context all create variation. Think of
+                  them as reliable defaults with predictable exceptions, not
+                  universal laws.
+                </p>
               </div>
-            </div>
-
-            <div className="avb-tip-box avb-regional-tip">
-              <span className="avb-tip-icon">📖</span>
-              <p>
-                <strong>For learners:</strong> Start with GenAm or RP — they're
-                the most widely intelligible internationally. Regional varieties
-                get easier once you have a reference point to compare against.
-              </p>
-            </div>
-          </section>
-
-          {/* FAQ */}
-          <section className="faq-section">
-            <h2 className="section-title">❓ Common Questions</h2>
-
-            <div className="faq-item">
-              <h4>Which accent should I learn as a non-native speaker?</h4>
-              <p>
-                Follow your input. If you watch mostly American TV and plan to
-                work in the US, American English is the obvious choice — you'll
-                already be absorbing it passively. For British, Australian, or
-                much of European professional contexts, RP is more useful. Both
-                are globally understood; consistency matters more than which one
-                you pick.
-              </p>
-            </div>
-
-            <div className="faq-item">
-              <h4>Can I mix American and British pronunciation?</h4>
-              <p>
-                It happens, especially with learners — but it creates friction.
-                The issue isn't correctness, it's predictability: listeners
-                calibrate to your accent in the first few seconds. Switching
-                mid-conversation makes them work harder. Aim for consistency
-                within whichever accent you're practicing.
-              </p>
-            </div>
-
-            <div className="faq-item">
-              <h4>Why does spelling differ (color/colour, realize/realise)?</h4>
-              <p>
-                Noah Webster deliberately reformed American spelling in the
-                early 1800s to make it more phonetic and to give the new country
-                a distinct linguistic identity. British spelling had already
-                started standardizing in a different direction. The two systems
-                then hardened separately — pronunciation and spelling evolved
-                independently from that point.
-              </p>
-            </div>
-
-            <div className="faq-item">
-              <h4>Do native speakers always follow these rules?</h4>
-              <p>
-                The rules describe standard accents — they hold for the vast
-                majority of speakers in each variety. But region, age,
-                education, and social context all create variation. Think of
-                them as reliable defaults with predictable exceptions, not
-                universal laws.
-              </p>
-            </div>
-          </section>
-        </main>
+            </section>
+          </main>
+        </div>
       </div>
     </BlogArticleTemplate>
   );

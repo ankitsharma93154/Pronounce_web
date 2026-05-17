@@ -38,7 +38,9 @@
 }
 .guide-content {
   padding: 2rem 1rem;
-  max-width: 64rem;
+  /* Use available viewport width while keeping comfortable margins */
+  width: min(1200px, calc(100% - 4rem));
+  margin: 0 auto;
 }
 .seo-rich-box,
 .tip-box,
@@ -98,6 +100,98 @@
 .words-section {
   margin-bottom: 3rem;
 }
+
+/* removed .sections-grid to keep word-category sections stacked */
+
+.references-list {
+  list-style: none;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  border-radius: 8px;
+}
+
+.references-list li {
+  color: var(--text-secondary);
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.references-list li:last-child {
+  border-bottom: none;
+}
+
+/* Real world usage and quick FAQ styling */
+.real-world-section ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.real-world-section ul li {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  color: var(--text-secondary);
+}
+
+.quick-faq {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.quick-faq .faq-item {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Ensure dark mode adapts */
+body.dark .quick-faq .faq-item,
+body.dark .real-world-section ul li {
+  background: var(--bg-dark);
+  border-color: var(--border-dark);
+  color: var(--text-secondary);
+}
+
+/* Two-by-two grid for targeted sections (specific subsections only) */
+.two-by-two .tips-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.two-by-two .real-world-section ul {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .two-by-two .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .two-by-two .real-world-section ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Left-align section titles and subtitles for targeted sections */
+.two-by-two .section-title {
+  text-align: left;
+}
+
+.two-by-two .section-description {
+  text-align: left;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
 .section-title {
   font-size: 2rem;
   color: var(--primary);
@@ -129,7 +223,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 .word-card:hover {
   transform: translateY(-5px);
@@ -280,7 +376,9 @@ body.dark .word-card .tip-box .tip-icon {
   padding: 1rem 2rem;
   border-radius: 8px;
   font-size: 1.2rem;
-  transition: background-color var(--transition), color var(--transition),
+  transition:
+    background-color var(--transition),
+    color var(--transition),
     transform var(--transition);
 }
 .cta-button:hover {

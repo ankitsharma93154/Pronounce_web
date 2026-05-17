@@ -910,6 +910,45 @@ const IPAGuide = () => {
             </div>
           </section>
 
+          <section className="ipa-search-qa">
+            <h2>Search Questions & Quick Answers</h2>
+
+            <div className="ipa-faq-item">
+              <h4>How do I read IPA for a single word?</h4>
+              <p>
+                Find the primary stress mark (ˈ) first, count schwas (/ə/), then
+                decode vowel symbols. Use audio to confirm what the symbols
+                indicate.
+              </p>
+            </div>
+
+            <div className="ipa-faq-item">
+              <h4>Where can I hear IPA examples with audio?</h4>
+              <p>
+                Use QuickPronounce to see IPA alongside audio in multiple
+                accents — it pairs the transcription with real audio so you can
+                hear the symbol in context.
+              </p>
+            </div>
+
+            <div className="ipa-faq-item">
+              <h4>Will learning IPA help me pronounce names and brands?</h4>
+              <p>
+                Yes. IPA removes guessing for non-phonetic spellings and helps
+                you spot stress and vowel quality even for unusual words.
+              </p>
+            </div>
+
+            <div className="ipa-faq-item">
+              <h4>Where can I get pronunciation audio alongside IPA?</h4>
+              <p>
+                Use QuickPronounce to view IPA with synchronized audio in
+                multiple accents. It's a quick way to compare how a symbol
+                sounds across dialects and confirm transcription accuracy.
+              </p>
+            </div>
+          </section>
+
           {/* ── CONCLUSION ────────────────────────────────────────── */}
           <section className="ipa-conclusion">
             <h2>The short version</h2>

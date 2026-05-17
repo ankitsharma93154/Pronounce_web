@@ -434,6 +434,22 @@ const ConnectedSpeechGuide = () => {
           your overall fluency impression rises in every context that matters.
         </p>
       </BlogSection>
+
+      <BlogSection title="Search Questions & Quick Answers">
+        <p>
+          <strong>How long to notice connected speech improvements?</strong> —
+          With consistent short drills, many learners notice better flow in 2–4
+          weeks.
+        </p>
+        <p>
+          <strong>Is connected speech appropriate for exams?</strong> — Yes; use
+          clear linking and avoid heavy slang reductions in formal exams.
+        </p>
+        <p>
+          <strong>Where can I hear examples?</strong> — Use QuickPronounce audio
+          examples to compare careful vs connected speech recordings.
+        </p>
+      </BlogSection>
     </BlogArticleTemplate>
   );
 };

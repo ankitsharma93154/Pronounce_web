@@ -138,6 +138,55 @@ const FAQPage = () => {
         icon: "✉️",
         category: "Support",
       },
+      // --- Query-driven additions (from Google Search Console) ---
+      {
+        id: "faq-100",
+        question: "How do I pronounce this word?",
+        answer:
+          "Type the word into the search box and press Pronounce. Listen to the audio, check the IPA transcription and syllable stress, then repeat. Use the accent toggle to compare US/UK/AU/IN variants.",
+        icon: "🔊",
+        category: "Learning",
+      },
+      {
+        id: "faq-101",
+        question: "How do you say a word in English?",
+        answer:
+          "Enter the word and play the pronunciation audio. For clarity, view the IPA and example sentences. Try slow speed first, then shadow at normal speed.",
+        icon: "🗣️",
+        category: "Learning",
+      },
+      {
+        id: "faq-102",
+        question: "How to pronounce a word in English?",
+        answer:
+          "Use our tool to hear native-like audio and see phonetic transcription. If unsure about stress or vowel length, check the example sentences and compare accents.",
+        icon: "📘",
+        category: "Learning",
+      },
+      {
+        id: "faq-103",
+        question: "Where can I get pronunciation audio free online?",
+        answer:
+          "QuickPronounce provides free pronunciation audio for words in multiple accents with no sign-up required. Use the audio controls and IPA to learn accurate pronunciation quickly.",
+        icon: "💸",
+        category: "Tools",
+      },
+      {
+        id: "faq-104",
+        question: "Is there an online pronunciation tool or app?",
+        answer:
+          "Yes. QuickPronounce is an online pronunciation tool optimized for desktop and mobile. It delivers instant audio, IPA transcription, and accent comparison to help learners practice anywhere.",
+        icon: "📱",
+        category: "Tools",
+      },
+      {
+        id: "faq-105",
+        question: "Can I get pronunciation audio for multiple accents?",
+        answer:
+          "Yes — choose between American, British, Australian, and Indian English to hear how pronunciation changes across accents. Comparing accents helps with listening flexibility and speaking accuracy.",
+        icon: "🌎",
+        category: "Features",
+      },
     ],
     [],
   );

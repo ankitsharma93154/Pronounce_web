@@ -863,6 +863,35 @@ const Home = () => {
                   ))}
                 </div>
               </div>
+
+              <div
+                className="home-seo-panel"
+                aria-labelledby="home-practice-title"
+              >
+                <h2
+                  className="about-page-section-title"
+                  id="home-practice-title"
+                >
+                  Practice & Quizzes
+                </h2>
+                <p className="home-guides-subtitle">
+                  Reinforce learning with short quizzes and targeted practice
+                  drills — designed to improve accuracy and listening
+                  discrimination.
+                </p>
+                <div className="home-practice-cta">
+                  <Link to="/quiz" className="cta-button primary">
+                    Try a pronunciation quiz
+                  </Link>
+                  <Link
+                    to="/blog/minimal-pairs-training-plan"
+                    className="cta-button secondary"
+                    style={{ marginLeft: "0.75rem" }}
+                  >
+                    Try the minimal-pairs training plan
+                  </Link>
+                </div>
+              </div>
             </div>
           </section>
 
