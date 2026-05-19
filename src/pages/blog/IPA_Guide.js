@@ -2,15 +2,14 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "../Css/IPA_Guide.css";
 import BlogArticleTemplate from "../../components/BlogArticleTemplate";
-import AdcashLeaderboard728x90 from "../../components/ads/AdcashLeaderboard728x90";
-import AdcashBanner300x100 from "../../components/ads/AdcashBanner300x100";
-import AdcashRectangle300x250 from "../../components/ads/AdcashRectangle300x250";
+// Legacy Adcash imports kept for rollback while the AdSense migration is verified.
+import LeaderboardAd from "../../components/ads/LeaderboardAd";
+import MediumRectangleAd from "../../components/ads/MediumRectangleAd";
 import SponsoredAdBlock from "../../components/ads/SponsoredAdBlock";
 import IPA_img from "../../images/blogs/ipa-guide/IPA_GUIDE_img.webp";
 
-const LEADERBOARD_728_ZONE_ID = "11183662";
-const BANNER_300X100_ZONE_ID = "11183682";
-const RECTANGLE_300X250_ZONE_ID = "11183698";
+const BLOG_HORIZONTAL_SLOT = "9685031904";
+const BLOG_SQUARE_SLOT = "6293793254";
 
 const IPASymbolCard = ({ symbol, example, description }) => (
   <div className="ipa-symbol-card">
@@ -26,14 +25,13 @@ const IPAGuide = () => {
   );
 
   const topBannerZoneId = useMemo(() => {
-    if (viewportWidth >= 1024) return LEADERBOARD_728_ZONE_ID;
-    if (viewportWidth < 768 && viewportWidth > 0) return BANNER_300X100_ZONE_ID;
+    if (viewportWidth >= 1024) return BLOG_HORIZONTAL_SLOT;
+    if (viewportWidth < 768 && viewportWidth > 0) return BLOG_SQUARE_SLOT;
     return "";
   }, [viewportWidth]);
 
   const mobileRectangleZoneId = useMemo(() => {
-    if (viewportWidth > 0 && viewportWidth < 768)
-      return RECTANGLE_300X250_ZONE_ID;
+    if (viewportWidth > 0 && viewportWidth < 768) return BLOG_SQUARE_SLOT;
     return "";
   }, [viewportWidth]);
 
@@ -41,24 +39,18 @@ const IPAGuide = () => {
     if (!topBannerZoneId) return null;
     if (viewportWidth >= 1024)
       return (
-        <AdcashLeaderboard728x90
-          zoneId={topBannerZoneId}
-          className="blog-inline-ad"
-        />
+        <LeaderboardAd slot={topBannerZoneId} className="blog-inline-ad" />
       );
     return (
-      <AdcashBanner300x100
-        zoneId={topBannerZoneId}
-        className="blog-inline-ad"
-      />
+      <MediumRectangleAd slot={topBannerZoneId} className="blog-inline-ad" />
     );
   };
 
   const renderMobileRectangleAd = () => {
     if (!mobileRectangleZoneId) return null;
     return (
-      <AdcashRectangle300x250
-        zoneId={mobileRectangleZoneId}
+      <MediumRectangleAd
+        slot={mobileRectangleZoneId}
         className="blog-mobile-rectangle-ad"
       />
     );
@@ -586,8 +578,8 @@ const IPAGuide = () => {
               className="leaderboard-ad-wrap container"
               placement="inline"
             >
-              <AdcashLeaderboard728x90
-                zoneId={LEADERBOARD_728_ZONE_ID}
+              <LeaderboardAd
+                slot={BLOG_HORIZONTAL_SLOT}
                 className="blog-inline-ad"
               />
             </SponsoredAdBlock>

@@ -1,10 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "../Css/Blog_3.css";
 import BlogArticleTemplate from "../../components/BlogArticleTemplate";
-import AdcashLeaderboard728x90 from "../../components/ads/AdcashLeaderboard728x90";
-import AdcashBanner300x100 from "../../components/ads/AdcashBanner300x100";
-import AdcashRectangle336x280 from "../../components/ads/AdcashRectangle336x280";
-import AdcashRectangle300x250 from "../../components/ads/AdcashRectangle300x250";
+import LeaderboardAd from "../../components/ads/LeaderboardAd";
+import MediumRectangleAd from "../../components/ads/MediumRectangleAd";
 import SponsoredAdBlock from "../../components/ads/SponsoredAdBlock";
 import im1 from "../../images/blogs/american-vs-british/im1.webp";
 import im2 from "../../images/blogs/american-vs-british/im2.webp";
@@ -12,10 +10,8 @@ import im3 from "../../images/blogs/american-vs-british/im3.webp";
 import im4 from "../../images/blogs/american-vs-british/im4.webp";
 import AmeVsBreThumbnail from "../../images/blogs/american-vs-british/AmeVsBre_thumbnail.webp";
 
-const LEADERBOARD_728_ZONE_ID = "11183662";
-const BANNER_300X100_ZONE_ID = "11183682";
-const RECTANGLE_336X280_ZONE_ID = "11183690";
-const RECTANGLE_300X250_ZONE_ID = "11183698";
+const BLOG_HORIZONTAL_SLOT = "9685031904";
+const BLOG_SQUARE_SLOT = "6293793254";
 
 const imageMap = {
   "rhotic_vs_nonrhotic.webp": im1,
@@ -385,65 +381,39 @@ const PronunciationComparison = () => {
   );
 
   const topBannerZoneId = useMemo(() => {
-    if (viewportWidth >= 1024) return LEADERBOARD_728_ZONE_ID;
-    if (viewportWidth < 768 && viewportWidth > 0) return BANNER_300X100_ZONE_ID;
+    if (viewportWidth >= 1024) return BLOG_HORIZONTAL_SLOT;
+    if (viewportWidth < 768 && viewportWidth > 0) return BLOG_SQUARE_SLOT;
     return "";
   }, [viewportWidth]);
 
   const rectangleZoneId = useMemo(() => {
-    if (viewportWidth >= 1200) return RECTANGLE_336X280_ZONE_ID;
-    if (viewportWidth >= 768) return RECTANGLE_300X250_ZONE_ID;
+    if (viewportWidth >= 1024) return BLOG_HORIZONTAL_SLOT;
+    if (viewportWidth >= 768) return BLOG_HORIZONTAL_SLOT;
     return "";
   }, [viewportWidth]);
 
   const mobileRectangleZoneId = useMemo(() => {
-    if (viewportWidth > 0 && viewportWidth < 768) {
-      return RECTANGLE_300X250_ZONE_ID;
-    }
+    if (viewportWidth > 0 && viewportWidth < 768) return BLOG_SQUARE_SLOT;
     return "";
   }, [viewportWidth]);
 
   const renderTopBannerAd = () => {
     if (!topBannerZoneId) return null;
-    if (viewportWidth >= 1024) {
-      return (
-        <AdcashLeaderboard728x90
-          zoneId={topBannerZoneId}
-          className="blog-inline-ad"
-        />
-      );
-    }
-    return (
-      <AdcashBanner300x100
-        zoneId={topBannerZoneId}
-        className="blog-inline-ad"
-      />
-    );
+    return <LeaderboardAd slot={topBannerZoneId} className="blog-inline-ad" />;
   };
 
   const renderRectangleAd = () => {
     if (!rectangleZoneId) return null;
-    if (viewportWidth >= 1200) {
-      return (
-        <AdcashRectangle336x280
-          zoneId={rectangleZoneId}
-          className="blog-rectangle-ad"
-        />
-      );
-    }
     return (
-      <AdcashRectangle300x250
-        zoneId={rectangleZoneId}
-        className="blog-rectangle-ad"
-      />
+      <LeaderboardAd slot={rectangleZoneId} className="blog-rectangle-ad" />
     );
   };
 
   const renderMobileRectangleAd = () => {
     if (!mobileRectangleZoneId) return null;
     return (
-      <AdcashRectangle300x250
-        zoneId={mobileRectangleZoneId}
+      <MediumRectangleAd
+        slot={mobileRectangleZoneId}
         className="blog-mobile-rectangle-ad"
       />
     );

@@ -1,3 +1,4 @@
+// Deprecated legacy Adcash implementation kept unused for rollback during the AdSense migration.
 import React, { memo, useEffect, useRef, useState } from "react";
 
 const INTERSECTION_ROOT_MARGIN = "320px 0px";

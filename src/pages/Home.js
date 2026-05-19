@@ -18,8 +18,9 @@ import MobileMenu from "../components/mobileMenu";
 import Hero from "../components/hero";
 import InputCard from "../components/inputCard";
 import ResultsCard from "../components/resultCard";
-import AdcashLeaderboard728x90 from "../components/ads/AdcashLeaderboard728x90";
-import AdcashRectangle300x250 from "../components/ads/AdcashRectangle300x250";
+// Legacy Adcash imports kept for rollback while the AdSense migration is verified.
+import LeaderboardAd from "../components/ads/LeaderboardAd";
+import MediumRectangleAd from "../components/ads/MediumRectangleAd";
 import SponsoredAdBlock from "../components/ads/SponsoredAdBlock";
 import ExamplesList from "../components/exampleList";
 import useDebouncedCallback from "../hooks/useDebouncedCallback";
@@ -40,8 +41,10 @@ const CACHE_MAX_ENTRIES = 100;
 const RATE_LIMIT_WINDOW_MS = 1000;
 const MAX_REQUESTS_PER_WINDOW = 2;
 const MAX_WORD_LENGTH = 60;
-const LEADERBOARD_728_ZONE_ID = "11183662";
-const RECTANGLE_300X250_ZONE_ID = "11183698";
+const HOME_BELOW_HEADER_DESKTOP_SLOT = "1333110610";
+const HOME_AFTER_RESULT_DESKTOP_SLOT = "4921687590";
+const HOME_AFTER_RESULT_MOBILE_SLOT = "8397212412";
+const HOME_AFTER_EXAMPLES_MOBILE_SLOT = "7084130741";
 
 // Create and memoize static components
 const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
@@ -158,13 +161,25 @@ const Home = () => {
   const belowFoldRef = useRef(null);
 
   const leaderboardZoneId = useMemo(() => {
-    if (viewportWidth >= 1024) return LEADERBOARD_728_ZONE_ID;
+    if (viewportWidth >= 1024) return HOME_BELOW_HEADER_DESKTOP_SLOT;
     return "";
   }, [viewportWidth]);
 
-  const mobileRectangleZoneId = useMemo(() => {
+  const afterResultDesktopZoneId = useMemo(() => {
+    if (viewportWidth >= 1024) return HOME_AFTER_RESULT_DESKTOP_SLOT;
+    return "";
+  }, [viewportWidth]);
+
+  const afterResultMobileZoneId = useMemo(() => {
     if (viewportWidth > 0 && viewportWidth < 768) {
-      return RECTANGLE_300X250_ZONE_ID;
+      return HOME_AFTER_RESULT_MOBILE_SLOT;
+    }
+    return "";
+  }, [viewportWidth]);
+
+  const afterExamplesMobileZoneId = useMemo(() => {
+    if (viewportWidth > 0 && viewportWidth < 768) {
+      return HOME_AFTER_EXAMPLES_MOBILE_SLOT;
     }
     return "";
   }, [viewportWidth]);
@@ -175,39 +190,41 @@ const Home = () => {
     }
 
     return (
-      <AdcashLeaderboard728x90
-        zoneId={leaderboardZoneId}
-        className="adcash-leaderboard"
+      <LeaderboardAd
+        slot={leaderboardZoneId}
+        className="adsense-leaderboard ad-slot--leaderboard"
       />
     );
   }, [hasPronounced, leaderboardZoneId]);
 
   const alwaysVisibleLeaderboardAdNode = useMemo(() => {
-    if (!leaderboardZoneId) {
+    if (!afterResultDesktopZoneId) {
       return null;
     }
 
     return (
-      <AdcashLeaderboard728x90
-        zoneId={leaderboardZoneId}
-        className="adcash-leaderboard"
+      <LeaderboardAd
+        slot={afterResultDesktopZoneId}
+        className="adsense-leaderboard ad-slot--leaderboard"
       />
     );
-  }, [leaderboardZoneId]);
+  }, [afterResultDesktopZoneId]);
   const belowTipsLeaderboardAdNode = useMemo(() => {
     if (viewportWidth < 1024) {
       return null;
     }
 
     return (
-      <AdcashLeaderboard728x90
-        zoneId={LEADERBOARD_728_ZONE_ID}
-        className="adcash-leaderboard"
+      <LeaderboardAd
+        slot={afterResultDesktopZoneId}
+        className="adsense-leaderboard ad-slot--leaderboard"
       />
     );
-  }, [viewportWidth]);
+  }, [afterResultDesktopZoneId, viewportWidth]);
 
-  const showMobileSquareAds = Boolean(mobileRectangleZoneId);
+  const showMobileSquareAds = Boolean(
+    afterResultMobileZoneId || afterExamplesMobileZoneId,
+  );
 
   const handleRelationToggle = useCallback(
     (type) => {
@@ -654,9 +671,9 @@ const Home = () => {
                 className="mobile-results-rectangle-ad-wrap"
                 placement="inline"
               >
-                <AdcashRectangle300x250
-                  zoneId={mobileRectangleZoneId}
-                  className="mobile-results-rectangle-ad"
+                <MediumRectangleAd
+                  slot={afterResultMobileZoneId}
+                  className="mobile-results-rectangle-ad ad-slot--rectangle"
                 />
               </SponsoredAdBlock>
             )}
@@ -692,9 +709,9 @@ const Home = () => {
           className="mobile-results-rectangle-ad-wrap container"
           placement="bottom"
         >
-          <AdcashRectangle300x250
-            zoneId={mobileRectangleZoneId}
-            className="mobile-results-rectangle-ad"
+          <MediumRectangleAd
+            slot={afterExamplesMobileZoneId}
+            className="mobile-results-rectangle-ad ad-slot--rectangle"
           />
         </SponsoredAdBlock>
       )}

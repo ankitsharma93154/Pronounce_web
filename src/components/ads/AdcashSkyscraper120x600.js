@@ -1,3 +1,4 @@
+// Deprecated legacy Adcash wrapper kept unused for rollback during the AdSense migration.
 import React, { memo } from "react";
 import AdcashSlot from "./AdcashSlot";
 
