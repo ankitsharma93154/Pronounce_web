@@ -161,12 +161,12 @@ const Home = () => {
   const belowFoldRef = useRef(null);
 
   const leaderboardZoneId = useMemo(() => {
-    if (viewportWidth >= 1024) return HOME_BELOW_HEADER_DESKTOP_SLOT;
+    if (viewportWidth >= 768) return HOME_BELOW_HEADER_DESKTOP_SLOT;
     return "";
   }, [viewportWidth]);
 
   const afterResultDesktopZoneId = useMemo(() => {
-    if (viewportWidth >= 1024) return HOME_AFTER_RESULT_DESKTOP_SLOT;
+    if (viewportWidth >= 768) return HOME_AFTER_RESULT_DESKTOP_SLOT;
     return "";
   }, [viewportWidth]);
 
@@ -210,7 +210,7 @@ const Home = () => {
     );
   }, [afterResultDesktopZoneId]);
   const belowTipsLeaderboardAdNode = useMemo(() => {
-    if (viewportWidth < 1024) {
+    if (viewportWidth < 768) {
       return null;
     }
 
@@ -552,14 +552,26 @@ const Home = () => {
   );
 
   useEffect(() => {
+    let resizeTimer = null;
+
     const handleResize = () => {
-      setViewportWidth(window.innerWidth);
-      document.documentElement.style.setProperty(
-        "--app-height",
-        `${window.innerHeight}px`,
-      );
+      // Debounce to avoid rapid viewport toggles during user resize
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setViewportWidth(window.innerWidth);
+        document.documentElement.style.setProperty(
+          "--app-height",
+          `${window.innerHeight}px`,
+        );
+      }, 200);
     };
-    handleResize();
+
+    // Initial set
+    setViewportWidth(window.innerWidth);
+    document.documentElement.style.setProperty(
+      "--app-height",
+      `${window.innerHeight}px`,
+    );
     window.addEventListener("resize", handleResize);
 
     const link = document.createElement("link");
@@ -572,6 +584,7 @@ const Home = () => {
         document.head.removeChild(link);
       }
       window.removeEventListener("resize", handleResize);
+      if (resizeTimer) clearTimeout(resizeTimer);
     };
   }, []);
 

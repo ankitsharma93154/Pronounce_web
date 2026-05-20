@@ -1,9 +1,8 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
 import "../Css/Blog_3.css";
 import BlogArticleTemplate from "../../components/BlogArticleTemplate";
-import LeaderboardAd from "../../components/ads/LeaderboardAd";
-import MediumRectangleAd from "../../components/ads/MediumRectangleAd";
 import SponsoredAdBlock from "../../components/ads/SponsoredAdBlock";
+import ResponsiveBlogAd from "../../components/ads/ResponsiveBlogAd";
 import im1 from "../../images/blogs/american-vs-british/im1.webp";
 import im2 from "../../images/blogs/american-vs-british/im2.webp";
 import im3 from "../../images/blogs/american-vs-british/im3.webp";
@@ -156,7 +155,7 @@ const soundDifferences = [
     ipa: "AmE: /hɑːt/ vs. BrE: /hɒt/",
     imageSrc: "lot_cloth_vowel.webp",
     practicalNote:
-      "For BrE, push your lips slightly forward for /ɒ/. For AmE, relax them completely — jaw drops, lips stay neutral.",
+      "For BrE, push your lips slightly forward for /ɒ/. For AmE, relax them completely. The jaw drops and the lips stay neutral.",
     words: [
       {
         word: "Hot",
@@ -180,7 +179,7 @@ const soundDifferences = [
         word: "Coffee",
         am: "ˈkɑːfi",
         br: "ˈkɒfi",
-        tip: "You'll hear this daily — worth drilling.",
+        tip: "You'll hear this daily, it's worth drilling.",
       },
     ],
   },
@@ -376,58 +375,6 @@ const SoundRuleExplorer = () => {
 };
 
 const PronunciationComparison = () => {
-  const [viewportWidth, setViewportWidth] = useState(() =>
-    typeof window === "undefined" ? 0 : window.innerWidth,
-  );
-
-  const topBannerZoneId = useMemo(() => {
-    if (viewportWidth >= 1024) return BLOG_HORIZONTAL_SLOT;
-    if (viewportWidth < 768 && viewportWidth > 0) return BLOG_SQUARE_SLOT;
-    return "";
-  }, [viewportWidth]);
-
-  const rectangleZoneId = useMemo(() => {
-    if (viewportWidth >= 1024) return BLOG_HORIZONTAL_SLOT;
-    if (viewportWidth >= 768) return BLOG_HORIZONTAL_SLOT;
-    return "";
-  }, [viewportWidth]);
-
-  const mobileRectangleZoneId = useMemo(() => {
-    if (viewportWidth > 0 && viewportWidth < 768) return BLOG_SQUARE_SLOT;
-    return "";
-  }, [viewportWidth]);
-
-  const renderTopBannerAd = () => {
-    if (!topBannerZoneId) return null;
-    return <LeaderboardAd slot={topBannerZoneId} className="blog-inline-ad" />;
-  };
-
-  const renderRectangleAd = () => {
-    if (!rectangleZoneId) return null;
-    return (
-      <LeaderboardAd slot={rectangleZoneId} className="blog-rectangle-ad" />
-    );
-  };
-
-  const renderMobileRectangleAd = () => {
-    if (!mobileRectangleZoneId) return null;
-    return (
-      <MediumRectangleAd
-        slot={mobileRectangleZoneId}
-        className="blog-mobile-rectangle-ad"
-      />
-    );
-  };
-
-  const mobileRectangleAdNode = renderMobileRectangleAd();
-
-  useEffect(() => {
-    const handleResize = () => setViewportWidth(window.innerWidth);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -513,15 +460,18 @@ const PronunciationComparison = () => {
       }}
     >
       <div style={{ maxWidth: "64rem", margin: "0 auto" }}>
-        <div style={{ marginBottom: "1rem", color: "var(--text-secondary)" }}>
-          <strong>Note:</strong> This comparison pairs well with live audio on
-          QuickPronounce — try listening to the same word in both accents to
-          hear the differences discussed below.
+        <div className="avb-note">
+          <strong>Note:</strong>
+          <span>
+            This comparison pairs well with live audio on QuickPronounce, so try
+            listening to the same word in both accents to hear the differences
+            discussed below.
+          </span>
         </div>
 
-        <section style={{ marginBottom: "1.25rem" }}>
+        <section className="avb-qa">
           <h3>Search Questions & Quick Answers</h3>
-          <div>
+          <div className="avb-qa-item">
             <h4>How should I compare American vs British pronunciations?</h4>
             <p>
               Listen to the same word in both accents on QuickPronounce, note
@@ -529,7 +479,7 @@ const PronunciationComparison = () => {
               target context.
             </p>
           </div>
-          <div>
+          <div className="avb-qa-item">
             <h4>Will accent differences change meaning?</h4>
             <p>
               Not usually. Most differences are accentual, not lexical, but
@@ -543,40 +493,44 @@ const PronunciationComparison = () => {
             <section className="avb-intro-section">
               <p>
                 The funny thing about American and British English is that the
-                gap between them is <em>smaller</em> than most learners think —
-                and also stranger. It's not random drift. Four phonetic shifts,
-                most of them datable to specific centuries, account for the vast
-                majority of what your ear notices. Once you see the pattern, you
-                stop memorizing exceptions and start predicting them.
+                gap between them is <em>smaller</em> than most learners think
+                and also stranger. It is not random drift. Just four phonetic
+                shifts, most traceable to specific centuries, explain much of
+                what your ear notices. Once you see the pattern, you stop
+                memorizing exceptions and start predicting them.
               </p>
               <p>
                 This guide focuses on <strong>General American (GenAm)</strong>{" "}
-                and <strong>Received Pronunciation (RP)</strong> — the reference
-                accents used in international business, broadcast media, and
-                language education. If someone's from Boston or Glasgow,
-                different rules may apply, but these two are the baseline the
-                rest of the world navigates from.
+                and <strong>Received Pronunciation (RP)</strong>, the reference
+                accents commonly used in international business, broadcast
+                media, and language education. If someone is from Boston or
+                Glasgow, different patterns may apply, but these two accents
+                remain the baseline that much of the world learns and navigates
+                from.
               </p>
 
               <div className="avb-tip-box">
                 <span className="avb-tip-icon">🎯</span>
                 <p>
-                  <strong>How to use this guide:</strong> Don't try to memorize
-                  individual words. Understand the 4 rules below and you'll be
-                  able to predict how thousands of words differ — including ones
-                  you've never seen before.
+                  <strong>How to use this guide:</strong> Do not try to memorize
+                  individual words. Focus on the four rules below and you will
+                  be able to predict how thousands of words differ, including
+                  words you have never seen before.
                 </p>
               </div>
             </section>
 
-            {topBannerZoneId && (
-              <SponsoredAdBlock
-                className="blog-inline-ad-wrap"
-                placement="inline"
-              >
-                {renderTopBannerAd()}
-              </SponsoredAdBlock>
-            )}
+            <SponsoredAdBlock
+              className="blog-inline-ad-wrap"
+              placement="inline"
+            >
+              <ResponsiveBlogAd
+                desktopSlot={BLOG_HORIZONTAL_SLOT}
+                mobileSlot={BLOG_SQUARE_SLOT}
+                className="blog-inline-ad"
+                mobileClassName="blog-inline-ad"
+              />
+            </SponsoredAdBlock>
 
             {/* Interactive Rule Explorer */}
             <section className="avb-difference-section">
@@ -592,14 +546,17 @@ const PronunciationComparison = () => {
               <SoundRuleExplorer />
             </section>
 
-            {mobileRectangleAdNode && (
-              <SponsoredAdBlock
-                className="blog-mobile-rectangle-ad-wrap"
-                placement="inline"
-              >
-                {mobileRectangleAdNode}
-              </SponsoredAdBlock>
-            )}
+            <SponsoredAdBlock
+              className="blog-mobile-rectangle-ad-wrap"
+              placement="inline"
+            >
+              <ResponsiveBlogAd
+                desktopSlot={BLOG_HORIZONTAL_SLOT}
+                mobileSlot={BLOG_SQUARE_SLOT}
+                className="blog-mobile-rectangle-ad"
+                mobileClassName="blog-mobile-rectangle-ad"
+              />
+            </SponsoredAdBlock>
 
             {/* Confusing words table */}
             <section className="confusing-section">
@@ -607,9 +564,9 @@ const PronunciationComparison = () => {
                 📚 12 Words That Change Dramatically
               </h2>
               <p className="section-description">
-                These words demonstrate multiple sound differences at once —
-                which is exactly what makes them hard. They're grouped by the
-                type of change so patterns are easier to spot.
+                These words demonstrate multiple sound differences at once,
+                which is exactly what makes them challenging. They are grouped
+                by the type of change so the patterns are easier to spot.
               </p>
 
               <div className="confusing-words-table">
@@ -630,14 +587,17 @@ const PronunciationComparison = () => {
               </div>
             </section>
 
-            {rectangleZoneId && (
-              <SponsoredAdBlock
-                className="blog-rectangle-ad-wrap"
-                placement="bottom"
-              >
-                {renderRectangleAd()}
-              </SponsoredAdBlock>
-            )}
+            <SponsoredAdBlock
+              className="blog-rectangle-ad-wrap"
+              placement="bottom"
+            >
+              <ResponsiveBlogAd
+                desktopSlot={BLOG_HORIZONTAL_SLOT}
+                mobileSlot={BLOG_SQUARE_SLOT}
+                className="blog-rectangle-ad"
+                mobileClassName="blog-rectangle-ad"
+              />
+            </SponsoredAdBlock>
 
             {/* Practice section */}
             <section className="conclusion-section">
@@ -647,38 +607,40 @@ const PronunciationComparison = () => {
                 <div className="practice-tip-card">
                   <h4>Step 1: One rule at a time</h4>
                   <p>
-                    Spend a full week on just the rhotic /r/ before touching
-                    anything else. Listen to 20–30 words with that pattern
-                    daily. The goal isn't to know it exists — it's to recognize
-                    it automatically without thinking.
+                    Spend a full week focusing only on the rhotic /r/ before
+                    moving on to anything else. Listen to 20 to 30 words with
+                    that pattern each day. The goal is not just to know that it
+                    exists, but to recognize it automatically without thinking.
                   </p>
                 </div>
                 <div className="practice-tip-card">
                   <h4>Step 2: Use minimal pairs</h4>
                   <p>
-                    Compare words that differ in one sound only. This trains
-                    your ear to hear distinctions your brain currently treats as
-                    noise. Flashcards with IPA are useful here — seeing the
-                    difference written out reinforces what you're hearing.
+                    Compare words that differ by only one sound. This trains
+                    your ear to hear distinctions that your brain may currently
+                    treat as noise. Flashcards with IPA are useful here because
+                    seeing the difference written out reinforces what you are
+                    hearing.
                   </p>
                 </div>
                 <div className="practice-tip-card">
                   <h4>Step 3: Shadow native speakers</h4>
                   <p>
-                    Play a short clip of a native speaker, then immediately
-                    repeat it — not word by word, but the whole phrase.
-                    Shadowing forces you to internalize rhythm and intonation
-                    alongside individual sounds. Ten minutes daily beats an hour
-                    once a week.
+                    Play a short clip of a native speaker and repeat it
+                    immediately, not word by word, but as a complete phrase.
+                    Shadowing helps you internalize rhythm and intonation along
+                    with individual sounds. Ten minutes of daily practice is
+                    more effective than an hour once a week.
                   </p>
                 </div>
                 <div className="practice-tip-card">
                   <h4>Step 4: Record yourself</h4>
                   <p>
                     Say "water," "better," and "schedule" in both accents, then
-                    compare the recording to native speakers on QuickPronounce.
-                    It's uncomfortable at first — but hearing your own voice
-                    reveals things a teacher's correction never quite lands.
+                    compare your recording with native speakers on
+                    QuickPronounce. It may feel uncomfortable at first, but
+                    hearing your own voice often reveals details that a
+                    teacher's correction may not fully capture.
                   </p>
                 </div>
               </div>
@@ -686,11 +648,11 @@ const PronunciationComparison = () => {
               <div className="avb-tip-box">
                 <span className="avb-tip-icon">⏱️</span>
                 <p>
-                  <strong>Realistic timeline:</strong> With 15–20 minutes of
+                  <strong>Realistic timeline:</strong> With 15 to 20 minutes of
                   focused daily practice, most learners can reliably distinguish
-                  and produce both accents within 2–3 months. Prioritize
-                  recognition first — production follows naturally once your ear
-                  catches up.
+                  and produce both accents within 2 to 3 months. Prioritize
+                  recognition first because production often follows naturally
+                  once your ear catches up.
                 </p>
               </div>
             </section>
@@ -711,24 +673,27 @@ const PronunciationComparison = () => {
                   <h3>Notable American variations</h3>
                   <ul className="avb-region-list">
                     <li>
-                      <strong>New York City:</strong> Older speakers are
-                      non-rhotic — the "pahk the cah" stereotype actually
-                      belongs here as much as Boston. Distinctive vowel shifts
-                      in words like "coffee."
+                      <strong>New York City:</strong> Older speakers are often
+                      non rhotic. The "pahk the cah" stereotype belongs here as
+                      much as it does to Boston. The accent also features
+                      distinctive vowel shifts in words like "coffee."
                     </li>
+
                     <li>
-                      <strong>Southern States:</strong> Vowel lengthening,
-                      distinctive diphthongs, and the pin-pen merger (/ɪ/ and
-                      /ɛ/ collapse before nasal consonants).
+                      <strong>Southern States:</strong> Longer vowels,
+                      distinctive diphthongs, and the pin pen merger, where /ɪ/
+                      and /ɛ/ merge before nasal consonants.
                     </li>
+
                     <li>
-                      <strong>Boston:</strong> Non-rhotic like RP — one of the
-                      few American dialects that dropped the /r/.
+                      <strong>Boston:</strong> Non rhotic like RP and one of the
+                      few American dialects to drop the /r/.
                     </li>
+
                     <li>
-                      <strong>AAVE:</strong> Systematic grammatical and
-                      phonological features with significant cultural influence
-                      on mainstream American English.
+                      <strong>AAVE:</strong> Features systematic grammatical and
+                      phonological patterns and has had a significant cultural
+                      influence on mainstream American English.
                     </li>
                   </ul>
                 </div>
@@ -736,23 +701,29 @@ const PronunciationComparison = () => {
                   <h3>Notable British variations</h3>
                   <ul className="avb-region-list">
                     <li>
-                      <strong>Cockney (East London):</strong> Th-fronting (/θ/ →
-                      /f/), glottal stops replacing /t/, rhyming slang. "Water"
-                      becomes "wa'er."
+                      <strong>Cockney (East London):</strong> Features th
+                      fronting, where /θ/ becomes /f/, glottal stops that
+                      replace /t/, and rhyming slang. For example, "water" may
+                      become "wa'er."
                     </li>
+
                     <li>
-                      <strong>Scottish English:</strong> Rhotic — like General
-                      American, Scottish speakers keep their /r/ after vowels.
+                      <strong>Scottish English:</strong> Rhotic, like General
+                      American, meaning Scottish speakers usually keep their /r/
+                      after vowels.
                     </li>
+
                     <li>
                       <strong>Northern England:</strong> Uses /æ/ in BATH words,
-                      just like Americans. The TRAP-BATH split is a Southern
-                      English phenomenon, not a British one.
+                      just like many American accents. The TRAP BATH split is
+                      mainly a Southern English feature rather than a British
+                      wide one.
                     </li>
+
                     <li>
-                      <strong>Welsh English:</strong> Distinctive intonation
-                      patterns and some consonant differences influenced by
-                      Welsh.
+                      <strong>Welsh English:</strong> Features distinctive
+                      intonation patterns and some consonant differences
+                      influenced by Welsh.
                     </li>
                   </ul>
                 </div>
@@ -761,10 +732,10 @@ const PronunciationComparison = () => {
               <div className="avb-tip-box avb-regional-tip">
                 <span className="avb-tip-icon">📖</span>
                 <p>
-                  <strong>For learners:</strong> Start with GenAm or RP —
-                  they're the most widely intelligible internationally. Regional
-                  varieties get easier once you have a reference point to
-                  compare against.
+                  <strong>For learners:</strong> Start with GenAm or RP because
+                  they are the most widely understood accents internationally.
+                  Regional varieties become easier to understand once you have a
+                  reference point for comparison.
                 </p>
               </div>
             </section>
@@ -776,23 +747,24 @@ const PronunciationComparison = () => {
               <div className="faq-item">
                 <h4>Which accent should I learn as a non-native speaker?</h4>
                 <p>
-                  Follow your input. If you watch mostly American TV and plan to
-                  work in the US, American English is the obvious choice —
-                  you'll already be absorbing it passively. For British,
-                  Australian, or much of European professional contexts, RP is
-                  more useful. Both are globally understood; consistency matters
-                  more than which one you pick.
+                  Follow your input. If you mostly watch American TV and plan to
+                  work in the US, American English is the obvious choice because
+                  you will already be absorbing it passively. For British,
+                  Australian, or many European professional contexts, RP may be
+                  more useful. Both are widely understood globally, and
+                  consistency matters more than the accent you choose.
                 </p>
               </div>
 
               <div className="faq-item">
                 <h4>Can I mix American and British pronunciation?</h4>
                 <p>
-                  It happens, especially with learners — but it creates
-                  friction. The issue isn't correctness, it's predictability:
-                  listeners calibrate to your accent in the first few seconds.
-                  Switching mid-conversation makes them work harder. Aim for
-                  consistency within whichever accent you're practicing.
+                  It happens, especially with learners, but it can create
+                  friction. The issue is not correctness but predictability.
+                  Listeners usually adjust to your accent within the first few
+                  seconds. Switching accents during a conversation can make
+                  comprehension more difficult. Aim for consistency within
+                  whichever accent you are practicing.
                 </p>
               </div>
 
@@ -804,20 +776,20 @@ const PronunciationComparison = () => {
                   Noah Webster deliberately reformed American spelling in the
                   early 1800s to make it more phonetic and to give the new
                   country a distinct linguistic identity. British spelling had
-                  already started standardizing in a different direction. The
-                  two systems then hardened separately — pronunciation and
-                  spelling evolved independently from that point.
+                  already begun standardizing in a different direction. The two
+                  systems then developed separately, while pronunciation and
+                  spelling continued to evolve independently.
                 </p>
               </div>
 
               <div className="faq-item">
                 <h4>Do native speakers always follow these rules?</h4>
                 <p>
-                  The rules describe standard accents — they hold for the vast
-                  majority of speakers in each variety. But region, age,
-                  education, and social context all create variation. Think of
-                  them as reliable defaults with predictable exceptions, not
-                  universal laws.
+                  The rules describe standard accents and apply to the vast
+                  majority of speakers in each variety. However, region, age,
+                  education, and social context all contribute to variation.
+                  Think of them as reliable defaults with predictable exceptions
+                  rather than universal laws.
                 </p>
               </div>
             </section>

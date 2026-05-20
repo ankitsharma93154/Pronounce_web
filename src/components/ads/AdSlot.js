@@ -19,9 +19,11 @@ const AdSlot = memo(
     const [isNearViewport, setIsNearViewport] = useState(!lazy);
 
     useEffect(() => {
+      // Reset pushed state when slot or ad configuration changes so a fresh push
+      // is attempted for the new configuration (format / full-width / size).
       hasPushedRef.current = false;
       setIsNearViewport(!lazy);
-    }, [lazy, slot]);
+    }, [lazy, slot, adFormat, fullWidthResponsive, width, height]);
 
     useEffect(() => {
       if (!lazy || isNearViewport) {
@@ -75,13 +77,40 @@ const AdSlot = memo(
         return;
       }
 
-      try {
-        window.adsbygoogle = window.adsbygoogle || [];
-        window.adsbygoogle.push({});
-        hasPushedRef.current = true;
-      } catch (error) {
-        // Leave the slot available for a later retry if AdSense is not ready yet.
+      let attempts = 0;
+      const maxAttempts = 10; // retry for up to ~5s (10 attempts * 500ms)
+      let intervalId = null;
+
+      const tryPush = () => {
+        try {
+          if (!window.adsbygoogle) {
+            return false;
+          }
+
+          window.adsbygoogle.push({});
+          hasPushedRef.current = true;
+          return true;
+        } catch (error) {
+          return false;
+        }
+      };
+
+      // First immediate attempt
+      if (tryPush()) {
+        return;
       }
+
+      // Retry periodically until success or max attempts reached
+      intervalId = setInterval(() => {
+        attempts += 1;
+        if (tryPush() || attempts >= maxAttempts) {
+          clearInterval(intervalId);
+        }
+      }, 500);
+
+      return () => {
+        if (intervalId) clearInterval(intervalId);
+      };
     }, [isNearViewport, slot]);
 
     const wrapperStyle = useMemo(

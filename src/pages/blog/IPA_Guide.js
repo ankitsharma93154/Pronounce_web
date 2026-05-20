@@ -1,11 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../Css/IPA_Guide.css";
 import BlogArticleTemplate from "../../components/BlogArticleTemplate";
-// Legacy Adcash imports kept for rollback while the AdSense migration is verified.
-import LeaderboardAd from "../../components/ads/LeaderboardAd";
-import MediumRectangleAd from "../../components/ads/MediumRectangleAd";
 import SponsoredAdBlock from "../../components/ads/SponsoredAdBlock";
+import ResponsiveBlogAd from "../../components/ads/ResponsiveBlogAd";
 import IPA_img from "../../images/blogs/ipa-guide/IPA_GUIDE_img.webp";
 
 const BLOG_HORIZONTAL_SLOT = "9685031904";
@@ -20,51 +18,6 @@ const IPASymbolCard = ({ symbol, example, description }) => (
 );
 
 const IPAGuide = () => {
-  const [viewportWidth, setViewportWidth] = useState(() =>
-    typeof window === "undefined" ? 0 : window.innerWidth,
-  );
-
-  const topBannerZoneId = useMemo(() => {
-    if (viewportWidth >= 1024) return BLOG_HORIZONTAL_SLOT;
-    if (viewportWidth < 768 && viewportWidth > 0) return BLOG_SQUARE_SLOT;
-    return "";
-  }, [viewportWidth]);
-
-  const mobileRectangleZoneId = useMemo(() => {
-    if (viewportWidth > 0 && viewportWidth < 768) return BLOG_SQUARE_SLOT;
-    return "";
-  }, [viewportWidth]);
-
-  const renderTopBannerAd = () => {
-    if (!topBannerZoneId) return null;
-    if (viewportWidth >= 1024)
-      return (
-        <LeaderboardAd slot={topBannerZoneId} className="blog-inline-ad" />
-      );
-    return (
-      <MediumRectangleAd slot={topBannerZoneId} className="blog-inline-ad" />
-    );
-  };
-
-  const renderMobileRectangleAd = () => {
-    if (!mobileRectangleZoneId) return null;
-    return (
-      <MediumRectangleAd
-        slot={mobileRectangleZoneId}
-        className="blog-mobile-rectangle-ad"
-      />
-    );
-  };
-
-  const mobileRectangleAdNode = renderMobileRectangleAd();
-
-  useEffect(() => {
-    const handleResize = () => setViewportWidth(window.innerWidth);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   // Only the symbols people actually get wrong — not an exhaustive chart
   const trickyConsonants = [
     {
@@ -322,14 +275,14 @@ const IPAGuide = () => {
             </p>
           </section>
 
-          {topBannerZoneId && (
-            <SponsoredAdBlock
-              className="blog-inline-ad-wrap"
-              placement="inline"
-            >
-              {renderTopBannerAd()}
-            </SponsoredAdBlock>
-          )}
+          <SponsoredAdBlock className="blog-inline-ad-wrap" placement="inline">
+            <ResponsiveBlogAd
+              desktopSlot={BLOG_HORIZONTAL_SLOT}
+              mobileSlot={BLOG_SQUARE_SLOT}
+              className="blog-inline-ad"
+              mobileClassName="blog-inline-ad"
+            />
+          </SponsoredAdBlock>
 
           {/* ── WHY BOTHER ────────────────────────────────────────── */}
           <section className="ipa-why-section">
@@ -573,28 +526,29 @@ const IPAGuide = () => {
             </div>
           </section>
 
-          {viewportWidth >= 768 && (
-            <SponsoredAdBlock
-              className="leaderboard-ad-wrap container"
-              placement="inline"
-            >
-              <LeaderboardAd
-                slot={BLOG_HORIZONTAL_SLOT}
-                className="blog-inline-ad"
-              />
-            </SponsoredAdBlock>
-          )}
+          <SponsoredAdBlock
+            className="leaderboard-ad-wrap container"
+            placement="inline"
+          >
+            <ResponsiveBlogAd
+              desktopSlot={BLOG_HORIZONTAL_SLOT}
+              mobileSlot={BLOG_SQUARE_SLOT}
+              className="blog-inline-ad"
+              mobileClassName="blog-inline-ad"
+            />
+          </SponsoredAdBlock>
 
-          {viewportWidth > 0 &&
-            viewportWidth < 768 &&
-            mobileRectangleAdNode && (
-              <SponsoredAdBlock
-                className="mobile-results-rectangle-ad-wrap"
-                placement="inline"
-              >
-                {mobileRectangleAdNode}
-              </SponsoredAdBlock>
-            )}
+          <SponsoredAdBlock
+            className="mobile-results-rectangle-ad-wrap"
+            placement="inline"
+          >
+            <ResponsiveBlogAd
+              desktopSlot={BLOG_HORIZONTAL_SLOT}
+              mobileSlot={BLOG_SQUARE_SLOT}
+              className="blog-mobile-rectangle-ad"
+              mobileClassName="blog-mobile-rectangle-ad"
+            />
+          </SponsoredAdBlock>
 
           {/* ── ACCENT COMPARISON ─────────────────────────────────── */}
           <section className="ipa-accent-section">

@@ -2,6 +2,13 @@
 
 QuickPronounce is a React-based pronunciation tool where users can search words, listen to audio pronunciation, view IPA and meanings, compare accents, and practice with related features like Word of the Day and common mispronunciations.
 
+## Current Ad Setup
+
+- AdSense is loaded once globally in `public/index.html`.
+- Desktop/laptop horizontal ads use fixed horizontal formatting with wrapper caps to avoid tall responsive creatives.
+- Square/mobile content ads keep responsive AdSense behavior.
+- Legacy Adcash code remains in the repo as commented or unused rollback path during migration.
+
 ## Run Locally
 
 Prerequisites
@@ -223,6 +230,19 @@ For long-term maintainability, keep README concise and move deep details to docs
 ### Notes
 
 - These sitemap entries help crawlers discover the new quiz hub and quiz pages. If you publish a new build or deploy to production, verify the sitemap served at the site root reflects these updates.
+
+## Project Updates (2026-05-19)
+
+### AdSense Migration
+
+- Replaced Adcash runtime ads with manual AdSense placements.
+- Kept desktop/blog horizontal units constrained to a `728px` max width and `120px` max height.
+- Kept mobile/square units responsive for content placements.
+- Preserved the legacy Adcash components as unused rollback references.
+
+### Verification
+
+- Updated ad files were checked and reported no JSX/CSS errors.
 
 ## Project Updates (2026-04-15)
 
