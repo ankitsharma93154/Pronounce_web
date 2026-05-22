@@ -1,0 +1,87 @@
+[
+  {
+    "id": "ws-l3-q1",
+    "question": "Where is the stress in the noun 'record'?",
+    "options": ["RE-cord","re-CORD","re-cord","re-CorD"],
+    "answer": "RE-cord",
+    "explanation": "As a noun, 'record' is stressed on the first syllable.",
+    "level": 3
+  },
+  {
+    "id": "ws-l3-q2",
+    "question": "Where is the stress in the verb 'record'?",
+    "options": ["RE-cord","re-CORD","re-cord","RE-corD"],
+    "answer": "re-CORD",
+    "explanation": "As a verb, 'record' is stressed on the second syllable.",
+    "level": 3
+  },
+  {
+    "id": "ws-l3-q3",
+    "question": "Where is the stress in the noun 'present'?",
+    "options": ["PRE-sent","pre-SENT","pre-sent","pre-SenT"],
+    "answer": "PRE-sent",
+    "explanation": "Noun 'present' (gift) is stressed on first syllable.",
+    "level": 3
+  },
+  {
+    "id": "ws-l3-q4",
+    "question": "Where is the stress in the verb 'present'?",
+    "options": ["PRE-sent","pre-SENT","pre-sent","PRE-SenT"],
+    "answer": "pre-SENT",
+    "explanation": "Verb 'present' (to give) is stressed on second syllable.",
+    "level": 3
+  },
+  {
+    "id": "ws-l3-q5",
+    "question": "Which demonstrates noun vs verb stress: 'permit'?",
+    "options": ["PER-mit (noun), per-MIT (verb)","per-MIT (noun), PER-mit (verb)","PER-mit (both)","PER-mit (noun), PER-mit (verb)"],
+    "answer": "PER-mit (noun), per-MIT (verb)",
+    "explanation": "Noun 'permit' stresses first syllable; verb stresses second.",
+    "level": 3
+  },
+ {
+  "id":"ws-l3-q6",
+  "question":"Which demonstrates noun vs verb stress: 'export'?",
+  "options":[
+    "EX-port (noun), ex-PORT (verb)",
+    "ex-PORT (noun), EX-port (verb)",
+    "EX-port (both)",
+    "ex-port (noun), ex-port (verb)"
+  ],
+  "answer":"EX-port (noun), ex-PORT (verb)",
+  "explanation":"Noun 'export' stresses first syllable; verb stresses second.",
+  "level":3
+},
+  {
+    "id": "ws-l3-q7",
+    "question": "Where is the stress in 'increase' as a noun?",
+    "options": ["IN-crease","in-CREase","in-crease","in-CRE-ASE"],
+    "answer": "IN-crease",
+    "explanation": "Noun 'increase' stresses first syllable.",
+    "level": 3
+  },
+  {
+    "id": "ws-l3-q8",
+    "question": "Where is the stress in 'increase' as a verb?",
+    "options": ["IN-crease","in-CREase","in-crease","IN-CRE-ase"],
+    "answer": "in-CREase",
+    "explanation": "Verb 'increase' stresses second syllable.",
+    "level": 3
+  },
+  {
+    "id": "ws-l3-q9",
+    "question": "Where is the stress in 'object' as a noun?",
+    "options": ["OB-ject","ob-JECT","ob-ject","OB-JECT"],
+    "answer": "OB-ject",
+    "explanation": "Noun 'object' stresses first syllable.",
+    "level": 3
+  },
+  {
+    "id": "ws-l3-q10",
+    "question": "Where is the stress in 'object' as a verb?",
+    "options": ["OB-ject","ob-JECT","ob-ject","ob-JEct"],
+    "answer": "ob-JECT",
+    "explanation": "Verb 'object' stresses second syllable.",
+    "level": 3
+  }
+]

@@ -418,6 +418,27 @@
   margin: 0;
 }
 
+/* Show only one ad block per breakpoint so the IPA article doesn't stack two ads */
+@media (min-width: 768px) {
+  .leaderboard-ad-wrap.container {
+    display: block;
+  }
+
+  .mobile-results-rectangle-ad-wrap {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .leaderboard-ad-wrap.container {
+    display: none;
+  }
+
+  .mobile-results-rectangle-ad-wrap {
+    display: block;
+  }
+}
+
 /* Practice steps */
 .ipa-steps-grid {
   display: grid;

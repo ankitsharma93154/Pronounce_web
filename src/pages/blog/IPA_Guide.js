@@ -242,6 +242,11 @@ const IPAGuide = () => {
       }}
     >
       <div className="ipa-guide">
+        <div style={{ margin: "18px 0" }}>
+          <Link to="/quiz/ipa" className="qz-button qz-button--primary">
+            Practice IPA — take the IPA quiz
+          </Link>
+        </div>
         <main className="container ipa-guide-content">
           {/* ── INTRO ─────────────────────────────────────────────── */}
           <section className="ipa-intro-section">

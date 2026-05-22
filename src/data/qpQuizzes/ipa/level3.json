@@ -1,0 +1,132 @@
+[
+  {
+    "id": "ipa-l3-q1",
+    "question": "Which mark indicates primary stress in IPA?",
+    "options": [
+      "/",
+      "ˈ",
+      "ˌ",
+      "•"
+    ],
+    "answer": "ˈ",
+    "explanation": "The symbol ˈ is placed before the syllable with primary stress.",
+    "level": 3
+  },
+  {
+    "id": "ipa-l3-q2",
+    "question": "Which mark indicates secondary stress in IPA?",
+    "options": [
+      "ˈ",
+      "/",
+      "ˌ",
+      "'"
+    ],
+    "answer": "ˌ",
+    "explanation": "The symbol ˌ marks secondary stress, which is weaker than primary stress.",
+    "level": 3
+  },
+  {
+    "id": "ipa-l3-q3",
+    "question": "Where is the primary stress in \"banana\"?",
+    "options": [
+      "BAna na",
+      "baNAna",
+      "banaNA",
+      "BANana"
+    ],
+    "answer": "baNAna",
+    "explanation": "Banana is usually stressed on the second syllable: baNAna.",
+    "level": 3
+  },
+  {
+    "id": "ipa-l3-q4",
+    "question": "Which IPA shows primary stress on the first syllable of \"record\" as a noun?",
+    "options": [
+      "rɪˈkɔrd",
+      "rɪˈkɔːd",
+      "ˈrɛkərd",
+      "ˌrɛkərd"
+    ],
+    "answer": "ˈrɛkərd",
+    "explanation": "As a noun, 'record' has first-syllable stress: ˈrɛkərd.",
+    "level": 3
+  },
+  {
+    "id": "ipa-l3-q5",
+    "question": "Which IPA shows the verb form stress for \"record\"?",
+    "options": [
+      "rɪˈkɔrd",
+      "ˈrɛkərd",
+      "ˌrɛkərd",
+      "ˈrɪkɔrd"
+    ],
+    "answer": "rɪˈkɔrd",
+    "explanation": "As a verb, 'record' is stressed on the second syllable: rɪˈkɔrd.",
+    "level": 3
+  },
+  {
+    "id": "ipa-l3-q6",
+    "question": "Which IPA matches \"about\" with second-syllable stress?",
+    "options": [
+      "/ˈəbaʊt/",
+      "/əˈbaʊt/",
+      "/æˈbaʊt/",
+      "/əbaʊˈt/"
+    ],
+    "answer": "/əˈbaʊt/",
+    "explanation": "About is commonly stressed on the second syllable, shown by ˈ before /baʊt/.",
+    "level": 3
+  },
+  {
+    "id": "ipa-l3-q7",
+    "question": "Which word usually has first-syllable stress?",
+    "options": [
+      "banana",
+      "about",
+      "table",
+      "record (verb)"
+    ],
+    "answer": "table",
+    "explanation": "Table is usually pronounced with stress on the first syllable: TAble.",
+    "level": 3
+  },
+  {
+    "id": "ipa-l3-q8",
+    "question": "Which IPA matches \"photograph\" with correct stress?",
+    "options": [
+      "fəˈtɑːgræf",
+      "photoGRAPH",
+      "ˈfoʊtəgræf",
+      "foʊˈtɑːgræf"
+    ],
+    "answer": "ˈfoʊtəgræf",
+    "explanation": "Photograph is normally stressed on the first syllable: ˈfoʊtəgræf.",
+    "level": 3
+  },
+  {
+    "id": "ipa-l3-q9",
+    "question": "Which example shows no stress marker?",
+    "options": [
+      "/ˈkæt/",
+      "/ˌkæt/",
+      "'kæt",
+      "/kæt/"
+    ],
+    "answer": "/kæt/",
+    "explanation": "/kæt/ shows only the sounds of the word and does not include a stress marker.",
+    "level": 3
+  },
+  {
+    "id": "ipa-l3-q10",
+    "question": "Which IPA matches \"teacher\" with first-syllable stress?",
+    "options": [
+      "/tiːˈtʃər/",
+      "/tɪˈtʃər/",
+      "/ˈtiːtʃər/",
+      "/ˈtɛtʃər/"
+    ],
+    "answer": "/ˈtiːtʃər/",
+    "explanation": "Teacher has primary stress on the first syllable: ˈtiːtʃər.",
+    "level": 3
+  }
+]

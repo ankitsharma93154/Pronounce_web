@@ -4,6 +4,7 @@ import { buildQuizQuestions, getQuizLevels } from "../../data/quizzes";
 import QuizQuestion from "./QuizQuestion";
 import QuizSidebar from "./QuizSidebar";
 import QuizResults from "./QuizResults";
+import { vibrateCorrect, vibrateWrong } from "../../utils/vibration";
 
 const DEFAULT_TIME = 30;
 // const NEXT_QUESTION_DELAY = 3; (auto-next removed)
@@ -49,6 +50,18 @@ const QuizRunner = ({ quiz }) => {
       setShowFeedback(true);
       if (correct) {
         setScore((currentScore) => currentScore + 1);
+        try {
+          vibrateCorrect();
+        } catch (e) {
+          // ignore
+        }
+      }
+      if (!correct) {
+        try {
+          vibrateWrong();
+        } catch (e) {
+          // ignore
+        }
       }
 
       clearInterval(timerRef.current);
@@ -104,6 +117,13 @@ const QuizRunner = ({ quiz }) => {
     setScore(0);
     setTimeLeft(DEFAULT_TIME);
     // nextIn removed
+  };
+
+  const handleFinish = () => {
+    // Stop timers and show results using current score
+    clearInterval(timerRef.current);
+    setCompleted(true);
+    setStarted(false);
   };
 
   if (completed) {
@@ -207,6 +227,7 @@ const QuizRunner = ({ quiz }) => {
           }}
           onSubmit={() => handleSubmit(false)}
           onNext={handleNext}
+          onFinish={handleFinish}
           questionNumber={index + 1}
           questionTotal={questions.length}
           timeLeft={timeLeft}

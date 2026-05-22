@@ -1,0 +1,132 @@
+[
+  {
+    "id": "ant-l1-q1",
+    "prompt": "hot",
+    "options": [
+      "warm",
+      "cold",
+      "boiling",
+      "toasty"
+    ],
+    "answer": "cold",
+    "explanation": "Cold means having a low temperature, the opposite of hot.",
+    "level": 1
+  },
+  {
+    "id": "ant-l1-q2",
+    "prompt": "big",
+    "options": [
+      "huge",
+      "giant",
+      "small",
+      "vast"
+    ],
+    "answer": "small",
+    "explanation": "Small means little in size, while big means large.",
+    "level": 1
+  },
+  {
+    "id": "ant-l1-q3",
+    "prompt": "happy",
+    "options": [
+      "joyful",
+      "glad",
+      "merry",
+      "sad"
+    ],
+    "answer": "sad",
+    "explanation": "Sad describes an unhappy feeling, the opposite of happy.",
+    "level": 1
+  },
+  {
+    "id": "ant-l1-q4",
+    "prompt": "start",
+    "options": [
+      "begin",
+      "end",
+      "commence",
+      "open"
+    ],
+    "answer": "end",
+    "explanation": "End means to finish, while start means to begin.",
+    "level": 1
+  },
+  {
+    "id": "ant-l1-q5",
+    "prompt": "fast",
+    "options": [
+      "slow",
+      "quick",
+      "rapid",
+      "speedy"
+    ],
+    "answer": "slow",
+    "explanation": "Slow means moving with little speed, the opposite of fast.",
+    "level": 1
+  },
+  {
+    "id": "ant-l1-q6",
+    "prompt": "light",
+    "options": [
+      "bright",
+      "shiny",
+      "dark",
+      "glowing"
+    ],
+    "answer": "dark",
+    "explanation": "Dark means having little or no light.",
+    "level": 1
+  },
+  {
+    "id": "ant-l1-q7",
+    "prompt": "up",
+    "options": [
+      "above",
+      "higher",
+      "aloft",
+      "down"
+    ],
+    "answer": "down",
+    "explanation": "Down points toward a lower place, opposite of up.",
+    "level": 1
+  },
+  {
+    "id": "ant-l1-q8",
+    "prompt": "in",
+    "options": [
+      "inside",
+      "out",
+      "within",
+      "indoors"
+    ],
+    "answer": "out",
+    "explanation": "Out means outside something, while in means inside it.",
+    "level": 1
+  },
+  {
+    "id": "ant-l1-q9",
+    "prompt": "open",
+    "options": [
+      "shut",
+      "ajar",
+      "unlocked",
+      "close"
+    ],
+    "answer": "close",
+    "explanation": "Close means to shut something, the opposite action of open.",
+    "level": 1
+  },
+  {
+    "id": "ant-l1-q10",
+    "prompt": "full",
+    "options": [
+      "plentiful",
+      "abundant",
+      "empty",
+      "complete"
+    ],
+    "answer": "empty",
+    "explanation": "Empty means containing nothing, while full means completely filled.",
+    "level": 1
+  }
+]

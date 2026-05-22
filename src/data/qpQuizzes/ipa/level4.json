@@ -1,0 +1,132 @@
+[
+  {
+    "id": "ipa-l4-q1",
+    "question": "Which IPA matches \"computer\"?",
+    "options": [
+      "/kəmˈpjuːtər/",
+      "/ˈkɒmpjuːtər/",
+      "/kəmˈpʌtər/",
+      "/kɒmˈpjuːtə/"
+    ],
+    "answer": "/kəmˈpjuːtər/",
+    "explanation": "Computer has primary stress on the second syllable and the /pjuː/ sequence in many standard transcriptions.",
+    "level": 4
+  },
+  {
+    "id": "ipa-l4-q2",
+    "question": "Which IPA matches \"education\"?",
+    "options": [
+      "/ˌɛdjuˈkeɪʃən/",
+      "/ˈɛdjuːkeɪʃən/",
+      "/ˌɛdʒʊˈkeɪʃən/",
+      "/edjuˈkeɪʃən/"
+    ],
+    "answer": "/ˌɛdʒʊˈkeɪʃən/",
+    "explanation": "A common transcription is /ˌɛdʒʊˈkeɪʃən/, with secondary stress near the start and primary stress before /keɪ/.",
+    "level": 4
+  },
+  {
+    "id": "ipa-l4-q3",
+    "question": "Which IPA matches \"photograph\"?",
+    "options": [
+      "/fəˈtɒgræf/",
+      "/foʊtəˈgræf/",
+      "/fəˈtɔːgræf/",
+      "/ˈfoʊtəgræf/"
+    ],
+    "answer": "/ˈfoʊtəgræf/",
+    "explanation": "Photograph is usually stressed on the first syllable: /ˈfoʊtəgræf/.",
+    "level": 4
+  },
+  {
+    "id": "ipa-l4-q4",
+    "question": "Which IPA matches \"analysis\"?",
+    "options": [
+      "/ˈænəlɪsɪs/",
+      "/əˈnæləsɪs/",
+      "/ænəˈlɪsɪs/",
+      "/əˈnæləsəs/"
+    ],
+    "answer": "/əˈnæləsɪs/",
+    "explanation": "Analysis has primary stress on the second syllable: /əˈnæləsɪs/.",
+    "level": 4
+  },
+  {
+    "id": "ipa-l4-q5",
+    "question": "Which IPA matches \"pronunciation\"?",
+    "options": [
+      "/prəˈnʌnsiːeɪʃən/",
+      "/proʊˌnʌnsiˈeɪʃən/",
+      "/prəˌnʌnsiˈeɪʃən/",
+      "/prəˌnaʊnsiˈeɪʃən/"
+    ],
+    "answer": "/prəˌnʌnsiˈeɪʃən/",
+    "explanation": "Pronunciation has secondary stress before /nʌn/ and primary stress before /eɪ/.",
+    "level": 4
+  },
+  {
+    "id": "ipa-l4-q6",
+    "question": "Which IPA matches \"recording\" as a verb form?",
+    "options": [
+      "/rɪˈkɔːdɪŋ/",
+      "/ˈrɛkɔːdɪŋ/",
+      "/rɪˈkɔrdɪŋ/",
+      "/rɛˈkɔːdɪŋ/"
+    ],
+    "answer": "/rɪˈkɔrdɪŋ/",
+    "explanation": "Recording, from the verb 'record', keeps stress on the second syllable in this transcription.",
+    "level": 4
+  },
+  {
+    "id": "ipa-l4-q7",
+    "question": "Which IPA matches \"economics\"?",
+    "options": [
+      "/ˌɛkəˈnɒmɪks/",
+      "/ˌiːkəˈnɒmɪks/",
+      "/ˈiːkənɒmɪks/",
+      "/ˌekəˈnɒmɪks/"
+    ],
+    "answer": "/ˌiːkəˈnɒmɪks/",
+    "explanation": "Economics commonly has secondary stress near the beginning and primary stress on /nɒm/.",
+    "level": 4
+  },
+  {
+    "id": "ipa-l4-q8",
+    "question": "Which IPA matches \"photography\"?",
+    "options": [
+      "/ˈfoʊtəgræfi/",
+      "/foʊˈtɒgrəfi/",
+      "/fəˈtɒgrəfi/",
+      "/fəˈtɑgrəfaɪ/"
+    ],
+    "answer": "/fəˈtɒgrəfi/",
+    "explanation": "Photography shifts the stress to the second syllable: /fəˈtɒgrəfi/.",
+    "level": 4
+  },
+  {
+    "id": "ipa-l4-q9",
+    "question": "Which IPA matches \"development\"?",
+    "options": [
+      "/dɪˈvɛləpmənt/",
+      "/ˈdɛvələpmənt/",
+      "/diːˈvɛləpmənt/",
+      "/dɪvələpˈmɛnt/"
+    ],
+    "answer": "/dɪˈvɛləpmənt/",
+    "explanation": "Development has primary stress on the second syllable: /dɪˈvɛləpmənt/.",
+    "level": 4
+  },
+  {
+    "id": "ipa-l4-q10",
+    "question": "Which IPA matches \"university\"?",
+    "options": [
+      "/juːˈnɪvərsɪti/",
+      "/ˈjuːnɪvərsəti/",
+      "/ˌjuːnɪˈvɜːrsɪti/",
+      "/juːnɪˈvərsaɪti/"
+    ],
+    "answer": "/ˌjuːnɪˈvɜːrsɪti/",
+    "explanation": "University is commonly shown with secondary stress at the start and primary stress before /vɜːr/.",
+    "level": 4
+  }
+]

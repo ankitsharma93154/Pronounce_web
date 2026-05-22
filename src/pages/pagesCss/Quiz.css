@@ -87,26 +87,17 @@
   padding: 1.05rem 1.1rem 1rem;
 }
 
-.qz-panel--hero--synonym {
-  background:
-    radial-gradient(
-      circle at top right,
-      rgba(74, 108, 247, 0.12),
-      transparent 34%
-    ),
-    linear-gradient(180deg, rgba(110, 69, 226, 0.08), rgba(74, 108, 247, 0.02)),
-    var(--bg-primary);
+.qz-panel--hero--synonym,
+.qz-panel--hero--antonym,
+.qz-panel--hero--ipa,
+.qz-panel--hero--wordStress {
+  background: var(--bg-primary);
 }
 
-.qz-panel--hero--antonym {
-  background:
-    radial-gradient(
-      circle at top right,
-      rgba(249, 115, 22, 0.14),
-      transparent 34%
-    ),
-    linear-gradient(180deg, rgba(239, 68, 68, 0.08), rgba(249, 115, 22, 0.02)),
-    var(--bg-primary);
+/* Ensure panels stretch to match height when quiz is active */
+.qz-grid--active .qz-panel {
+  display: flex;
+  flex-direction: column;
 }
 
 .qz-panel--hero::before {

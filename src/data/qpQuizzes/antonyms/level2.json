@@ -1,0 +1,132 @@
+[
+  {
+    "id": "ant-l2-q1",
+    "prompt": "accept",
+    "options": [
+      "allow",
+      "receive",
+      "decline",
+      "agree"
+    ],
+    "answer": "decline",
+    "explanation": "Decline means to refuse, while accept means to agree to receive or allow something.",
+    "level": 2
+  },
+  {
+    "id": "ant-l2-q2",
+    "prompt": "generous",
+    "options": [
+      "kind",
+      "stingy",
+      "giving",
+      "bountiful"
+    ],
+    "answer": "stingy",
+    "explanation": "Stingy means unwilling to give, the opposite of generous.",
+    "level": 2
+  },
+  {
+    "id": "ant-l2-q3",
+    "prompt": "increase",
+    "options": [
+      "grow",
+      "raise",
+      "expand",
+      "decrease"
+    ],
+    "answer": "decrease",
+    "explanation": "Decrease means to become smaller or less, while increase means to become greater.",
+    "level": 2
+  },
+  {
+    "id": "ant-l2-q4",
+    "prompt": "rough",
+    "options": [
+      "smooth",
+      "coarse",
+      "rugged",
+      "bumpy"
+    ],
+    "answer": "smooth",
+    "explanation": "Smooth describes an even surface, unlike rough.",
+    "level": 2
+  },
+  {
+    "id": "ant-l2-q5",
+    "prompt": "ancient",
+    "options": [
+      "old",
+      "antique",
+      "modern",
+      "archaic"
+    ],
+    "answer": "modern",
+    "explanation": "Modern means belonging to the present or recent times, unlike ancient.",
+    "level": 2
+  },
+  {
+    "id": "ant-l2-q6",
+    "prompt": "complex",
+    "options": [
+      "intricate",
+      "simple",
+      "elaborate",
+      "detailed"
+    ],
+    "answer": "simple",
+    "explanation": "Simple means easy to understand or not complicated.",
+    "level": 2
+  },
+  {
+    "id": "ant-l2-q7",
+    "prompt": "scarce",
+    "options": [
+      "rare",
+      "limited",
+      "sparse",
+      "plentiful"
+    ],
+    "answer": "plentiful",
+    "explanation": "Plentiful means existing in large amounts, unlike scarce.",
+    "level": 2
+  },
+  {
+    "id": "ant-l2-q8",
+    "prompt": "arrive",
+    "options": [
+      "depart",
+      "come",
+      "reach",
+      "appear"
+    ],
+    "answer": "depart",
+    "explanation": "Depart means to leave, while arrive means to reach a place.",
+    "level": 2
+  },
+  {
+    "id": "ant-l2-q9",
+    "prompt": "approve",
+    "options": [
+      "support",
+      "accept",
+      "reject",
+      "endorse"
+    ],
+    "answer": "reject",
+    "explanation": "Reject means to refuse or say no to something, unlike approve.",
+    "level": 2
+  },
+  {
+    "id": "ant-l2-q10",
+    "prompt": "transparent",
+    "options": [
+      "clear",
+      "see-through",
+      "translucent",
+      "opaque"
+    ],
+    "answer": "opaque",
+    "explanation": "Opaque means not allowing light to pass through, unlike transparent.",
+    "level": 2
+  }
+]

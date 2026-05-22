@@ -1,0 +1,132 @@
+[
+  {
+    "id": "ipa-l2-q1",
+    "question": "Which IPA matches the long vowel in \"sheep\"?",
+    "options": [
+      "/ʃɪp/",
+      "/ʃiːp/",
+      "/ʃep/",
+      "/ʃəp/"
+    ],
+    "answer": "/ʃiːp/",
+    "explanation": "Sheep uses the long close front vowel /iː/, while 'ship' uses the shorter /ɪ/ sound.",
+    "level": 2
+  },
+  {
+    "id": "ipa-l2-q2",
+    "question": "Which pair shows a short-vowel vs long-vowel contrast?",
+    "options": [
+      "ship / sheep",
+      "full / fool",
+      "pull / pool",
+      "All of the above"
+    ],
+    "answer": "All of the above",
+    "explanation": "Each pair contrasts a shorter vowel sound with a longer vowel sound: /ɪ/ vs /iː/ or /ʊ/ vs /uː/.",
+    "level": 2
+  },
+  {
+    "id": "ipa-l2-q3",
+    "question": "Which IPA matches \"full\"?",
+    "options": [
+      "/fʊl/",
+      "/fuːl/",
+      "/fəl/",
+      "/feəl/"
+    ],
+    "answer": "/fʊl/",
+    "explanation": "Full has /ʊ/, the short vowel heard in 'book' and 'foot', not the long /uː/ of 'fool'.",
+    "level": 2
+  },
+  {
+    "id": "ipa-l2-q4",
+    "question": "Which IPA matches \"fool\"?",
+    "options": [
+      "/fʊl/",
+      "/fəl/",
+      "/fuːl/",
+      "/foʊl/"
+    ],
+    "answer": "/fuːl/",
+    "explanation": "Fool contains the long /uː/ vowel, unlike 'full', which has /ʊ/.",
+    "level": 2
+  },
+  {
+    "id": "ipa-l2-q5",
+    "question": "Which IPA matches \"pull\"?",
+    "options": [
+      "/puːl/",
+      "/pəl/",
+      "/poʊl/",
+      "/pʊl/"
+    ],
+    "answer": "/pʊl/",
+    "explanation": "Pull uses /ʊ/, while 'pool' uses the longer /uː/ sound.",
+    "level": 2
+  },
+  {
+    "id": "ipa-l2-q6",
+    "question": "Which IPA matches \"pool\"?",
+    "options": [
+      "/puːl/",
+      "/pʊl/",
+      "/pəl/",
+      "/pul/"
+    ],
+    "answer": "/puːl/",
+    "explanation": "Pool is transcribed with /uː/, showing the long vowel sound.",
+    "level": 2
+  },
+  {
+    "id": "ipa-l2-q7",
+    "question": "Which IPA pair correctly contrasts \"full\" and \"fool\"?",
+    "options": [
+      "/fəl/ vs /foʊl/",
+      "/fɪl/ vs /faɪl/",
+      "/fʊl/ vs /fuːl/",
+      "/fəl/ vs /fʊl/"
+    ],
+    "answer": "/fʊl/ vs /fuːl/",
+    "explanation": "The main contrast is /ʊ/ in 'full' versus /uː/ in 'fool'.",
+    "level": 2
+  },
+  {
+    "id": "ipa-l2-q8",
+    "question": "Which IPA matches \"beat\"?",
+    "options": [
+      "/bɪt/",
+      "/biːt/",
+      "/bet/",
+      "/bət/"
+    ],
+    "answer": "/biːt/",
+    "explanation": "Beat uses /iː/, while 'bit' uses /ɪ/.",
+    "level": 2
+  },
+  {
+    "id": "ipa-l2-q9",
+    "question": "Which IPA matches \"bit\"?",
+    "options": [
+      "/biːt/",
+      "/bet/",
+      "/bət/",
+      "/bɪt/"
+    ],
+    "answer": "/bɪt/",
+    "explanation": "Bit contains the short vowel /ɪ/, not the long /iː/ used in 'beat'.",
+    "level": 2
+  },
+  {
+    "id": "ipa-l2-q10",
+    "question": "Which description best fits English short vs long vowel contrasts?",
+    "options": [
+      "Length only",
+      "Length and vowel quality often both change",
+      "No difference",
+      "Spelling alone decides it"
+    ],
+    "answer": "Length and vowel quality often both change",
+    "explanation": "In English, pairs like /ɪ/ and /iː/ often differ in both duration and vowel quality.",
+    "level": 2
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "ws-l4-q1",
+    "question": "Where is the stress in \"consequence\"?",
+    "options": ["CON-se-quence","con-SE-quence","con-se-QUENCE","CON-SE-quence"],
+    "answer": "CON-se-quence",
+    "explanation": "Stress on first syllable for 'consequence'.",
+    "level": 4
+  },
+  {
+    "id": "ws-l4-q2",
+    "question": "Where is the stress in \"interpretation\"?",
+    "options": ["in-ter-pre-TA-tion","IN-ter-pre-ta-tion","in-TER-pre-ta-tion","in-ter-PRE-ta-tion"],
+    "answer": "in-ter-pre-TA-tion",
+    "explanation": "Stress often on the fourth syllable in 'interpretation'.",
+    "level": 4
+  },
+  {
+    "id": "ws-l4-q3",
+    "question": "Where is the stress in \"hypothesis\"?",
+    "options": ["hy-POTH-e-sis","HY-po-the-sis","hy-po-THES-is","hy-po-the-SIS"],
+    "answer": "hy-POTH-e-sis",
+    "explanation": "Stress on second syllable.",
+    "level": 4
+  },
+  {
+    "id": "ws-l4-q4",
+    "question": "Where is the stress in \"literature\"?",
+    "options": ["LIT-er-a-ture","lit-ER-a-ture","li-te-RA-ture","lit-er-a-TURE"],
+    "answer": "LIT-er-a-ture",
+    "explanation": "Stress on first syllable for 'literature'.",
+    "level": 4
+  },
+  {
+    "id": "ws-l4-q5",
+    "question": "Where is the stress in \"methodology\"?",
+    "options": ["me-tho-DOL-o-gy","ME-tho-do-lo-gy","me-THO-do-lo-gy","me-tho-do-LO-gy"],
+    "answer": "me-tho-DOL-o-gy",
+    "explanation": "Stress on the third syllable is common in 'methodology'.",
+    "level": 4
+  },
+  {
+    "id": "ws-l4-q6",
+    "question": "Where is the stress in \"philosophy\"?",
+    "options": ["phi-LO-so-phy","PHI-lo-so-phy","phi-lo-SO-phy","phi-lo-so-PHY"],
+    "answer": "phi-LO-so-phy",
+    "explanation": "Stress on second syllable for 'philosophy'.",
+    "level": 4
+  },
+  {
+    "id": "ws-l4-q7",
+    "question": "Where is the stress in \"analysis\"?",
+    "options": ["a-NAL-y-sis","AN-a-ly-sis","a-na-LY-sis","a-na-ly-SIS"],
+    "answer": "a-NAL-y-sis",
+    "explanation": "Stress on second syllable for 'analysis'.",
+    "level": 4
+  },
+  {
+    "id": "ws-l4-q8",
+    "question": "Where is the stress in \"statistics\"?",
+    "options": ["sta-TIS-tics","STA-tis-tics","sta-tis-TICS","sta-tis-ticS"],
+    "answer": "sta-TIS-tics",
+    "explanation": "Stress on second syllable is common in 'statistics'.",
+    "level": 4
+  },
+  {
+    "id": "ws-l4-q9",
+    "question": "Where is the stress in \"assessment\"?",
+    "options": ["as-SESS-ment","AS-sess-ment","as-sess-MENT","a-SSESS-ment"],
+    "answer": "as-SESS-ment",
+    "explanation": "Stress on second syllable for 'assessment'.",
+    "level": 4
+  },
+  {
+    "id": "ws-l4-q10",
+    "question": "Where is the stress in \"curriculum\"?",
+    "options": ["cur-RIC-u-lum","CUR-ri-cu-lum","cur-ri-CU-lum","cur-ri-cu-LUM"],
+    "answer": "cur-RIC-u-lum",
+    "explanation": "Stress often on second syllable in 'curriculum'.",
+    "level": 4
+  }
+]

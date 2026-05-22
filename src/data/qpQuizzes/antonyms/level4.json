@@ -1,0 +1,132 @@
+[
+  {
+    "id": "ant-l4-q1",
+    "prompt": "lucid",
+    "options": [
+      "clear",
+      "confusing",
+      "understandable",
+      "bright"
+    ],
+    "answer": "confusing",
+    "explanation": "Confusing means hard to understand, unlike lucid.",
+    "level": 4
+  },
+  {
+    "id": "ant-l4-q2",
+    "prompt": "marshal",
+    "options": [
+      "organize",
+      "arrange",
+      "scatter",
+      "deploy"
+    ],
+    "answer": "scatter",
+    "explanation": "To marshal is to arrange or gather; to scatter is to spread apart.",
+    "level": 4
+  },
+  {
+    "id": "ant-l4-q3",
+    "prompt": "venerate",
+    "options": [
+      "revere",
+      "honor",
+      "respect",
+      "disdain"
+    ],
+    "answer": "disdain",
+    "explanation": "Disdain means to look down on, while venerate means to deeply respect.",
+    "level": 4
+  },
+  {
+    "id": "ant-l4-q4",
+    "prompt": "mitigate",
+    "options": [
+      "aggravate",
+      "alleviate",
+      "ease",
+      "reduce"
+    ],
+    "answer": "aggravate",
+    "explanation": "Aggravate means to make worse, while mitigate means to make less severe.",
+    "level": 4
+  },
+  {
+    "id": "ant-l4-q5",
+    "prompt": "resilient",
+    "options": [
+      "strong",
+      "durable",
+      "fragile",
+      "tough"
+    ],
+    "answer": "fragile",
+    "explanation": "Fragile means easily broken, unlike resilient.",
+    "level": 4
+  },
+  {
+    "id": "ant-l4-q6",
+    "prompt": "benevolent",
+    "options": [
+      "kind",
+      "charitable",
+      "helpful",
+      "malevolent"
+    ],
+    "answer": "malevolent",
+    "explanation": "Malevolent means wishing harm, while benevolent means kind and well-meaning.",
+    "level": 4
+  },
+  {
+    "id": "ant-l4-q7",
+    "prompt": "ephemeral",
+    "options": [
+      "short-lived",
+      "lasting",
+      "brief",
+      "fleeting"
+    ],
+    "answer": "lasting",
+    "explanation": "Lasting means continuing for a long time, unlike ephemeral.",
+    "level": 4
+  },
+  {
+    "id": "ant-l4-q8",
+    "prompt": "augment",
+    "options": [
+      "increase",
+      "add",
+      "expand",
+      "reduce"
+    ],
+    "answer": "reduce",
+    "explanation": "Reduce means to make smaller, while augment means to increase.",
+    "level": 4
+  },
+  {
+    "id": "ant-l4-q9",
+    "prompt": "sagacious",
+    "options": [
+      "wise",
+      "foolish",
+      "clever",
+      "shrewd"
+    ],
+    "answer": "foolish",
+    "explanation": "Foolish means lacking good judgment, unlike sagacious.",
+    "level": 4
+  },
+  {
+    "id": "ant-l4-q10",
+    "prompt": "composure",
+    "options": [
+      "calm",
+      "poise",
+      "agitation",
+      "serenity"
+    ],
+    "answer": "agitation",
+    "explanation": "Agitation means nervous excitement or disturbance, opposite of composure.",
+    "level": 4
+  }
+]

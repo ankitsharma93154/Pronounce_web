@@ -1,30 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../Css/word-stress-rules-guide.css";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
 import wordStressMap from "../../images/blogs/word-stress-rules-guide/word_stress_thumbnail_v2.webp";
 import nounVerbStressChart from "../../images/blogs/word-stress-rules-guide/noun_verb_stress_chart_v2.webp";
-
-const blogImageStyle = {
-  width: "100%",
-  maxWidth: "736px",
-  aspectRatio: "1200 / 800",
-  borderRadius: "16px",
-  display: "block",
-  margin: "16px auto",
-  border: "1px solid #e2e8f0",
-  boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
-  objectFit: "cover",
-  height: "auto",
-};
-
-const imageCaptionStyle = {
-  textAlign: "center",
-  color: "#475569",
-  fontSize: "0.95rem",
-  margin: "16px 0",
-};
 
 const WordStressRulesGuide = () => {
   const seo = {
@@ -67,30 +48,34 @@ const WordStressRulesGuide = () => {
       category="Pronunciation Guide"
       title="How to Pronounce Words with Correct English Word Stress"
       author="QuickPronounce Team"
-      readTime="14-16 min read"
+      readTime="14–16 min read"
       date="March 15, 2026"
     >
+      {/* ── 1. Why stress matters ───────────────────────────── */}
       <BlogSection title="Why Word Stress Is More Important Than Most Learners Think">
         <p>
-          Many learners spend years memorizing vocabulary and grammar but still
-          get asked, “Sorry, what did you say?” That experience is frustrating,
-          especially when the word itself is correct. In many cases, the real
-          issue is not the consonants or vowels. The issue is stress.
+          Many learners spend years memorising vocabulary and grammar yet still
+          hear, “Sorry, what did you say?” The problem is often not
+          pronunciation itself but word stress.
         </p>
         <p>
           Word stress is the beat pattern of English. One syllable is stronger,
-          clearer, and longer; the others are lighter and faster. If you place
-          stress on the wrong syllable, listeners may need extra effort to
-          decode your meaning. Sometimes they understand after a pause.
-          Sometimes they misunderstand entirely.
+          clearer, and longer; the others are lighter and faster. If stress
+          lands on the wrong syllable, listeners may need extra effort to decode
+          your meaning. Sometimes they hesitate. Sometimes they misunderstand
+          entirely.
         </p>
-        <p>
-          Analogy: imagine a street address where one number is highlighted.
-          That highlighted number tells you exactly where to go. Stress works in
-          the same way. It highlights the “address” of the word inside a
-          sentence. Without that highlight, your speech can sound flat, robotic,
-          or ambiguous.
-        </p>
+
+        <div className="blog-callout">
+          <p className="blog-callout__label">Analogy</p>
+          <p>
+            Think of a street address where one number is highlighted. That
+            highlight helps you find the exact location. Stress works in the
+            same way. It highlights the “address” of a word within a sentence.
+            Without it, speech can sound flat, robotic, or even unclear.
+          </p>
+        </div>
+
         <p>
           The good news: word stress is trainable. You do not need a perfect
           accent. You need predictable rhythm. Once your stress pattern
@@ -99,325 +84,493 @@ const WordStressRulesGuide = () => {
         </p>
       </BlogSection>
 
+      {/* ── 2. Stress map image ──────────────────────────────── */}
       <BlogSection title="Word Stress Map: Strong vs Weak Syllables">
         <img
           src={wordStressMap}
           alt="Word stress map showing stressed vs unstressed syllables in English words like TAble, comPUter and deVElopment"
-          style={blogImageStyle}
+          className="bt-blog-image"
           loading="lazy"
           width="1200"
           height="800"
         />
-        <p style={imageCaptionStyle}>
+        <p className="bt-image-caption">
           Stressed syllables carry more weight, volume, and length. Unstressed
           syllables reduce to schwa /ə/ or short vowels.
         </p>
       </BlogSection>
 
-      <BlogSection title="How Stress Changes Meaning: Real Pairs You Can Use Today">
+      {/* ── 3. Stress pairs (table) ──────────────────────────── */}
+      <BlogSection title="How Stress Changes Meaning: Noun vs Verb Pairs">
         <p>
-          In English, some words change category and meaning based on stress
-          position. This is one of the highest-value patterns to master because
-          it appears in business English, academic speech, and daily
-          conversation.
+          In English, some two syllable words change their grammatical role and
+          even their meaning depending on which syllable carries the stress.
+          This is one of the most valuable patterns to master because it appears
+          in business English, academic speech, and everyday conversation.
         </p>
-        <ul>
-          <li>
-            <strong>REcord</strong> (noun) vs <strong>reCORD</strong> (verb)
-          </li>
-          <li>
-            <strong>PREsent</strong> (noun/adjective) vs{" "}
-            <strong>preSENT</strong> (verb)
-          </li>
-          <li>
-            <strong>CONtract</strong> (noun) vs <strong>conTRACT</strong> (verb)
-          </li>
-          <li>
-            <strong>OBject</strong> (noun) vs <strong>obJECT</strong> (verb)
-          </li>
-          <li>
-            <strong>PERmit</strong> (noun) vs <strong>perMIT</strong> (verb)
-          </li>
-          <li>
-            <strong>PROduce</strong> (noun) vs <strong>proDUCE</strong> (verb)
-          </li>
-        </ul>
-        <p>Example in context:</p>
-        <ul>
-          <li>
-            “Please send me the <strong>REcord</strong> of the meeting.”
-          </li>
-          <li>
-            “Can you <strong>reCORD</strong> the meeting?”
-          </li>
-        </ul>
+
+        <div className="stress-table-wrapper">
+          <table className="stress-table">
+            <thead>
+              <tr>
+                <th>Word</th>
+                <th>Noun / Adjective</th>
+                <th>Verb</th>
+                <th>Example sentence (noun → verb)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                [
+                  "record",
+                  "REcord",
+                  "reCORD",
+                  "Play the REcord / reCORD the meeting.",
+                ],
+                [
+                  "present",
+                  "PREsent",
+                  "preSENT",
+                  "See the PREsent draft / preSENT the results.",
+                ],
+                [
+                  "contract",
+                  "CONtract",
+                  "conTRACT",
+                  "Sign the CONtract / conTRACT the vendor.",
+                ],
+                [
+                  "object",
+                  "OBject",
+                  "obJECT",
+                  "Move the OBject / obJECT to the plan.",
+                ],
+                [
+                  "permit",
+                  "PERmit",
+                  "perMIT",
+                  "Need a PERmit / will they perMIT it?",
+                ],
+                [
+                  "produce",
+                  "PROduce",
+                  "proDUCE",
+                  "Buy fresh PROduce / farms proDUCE it.",
+                ],
+                [
+                  "protest",
+                  "PROtest",
+                  "proTEST",
+                  "Join the PROtest / proTEST the decision.",
+                ],
+                [
+                  "increase",
+                  "INcrease",
+                  "inCREASE",
+                  "A 10% INcrease / costs inCREASE yearly.",
+                ],
+              ].map(([word, noun, verb, example]) => (
+                <tr key={word}>
+                  <td>
+                    <strong>{word}</strong>
+                  </td>
+                  <td className="noun-stress">{noun}</td>
+                  <td className="verb-stress">{verb}</td>
+                  <td>{example}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
         <p>
-          If stress is misplaced, listeners often hesitate because they are
-          trying to decide whether you meant a thing (noun) or an action (verb).
-          That tiny hesitation is exactly what strong pronunciation training can
-          remove.
+          If stress is misplaced, listeners often pause to decide whether you
+          meant a thing (noun) or an action (verb). That tiny hesitation is
+          exactly what strong pronunciation training removes.
         </p>
       </BlogSection>
 
+      {/* ── 4. Analogy ──────────────────────────────────────── */}
       <BlogSection title="Analogy: Word Stress Is Like Camera Focus">
+        <div className="blog-callout">
+          <p className="blog-callout__label">Mental model</p>
+          <p>
+            In a portrait, the subject is sharp while the background is softer.
+            Speech works in a similar way. The stressed syllable stands out,
+            while unstressed syllables stay softer. When every syllable is
+            spoken with equal emphasis, listeners lose the sense of where the
+            word’s centre is, much like a photo where everything is equally
+            sharp and visually busy.
+          </p>
+        </div>
         <p>
-          Think of stress like focus in photography. In a portrait, the subject
-          is sharp and the background is soft. In speech, the stressed syllable
-          is sharp and the unstressed syllables are softer.
-        </p>
-        <p>
-          When every syllable is pronounced with equal force, it is like a photo
-          where everything is equally sharp and equally noisy. The viewer does
-          not know where to look first. The listener does not know where the
-          word’s center is.
-        </p>
-        <p>
-          This is why advanced pronunciation is not about speaking louder. It is
-          about creating contrast. Strong syllables and weak syllables should
+          Advanced pronunciation is not about speaking louder. It is about
+          creating <em>contrast</em>. Strong syllables and weak syllables should
           not be equal. Rhythm needs shape.
         </p>
       </BlogSection>
 
-      <BlogSection title="High-Value Rules (Not Perfect, But Extremely Useful)">
+      {/* ── 5. Rules quick reference ────────────────────────── */}
+      <BlogSection title="High-Value Rules: Quick Reference">
         <p>
-          English has exceptions, but a few rules will give you strong results
-          quickly.
+          English has exceptions, but these five patterns will cover the
+          majority of words you encounter every day.
         </p>
-        <ol>
-          <li>
-            <strong>Two-syllable nouns/adjectives</strong> are often stressed on
-            the first syllable: <strong>TAble</strong>, <strong>QUIet</strong>,
-            <strong> HAPpy</strong>.
-          </li>
-          <li>
-            <strong>Two-syllable verbs</strong> are often stressed on the second
-            syllable: <strong>reLAX</strong>, <strong>aRRIVE</strong>,
-            <strong> deCIDE</strong>.
-          </li>
-          <li>
-            <strong>Words ending in -tion/-sion</strong> often stress the
-            syllable before the ending: edu<strong>CA</strong>tion, revi
-            <strong>SION</strong>.
-          </li>
-          <li>
-            <strong>Words ending in -ic</strong> often stress the syllable
-            before -ic: geo<strong>GRA</strong>phic, eco<strong>NO</strong>mic.
-          </li>
-          <li>
-            <strong>Words ending in -ee/-eer</strong> often stress the ending:
-            employ<strong>EE</strong>, engin<strong>EER</strong>.
-          </li>
-        </ol>
+
+        <div className="rules-grid">
+          <div className="rule-card">
+            <p className="rule-card__pattern">Rule 1</p>
+            <p className="rule-card__title">
+              Two-syllable nouns &amp; adjectives
+            </p>
+            <p className="rule-card__examples">
+              Stress falls on syllable 1.
+              <br />
+              <strong>TA</strong>ble · <strong>QUI</strong>et ·{" "}
+              <strong>HAP</strong>py
+            </p>
+          </div>
+          <div className="rule-card">
+            <p className="rule-card__pattern">Rule 2</p>
+            <p className="rule-card__title">Two-syllable verbs</p>
+            <p className="rule-card__examples">
+              Stress falls on syllable 2.
+              <br />
+              re<strong>LAX</strong> · ar<strong>RIVE</strong> · de
+              <strong>CIDE</strong>
+            </p>
+          </div>
+          <div className="rule-card">
+            <p className="rule-card__pattern">Rule 3</p>
+            <p className="rule-card__title">Endings: -tion / -sion</p>
+            <p className="rule-card__examples">
+              Stress the syllable before the ending.
+              <br />
+              edu<strong>CA</strong>tion · re<strong>VI</strong>sion
+            </p>
+          </div>
+          <div className="rule-card">
+            <p className="rule-card__pattern">Rule 4</p>
+            <p className="rule-card__title">Endings: -ic</p>
+            <p className="rule-card__examples">
+              Stress the syllable before -ic.
+              <br />
+              geo<strong>GRA</strong>phic · eco<strong>NO</strong>mic
+            </p>
+          </div>
+          <div className="rule-card">
+            <p className="rule-card__pattern">Rule 5</p>
+            <p className="rule-card__title">Endings: -ee / -eer</p>
+            <p className="rule-card__examples">
+              Stress falls on the ending itself.
+              <br />
+              employ<strong>EE</strong> · engin<strong>EER</strong>
+            </p>
+          </div>
+        </div>
+
         <p>
-          These patterns are practical shortcuts. Use them as default guesses,
-          then verify with IPA and audio in <Link to="/">QuickPronounce</Link>{" "}
-          whenever possible.
+          Use these as default guesses, then verify with IPA and audio in{" "}
+          <Link to="/">QuickPronounce</Link> whenever possible.
         </p>
       </BlogSection>
 
+      {/* ── 6. Everyday examples by scenario ────────────────── */}
       <BlogSection title="Everyday Examples by Scenario">
-        <h3 className="bt-sub-title">Work Meetings</h3>
-        <ul>
-          <li>
-            “We need a final <strong>CONtract</strong> draft by Friday.”
-          </li>
-          <li>
-            “Legal will <strong>conTRACT</strong> the vendor next week.”
-          </li>
-          <li>
-            “The <strong>PREsent</strong> version is stable.”
-          </li>
-          <li>
-            “Please <strong>preSENT</strong> your findings in 5 minutes.”
-          </li>
-        </ul>
+        <p>
+          Seeing stress pairs in realistic sentences helps your brain connect
+          patterns to real usage. Read each pair aloud and exaggerate the
+          contrast at first.
+        </p>
 
-        <h3 className="bt-sub-title">University Context</h3>
-        <ul>
-          <li>
-            “The lab report is your official <strong>REcord</strong>.”
-          </li>
-          <li>
-            “Please <strong>reCORD</strong> your experiment steps.”
-          </li>
-          <li>
-            “I need a parking <strong>PERmit</strong>.”
-          </li>
-          <li>
-            “Will the office <strong>perMIT</strong> late submission?”
-          </li>
-        </ul>
+        <div className="scenario-group">
+          <span className="scenario-label">💼 Work meetings</span>
+          <ul>
+            <li>
+              "We need a final <strong>CON</strong>tract draft by Friday."
+            </li>
+            <li>
+              "Legal will con<strong>TRACT</strong> the vendor next week."
+            </li>
+            <li>
+              "The <strong>PRE</strong>sent version is stable."
+            </li>
+            <li>
+              "Please pre<strong>SENT</strong> your findings in five minutes."
+            </li>
+          </ul>
+        </div>
 
-        <h3 className="bt-sub-title">Daily Conversation</h3>
-        <ul>
-          <li>
-            “Fresh <strong>PROduce</strong> is cheaper in the morning market.”
-          </li>
-          <li>
-            “Local farms <strong>proDUCE</strong> most of this fruit.”
-          </li>
-          <li>
-            “That bright red cup is my favorite <strong>OBject</strong> on the
-            desk.”
-          </li>
-          <li>
-            “I <strong>obJECT</strong> to that plan because it is too risky.”
-          </li>
-        </ul>
+        <div className="scenario-group">
+          <span className="scenario-label">🎓 University</span>
+          <ul>
+            <li>
+              "The lab report is your official <strong>RE</strong>cord."
+            </li>
+            <li>
+              "Please re<strong>CORD</strong> your experiment steps."
+            </li>
+            <li>
+              "I need a parking <strong>PER</strong>mit."
+            </li>
+            <li>
+              "Will the office per<strong>MIT</strong> late submission?"
+            </li>
+          </ul>
+        </div>
+
+        <div className="scenario-group">
+          <span className="scenario-label">🛒 Daily conversation</span>
+          <ul>
+            <li>
+              "Fresh <strong>PRO</strong>duce is cheaper in the morning market."
+            </li>
+            <li>
+              "Local farms pro<strong>DUCE</strong> most of this fruit."
+            </li>
+            <li>
+              "That bright red cup is my favourite <strong>OB</strong>ject on
+              the desk."
+            </li>
+            <li>
+              "I ob<strong>JECT</strong> to that plan because it is too risky."
+            </li>
+          </ul>
+        </div>
       </BlogSection>
 
-      <BlogSection title="Stress and Schwa: Why Weak Syllables Matter">
+      {/* ── 7. Stress + schwa ────────────────────────────────── */}
+      <BlogSection title="Stress and Schwa: Why Weak Syllables Matter Too">
         <p>
-          Correct stress is not only about the strong syllable. It is also about
-          what happens to the weak ones. Many unstressed syllables reduce toward
-          schwa /ə/. That reduction makes rhythm smoother and faster.
+          Correct stress is not only about the strong syllable but also about
+          what happens to the weaker ones. Many unstressed syllables move toward
+          the schwa sound /ə/. This reduction creates a smoother rhythm and
+          helps speech flow more naturally.
         </p>
         <p>
-          Example: in <strong>comPUter</strong>, the first syllable often sounds
-          lighter than learners expect. If you pronounce every vowel fully and
-          equally, rhythm sounds mechanical. If you allow weak syllables to
-          relax, rhythm sounds more natural.
+          In <strong>com·PU·ter</strong>, the first syllable is much lighter
+          than most learners expect. Pronounce every vowel fully and equally,
+          and rhythm sounds mechanical. Let weak syllables relax, and it sounds
+          natural.
         </p>
-        <p>
-          If this is new, review{" "}
-          <Link to="/blog/schwa-sound-guide">the Schwa Sound Guide</Link> first,
-          then return to this article. Stress and schwa are a team, not separate
-          topics.
-        </p>
+
+        <div className="schwa-tip">
+          <span className="schwa-tip__icon">💡</span>
+          <p>
+            Stress and schwa are a team, not separate topics. If this is new to
+            you, review{" "}
+            <Link to="/blog/schwa-sound-guide">the Schwa Sound Guide</Link>{" "}
+            first, then return here for the full picture.
+          </p>
+        </div>
       </BlogSection>
 
+      {/* ── 8. Noun vs Verb chart image ──────────────────────── */}
       <BlogSection title="Two-Syllable Stress Chart: Nouns vs Verbs">
         <img
           src={nounVerbStressChart}
           alt="Chart comparing noun and verb stress patterns for two-syllable English words such as REcord vs reCORD and PERmit vs perMIT"
-          style={blogImageStyle}
+          className="bt-blog-image"
           loading="lazy"
           width="1200"
           height="800"
         />
-        <p style={imageCaptionStyle}>
+        <p className="bt-image-caption">
           For two-syllable noun/adjective pairs, stress falls on syllable 1. For
           verbs, stress moves to syllable 2.
         </p>
       </BlogSection>
 
-      <BlogSection title="A Practical 10-Minute Daily Routine">
-        <ol>
-          <li>
-            Pick 8 target words (mix noun/verb stress pairs and multi-syllable
-            words).
-          </li>
-          <li>Mark the stressed syllable in uppercase letters.</li>
-          <li>Read each word slowly 3 times.</li>
-          <li>Read each word in a short sentence 2 times.</li>
-          <li>Record a 30-second mini paragraph using all 8 words.</li>
-          <li>Listen back and score yourself: 1 (unclear) to 5 (clear).</li>
-          <li>Repeat only the lowest-scoring words.</li>
-        </ol>
+      {/* ── 9. Stress in connected speech (new) ─────────────── */}
+      <BlogSection title="Stress in Connected Speech: Beyond Single Words">
         <p>
-          This routine works because it combines isolated practice and real
-          transfer. Many learners do only word lists, then freeze in real
+          Single-word practice is the starting point, but stress must survive
+          inside full sentences. In connected speech, every sentence has its own
+          stress architecture: content words (nouns, main verbs, adjectives,
+          adverbs) carry stress; function words (articles, prepositions,
+          auxiliaries) stay light.
+        </p>
+
+        <div className="blog-callout">
+          <p className="blog-callout__label">Sentence-level example</p>
+          <p>
+            “She reCORDed the PROgress of the PROject.” Stress falls on the
+            highlighted syllables, while words such as “she”, “the”, “of”, and
+            “the” blend into the rhythm of the sentence.
+          </p>
+        </div>
+
+        <p>
+          If you stress every word equally in a sentence, you will sound
+          unnatural even when individual word stress is correct. Practice
+          reading short paragraphs aloud and consciously "lighten" function
+          words. This is what bridges the gap between word-list drills and
+          fluent conversation.
+        </p>
+        <p>
+          For a full treatment of this skill, see{" "}
+          <Link to="/blog/connected-speech-guide">
+            the Connected Speech Guide
+          </Link>
+          .
+        </p>
+      </BlogSection>
+
+      {/* ── 10. Daily routine ───────────────────────────────── */}
+      <BlogSection title="A Practical 10-Minute Daily Routine">
+        <p>
+          This routine works because it combines isolated practice with real
+          transfer. Most learners only do word lists, then freeze in real
           speaking. Sentence-level repetition closes that gap.
         </p>
+
+        <ol className="routine-steps">
+          <li>
+            Pick 8 target words — mix noun/verb stress pairs and multi-syllable
+            words.
+          </li>
+          <li>Mark the stressed syllable in uppercase letters.</li>
+          <li>Say each word slowly three times, exaggerating the contrast.</li>
+          <li>Read each word in a short sentence twice at normal speed.</li>
+          <li>Record a 30-second mini-paragraph using all 8 words.</li>
+          <li>Listen back and score each word: 1 (unclear) to 5 (clear).</li>
+          <li>
+            Repeat only the lowest-scoring words until they reach 4 or above.
+          </li>
+        </ol>
       </BlogSection>
 
+      {/* ── 11. Common mistakes ─────────────────────────────── */}
       <BlogSection title="Common Mistakes That Keep Stress from Improving">
-        <ul>
+        <ul className="mistake-list">
           <li>
-            <strong>Mistake 1: Equal stress on all syllables.</strong> This
-            makes speech flat and hard to process.
+            <div>
+              <strong>Giving equal stress to every syllable.</strong> This makes
+              speech sound flat and harder to process, making it one of the most
+              common mistakes learners make.
+            </div>
           </li>
           <li>
-            <strong>Mistake 2: Memorizing spelling instead of sound.</strong>
-            English spelling is not a reliable stress map.
+            <div>
+              <strong>Memorising spelling, not sound.</strong> English spelling
+              is not a reliable stress map; always check IPA or audio.
+            </div>
           </li>
           <li>
-            <strong>Mistake 3: Practicing silently.</strong> Stress is physical;
-            your mouth, jaw, and timing must train together.
+            <div>
+              <strong>Practising silently.</strong> Stress is physical. Your
+              mouth, jaw, and timing need to work together, which means
+              practising out loud.
+            </div>
           </li>
           <li>
-            <strong>Mistake 4: No recording feedback.</strong> Your internal
-            perception often differs from what listeners hear.
+            <div>
+              <strong>No recording feedback.</strong> Your internal perception
+              often differs from what listeners actually hear.
+            </div>
           </li>
           <li>
-            <strong>Mistake 5: Ignoring connected speech.</strong> Stress must
-            survive inside full phrases, not just isolated words.
+            <div>
+              <strong>Ignoring connected speech.</strong> Stress must survive
+              inside full phrases, not just isolated words.
+            </div>
           </li>
         </ul>
       </BlogSection>
 
-      <BlogSection title="Internal Practice Path (Use These Related Guides)">
-        <p>
-          To make this training complete, combine this article with three
-          related pages:
-        </p>
-        <ul>
-          <li>
-            Start with <Link to="/blog/ipa-guide">the IPA guide</Link> to read
-            stress marks and phonetic patterns more confidently.
-          </li>
-          <li>
-            Then train reduced vowels in{" "}
-            <Link to="/blog/schwa-sound-guide">the Schwa Sound Guide</Link>.
-          </li>
-          <li>
-            Finish with rhythm transfer in{" "}
-            <Link to="/blog/connected-speech-guide">
-              the Connected Speech Guide
-            </Link>
-            .
-          </li>
-        </ul>
-        <p>
-          If you are preparing for speaking tests, also review practical
-          delivery patterns in{" "}
-          <Link to="/blog/ielts">IELTS pronunciation guide</Link>.
-        </p>
+      {/* ── 12. Quiz promo ──────────────────────────────────── */}
+      <BlogSection title="Practice the Pattern">
+        <div className="bt-quiz-promo">
+          <p className="bt-quiz-promo__eyebrow">Quick practice</p>
+          <h3>Lock in word stress with a short quiz</h3>
+          <p>
+            You have seen the rules, examples, and common patterns. The fastest
+            way to make them stick is to test yourself on real stress placement
+            before moving on.
+          </p>
+          <Link to="/quiz/word-stress" className="bt-quiz-link">
+            Take the Word Stress quiz →
+          </Link>
+        </div>
       </BlogSection>
 
+      {/* ── 13. Related guides ──────────────────────────────── */}
+      <BlogSection title="Related Guides: Build a Complete Pronunciation Skill">
+        <p>
+          Word stress is most powerful when combined with the skills around it.
+          Follow this path for the fastest improvement:
+        </p>
+
+        <div className="related-links">
+          <Link to="/blog/ipa-guide" className="related-link-card">
+            <span className="related-link-card__icon">🔤</span>
+            IPA Guide: Read Stress Marks with Confidence
+          </Link>
+          <Link to="/blog/schwa-sound-guide" className="related-link-card">
+            <span className="related-link-card__icon">🔊</span>
+            Schwa Sound Guide: Master Weak Vowels
+          </Link>
+          <Link to="/blog/connected-speech-guide" className="related-link-card">
+            <span className="related-link-card__icon">🗣️</span>
+            Connected Speech: Transfer Stress to Sentences
+          </Link>
+          <Link to="/blog/ielts" className="related-link-card">
+            <span className="related-link-card__icon">📝</span>
+            IELTS Pronunciation: Exam-Ready Delivery
+          </Link>
+        </div>
+      </BlogSection>
+
+      {/* ── 14. Final takeaway ──────────────────────────────── */}
       <BlogSection title="Final Takeaway: Clarity Is a Rhythm Skill">
         <p>
-          Word stress is one of the fastest ways to improve spoken clarity. It
-          helps listeners identify words quickly, helps your sentences sound
-          less mechanical, and helps your confidence because communication feels
-          smoother. You do not need to erase your identity or copy a dramatic
-          accent. You need consistent rhythm.
+          Word stress is one of the fastest levers for improving spoken clarity.
+          It helps listeners identify words quickly, makes your sentences sound
+          less mechanical, and builds confidence because communication feels
+          smoother.
         </p>
         <p>
-          Keep the process simple: mark stress, practice in short sentences,
-          record yourself, and check uncertain words with
-          <Link to="/"> QuickPronounce</Link>. With steady practice, stress
-          patterns become automatic and your speech becomes easier to understand
-          in every context that matters.
+          Keep the process simple: mark stress, practise in short sentences,
+          record yourself, and check uncertain words with{" "}
+          <Link to="/">QuickPronounce</Link>. You do not need to erase your
+          identity or imitate a dramatic accent. What matters is developing
+          consistent rhythm. With steady practice, stress patterns become
+          automatic, and your speech becomes clearer and easier to understand in
+          every situation that matters.
         </p>
       </BlogSection>
 
-      <BlogSection title="Search Questions & Quick Answers">
-        <p>
-          <strong>How can I tell which syllable to stress?</strong> — Use the
-          simple heuristics in this article (two-syllable nouns vs verbs) and
-          verify with IPA and example audio on QuickPronounce.
-        </p>
-        <p>
-          <strong>Does stress change meaning?</strong> — Yes. Many word pairs
-          change category or meaning depending on stress (REcord vs reCORD).
-        </p>
-        <p>
-          <strong>Should I practice stress in sentences?</strong> — Always.
-          Stress helps at the sentence level; isolated words are useful to build
-          patterns, but real transfer requires sentence practice.
-        </p>
-        <p>
-          <strong>How to pronounce a word in English?</strong> — Start with
-          audio and IPA: hear the word, mark the primary stress, and then
-          practise the word in a short sentence. Use QuickPronounce to check
-          different accents and ensure clarity.
-        </p>
-        <p>
-          <strong>Should I practice stress with quizzes?</strong> — Yes. Short
-          quizzes and minimal-pairs drills help sharpen perception and make
-          stress patterns automatic; try the Quiz hub for focused practice.
-        </p>
+      {/* ── 15. FAQ ─────────────────────────────────────────── */}
+      <BlogSection title="Quick Answers">
+        <div className="faq-list">
+          {[
+            {
+              q: "How can I tell which syllable to stress?",
+              a: "Use the heuristics in this article (two-syllable nouns vs verbs, suffix rules) as your first guess. Then verify with IPA notation and example audio on QuickPronounce.",
+            },
+            {
+              q: "Does stress actually change meaning?",
+              a: "Yes, many word pairs change grammatical category or meaning based on stress position alone (REcord the noun vs reCORD the verb). Getting this wrong can cause a listener to misparse your sentence entirely.",
+            },
+            {
+              q: "Should I practise stress in sentences or just word lists?",
+              a: "Both, but sentence practice is what produces real transfer. Isolated word drills build the pattern; sentence repetition makes it automatic in real speech.",
+            },
+            {
+              q: "How do I pronounce a completely unfamiliar word?",
+              a: "Start with IPA: find the primary stress mark (ˈ) before the stressed syllable, hear the word in audio, then practise it in a short sentence. QuickPronounce lets you compare multiple accents side by side.",
+            },
+            {
+              q: "Are quizzes actually useful for stress training?",
+              a: "Yes. Short quizzes and minimal-pair drills sharpen perception, the ability to hear stress, which is necessary before your production can improve consistently.",
+            },
+          ].map(({ q, a }) => (
+            <div className="faq-item" key={q}>
+              <p className="faq-item__question">{q}</p>
+              <p className="faq-item__answer">{a}</p>
+            </div>
+          ))}
+        </div>
       </BlogSection>
     </BlogArticleTemplate>
   );

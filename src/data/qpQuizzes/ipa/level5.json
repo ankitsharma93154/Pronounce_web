@@ -1,0 +1,132 @@
+[
+  {
+    "id": "ipa-l5-q1",
+    "question": "Which IPA matches \"economy\"?",
+    "options": [
+      "/ɪˈkɒnəmi/",
+      "/ɛkəˈnɒmi/",
+      "/iːˈkɒnəmi/",
+      "/ˌiːkəˈnɒmɪ/"
+    ],
+    "answer": "/ɪˈkɒnəmi/",
+    "explanation": "Economy is commonly transcribed with primary stress on the second syllable: /ɪˈkɒnəmi/.",
+    "level": 5
+  },
+  {
+    "id": "ipa-l5-q2",
+    "question": "Which IPA matches \"photographic\"?",
+    "options": [
+      "/ˌfoʊtəˈgræfɪk/",
+      "/fəˈtɒgrəfi/",
+      "/ˈfoʊtəgræfɪk/",
+      "/foʊˈtɒgrəfi/"
+    ],
+    "answer": "/ˌfoʊtəˈgræfɪk/",
+    "explanation": "Photographic shifts primary stress to the syllable before the suffix: /ˌfoʊtəˈgræfɪk/.",
+    "level": 5
+  },
+  {
+    "id": "ipa-l5-q3",
+    "question": "Which IPA matches \"controversy\" in American English?",
+    "options": [
+      "/ˈkɒntrəvɜːrsi/",
+      "/kənˈtrɒvərsi/",
+      "/ˈkɒntrəvəsi/",
+      "/kənˈtrɑːvərsi/"
+    ],
+    "answer": "/kənˈtrɑːvərsi/",
+    "explanation": "In American English, controversy is often shown with stress on the second syllable: /kənˈtrɑːvərsi/.",
+    "level": 5
+  },
+  {
+    "id": "ipa-l5-q4",
+    "question": "Which IPA matches \"literature\"?",
+    "options": [
+      "/ˈlɪtrətʃʊr/",
+      "/ˈlɪtərətʃər/",
+      "/ˈlɪtrətʃər/",
+      "/lɪˈtərətʃər/"
+    ],
+    "answer": "/ˈlɪtrətʃər/",
+    "explanation": "Literature is commonly stressed on the first syllable: /ˈlɪtrətʃər/.",
+    "level": 5
+  },
+  {
+    "id": "ipa-l5-q5",
+    "question": "Which IPA matches \"recommendation\"?",
+    "options": [
+      "/ˌrɛkəmɛnˈdeɪʃən/",
+      "/ˌrɛkəˈmɛndeɪʃən/",
+      "/rɛkəmənˈdəʃən/",
+      "/ˌrɛkəmənˈdeɪʃən/"
+    ],
+    "answer": "/ˌrɛkəmənˈdeɪʃən/",
+    "explanation": "Recommendation has primary stress on the /deɪ/ syllable and secondary stress near the start.",
+    "level": 5
+  },
+  {
+    "id": "ipa-l5-q6",
+    "question": "Which IPA matches \"aesthetic\"?",
+    "options": [
+      "/ɛsˈθɛtɪk/",
+      "/iːˈθɛtɪk/",
+      "/ˈiːsθɛtɪk/",
+      "/iːsˈθɛtɪk/"
+    ],
+    "answer": "/iːsˈθɛtɪk/",
+    "explanation": "Aesthetic is commonly transcribed as /iːsˈθɛtɪk/, with stress on the second syllable.",
+    "level": 5
+  },
+  {
+    "id": "ipa-l5-q7",
+    "question": "Which IPA matches \"philosophy\"?",
+    "options": [
+      "/ˈfɪləsəfi/",
+      "/fɪˈlɒsəfi/",
+      "/fɪlɒˈsəfi/",
+      "/fəˈlɒsəfi/"
+    ],
+    "answer": "/fɪˈlɒsəfi/",
+    "explanation": "Philosophy has primary stress on the second syllable: /fɪˈlɒsəfi/.",
+    "level": 5
+  },
+  {
+    "id": "ipa-l5-q8",
+    "question": "Which IPA matches \"paradigm\"?",
+    "options": [
+      "/parəˈdaɪm/",
+      "/pəˈrædaɪm/",
+      "/ˈpærədaɪm/",
+      "/ˈpærəˌdaɪm/"
+    ],
+    "answer": "/ˈpærədaɪm/",
+    "explanation": "Paradigm has primary stress on the first syllable: /ˈpærədaɪm/.",
+    "level": 5
+  },
+  {
+    "id": "ipa-l5-q9",
+    "question": "Which IPA matches \"hypothesis\"?",
+    "options": [
+      "/hɪˈpɒθəsɪs/",
+      "/haɪˈpəθəsɪs/",
+      "/həˈpɒθəsɪs/",
+      "/haɪˈpɒθəsɪs/"
+    ],
+    "answer": "/haɪˈpɒθəsɪs/",
+    "explanation": "Hypothesis is commonly stressed on the second syllable: /haɪˈpɒθəsɪs/.",
+    "level": 5
+  },
+  {
+    "id": "ipa-l5-q10",
+    "question": "Which IPA matches \"sustainability\"?",
+    "options": [
+      "/səˌsteɪnəˈbɪləti/",
+      "/səˌsteɪnəˈbɪlɪti/",
+      "/səˈsteɪnəˌbɪlɪti/",
+      "/suːstəˈneɪbɪləti/"
+    ],
+    "answer": "/səˌsteɪnəˈbɪlɪti/",
+    "explanation": "Sustainability is commonly shown with secondary stress after /sə/ and primary stress before /bɪl/.",
+    "level": 5
+  }
+]

@@ -69,3 +69,53 @@
     width: 100%;
   }
 }
+
+/* Learn more block styling added for IPA / Word Stress results */
+.qz-results-learn {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 0.02),
+    rgba(2, 6, 23, 0.01)
+  );
+  border: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+.qz-results-learn h4 {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+}
+
+.qz-results-learn p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.qz-results-learn a {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--primary-hover, #4a6cf7);
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(74, 108, 247, 0.12);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.qz-results-learn a:hover {
+  background: rgba(74, 108, 247, 0.06);
+  box-shadow: 0 8px 18px rgba(74, 108, 247, 0.06);
+}
+
+@media (max-width: 640px) {
+  .qz-results-learn {
+    padding: 12px;
+  }
+  .qz-results-learn a {
+    width: 100%;
+    text-align: center;
+  }
+}

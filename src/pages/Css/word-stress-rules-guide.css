@@ -1,0 +1,647 @@
+/* ==========================================================
+   Word Stress Rules Guide — Blog Article Styles
+   Uses global CSS variables defined in the app shell.
+   All dark-mode overrides come from body.dark via vars.
+   ========================================================== */
+
+/* ── Article wrapper ────────────────────────────────────── */
+.blog-article {
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+  hyphens: none;
+  -webkit-hyphens: none;
+  overflow-wrap: break-word;
+  transition:
+    color var(--transition),
+    background var(--transition);
+}
+
+/* ── Article header ─────────────────────────────────────── */
+.blog-article__header {
+  padding: 3rem 0 2.5rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2.5rem;
+}
+
+.blog-article__category {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.75rem;
+}
+
+.blog-article__title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.blog-article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.blog-article__meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--border-color);
+  display: inline-block;
+}
+
+/* ── Section titles ─────────────────────────────────────── */
+.bt-section-title {
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin: 1rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+  transition: border-color var(--transition);
+}
+
+.bt-sub-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 1.5rem 0 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+/* ── Body prose ─────────────────────────────────────────── */
+.blog-article p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin-bottom: 1.1rem;
+}
+
+.blog-article a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--transition);
+}
+
+.blog-article a:hover {
+  color: var(--primary-hover);
+}
+
+/* ── Lists ──────────────────────────────────────────────── */
+.blog-article ul,
+.blog-article ol {
+  padding-left: 1.4rem;
+  margin: 0.75rem 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.blog-article li {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.blog-article ul li::marker {
+  color: var(--primary);
+}
+
+.blog-article ol li::marker {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ── Stress highlight ───────────────────────────────────── */
+.blog-article strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Uppercase stressed syllables get a subtle accent tint */
+.stress-strong {
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.03em;
+}
+
+/* ── Stress pair table ──────────────────────────────────── */
+.stress-table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.stress-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: var(--bg-primary);
+}
+
+.stress-table thead {
+  background: var(--bg-secondary);
+}
+
+.stress-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stress-table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  vertical-align: top;
+}
+
+.stress-table tr:last-child td {
+  border-bottom: none;
+}
+
+.stress-table tr:hover td {
+  background: var(--bg-secondary);
+  transition: background var(--transition);
+}
+
+.stress-table .noun-stress {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.stress-table .verb-stress {
+  font-weight: 700;
+  color: #10b981; /* status-success green */
+}
+
+body.dark .stress-table .verb-stress {
+  color: #34d399;
+}
+
+/* ── Rules quick-reference cards ───────────────────────── */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 1.75rem;
+}
+
+.rule-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--primary);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  transition:
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.rule-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.rule-card__pattern {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+}
+
+.rule-card__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.rule-card__examples {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Callout / analogy block ────────────────────────────── */
+.blog-callout {
+  position: relative;
+  background: var(--accent-bg);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 10px 10px 0;
+  padding: 1.1rem 1.25rem;
+  margin: 1.5rem 0 1.75rem;
+}
+
+.blog-callout__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+}
+
+body.dark .blog-callout__label {
+  color: var(--accent-fg);
+}
+
+.blog-callout p {
+  font-size: 0.98rem;
+  color: var(--accent-fg);
+  margin: 0;
+  line-height: 1.7;
+}
+
+body.dark .blog-callout p {
+  color: var(--text-primary);
+}
+
+/* ── Images ─────────────────────────────────────────────── */
+.bt-blog-image {
+  width: 100%;
+  max-width: 736px;
+  aspect-ratio: 1200 / 800;
+  border-radius: 14px;
+  display: block;
+  margin: 1.25rem auto;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-hero);
+  object-fit: cover;
+  height: auto;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+body.dark .bt-blog-image {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.bt-image-caption {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin: -0.5rem 0 1.5rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ── Scenario examples (tabbed context blocks) ──────────── */
+.scenario-group {
+  margin: 1.25rem 0 1.75rem;
+}
+
+.scenario-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.scenario-group ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+/* ── Daily routine steps ────────────────────────────────── */
+.routine-steps {
+  counter-reset: routine;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.routine-steps li {
+  counter-increment: routine;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  font-size: 1.025rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+}
+
+.routine-steps li::before {
+  content: counter(routine);
+  flex-shrink: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  color: var(--text-white);
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.2rem;
+}
+
+/* ── Mistakes list ──────────────────────────────────────── */
+.mistake-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.mistake-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+  transition:
+    background var(--transition),
+    border-color var(--transition);
+}
+
+.mistake-list li::before {
+  content: "✕";
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--status-error);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.15rem;
+}
+
+/* ── Quiz promo block ───────────────────────────────────── */
+.bt-quiz-promo {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.75rem 2rem;
+  margin: 0.5rem 0;
+  text-align: left;
+  transition:
+    background var(--transition),
+    border-color var(--transition);
+}
+
+.bt-quiz-promo__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.bt-quiz-promo h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+  line-height: 1.3;
+}
+
+.bt-quiz-promo p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.25rem;
+  line-height: 1.65;
+}
+
+.bt-quiz-link {
+  display: inline-block;
+  padding: 0.65rem 1.6rem;
+  background: var(--primary-gradient);
+  color: var(--text-white) !important;
+  text-decoration: none !important;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-md);
+  transition:
+    background var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.bt-quiz-link:hover {
+  background: var(--primary-gradient-hover);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+/* ── FAQ / quick answers ────────────────────────────────── */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.faq-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  transition:
+    background var(--transition),
+    border-color var(--transition);
+}
+
+.faq-item__question {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.faq-item__question::before {
+  content: "Q";
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 800;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 4px;
+  background: var(--primary-gradient);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+  letter-spacing: 0.02em;
+}
+
+.faq-item__answer {
+  padding: 0 1.1rem 1rem 3rem;
+  font-size: 0.96rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.75rem;
+}
+
+/* ── Related links block ────────────────────────────────── */
+.related-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.related-link-card {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  text-decoration: none !important;
+  color: var(--text-primary) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+  transition:
+    box-shadow var(--transition),
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.related-link-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  color: var(--primary) !important;
+}
+
+.related-link-card__icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* ── Schwa tip inline banner ────────────────────────────── */
+.schwa-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  margin: 1.25rem 0 1.5rem;
+  transition:
+    background var(--transition),
+    border-color var(--transition);
+}
+
+.schwa-tip__icon {
+  flex-shrink: 0;
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-top: 0.05rem;
+}
+
+.schwa-tip p {
+  margin: 0;
+  font-size: 0.96rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.schwa-tip p a {
+  font-weight: 600;
+}
+
+/* ── Divider ────────────────────────────────────────────── */
+.blog-divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 2rem 0;
+  transition: border-color var(--transition);
+}
+
+/* ── Responsive tweaks ──────────────────────────────────── */
+@media (max-width: 600px) {
+  .blog-article {
+    padding: 0 1rem 3rem;
+  }
+
+  .blog-article__header {
+    padding: 2rem 0 2rem;
+  }
+
+  .bt-quiz-promo {
+    padding: 1.25rem 1rem;
+  }
+
+  .rules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-links {
+    grid-template-columns: 1fr;
+  }
+
+  .stress-table td,
+  .stress-table th {
+    padding: 0.6rem 0.75rem;
+  }
+}

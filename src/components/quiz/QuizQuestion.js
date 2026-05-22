@@ -9,6 +9,7 @@ const QuizQuestion = ({
   onSelect,
   onSubmit,
   onNext,
+  onFinish,
   questionNumber,
   questionTotal,
   timeLeft,
@@ -21,7 +22,9 @@ const QuizQuestion = ({
   const dashOffset = Math.round(circumference * (1 - timeRatio));
 
   return (
-    <section className="qz-panel qz-panel--hero qz-panel--question">
+    <section
+      className={`qz-panel qz-panel--hero qz-panel--hero--${quiz.questionType} qz-panel--question`}
+    >
       <div className="qz-panel-header">
         <div>
           <span className="qz-eyebrow">Level {question.level}</span>
@@ -90,9 +93,9 @@ const QuizQuestion = ({
 
           const classNames = [
             "qz-option",
-            showCorrect ? "correct" : "",
-            showWrong ? "wrong" : "",
             isSelected ? "selected" : "",
+            showCorrect ? "correct quiz-answer--correct" : "",
+            showWrong ? "wrong quiz-answer--wrong" : "",
           ]
             .join(" ")
             .trim();
@@ -115,14 +118,25 @@ const QuizQuestion = ({
 
       <div className="qz-actions">
         {!showFeedback ? (
-          <button
-            className="qz-button qz-button--primary"
-            onClick={onSubmit}
-            disabled={selected === null}
-            type="button"
-          >
-            Submit answer
-          </button>
+          <>
+            <button
+              className="qz-button qz-button--primary"
+              onClick={onSubmit}
+              disabled={selected === null}
+              type="button"
+            >
+              Submit answer
+            </button>
+
+            <button
+              className="qz-button qz-button--ghost"
+              onClick={onFinish}
+              type="button"
+              title="Finish this level now"
+            >
+              Finish quiz
+            </button>
+          </>
         ) : (
           <button
             className="qz-button qz-button--ghost qz-button--next"

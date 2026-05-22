@@ -1,0 +1,82 @@
+[
+  {
+    "id": "ws-l2-q1",
+    "question": "Where is the stress in \"elephant\"?",
+    "options": ["EL-e-phant","el-E-phant","ele-phant","e-LE-phant"],
+    "answer": "EL-e-phant",
+    "explanation": "'elephant' is stressed on the first syllable.",
+    "level": 2
+  },
+  {
+    "id": "ws-l2-q2",
+    "question": "Where is the stress in \"computer\"?",
+    "options": ["COM-pu-ter","com-PU-ter","com-pu-TER","coM-pu-ter"],
+    "answer": "com-PU-ter",
+    "explanation": "'computer' is stressed on the second syllable: com-PU-ter.",
+    "level": 2
+  },
+  {
+    "id": "ws-l2-q3",
+    "question": "Where is the stress in \"family\"?",
+    "options": ["FA-mi-ly","fa-MI-ly","fa-mi-LY","fA-mi-ly"],
+    "answer": "FA-mi-ly",
+    "explanation": "'family' usually stresses the first syllable.",
+    "level": 2
+  },
+  {
+    "id": "ws-l2-q4",
+    "question": "Where is the stress in \"computerized\"?",
+    "options": ["com-PU-ter-ized","COM-pu-ter-ized","com-pu-TER-ized","com-PU-te-rized"],
+    "answer": "com-PU-ter-ized",
+    "explanation": "Primary stress on second syllable.",
+    "level": 2
+  },
+  {
+    "id": "ws-l2-q5",
+    "question": "Where is the stress in \"important\"?",
+    "options": ["im-POR-tant","IM-por-tant","im-por-TANT","IMP-or-tant"],
+    "answer": "im-POR-tant",
+    "explanation": "Second-syllable stress is standard for 'important'.",
+    "level": 2
+  },
+  {
+    "id": "ws-l2-q6",
+    "question": "Where is the stress in \"nationality\"?",
+    "options": ["na-tion-AL-i-ty","NA-tion-a-li-ty","na-TION-a-li-ty","na-tion-a-LI-ty"],
+    "answer": "na-tion-AL-i-ty",
+    "explanation": "Stress on the penultimate syllable is common.",
+    "level": 2
+  },
+  {
+    "id": "ws-l2-q7",
+    "question": "Where is the stress in \"photography\"?",
+    "options": ["pho-TOG-ra-phy","PHO-to-gra-phy","pho-to-GRA-phy","pho-to-gra-PHY"],
+    "answer": "pho-TOG-ra-phy",
+    "explanation": "Stress usually on second syllable for 'photography'.",
+    "level": 2
+  },
+  {
+    "id": "ws-l2-q8",
+    "question": "Where is the stress in \"animation\"?",
+    "options": ["an-i-MA-tion","AN-i-ma-tion","an-IM-a-tion","aN-i-ma-tion"],
+    "answer": "an-i-MA-tion",
+    "explanation": "Often stressed on the third syllable.",
+    "level": 2
+  },
+  {
+    "id": "ws-l2-q9",
+    "question": "Where is the stress in \"harmony\"?",
+    "options": ["HAR-mo-ny","har-MO-ny","har-mo-NY","har-mo-ny"],
+    "answer": "HAR-mo-ny",
+    "explanation": "'harmony' is stressed on the first syllable.",
+    "level": 2
+  },
+  {
+    "id": "ws-l2-q10",
+    "question": "Where is the stress in \"communication\"?",
+    "options": ["com-mu-NI-ca-tion","COM-mu-ni-ca-tion","com-MU-ni-ca-tion","com-mu-ni-CA-tion"],
+    "answer": "com-mu-NI-ca-tion",
+    "explanation": "Stress typically on the third syllable.",
+    "level": 2
+  }
+]

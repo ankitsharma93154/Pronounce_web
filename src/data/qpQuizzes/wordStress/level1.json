@@ -1,0 +1,82 @@
+[
+  {
+    "id": "ws-l1-q1",
+    "question": "Where is the stress in \"photoGRAPH\"?",
+    "options": ["PHOtograph","phoTOgraph","photoGRAPH","phoTOGraph"],
+    "answer": "PHOtograph",
+    "explanation": "'photograph' is stressed on the first syllable: PHOtograph.",
+    "level": 1
+  },
+  {
+    "id": "ws-l1-q2",
+    "question": "Where is the stress in \"TAble\"?",
+    "options": ["TAble","taBLE","taBLe","TABle"],
+    "answer": "TAble",
+    "explanation": "'table' is stressed on the first syllable: TAble.",
+    "level": 1
+  },
+  {
+    "id": "ws-l1-q3",
+    "question": "Where is the stress in \"winDOW\"?",
+    "options": ["WINdow","winDOW","winDoW","win-DOW"],
+    "answer": "WINdow",
+    "explanation": "'window' is stressed on the first syllable.",
+    "level": 1
+  },
+  {
+    "id": "ws-l1-q4",
+    "question": "Where is the stress in \"paper\"?",
+    "options": ["PAper","paPER","paPer","PAPer"],
+    "answer": "PAper",
+    "explanation": "'paper' is a two-syllable word with stress on the first syllable.",
+    "level": 1
+  },
+  {
+    "id": "ws-l1-q5",
+    "question": "Where is the stress in \"market\"?",
+    "options": ["MARket","marKET","marKet","MARKet"],
+    "answer": "MARket",
+    "explanation": "'market' is stressed on the first syllable.",
+    "level": 1
+  },
+  {
+    "id": "ws-l1-q6",
+    "question": "Where is the stress in \"teacher\"?",
+    "options": ["TEAcher","teaCHER","teaCher","TEA-cher"],
+    "answer": "TEAcher",
+    "explanation": "'teacher' has stress on the first syllable.",
+    "level": 1
+  },
+  {
+  "id": "ws-l1-q7",
+  "question": "Where is the stress in \"MOther\"?",
+  "options": ["MOther","moTHER","moTher","MO-ther"],
+  "answer": "MOther",
+  "explanation": "'mother' is stressed on the first syllable.",
+  "level": 1
+},
+  {
+    "id": "ws-l1-q8",
+    "question": "Where is the stress in \"doctor\"?",
+    "options": ["DOCtor","docTOR","docTor","DOC-tor"],
+    "answer": "DOCtor",
+    "explanation": "'doctor' stresses the first syllable.",
+    "level": 1
+  },
+  {
+    "id": "ws-l1-q9",
+    "question": "Where is the stress in \"student\"?",
+    "options": ["STUdent","stuDENT","stuDent","STU-dent"],
+    "answer": "STUdent",
+    "explanation": "'student' stressed on the first syllable.",
+    "level": 1
+  },
+  {
+    "id": "ws-l1-q10",
+    "question": "Where is the stress in \"people\"?",
+    "options": ["PEOple","peoPLE","peoPle","PEO-ple"],
+    "answer": "PEOple",
+    "explanation": "'people' stresses the first syllable.",
+    "level": 1
+  }
+]

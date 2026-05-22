@@ -335,3 +335,24 @@ For long-term maintainability, keep README concise and move deep details to docs
 ### Audit note
 
 - All edits were applied conservatively and kept away from URLs, routing, or canonical changes. If you want, I can produce a git diff or a commit summary for exact line-level changes next.
+
+## Project Updates (2026-05-20)
+
+### AdSense: Responsive Blog Ad standardization
+
+- Added a shared responsive blog ad component: [src/components/ads/ResponsiveBlogAd.js](src/components/ads/ResponsiveBlogAd.js#L1).
+- Behavior: serves a horizontal leaderboard (`LeaderboardAd`) for viewports >= 768px and a square medium-rectangle (`MediumRectangleAd`) for viewports < 768px.
+- Updated blog pages to use the shared component (examples: [src/pages/blog/AmericanVsBritish.js](src/pages/blog/AmericanVsBritish.js#L1), [src/pages/blog/IPA_Guide.js](src/pages/blog/IPA_Guide.js#L1)).
+- Global AdSense script remains loaded once in [public/index.html](public/index.html#L1).
+
+Testing notes:
+
+- Start the dev server:
+
+  `npm install`
+
+  `npm start`
+
+- Disable adblockers and visit a blog page (e.g., the American vs British article) and resize the viewport to confirm the ad switches at 768px.
+
+If you'd like, I can also add a short entry to `docs/changelog.md` with the same notes and create a commit for review.

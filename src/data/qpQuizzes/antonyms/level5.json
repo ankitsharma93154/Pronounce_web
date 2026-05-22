@@ -1,0 +1,132 @@
+[
+  {
+    "id": "ant-l5-q1",
+    "prompt": "magnanimous",
+    "options": [
+      "generous",
+      "petty",
+      "mean",
+      "spiteful"
+    ],
+    "answer": "petty",
+    "explanation": "Petty suggests small-mindedness, while magnanimous means noble and generous.",
+    "level": 5
+  },
+  {
+    "id": "ant-l5-q2",
+    "prompt": "veracity",
+    "options": [
+      "truth",
+      "accuracy",
+      "falsehood",
+      "honesty"
+    ],
+    "answer": "falsehood",
+    "explanation": "Falsehood means something untrue, while veracity means truthfulness.",
+    "level": 5
+  },
+  {
+    "id": "ant-l5-q3",
+    "prompt": "anachronistic",
+    "options": [
+      "outdated",
+      "modern",
+      "current",
+      "timely"
+    ],
+    "answer": "timely",
+    "explanation": "Timely means suited to the present moment, unlike anachronistic.",
+    "level": 5
+  },
+  {
+    "id": "ant-l5-q4",
+    "prompt": "arduous",
+    "options": [
+      "easy",
+      "difficult",
+      "hard",
+      "laborious"
+    ],
+    "answer": "easy",
+    "explanation": "Easy means requiring little effort, while arduous means very difficult.",
+    "level": 5
+  },
+  {
+    "id": "ant-l5-q5",
+    "prompt": "circumspect",
+    "options": [
+      "careful",
+      "cautious",
+      "rash",
+      "prudent"
+    ],
+    "answer": "rash",
+    "explanation": "Rash means acting without enough thought, unlike circumspect.",
+    "level": 5
+  },
+  {
+    "id": "ant-l5-q6",
+    "prompt": "loquacious",
+    "options": [
+      "talkative",
+      "quiet",
+      "chatty",
+      "verbose"
+    ],
+    "answer": "quiet",
+    "explanation": "Quiet describes someone not talking much, while loquacious means very talkative.",
+    "level": 5
+  },
+  {
+    "id": "ant-l5-q7",
+    "prompt": "obsequious",
+    "options": [
+      "submissive",
+      "subservient",
+      "servile",
+      "insolent"
+    ],
+    "answer": "insolent",
+    "explanation": "Insolent means boldly disrespectful, contrasting with obsequious obedience.",
+    "level": 5
+  },
+  {
+    "id": "ant-l5-q8",
+    "prompt": "tenacious",
+    "options": [
+      "persistent",
+      "determined",
+      "yielding",
+      "resolute"
+    ],
+    "answer": "yielding",
+    "explanation": "Yielding means giving way, while tenacious means holding firmly.",
+    "level": 5
+  },
+  {
+    "id": "ant-l5-q9",
+    "prompt": "propitious",
+    "options": [
+      "favorable",
+      "inauspicious",
+      "opportune",
+      "fortunate"
+    ],
+    "answer": "inauspicious",
+    "explanation": "Inauspicious means not promising success, unlike propitious.",
+    "level": 5
+  },
+  {
+    "id": "ant-l5-q10",
+    "prompt": "meticulous",
+    "options": [
+      "careful",
+      "precise",
+      "sloppy",
+      "thorough"
+    ],
+    "answer": "sloppy",
+    "explanation": "Sloppy means careless or messy, the opposite of meticulous.",
+    "level": 5
+  }
+]

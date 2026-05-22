@@ -1,0 +1,19 @@
+[
+  {"id":"syn-l1-q1","prompt":"happy","options":["sad","joyful","angry","tired"],"answer":"joyful","explanation":"Joyful is a synonym of happy.","level":1},
+  {"id":"syn-l1-q2","prompt":"big","options":["small","huge","tiny","short"],"answer":"huge","explanation":"Huge is a synonym of big.","level":1},
+  {"id":"syn-l1-q3","prompt":"quick","options":["slow","rapid","late","calm"],"answer":"rapid","explanation":"Rapid is a synonym of quick.","level":1},
+  {"id":"syn-l1-q4","prompt":"smart","options":["clever","dumb","lazy","slow"],"answer":"clever","explanation":"Clever is a synonym of smart.","level":1},
+  {"id":"syn-l1-q5","prompt":"begin","options":["start","end","finish","stop"],"answer":"start","explanation":"Start is a synonym of begin.","level":1},
+  {"id":"syn-l1-q6","prompt":"calm","options":["angry","peaceful","noisy","rude"],"answer":"peaceful","explanation":"Peaceful is a synonym of calm.","level":1},
+  {"id":"syn-l1-q7","prompt":"useful","options":["useless","helpful","harmful","wrong"],"answer":"helpful","explanation":"Helpful is a synonym of useful.","level":1},
+  {
+  "id":"syn-l1-q8",
+  "prompt":"funny",
+  "options":["serious","humorous","boring","sad"],
+  "answer":"humorous",
+  "explanation":"Humorous is a synonym of funny.",
+  "level":1
+},
+  {"id":"syn-l1-q9","prompt":"clean","options":["dirty","tidy","messy","stained"],"answer":"tidy","explanation":"Tidy is closest to clean.","level":1},
+  {"id":"syn-l1-q10","prompt":"cold","options":["hot","freezing","warm","cool"],"answer":"freezing","explanation":"Freezing is an extreme synonym of cold.","level":1}
+]

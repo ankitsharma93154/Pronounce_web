@@ -28,6 +28,27 @@ const QuizResults = ({ quiz, score, totalQuestions, onRestart }) => {
               <span>Timer</span>
             </div>
           </div>
+          {quiz.slug === "ipa" && (
+            <div className="qz-results-learn">
+              <h4>Want to understand IPA better?</h4>
+              <p>
+                <Link to="/blog/ipa-guide">Read our IPA guide</Link> to review
+                symbols, stress markers, and practice tips.
+              </p>
+            </div>
+          )}
+
+          {quiz.slug === "word-stress" && (
+            <div className="qz-results-learn">
+              <h4>Learn English stress patterns</h4>
+              <p>
+                <Link to="/blog/word-stress-rules-guide">
+                  Read the word stress article
+                </Link>{" "}
+                to reinforce rules and strategies.
+              </p>
+            </div>
+          )}
           <div className="qz-actions qz-results-actions">
             <button
               className="qz-button qz-button--primary"

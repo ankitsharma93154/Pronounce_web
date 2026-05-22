@@ -1,0 +1,132 @@
+[
+  {
+    "id": "ant-l3-q1",
+    "prompt": "benefit",
+    "options": [
+      "advantage",
+      "gain",
+      "harm",
+      "profit"
+    ],
+    "answer": "harm",
+    "explanation": "Harm means damage or injury, while benefit means help or advantage.",
+    "level": 3
+  },
+  {
+    "id": "ant-l3-q2",
+    "prompt": "optimistic",
+    "options": [
+      "pessimistic",
+      "hopeful",
+      "positive",
+      "upbeat"
+    ],
+    "answer": "pessimistic",
+    "explanation": "Pessimistic means expecting bad outcomes, unlike optimistic.",
+    "level": 3
+  },
+  {
+    "id": "ant-l3-q3",
+    "prompt": "abundant",
+    "options": [
+      "plentiful",
+      "ample",
+      "copious",
+      "scarce"
+    ],
+    "answer": "scarce",
+    "explanation": "Scarce means limited or hard to find, the opposite of abundant.",
+    "level": 3
+  },
+  {
+    "id": "ant-l3-q4",
+    "prompt": "sophisticated",
+    "options": [
+      "refined",
+      "naive",
+      "cultured",
+      "complex"
+    ],
+    "answer": "naive",
+    "explanation": "Naive can mean simple or lacking worldly experience, contrasting with sophisticated.",
+    "level": 3
+  },
+  {
+    "id": "ant-l3-q5",
+    "prompt": "scarcity",
+    "options": [
+      "shortage",
+      "lack",
+      "abundance",
+      "deficit"
+    ],
+    "answer": "abundance",
+    "explanation": "Abundance means a large supply, while scarcity means a shortage.",
+    "level": 3
+  },
+  {
+    "id": "ant-l3-q6",
+    "prompt": "exuberant",
+    "options": [
+      "lively",
+      "energetic",
+      "buoyant",
+      "subdued"
+    ],
+    "answer": "subdued",
+    "explanation": "Subdued means quiet or restrained, unlike exuberant.",
+    "level": 3
+  },
+  {
+    "id": "ant-l3-q7",
+    "prompt": "coherent",
+    "options": [
+      "clear",
+      "incoherent",
+      "logical",
+      "consistent"
+    ],
+    "answer": "incoherent",
+    "explanation": "Incoherent means unclear or not logically connected.",
+    "level": 3
+  },
+  {
+    "id": "ant-l3-q8",
+    "prompt": "diligent",
+    "options": [
+      "careful",
+      "hardworking",
+      "lazy",
+      "meticulous"
+    ],
+    "answer": "lazy",
+    "explanation": "Lazy means unwilling to work hard, unlike diligent.",
+    "level": 3
+  },
+  {
+    "id": "ant-l3-q9",
+    "prompt": "benign",
+    "options": [
+      "kind",
+      "gentle",
+      "mild",
+      "harmful"
+    ],
+    "answer": "harmful",
+    "explanation": "Harmful means causing damage, while benign means gentle or not dangerous.",
+    "level": 3
+  },
+  {
+    "id": "ant-l3-q10",
+    "prompt": "sincere",
+    "options": [
+      "honest",
+      "insincere",
+      "genuine",
+      "true"
+    ],
+    "answer": "insincere",
+    "explanation": "Insincere means not honest or genuine, the opposite of sincere.",
+    "level": 3
+  }
+]

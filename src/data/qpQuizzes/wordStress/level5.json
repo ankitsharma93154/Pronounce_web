@@ -1,0 +1,87 @@
+[
+  {
+  "id":"ws-l5-q1",
+  "question":"Where is the stress in \"responsibility\"?",
+    "options": [
+    "re-spon-si-BIL-i-ty",
+    "RE-spon-si-bi-li-ty",
+    "re-SPON-si-bi-li-ty",
+    "re-spon-si-bi-LI-ty"
+  ],
+  "answer":"re-spon-si-BIL-i-ty",
+  "explanation":"Primary stress falls on the fourth syllable.",
+  "level":5
+},
+  {
+    "id": "ws-l5-q2",
+    "question": "Where is the stress in \"recommendation\"?",
+    "options": ["rec-o-men-DA-tion","RE-com-men-da-tion","re-com-men-DA-tion","re-COM-men-da-tion"],
+    "answer": "rec-o-men-DA-tion",
+    "explanation": "Stress typically on the penultimate syllable.",
+    "level": 5
+  },
+  {
+    "id": "ws-l5-q3",
+    "question": "Where is the stress in \"development\"?",
+    "options": ["de-VE-lop-ment","DE-ve-lop-ment","de-ve-LOP-ment","de-VE-LOP-ment"],
+    "answer": "de-VE-lop-ment",
+    "explanation": "Stress commonly on second syllable.",
+    "level": 5
+  },
+  {
+    "id": "ws-l5-q4",
+    "question": "Where is the stress in \"sustainability\"?",
+    "options": ["sus-tain-a-BI-li-ty","SUS-tain-a-bi-li-ty","sus-TAIN-a-bi-li-ty","sus-tain-A-BI-li-ty"],
+    "answer": "sus-tain-a-BI-li-ty",
+    "explanation": "Primary stress near the end of the word in many transcriptions.",
+    "level": 5
+  },
+  {
+    "id": "ws-l5-q5",
+    "question": "Where is the stress in \"architecture\"?",
+    "options": ["AR-chi-tec-ture","ar-CHI-tec-ture","ar-chi-TEC-ture","ar-chi-tec-TURE"],
+    "answer": "AR-chi-tec-ture",
+    "explanation": "Stress on first syllable.",
+    "level": 5
+  },
+  {
+    "id": "ws-l5-q6",
+    "question": "Where is the stress in \"psychology\"?",
+    "options": ["psy-CHOL-o-gy","PSY-cho-lo-gy","psy-cho-LO-gy","psy-cho-lo-GY"],
+    "answer": "psy-CHOL-o-gy",
+    "explanation": "Stress on second syllable for 'psychology'.",
+    "level": 5
+  },
+  {
+    "id": "ws-l5-q7",
+    "question": "Where is the stress in \"administration\"?",
+    "options": ["ad-min-is-TRA-tion","AD-min-is-tra-tion","ad-MIN-is-tra-tion","ad-min-IS-tra-tion"],
+    "answer": "ad-min-is-TRA-tion",
+    "explanation": "Stress commonly on fourth syllable.",
+    "level": 5
+  },
+  {
+    "id": "ws-l5-q8",
+    "question": "Where is the stress in \"innovation\"?",
+    "options": ["in-no-VA-tion","IN-no-va-tion","in-NO-va-tion","in-no-va-TION"],
+    "answer": "in-no-VA-tion",
+    "explanation": "Stress on third syllable in 'innovation'.",
+    "level": 5
+  },
+  {
+    "id": "ws-l5-q9",
+    "question": "Where is the stress in \"methodology\"?",
+    "options": ["me-tho-DOL-o-gy","ME-tho-do-lo-gy","me-THO-do-lo-gy","me-tho-do-lo-GY"],
+    "answer": "me-tho-DOL-o-gy",
+    "explanation": "Stress on third syllable.",
+    "level": 5
+  },
+  {
+    "id": "ws-l5-q10",
+    "question": "Where is the stress in \"characteristic\"?",
+    "options": ["char-ac-te-RIS-tic","CHAR-ac-te-ris-tic","cha-rac-te-RIS-tic","char-ACT-er-is-tic"],
+    "answer": "char-ac-te-RIS-tic",
+    "explanation": "Stress commonly on fourth syllable.",
+    "level": 5
+  }
+]

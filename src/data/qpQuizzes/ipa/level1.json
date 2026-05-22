@@ -1,0 +1,132 @@
+[
+  {
+    "id": "ipa-l1-q1",
+    "question": "Which IPA matches \"cat\"?",
+    "options": [
+      "/ket/",
+      "/kæt/",
+      "/kɑːt/",
+      "/kʌt/"
+    ],
+    "answer": "/kæt/",
+    "explanation": "Cat uses the short front vowel /æ/, the same vowel sound heard in words like 'trap' and 'bag'.",
+    "level": 1
+  },
+  {
+    "id": "ipa-l1-q2",
+    "question": "Which IPA matches \"sit\"?",
+    "options": [
+      "/saɪt/",
+      "/sit/",
+      "/sɛt/",
+      "/sɪt/"
+    ],
+    "answer": "/sɪt/",
+    "explanation": "Sit contains /ɪ/, the short vowel used in words like 'ship' and 'bit'.",
+    "level": 1
+  },
+  {
+    "id": "ipa-l1-q3",
+    "question": "Which IPA matches \"cup\"?",
+    "options": [
+      "/kʌp/",
+      "/kup/",
+      "/kɔp/",
+      "/kɪp/"
+    ],
+    "answer": "/kʌp/",
+    "explanation": "Cup uses the /ʌ/ vowel, often called the STRUT vowel in English pronunciation guides.",
+    "level": 1
+  },
+  {
+    "id": "ipa-l1-q4",
+    "question": "Which IPA matches \"bed\"?",
+    "options": [
+      "/beɪd/",
+      "/bəd/",
+      "/bɛd/",
+      "/bɪd/"
+    ],
+    "answer": "/bɛd/",
+    "explanation": "Bed contains /ɛ/, the short mid front vowel also found in 'red' and 'pen'.",
+    "level": 1
+  },
+  {
+    "id": "ipa-l1-q5",
+    "question": "Which IPA matches \"dog\" in General American English?",
+    "options": [
+      "/dɒg/",
+      "/dɔg/",
+      "/dɑg/",
+      "/doʊg/"
+    ],
+    "answer": "/dɑg/",
+    "explanation": "In many General American accents, 'dog' is commonly transcribed with /ɑ/, giving /dɑg/.",
+    "level": 1
+  },
+  {
+    "id": "ipa-l1-q6",
+    "question": "Which IPA matches \"pen\"?",
+    "options": [
+      "/pɪn/",
+      "/pɛn/",
+      "/peɪn/",
+      "/pən/"
+    ],
+    "answer": "/pɛn/",
+    "explanation": "Pen uses /ɛ/, not /ɪ/ or /eɪ/. This is the same vowel sound as in 'bed'.",
+    "level": 1
+  },
+  {
+    "id": "ipa-l1-q7",
+    "question": "Which IPA matches \"book\"?",
+    "options": [
+      "/buk/",
+      "/bɔk/",
+      "/bəʊk/",
+      "/bʊk/"
+    ],
+    "answer": "/bʊk/",
+    "explanation": "Book contains /ʊ/, the short vowel also heard in 'foot' and 'look'.",
+    "level": 1
+  },
+  {
+    "id": "ipa-l1-q8",
+    "question": "Which IPA matches \"fish\"?",
+    "options": [
+      "/fɪʃ/",
+      "/fiːʃ/",
+      "/fɛʃ/",
+      "/faɪʃ/"
+    ],
+    "answer": "/fɪʃ/",
+    "explanation": "Fish uses the short /ɪ/ vowel and ends with the /ʃ/ sound, written with the IPA symbol 'ʃ'.",
+    "level": 1
+  },
+  {
+    "id": "ipa-l1-q9",
+    "question": "Which IPA matches \"sun\"?",
+    "options": [
+      "/suːn/",
+      "/sʌn/",
+      "/sɪn/",
+      "/sæn/"
+    ],
+    "answer": "/sʌn/",
+    "explanation": "Sun uses the /ʌ/ vowel, so its transcription is /sʌn/.",
+    "level": 1
+  },
+  {
+    "id": "ipa-l1-q10",
+    "question": "Which IPA matches \"red\"?",
+    "options": [
+      "/riːd/",
+      "/rɪd/",
+      "/rɛd/",
+      "/reɪd/"
+    ],
+    "answer": "/rɛd/",
+    "explanation": "Red contains the short /ɛ/ vowel, the same sound used in 'bed'.",
+    "level": 1
+  }
+]
