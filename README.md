@@ -356,3 +356,31 @@ Testing notes:
 - Disable adblockers and visit a blog page (e.g., the American vs British article) and resize the viewport to confirm the ad switches at 768px.
 
 If you'd like, I can also add a short entry to `docs/changelog.md` with the same notes and create a commit for review.
+
+## Quiz Data & Developer Notes (2026-05-22)
+
+- **Data location:** quiz content is stored under `src/data/qpQuizzes/<quizSlug>/level<level>.json` (for example `src/data/qpQuizzes/ipa/level1.json`). Each `level<level>.json` file contains an array of question objects for that level (typically 10 questions).
+- **Question schema (expected):** each question object should include at least:
+  - `id`: unique id for the question (string or number)
+  - `prompt`: the question text (short sentence)
+  - `options`: an array of 4 option strings (must be unique)
+  - `answer` (preferred) OR `answerIndex`: the correct answer (string) or index (0..3)
+  - optional: `explanation`, `meaning`
+- **Loader:** `src/data/quizzes.js` exposes utilities used by the quiz runner (for example `buildQuizQuestions(quiz, level)`). It dynamically loads the per-level JSON files and normalizes fields (options/answer/answerIndex). Note: the loader expects `options` to contain the correct `answer` when `answer` is provided.
+- **Important bundler note:** dynamic requires using template paths may not be picked up by every bundler configuration. If production builds do not include the JSON files, change the loader to use `require.context` or static imports for the quiz folders so Webpack includes the JSON at build time.
+- **No audio constraint:** the new pronunciation-focused quizzes (IPA, Word Stress) do not use audio files or `Audio` objects. Feedback is provided visually (CSS animations) and via device vibration using `src/utils/vibration.js`.
+- **How to add questions:** add new per-level JSON files or edit existing `level*.json` files. Ensure each question's `options` array has 4 unique entries and that `answer` is one of the options.
+- **Testing locally:**
+
+```bash
+npm install
+npm start
+```
+
+- Visit the quiz pages during development (example):
+  - `/quiz` (quiz hub)
+  - `/quiz/ipa`
+  - `/quiz/wordStress`
+
+- **Vibration testing:** vibration typically only works on real mobile devices. To test vibration you can visit the dev server from a phone on the same network and complete a quiz question to observe visual feedback and (if allowed) a short vibration.
+- **Sitemap:** quiz routes were added to `public/sitemap.xml` and `build/sitemap.xml` on 2026-05-15; verify after deploy if required.
