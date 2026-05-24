@@ -120,7 +120,7 @@ const AdcashSlot = memo(({ zoneId, className = "", width, height }) => {
       className={`${className} adcash-slot`.trim()}
       aria-label="Advertisement"
       style={{
-        width,
+        width: width ? `min(100%, ${width}px)` : "100%",
         minHeight: height,
         maxWidth: "100%",
         contain: "layout style paint",

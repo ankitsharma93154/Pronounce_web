@@ -14,7 +14,9 @@ const SponsoredAdBlock = ({
       aria-label="Advertisement"
     >
       <p className="ad-label">{label}</p>
-      <div className="ad-inner">{children}</div>
+      <div className="ad-inner">
+        <div className="ad-wrapper">{children}</div>
+      </div>
     </section>
   );
 };
