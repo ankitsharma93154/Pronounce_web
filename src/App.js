@@ -18,6 +18,7 @@ const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Contact = lazy(() => import("./pages/contact"));
 const Support = lazy(() => import("./pages/Support"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const ApiValidation = lazy(() => import("./pages/ApiValidation"));
 const PronunciationBlog = lazy(() => import("./pages/blog/pronunciation-tips"));
 const PronunciationGuide = lazy(
   () => import("./pages/blog/pronunciation-guide"),
@@ -98,6 +99,7 @@ const App = () => {
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/support" element={<Support />} />
+                <Route path="/api-validation" element={<ApiValidation />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route
                   path="/terms-and-conditions"

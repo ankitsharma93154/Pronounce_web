@@ -56,6 +56,9 @@ const Header = () => {
           <Link to="/contact" className="nav-link">
             Contact
           </Link>
+          <Link to="/api-validation" className="nav-link">
+            API
+          </Link>
           <Link to="/support" className="nav-link">
             Support
           </Link>
