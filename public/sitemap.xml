@@ -31,6 +31,11 @@
       <priority>0.8</priority>
    </url>
    <url>
+      <loc>https://www.quickpronounce.site/api-validation</loc>
+      <lastmod>2026-06-09</lastmod>
+      <priority>0.8</priority>
+   </url>
+   <url>
       <loc>https://www.quickpronounce.site/blog</loc>
       <lastmod>2026-03-15</lastmod>
       <priority>0.7</priority>
