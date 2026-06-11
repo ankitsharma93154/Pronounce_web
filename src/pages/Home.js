@@ -987,7 +987,7 @@ const BACKEND_PRONUNCIATION_URL =
   "https://backend-8isq.vercel.app/get-pronunciation";
 const REQUEST_TIMEOUT_MS = 10000;
 const SEARCH_DEBOUNCE_MS = 400;
-const CACHE_STORAGE_KEY = "quickpronounce_pronunciation_cache_v1";
+const CACHE_STORAGE_KEY = "quickpronounce_pronunciation_cache_v2";
 const CACHE_MAX_ENTRIES = 100;
 const RATE_LIMIT_WINDOW_MS = 1000;
 const MAX_REQUESTS_PER_WINDOW = 2;
