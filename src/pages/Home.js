@@ -1,3 +1,954 @@
+// import React, {
+//   useCallback,
+//   useState,
+//   useRef,
+//   useEffect,
+//   useMemo,
+//   lazy,
+//   Suspense,
+//   memo,
+// } from "react";
+// import { Link } from "react-router-dom";
+// import { Volume2 } from "lucide-react";
+// import { Helmet } from "react-helmet-async";
+// import SEO from "../components/SEO";
+
+// // Keep critical components for initial render
+// import MobileMenu from "../components/mobileMenu";
+// import Hero from "../components/hero";
+// import InputCard from "../components/inputCard";
+// import ResultsCard from "../components/resultCard";
+// // Legacy Adcash imports kept for rollback while the AdSense migration is verified.
+// import LeaderboardAd from "../components/ads/LeaderboardAd";
+// import MediumRectangleAd from "../components/ads/MediumRectangleAd";
+// import SponsoredAdBlock from "../components/ads/SponsoredAdBlock";
+// import ExamplesList from "../components/exampleList";
+// import useDebouncedCallback from "../hooks/useDebouncedCallback";
+// import usePersistentCache from "../hooks/usePersistentCache";
+
+// // Lazy load all components that aren't needed for initial render
+// const FeaturesPage = lazy(() => import("../components/features"));
+// const MispronouncedWords = lazy(() => import("../components/mispronounce"));
+// const WordOfDay = lazy(() => import("../components/wordOfDay"));
+// const QuickPronounceTips = lazy(() => import("../components/tips"));
+
+// const BACKEND_PRONUNCIATION_URL =
+//   "https://backend-8isq.vercel.app/get-pronunciation";
+// const REQUEST_TIMEOUT_MS = 10000;
+// const SEARCH_DEBOUNCE_MS = 400;
+// const CACHE_STORAGE_KEY = "quickpronounce_pronunciation_cache_v1";
+// const CACHE_MAX_ENTRIES = 100;
+// const RATE_LIMIT_WINDOW_MS = 1000;
+// const MAX_REQUESTS_PER_WINDOW = 2;
+// const MAX_WORD_LENGTH = 60;
+// const HOME_BELOW_HEADER_DESKTOP_SLOT = "1333110610";
+// const HOME_AFTER_RESULT_DESKTOP_SLOT = "4921687590";
+// const HOME_AFTER_RESULT_MOBILE_SLOT = "8397212412";
+// const HOME_AFTER_EXAMPLES_MOBILE_SLOT = "7084130741";
+
+// // Create and memoize static components
+// const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
+//   <button
+//     onClick={onClick}
+//     disabled={isLoading || !word.trim()}
+//     className="float-button"
+//     aria-label="Listen to audio pronunciation" // SEO: Matches high-CTR 'Audio' and 'Listen' keywords
+//     title="Hear pronunciation"
+//   >
+//     <Volume2 className="icon" />
+//   </button>
+// ));
+
+// const featuredGuides = [
+//   {
+//     to: "/blog/pronunciation-guide",
+//     title: "How to pronounce difficult English words",
+//     description:
+//       "You can read the article on 50 most mispronounced words by learners and listen to correct pronunciations to understand the right sound pattern.",
+//   },
+//   {
+//     to: "/blog/ipa-guide",
+//     title: "Read IPA phonetic pronunciation clearly",
+//     description:
+//       "You should check out the IPA guide to understand how symbols represent sounds, how stress marks show syllable emphasis, and how syllable breaks indicate word rhythm.",
+//   },
+//   {
+//     to: "/blog/american-vs-british",
+//     title: "Compare American vs British pronunciation audio",
+//     description:
+//       "Explore the key sound differences between American and British English with audio examples that highlight vowel shifts, stress patterns, and common pronunciation variations.",
+//   },
+//   {
+//     to: "/faq",
+//     title: "Get quick answers about pronunciation practice",
+//     description:
+//       "Find short answers on word pronunciation audio, accents, IPA, and how to practice daily.",
+//   },
+// ];
+
+// const homeFaqs = [
+//   {
+//     question: "How do I pronounce a word correctly?",
+//     answer:
+//       "Type the word, play the pronunciation audio, then repeat it while checking the IPA and syllable stress. Practicing with two accents can help you differentiate between accents and give a deeper understanding of the actual sounds.",
+//   },
+//   {
+//     question: "How do you pronounce words in English?",
+//     answer:
+//       "Type any word to hear its pronunciation in English instantly. QuickPronounce gives you access to audio, IPA, and accent options so you can check the pronunciation of words across American, British, Australian, and Indian English.",
+//   },
+//   {
+//     question: "Can I compare American and British pronunciation?",
+//     answer:
+//       "Yes. You can switch between American, British, Australian, and Indian English to compare vowel sounds, stress, and rhythm for the same word.",
+//   },
+// ];
+
+// const Home = () => {
+//   const [state, setState] = useState({
+//     word: "",
+//     accent: "en-US",
+//     isMale: true,
+//     phonetic: "",
+//     speed: "normal",
+//     hasPronounced: false,
+//     isLoading: false,
+//     meanings: [],
+//     examples: [],
+//     isDarkMode: false,
+//     isMobileMenuOpen: false,
+//     isFavorite: false,
+//     synonyms: [],
+//     antonyms: [],
+//     showSynonyms: true,
+//     syllables: [],
+//   });
+
+//   const audioRef = useRef(new Audio());
+//   const activeAudioUrlRef = useRef(null);
+//   const activeRequestControllerRef = useRef(null);
+//   const requestTimestampsRef = useRef([]);
+//   const lastRequestKeyRef = useRef("");
+//   const cache = usePersistentCache(CACHE_STORAGE_KEY, CACHE_MAX_ENTRIES);
+
+//   const {
+//     word,
+//     accent,
+//     isMale,
+//     phonetic,
+//     speed,
+//     hasPronounced,
+//     isLoading,
+//     meanings,
+//     examples,
+//     isDarkMode,
+//     isMobileMenuOpen,
+//     isFavorite,
+//     synonyms,
+//     antonyms,
+//     syllables,
+//   } = state;
+
+//   const updateState = useCallback((updates) => {
+//     setState((prev) => ({ ...prev, ...updates }));
+//   }, []);
+
+//   const [isPlaying, setIsPlaying] = useState(false);
+//   const [isBelowFoldVisible, setIsBelowFoldVisible] = useState(false);
+//   const [viewportWidth, setViewportWidth] = useState(() =>
+//     typeof window === "undefined" ? 0 : window.innerWidth,
+//   );
+//   const belowFoldRef = useRef(null);
+
+//   const leaderboardZoneId = useMemo(() => {
+//     if (viewportWidth >= 768) return HOME_BELOW_HEADER_DESKTOP_SLOT;
+//     return "";
+//   }, [viewportWidth]);
+
+//   const afterResultDesktopZoneId = useMemo(() => {
+//     if (viewportWidth >= 768) return HOME_AFTER_RESULT_DESKTOP_SLOT;
+//     return "";
+//   }, [viewportWidth]);
+
+//   const afterResultMobileZoneId = useMemo(() => {
+//     if (viewportWidth > 0 && viewportWidth < 768) {
+//       return HOME_AFTER_RESULT_MOBILE_SLOT;
+//     }
+//     return "";
+//   }, [viewportWidth]);
+
+//   const afterExamplesMobileZoneId = useMemo(() => {
+//     if (viewportWidth > 0 && viewportWidth < 768) {
+//       return HOME_AFTER_EXAMPLES_MOBILE_SLOT;
+//     }
+//     return "";
+//   }, [viewportWidth]);
+
+//   const queryLeaderboardAdNode = useMemo(() => {
+//     if (!hasPronounced || !leaderboardZoneId) {
+//       return null;
+//     }
+
+//     return (
+//       <LeaderboardAd
+//         slot={leaderboardZoneId}
+//         className="adsense-leaderboard ad-slot--leaderboard"
+//       />
+//     );
+//   }, [hasPronounced, leaderboardZoneId]);
+
+//   const alwaysVisibleLeaderboardAdNode = useMemo(() => {
+//     if (!afterResultDesktopZoneId) {
+//       return null;
+//     }
+
+//     return (
+//       <LeaderboardAd
+//         slot={afterResultDesktopZoneId}
+//         className="adsense-leaderboard ad-slot--leaderboard"
+//       />
+//     );
+//   }, [afterResultDesktopZoneId]);
+//   const belowTipsLeaderboardAdNode = useMemo(() => {
+//     if (viewportWidth < 768) {
+//       return null;
+//     }
+
+//     return (
+//       <LeaderboardAd
+//         slot={afterResultDesktopZoneId}
+//         className="adsense-leaderboard ad-slot--leaderboard"
+//       />
+//     );
+//   }, [afterResultDesktopZoneId, viewportWidth]);
+
+//   const showMobileSquareAds = Boolean(
+//     afterResultMobileZoneId || afterExamplesMobileZoneId,
+//   );
+
+//   const handleRelationToggle = useCallback(
+//     (type) => {
+//       updateState({ showSynonyms: type === "synonyms" });
+//     },
+//     [updateState],
+//   );
+
+//   const sanitizeWord = useCallback(
+//     (value) => String(value ?? "").slice(0, MAX_WORD_LENGTH),
+//     [],
+//   );
+
+//   const normalizeWord = useCallback(
+//     (value) => sanitizeWord(value).trim().toLowerCase(),
+//     [sanitizeWord],
+//   );
+
+//   const buildRequestKey = useCallback(
+//     (normalizedWord) => `${normalizedWord}-${accent}-${isMale}-${speed}`,
+//     [accent, isMale, speed],
+//   );
+
+//   const isRateLimited = useCallback(() => {
+//     const now = Date.now();
+//     const validWindow = requestTimestampsRef.current.filter(
+//       (ts) => now - ts < RATE_LIMIT_WINDOW_MS,
+//     );
+//     requestTimestampsRef.current = validWindow;
+//     return validWindow.length >= MAX_REQUESTS_PER_WINDOW;
+//   }, []);
+
+//   const rememberRequestTimestamp = useCallback(() => {
+//     requestTimestampsRef.current = [
+//       ...requestTimestampsRef.current,
+//       Date.now(),
+//     ];
+//   }, []);
+
+//   const playAudioFromContent = useCallback((audioContent) => {
+//     if (!audioContent) {
+//       setIsPlaying(false);
+//       return;
+//     }
+
+//     try {
+//       if (activeAudioUrlRef.current) {
+//         URL.revokeObjectURL(activeAudioUrlRef.current);
+//         activeAudioUrlRef.current = null;
+//       }
+
+//       const byteArray = Uint8Array.from(atob(audioContent), (c) =>
+//         c.charCodeAt(0),
+//       );
+//       const audioBlob = new Blob([byteArray], { type: "audio/mp3" });
+//       const audioUrl = URL.createObjectURL(audioBlob);
+//       activeAudioUrlRef.current = audioUrl;
+
+//       audioRef.current.src = audioUrl;
+//       audioRef.current.preload = "auto";
+//       audioRef.current.oncanplaythrough = () => audioRef.current.play();
+//       audioRef.current.onended = () => setIsPlaying(false);
+//     } catch (_) {
+//       setIsPlaying(false);
+//     }
+//   }, []);
+
+//   const applyPronunciationResult = useCallback(
+//     (data, requestKey, normalizedWord) => {
+//       const safeMeanings =
+//         Array.isArray(data.meanings) && data.meanings.length > 0
+//           ? data.meanings
+//           : [
+//               `${
+//                 /^[A-Z][a-z]+$/.test(normalizedWord)
+//                   ? "This looks like a name! "
+//                   : ""
+//               }Hmm... we couldn't find a meaning for this word. Try another word!`,
+//             ];
+//       const safeExamples =
+//         Array.isArray(data.examples) && data.examples.length > 0
+//           ? data.examples
+//           : [{ text: "No examples available for this word." }];
+
+//       const result = {
+//         phonetic: data.phonetic || "Phonetic transcription not available.",
+//         meanings: safeMeanings,
+//         examples: safeExamples,
+//         synonyms: Array.isArray(data.synonyms) ? data.synonyms : [],
+//         antonyms: Array.isArray(data.antonyms) ? data.antonyms : [],
+//         syllables: Array.isArray(data.syllables) ? data.syllables : [],
+//         audioContent: data.audioContent || null,
+//       };
+
+//       cache.set(requestKey, result);
+//       lastRequestKeyRef.current = requestKey;
+
+//       updateState({
+//         phonetic: result.phonetic,
+//         meanings: result.meanings,
+//         examples: result.examples,
+//         synonyms: result.synonyms,
+//         antonyms: result.antonyms,
+//         syllables: result.syllables,
+//         hasPronounced: true,
+//       });
+
+//       playAudioFromContent(result.audioContent);
+//     },
+//     [cache, playAudioFromContent, updateState],
+//   );
+
+//   const executePronunciationRequest = useCallback(
+//     async (rawWord, { bypassRateLimit = false } = {}) => {
+//       const normalizedWord = normalizeWord(rawWord);
+//       if (!normalizedWord) return;
+
+//       const requestKey = buildRequestKey(normalizedWord);
+//       const cached = cache.get(requestKey);
+
+//       if (requestKey === lastRequestKeyRef.current) {
+//         if (cached) {
+//           updateState({
+//             phonetic: cached.phonetic,
+//             meanings: cached.meanings,
+//             examples: cached.examples,
+//             synonyms: cached.synonyms,
+//             antonyms: cached.antonyms,
+//             syllables: cached.syllables,
+//             hasPronounced: true,
+//             isLoading: false,
+//           });
+//           playAudioFromContent(cached.audioContent);
+//         }
+//         return;
+//       }
+
+//       if (!bypassRateLimit && isRateLimited()) {
+//         return;
+//       }
+
+//       if (cached) {
+//         updateState({
+//           phonetic: cached.phonetic,
+//           meanings: cached.meanings,
+//           examples: cached.examples,
+//           synonyms: cached.synonyms,
+//           antonyms: cached.antonyms,
+//           syllables: cached.syllables,
+//           hasPronounced: true,
+//           isLoading: false,
+//         });
+
+//         playAudioFromContent(cached.audioContent);
+//         lastRequestKeyRef.current = requestKey;
+//         return;
+//       }
+
+//       if (activeRequestControllerRef.current) {
+//         activeRequestControllerRef.current.abort();
+//       }
+
+//       const controller = new AbortController();
+//       activeRequestControllerRef.current = controller;
+//       rememberRequestTimestamp();
+
+//       try {
+//         updateState({ isLoading: true });
+//         setIsPlaying(true);
+
+//         const requestBody = {
+//           word: normalizedWord,
+//           accent,
+//           isMale,
+//           speed,
+//         };
+
+//         const queryString = new URLSearchParams({
+//           word: requestBody.word,
+//           accent: requestBody.accent,
+//           isMale: String(requestBody.isMale),
+//           speed: requestBody.speed,
+//         }).toString();
+
+//         let response;
+
+//         try {
+//           const getTimeoutId = setTimeout(
+//             () => controller.abort(),
+//             REQUEST_TIMEOUT_MS,
+//           );
+
+//           response = await fetch(
+//             `${BACKEND_PRONUNCIATION_URL}?${queryString}`,
+//             {
+//               method: "GET",
+//               signal: controller.signal,
+//             },
+//           );
+
+//           clearTimeout(getTimeoutId);
+//         } catch (_) {
+//           response = null;
+//         }
+
+//         if (!response || !response.ok) {
+//           const postTimeoutId = setTimeout(
+//             () => controller.abort(),
+//             REQUEST_TIMEOUT_MS,
+//           );
+
+//           response = await fetch(BACKEND_PRONUNCIATION_URL, {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify(requestBody),
+//             signal: controller.signal,
+//           });
+
+//           clearTimeout(postTimeoutId);
+//         }
+
+//         if (!response.ok) {
+//           throw new Error(`Server error: ${response.status}`);
+//         }
+
+//         const data = await response.json();
+//         applyPronunciationResult(data, requestKey, normalizedWord);
+//       } catch (error) {
+//         if (error?.name !== "AbortError") {
+//           setIsPlaying(false);
+//         }
+//       } finally {
+//         if (activeRequestControllerRef.current === controller) {
+//           activeRequestControllerRef.current = null;
+//         }
+//         updateState({ isLoading: false });
+//       }
+//     },
+//     [
+//       normalizeWord,
+//       buildRequestKey,
+//       isRateLimited,
+//       cache,
+//       updateState,
+//       playAudioFromContent,
+//       rememberRequestTimestamp,
+//       accent,
+//       isMale,
+//       speed,
+//       applyPronunciationResult,
+//     ],
+//   );
+
+//   const { debouncedCallback: debouncedSearch, cancel: cancelDebouncedSearch } =
+//     useDebouncedCallback(executePronunciationRequest, SEARCH_DEBOUNCE_MS);
+
+//   const getPronunciation = useCallback(() => {
+//     cancelDebouncedSearch();
+//     executePronunciationRequest(word);
+//   }, [cancelDebouncedSearch, executePronunciationRequest, word]);
+
+//   const pronounce = useCallback(
+//     (selectedWord) => {
+//       const safeWord = sanitizeWord(selectedWord);
+//       updateState({ word: safeWord });
+//       debouncedSearch(safeWord);
+//       requestAnimationFrame(() =>
+//         window.scrollTo({ top: 0, behavior: "smooth" }),
+//       );
+//     },
+//     [updateState, sanitizeWord, debouncedSearch],
+//   );
+
+//   useEffect(() => {
+//     if (!("IntersectionObserver" in window)) {
+//       setIsBelowFoldVisible(true);
+//       return;
+//     }
+//     const sentinel = belowFoldRef.current;
+//     if (!sentinel) return;
+//     const observer = new IntersectionObserver(
+//       ([entry]) => {
+//         if (entry.isIntersecting) {
+//           setIsBelowFoldVisible(true);
+//           observer.disconnect();
+//         }
+//       },
+//       { rootMargin: "300px" },
+//     );
+//     observer.observe(sentinel);
+//     return () => observer.disconnect();
+//   }, []);
+
+//   const handleKeyDown = useCallback(
+//     (e) => {
+//       if (e.key === "Enter") {
+//         e.preventDefault();
+//         getPronunciation();
+//       }
+//     },
+//     [getPronunciation],
+//   );
+
+//   const togglers = useMemo(
+//     () => ({
+//       darkMode: () => updateState({ isDarkMode: !isDarkMode }),
+//       mobileMenu: () => updateState({ isMobileMenuOpen: !isMobileMenuOpen }),
+//       favorite: () => updateState({ isFavorite: !isFavorite }),
+//     }),
+//     [updateState, isDarkMode, isMobileMenuOpen, isFavorite],
+//   );
+
+//   useEffect(
+//     () => () => {
+//       cancelDebouncedSearch();
+//       if (activeRequestControllerRef.current) {
+//         activeRequestControllerRef.current.abort();
+//       }
+//       if (activeAudioUrlRef.current) {
+//         URL.revokeObjectURL(activeAudioUrlRef.current);
+//         activeAudioUrlRef.current = null;
+//       }
+//     },
+//     [cancelDebouncedSearch],
+//   );
+
+//   useEffect(() => {
+//     let resizeTimer = null;
+
+//     const handleResize = () => {
+//       // Debounce to avoid rapid viewport toggles during user resize
+//       if (resizeTimer) clearTimeout(resizeTimer);
+//       resizeTimer = setTimeout(() => {
+//         setViewportWidth(window.innerWidth);
+//         document.documentElement.style.setProperty(
+//           "--app-height",
+//           `${window.innerHeight}px`,
+//         );
+//       }, 200);
+//     };
+
+//     // Initial set
+//     setViewportWidth(window.innerWidth);
+//     document.documentElement.style.setProperty(
+//       "--app-height",
+//       `${window.innerHeight}px`,
+//     );
+//     window.addEventListener("resize", handleResize);
+
+//     const link = document.createElement("link");
+//     link.rel = "preconnect";
+//     link.href = "https://backend-8isq.vercel.app";
+//     document.head.appendChild(link);
+
+//     return () => {
+//       if (link.parentNode) {
+//         document.head.removeChild(link);
+//       }
+//       window.removeEventListener("resize", handleResize);
+//       if (resizeTimer) clearTimeout(resizeTimer);
+//     };
+//   }, []);
+
+//   return (
+//     <>
+//       <SEO
+//         title="Pronounce Words Audio | How to Pronounce Words in English"
+//         description="Pronounce words with free audio and IPA in American, British, Australian, and Indian English. Learn how to pronounce words correctly with meaning."
+//         path="/"
+//         ogType="website"
+//         ogTitle="Pronounce Words Audio | How to Pronounce Words in English"
+//         ogDescription="Pronounce words with free audio and IPA in American, British, Australian, and Indian English. Learn how to pronounce words correctly with meaning."
+//         image="https://www.quickpronounce.site/og-preview.png"
+//       />
+
+//       <Helmet>
+//         <script type="application/ld+json">
+//           {JSON.stringify([
+//             {
+//               "@context": "https://schema.org",
+//               "@type": "WebSite",
+//               url: "https://www.quickpronounce.site/",
+//               name: "QuickPronounce",
+//             },
+//             {
+//               "@context": "https://schema.org",
+//               "@type": "SoftwareApplication",
+//               name: "QuickPronounce",
+//               operatingSystem: "Any",
+//               applicationCategory: "EducationalApplication",
+//               featureList:
+//                 "Word pronunciation audio, Multiple accents (American, British, Australian, Indian), IPA phonetics, meanings and examples",
+//               description:
+//                 "A free word pronouncer tool for hearing pronunciation audio, comparing English accents, and checking IPA.",
+//               offers: {
+//                 "@type": "Offer",
+//                 price: "0",
+//                 priceCurrency: "USD",
+//               },
+//             },
+//             {
+//               "@context": "https://schema.org",
+//               "@type": "FAQPage",
+//               mainEntity: homeFaqs.map((faq) => ({
+//                 "@type": "Question",
+//                 name: faq.question,
+//                 acceptedAnswer: {
+//                   "@type": "Answer",
+//                   text: faq.answer,
+//                 },
+//               })),
+//             },
+//           ])}
+//         </script>
+//       </Helmet>
+
+//       {isMobileMenuOpen && <MobileMenu />}
+
+//       <div className="home-main-shell">
+//         <main className="main container" id="home">
+//           {!hasPronounced && <Hero />}
+
+//           {queryLeaderboardAdNode && (
+//             <SponsoredAdBlock
+//               className="leaderboard-ad-wrap container"
+//               placement="inline"
+//             >
+//               {queryLeaderboardAdNode}
+//             </SponsoredAdBlock>
+//           )}
+
+//           <div className="interface-grid">
+//             <InputCard
+//               word={word}
+//               setWord={(nextWord) =>
+//                 updateState({ word: sanitizeWord(nextWord) })
+//               }
+//               handleKeyDown={handleKeyDown}
+//               getPronunciation={getPronunciation}
+//               pronounce={pronounce}
+//               isLoading={isLoading}
+//               accent={accent}
+//               setAccent={(accent) => updateState({ accent })}
+//               isMale={isMale}
+//               setIsMale={(isMale) => updateState({ isMale })}
+//               speed={speed}
+//               setSpeed={(speed) => updateState({ speed })}
+//               hasPronounced={hasPronounced}
+//               synonyms={synonyms}
+//               antonyms={antonyms}
+//               handleRelationToggle={handleRelationToggle}
+//               maxWordLength={MAX_WORD_LENGTH}
+//             />
+
+//             {showMobileSquareAds && (
+//               <SponsoredAdBlock
+//                 className="mobile-results-rectangle-ad-wrap"
+//                 placement="inline"
+//               >
+//                 <MediumRectangleAd
+//                   slot={afterResultMobileZoneId}
+//                   className="mobile-results-rectangle-ad ad-slot--rectangle"
+//                 />
+//               </SponsoredAdBlock>
+//             )}
+
+//             <ResultsCard
+//               isLoading={isLoading}
+//               hasPronounced={hasPronounced}
+//               phonetic={phonetic}
+//               meanings={meanings}
+//               getPronunciation={getPronunciation}
+//               toggleFavorite={togglers.favorite}
+//               isFavorite={isFavorite}
+//               isPlaying={isPlaying}
+//               syllables={syllables}
+//             />
+//           </div>
+
+//           <FloatButton
+//             onClick={getPronunciation}
+//             disabled={isLoading}
+//             isLoading={isLoading}
+//             word={word}
+//           />
+//         </main>
+//       </div>
+
+//       <Suspense fallback={null}>
+//         {hasPronounced && <ExamplesList examples={examples} />}
+//       </Suspense>
+
+//       {showMobileSquareAds && (
+//         <SponsoredAdBlock
+//           className="mobile-results-rectangle-ad-wrap container"
+//           placement="bottom"
+//         >
+//           <MediumRectangleAd
+//             slot={afterExamplesMobileZoneId}
+//             className="mobile-results-rectangle-ad ad-slot--rectangle"
+//           />
+//         </SponsoredAdBlock>
+//       )}
+
+//       {alwaysVisibleLeaderboardAdNode && (
+//         <SponsoredAdBlock
+//           className="leaderboard-ad-wrap container"
+//           placement="bottom"
+//         >
+//           {alwaysVisibleLeaderboardAdNode}
+//         </SponsoredAdBlock>
+//       )}
+
+//       {/* Sentinel: below-fold content loads once this enters the viewport */}
+//       <div ref={belowFoldRef} />
+
+//       {isBelowFoldVisible && (
+//         <>
+//           <Suspense
+//             fallback={
+//               <div
+//                 className="loading-placeholder"
+//                 style={{ height: "260px" }}
+//               ></div>
+//             }
+//           >
+//             <WordOfDay pronounce={pronounce} />
+//           </Suspense>
+
+//           <Suspense
+//             fallback={
+//               <div
+//                 className="loading-placeholder"
+//                 style={{ height: "200px" }}
+//               ></div>
+//             }
+//           >
+//             <MispronouncedWords pronounce={pronounce} />
+//           </Suspense>
+
+//           <div className="about-page-divider"></div>
+
+//           <Suspense
+//             fallback={
+//               <div
+//                 className="loading-placeholder"
+//                 style={{ height: "300px" }}
+//               ></div>
+//             }
+//           >
+//             <QuickPronounceTips />
+//           </Suspense>
+
+//           {belowTipsLeaderboardAdNode && (
+//             <SponsoredAdBlock
+//               className="leaderboard-ad-wrap container"
+//               placement="bottom"
+//             >
+//               {belowTipsLeaderboardAdNode}
+//             </SponsoredAdBlock>
+//           )}
+
+//           <div className="about-page-divider"></div>
+
+//           <section
+//             className="home-seo-section container"
+//             aria-labelledby="home-intent-title"
+//           >
+//             <p className="home-seo-anchor">
+//               Practice clear pronunciation with audio in{" "}
+//               <strong>American</strong>, <strong>British</strong>,{" "}
+//               <strong>Indian</strong>, and <strong>Australian</strong> English,
+//               then use IPA and examples to reinforce each word.
+//             </p>
+
+//             <div className="home-seo-stack">
+//               <div className="home-seo-panel home-seo-intent-panel">
+//                 <h2 className="about-page-section-title" id="home-intent-title">
+//                   How to pronounce words correctly in English
+//                 </h2>
+//                 <div className="home-intent-grid">
+//                   <div className="home-seo-card">
+//                     <p>
+//                       First start with the audio, then check IPA, then repeat
+//                       aloud while matching stress and rhythm. This simple
+//                       sequence can be repeated again to help you hear the target
+//                       sound first and then reproduce it more naturally.
+//                     </p>
+//                     <ol className="home-intent-steps">
+//                       <li>Enter the word or phrase you want to pronounce.</li>
+//                       <li>
+//                         Play the pronunciation audio in your target accent.
+//                       </li>
+//                       <li>
+//                         Check the IPA, meaning and examples, then repeat the
+//                         word naturally.
+//                       </li>
+//                     </ol>
+//                   </div>
+
+//                   <div className="home-seo-card">
+//                     <h3>Why learners use this pronunciation tool</h3>
+//                     <p>
+//                       QuickPronounce is built for fast daily practice: users can
+//                       hear the word, compare accents, and use phonetic support
+//                       without switching between multiple websites.
+//                     </p>
+//                     <ul className="home-intent-points">
+//                       <li>
+//                         It provides free pronunciation audio for common,
+//                         academic, and tricky words.
+//                       </li>
+//                       <li>
+//                         IPA phonetic transcription and pronunciation breakdown
+//                         to support pronunciation in English.
+//                       </li>
+//                       <li>
+//                         Accent switching for American, British, Australian, and
+//                         Indian English.
+//                       </li>
+//                       <li>
+//                         Word meanings and examples that make pronunciation
+//                         easier to remember.
+//                       </li>
+//                     </ul>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <div
+//                 className="home-seo-panel"
+//                 aria-labelledby="home-guides-title"
+//               >
+//                 <h2 className="about-page-section-title" id="home-guides-title">
+//                   Popular pronunciation guides
+//                 </h2>
+//                 <p className="home-guides-subtitle">
+//                   You can explore practical guides on pronunciation, accent
+//                   differences, and sound-focused practice routines to improve
+//                   your English pronunciation skills effectively.
+//                 </p>
+//                 <div className="home-guides-grid">
+//                   {featuredGuides.map((guide) => (
+//                     <Link
+//                       key={guide.to}
+//                       to={guide.to}
+//                       className="home-guide-link"
+//                     >
+//                       <h3>{guide.title}</h3>
+//                       <p>{guide.description}</p>
+//                     </Link>
+//                   ))}
+//                 </div>
+//               </div>
+
+//               <div className="home-seo-panel" aria-labelledby="home-faq-title">
+//                 <h2 className="about-page-section-title" id="home-faq-title">
+//                   Common pronunciation questions
+//                 </h2>
+//                 <div className="home-faq-grid">
+//                   {homeFaqs.map((faq) => (
+//                     <article key={faq.question} className="home-faq-card">
+//                       <h3>{faq.question}</h3>
+//                       <p>{faq.answer}</p>
+//                     </article>
+//                   ))}
+//                 </div>
+//               </div>
+
+//               <div
+//                 className="home-seo-panel"
+//                 aria-labelledby="home-practice-title"
+//               >
+//                 <h2
+//                   className="about-page-section-title"
+//                   id="home-practice-title"
+//                 >
+//                   Practice & Quizzes
+//                 </h2>
+
+//                 <p className="home-guides-subtitle">
+//                   Improve pronunciation with interactive quizzes, listening
+//                   exercises, and minimal-pair practice. Train your ear,
+//                   strengthen sound recognition, and build confidence with short
+//                   practice sessions designed for English learners.
+//                 </p>
+
+//                 <div className="home-practice-cta">
+//                   <Link to="/quiz" className="cta-button primary">
+//                     Try a pronunciation quiz
+//                   </Link>
+
+//                   <Link
+//                     to="/blog/american-vs-british"
+//                     className="cta-button secondary"
+//                     style={{ marginLeft: "0.75rem" }}
+//                   >
+//                     Compare American & British pronunciation
+//                   </Link>
+//                 </div>
+//               </div>
+//             </div>
+//           </section>
+
+//           <div className="about-page-divider"></div>
+
+//           <Suspense
+//             fallback={
+//               <div
+//                 className="loading-placeholder"
+//                 style={{ height: "300px" }}
+//               ></div>
+//             }
+//           >
+//             <FeaturesPage id="features" />
+//           </Suspense>
+//         </>
+//       )}
+//     </>
+//   );
+// };
+
+// export default Home;
+
 import React, {
   useCallback,
   useState,
@@ -33,7 +984,8 @@ const WordOfDay = lazy(() => import("../components/wordOfDay"));
 const QuickPronounceTips = lazy(() => import("../components/tips"));
 
 const BACKEND_PRONUNCIATION_URL =
-  "https://backend-8isq.vercel.app/get-pronunciation";
+  // "https://backend-8isq.vercel.app/get-pronunciation";
+  "http://localhost:5000/get-pronunciation";
 const REQUEST_TIMEOUT_MS = 10000;
 const SEARCH_DEBOUNCE_MS = 400;
 const CACHE_STORAGE_KEY = "quickpronounce_pronunciation_cache_v1";
@@ -52,7 +1004,7 @@ const FloatButton = memo(({ onClick, disabled, isLoading, word }) => (
     onClick={onClick}
     disabled={isLoading || !word.trim()}
     className="float-button"
-    aria-label="Listen to audio pronunciation" // SEO: Matches high-CTR 'Audio' and 'Listen' keywords
+    aria-label="Listen to audio pronunciation"
     title="Hear pronunciation"
   >
     <Volume2 className="icon" />
@@ -113,8 +1065,8 @@ const Home = () => {
     speed: "normal",
     hasPronounced: false,
     isLoading: false,
-    meanings: [],
-    examples: [],
+    entries: [],
+    default_pos: null,
     isDarkMode: false,
     isMobileMenuOpen: false,
     isFavorite: false,
@@ -123,6 +1075,8 @@ const Home = () => {
     showSynonyms: true,
     syllables: [],
   });
+
+  const [activePos, setActivePos] = useState(null);
 
   const audioRef = useRef(new Audio());
   const activeAudioUrlRef = useRef(null);
@@ -139,8 +1093,8 @@ const Home = () => {
     speed,
     hasPronounced,
     isLoading,
-    meanings,
-    examples,
+    entries,
+    default_pos,
     isDarkMode,
     isMobileMenuOpen,
     isFavorite,
@@ -209,6 +1163,7 @@ const Home = () => {
       />
     );
   }, [afterResultDesktopZoneId]);
+
   const belowTipsLeaderboardAdNode = useMemo(() => {
     if (viewportWidth < 768) {
       return null;
@@ -293,26 +1248,11 @@ const Home = () => {
   }, []);
 
   const applyPronunciationResult = useCallback(
-    (data, requestKey, normalizedWord) => {
-      const safeMeanings =
-        Array.isArray(data.meanings) && data.meanings.length > 0
-          ? data.meanings
-          : [
-              `${
-                /^[A-Z][a-z]+$/.test(normalizedWord)
-                  ? "This looks like a name! "
-                  : ""
-              }Hmm... we couldn't find a meaning for this word. Try another word!`,
-            ];
-      const safeExamples =
-        Array.isArray(data.examples) && data.examples.length > 0
-          ? data.examples
-          : [{ text: "No examples available for this word." }];
-
+    (data, requestKey) => {
       const result = {
         phonetic: data.phonetic || "Phonetic transcription not available.",
-        meanings: safeMeanings,
-        examples: safeExamples,
+        entries: Array.isArray(data.entries) ? data.entries : [],
+        default_pos: data.default_pos || null,
         synonyms: Array.isArray(data.synonyms) ? data.synonyms : [],
         antonyms: Array.isArray(data.antonyms) ? data.antonyms : [],
         syllables: Array.isArray(data.syllables) ? data.syllables : [],
@@ -324,14 +1264,15 @@ const Home = () => {
 
       updateState({
         phonetic: result.phonetic,
-        meanings: result.meanings,
-        examples: result.examples,
+        entries: result.entries,
+        default_pos: result.default_pos,
         synonyms: result.synonyms,
         antonyms: result.antonyms,
         syllables: result.syllables,
         hasPronounced: true,
       });
 
+      setActivePos(result.default_pos);
       playAudioFromContent(result.audioContent);
     },
     [cache, playAudioFromContent, updateState],
@@ -349,14 +1290,15 @@ const Home = () => {
         if (cached) {
           updateState({
             phonetic: cached.phonetic,
-            meanings: cached.meanings,
-            examples: cached.examples,
+            entries: cached.entries,
+            default_pos: cached.default_pos,
             synonyms: cached.synonyms,
             antonyms: cached.antonyms,
             syllables: cached.syllables,
             hasPronounced: true,
             isLoading: false,
           });
+          setActivePos(cached.default_pos);
           playAudioFromContent(cached.audioContent);
         }
         return;
@@ -369,15 +1311,15 @@ const Home = () => {
       if (cached) {
         updateState({
           phonetic: cached.phonetic,
-          meanings: cached.meanings,
-          examples: cached.examples,
+          entries: cached.entries,
+          default_pos: cached.default_pos,
           synonyms: cached.synonyms,
           antonyms: cached.antonyms,
           syllables: cached.syllables,
           hasPronounced: true,
           isLoading: false,
         });
-
+        setActivePos(cached.default_pos);
         playAudioFromContent(cached.audioContent);
         lastRequestKeyRef.current = requestKey;
         return;
@@ -451,7 +1393,7 @@ const Home = () => {
         }
 
         const data = await response.json();
-        applyPronunciationResult(data, requestKey, normalizedWord);
+        applyPronunciationResult(data, requestKey);
       } catch (error) {
         if (error?.name !== "AbortError") {
           setIsPlaying(false);
@@ -555,7 +1497,6 @@ const Home = () => {
     let resizeTimer = null;
 
     const handleResize = () => {
-      // Debounce to avoid rapid viewport toggles during user resize
       if (resizeTimer) clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         setViewportWidth(window.innerWidth);
@@ -566,7 +1507,6 @@ const Home = () => {
       }, 200);
     };
 
-    // Initial set
     setViewportWidth(window.innerWidth);
     document.documentElement.style.setProperty(
       "--app-height",
@@ -695,7 +1635,10 @@ const Home = () => {
               isLoading={isLoading}
               hasPronounced={hasPronounced}
               phonetic={phonetic}
-              meanings={meanings}
+              entries={entries}
+              default_pos={default_pos}
+              activePos={activePos}
+              setActivePos={setActivePos}
               getPronunciation={getPronunciation}
               toggleFavorite={togglers.favorite}
               isFavorite={isFavorite}
@@ -714,7 +1657,9 @@ const Home = () => {
       </div>
 
       <Suspense fallback={null}>
-        {hasPronounced && <ExamplesList examples={examples} />}
+        {hasPronounced && (
+          <ExamplesList entries={entries} activePos={activePos} />
+        )}
       </Suspense>
 
       {showMobileSquareAds && (

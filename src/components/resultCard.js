@@ -1,3 +1,52 @@
+// import React, { memo } from "react";
+// import { Volume2 } from "lucide-react";
+// import ResultsContent from "./resultContent";
+
+// const ResultsCard = memo(
+//   ({
+//     isLoading,
+//     hasPronounced,
+//     phonetic,
+//     meanings,
+//     getPronunciation,
+//     toggleFavorite,
+//     isFavorite,
+//     isPlaying,
+//     syllables,
+//   }) => (
+//     <div className="card results-card">
+//       {isLoading ? (
+//         <div className="results-empty">
+//           <div className="loading-spinner icon-lg" />
+//           <p>Fetching pronunciation...</p>
+//         </div>
+//       ) : !hasPronounced ? (
+//         <div className="results-empty">
+//           <Volume2 className="icon-lg main-icon" />
+//           <p className="cta-text">
+//             Enter a word and click Pronounce to hear it.
+//           </p>
+//           <div className="social-cred-subtle">
+//             🌍 Used by English learners in <strong>100+ countries</strong>.
+//           </div>
+//         </div>
+//       ) : (
+//         <ResultsContent
+//           phonetic={phonetic}
+//           meanings={meanings}
+//           getPronunciation={getPronunciation}
+//           toggleFavorite={toggleFavorite}
+//           isFavorite={isFavorite}
+//           isPlaying={isPlaying}
+//           syllables={syllables}
+//         />
+//       )}
+//     </div>
+//   ),
+// );
+
+// export default ResultsCard;
+
 import React, { memo } from "react";
 import { Volume2 } from "lucide-react";
 import ResultsContent from "./resultContent";
@@ -7,7 +56,10 @@ const ResultsCard = memo(
     isLoading,
     hasPronounced,
     phonetic,
-    meanings,
+    entries,
+    default_pos,
+    activePos,
+    setActivePos,
     getPronunciation,
     toggleFavorite,
     isFavorite,
@@ -33,7 +85,10 @@ const ResultsCard = memo(
       ) : (
         <ResultsContent
           phonetic={phonetic}
-          meanings={meanings}
+          entries={entries}
+          default_pos={default_pos}
+          activePos={activePos}
+          setActivePos={setActivePos}
           getPronunciation={getPronunciation}
           toggleFavorite={toggleFavorite}
           isFavorite={isFavorite}

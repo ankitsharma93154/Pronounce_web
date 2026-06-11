@@ -1,3 +1,35 @@
+// import React, { memo } from "react";
+// import PhoneticSection from "./phoneticSection";
+// import MeaningsSection from "./meaningSection";
+// import SupportBanner from "./SupportBanner";
+
+// const ResultsContent = memo(
+//   ({
+//     phonetic,
+//     meanings,
+//     getPronunciation,
+//     toggleFavorite,
+//     isFavorite,
+//     isPlaying,
+//     syllables,
+//   }) => (
+//     <div className="results-content">
+//       <PhoneticSection
+//         phonetic={phonetic}
+//         getPronunciation={getPronunciation}
+//         toggleFavorite={toggleFavorite}
+//         isFavorite={isFavorite}
+//         isPlaying={isPlaying}
+//         syllables={syllables}
+//       />
+//       <MeaningsSection meanings={meanings} />
+//       <SupportBanner />
+//     </div>
+//   ),
+// );
+
+// export default ResultsContent;
+
 import React, { memo } from "react";
 import PhoneticSection from "./phoneticSection";
 import MeaningsSection from "./meaningSection";
@@ -6,7 +38,10 @@ import SupportBanner from "./SupportBanner";
 const ResultsContent = memo(
   ({
     phonetic,
-    meanings,
+    entries,
+    default_pos,
+    activePos,
+    setActivePos,
     getPronunciation,
     toggleFavorite,
     isFavorite,
@@ -22,7 +57,11 @@ const ResultsContent = memo(
         isPlaying={isPlaying}
         syllables={syllables}
       />
-      <MeaningsSection meanings={meanings} />
+      <MeaningsSection
+        entries={entries}
+        activePos={activePos}
+        setActivePos={setActivePos}
+      />
       <SupportBanner />
     </div>
   ),

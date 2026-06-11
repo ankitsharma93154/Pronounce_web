@@ -929,13 +929,62 @@ body.dark .home-practice-cta .cta-button.secondary {
   color: var(--primary-hover);
   flex-shrink: 0;
 }
-.meanings-list {
-  gap: 0.75rem;
-}
 .meaning-item {
   border-radius: 0.5rem;
   box-shadow: var(--shadow-sm);
   border-left: 3px solid var(--primary);
+}
+/* ===== POS Tabs ===== */
+.pos-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.pos-tab {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.pos-tab:hover {
+  border-color: var(--primary);
+}
+.pos-tab--active {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  color: var(--text-white);
+}
+/* ===== Meanings List ===== */
+.meanings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 16rem;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  /* Scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+.meanings-list::-webkit-scrollbar {
+  width: 4px;
+}
+.meanings-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.meanings-list::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 999px;
+}
+.meanings-list::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
 }
 .float-button {
   position: fixed;
@@ -1782,6 +1831,31 @@ button:focus-visible {
 }
 .dark .example-item:hover {
   background-color: rgba(110, 69, 226, 0.15);
+}
+.examples-show-more {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  outline: none;
+}
+.examples-show-more:hover {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  color: var(--text-white);
+}
+.examples-show-more:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 /* support line */
 .support-banner {
