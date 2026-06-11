@@ -17,21 +17,25 @@
 import React, { memo, useMemo } from "react";
 
 const MeaningsSection = memo(({ entries, activePos, setActivePos }) => {
-  const activeEntry = useMemo(
-    () => entries.find((e) => e.pos === activePos) || entries[0],
-    [entries, activePos],
-  );
+  const activeEntry = useMemo(() => {
+    if (!entries || entries.length === 0) return null;
+
+    return entries.find((e) => e.pos === activePos) || entries[0];
+  }, [entries, activePos]);
 
   if (!entries || entries.length === 0) return null;
 
   return (
     <div className="meanings-section">
       <h3 className="section-title">Meanings</h3>
+
       <div className="pos-tabs">
         {entries.map((entry) => (
           <button
             key={entry.pos}
-            className={`pos-tab ${activePos === entry.pos ? "pos-tab--active" : ""}`}
+            className={`pos-tab ${
+              activePos === entry.pos ? "pos-tab--active" : ""
+            }`}
             onClick={() => setActivePos(entry.pos)}
           >
             {entry.pos}
@@ -41,7 +45,7 @@ const MeaningsSection = memo(({ entries, activePos, setActivePos }) => {
 
       {activeEntry && (
         <div className="meanings-list">
-          {activeEntry.definitions.map((definition, index) => (
+          {activeEntry.definitions?.map((definition, index) => (
             <div key={index} className="meaning-item">
               {definition}
             </div>
