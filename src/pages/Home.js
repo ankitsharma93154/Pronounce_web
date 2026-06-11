@@ -984,8 +984,7 @@ const WordOfDay = lazy(() => import("../components/wordOfDay"));
 const QuickPronounceTips = lazy(() => import("../components/tips"));
 
 const BACKEND_PRONUNCIATION_URL =
-  // "https://backend-8isq.vercel.app/get-pronunciation";
-  "http://localhost:5000/get-pronunciation";
+  "https://backend-8isq.vercel.app/get-pronunciation";
 const REQUEST_TIMEOUT_MS = 10000;
 const SEARCH_DEBOUNCE_MS = 400;
 const CACHE_STORAGE_KEY = "quickpronounce_pronunciation_cache_v1";
