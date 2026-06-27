@@ -66,7 +66,7 @@
   },
   {
     "id": "ipa-l4-q6",
-    "question": "Which IPA matches \"recording\" as a verb form?",
+    "question": "Which IPA matches \"recording\" as a verb form, in American English?",
     "options": [
       "/rɪˈkɔːdɪŋ/",
       "/ˈrɛkɔːdɪŋ/",
@@ -81,10 +81,10 @@
     "id": "ipa-l4-q7",
     "question": "Which IPA matches \"economics\"?",
     "options": [
-      "/ˌɛkəˈnɒmɪks/",
-      "/ˌiːkəˈnɒmɪks/",
       "/ˈiːkənɒmɪks/",
-      "/ˌekəˈnɒmɪks/"
+      "/iːkəˈnɒmɪks/",
+      "/ˌiːkəˈnɒmɪks/",
+      "/ˌiːkənɒmˈɪks/"
     ],
     "answer": "/ˌiːkəˈnɒmɪks/",
     "explanation": "Economics commonly has secondary stress near the beginning and primary stress on /nɒm/.",
@@ -97,7 +97,7 @@
       "/ˈfoʊtəgræfi/",
       "/foʊˈtɒgrəfi/",
       "/fəˈtɒgrəfi/",
-      "/fəˈtɑgrəfaɪ/"
+      "/ˌfoʊtəˈgrɑfi/"
     ],
     "answer": "/fəˈtɒgrəfi/",
     "explanation": "Photography shifts the stress to the second syllable: /fəˈtɒgrəfi/.",

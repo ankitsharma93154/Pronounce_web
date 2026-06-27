@@ -98,62 +98,73 @@ const TabNavigation = memo(
 const GettingStartedContent = memo(() => (
   <ol className="tips-list">
     <li>
-      <strong>Enter any word</strong> in the search box and hit enter or click
-      the pronunciation button.
+      <strong>Search for any word</strong> to hear its pronunciation and learn
+      how it sounds in spoken English.
     </li>
     <li>
-      <strong>Listen to the default pronunciation</strong> (American English,
-      male voice).
+      <strong>Listen to the pronunciation audio</strong> using the default
+      American English voice.
     </li>
     <li>
-      <strong>View the phonetic transcription</strong> (IPA) to understand the
-      sound components of the word.
+      <strong>View the IPA transcription</strong> to understand syllables,
+      sounds, and word stress.
     </li>
     <li>
-      <strong>Read the meaning, synonyms, and antonyms</strong> to fully
-      understand the word's usage.
+      <strong>Read meanings, synonyms, and examples</strong> to learn how the
+      word is used in real situations.
     </li>
   </ol>
 ));
 
 const AccentsContent = memo(() => (
   <>
-    <p>QuickPronounce offers pronunciation in four major English accents:</p>
-    <ul className="tips-list">
-      <li>
-        <strong>American English</strong> - Standard US pronunciation
-      </li>
-      <li>
-        <strong>British English</strong> - Standard UK pronunciation
-      </li>
-      <li>
-        <strong>Australian English</strong> - Standard Australian pronunciation
-      </li>
-      <li>
-        <strong>Indian English</strong> - Standard Indian pronunciation
-      </li>
-    </ul>
-    <p className="meaning-item">
-      <strong>Pro Tip:</strong> Compare pronunciations across different accents
-      to train your ear for global communication.
-    </p>
+    <>
+      <p>Compare how words are pronounced across four major English accents:</p>
+
+      <ul className="tips-list">
+        <li>
+          <strong>American English</strong> — Standard US pronunciation
+        </li>
+        <li>
+          <strong>British English</strong> — Standard UK pronunciation
+        </li>
+        <li>
+          <strong>Australian English</strong> — Australian pronunciation
+        </li>
+        <li>
+          <strong>Indian English</strong> — Indian pronunciation patterns
+        </li>
+      </ul>
+
+      <p className="meaning-item">
+        <strong>Tip:</strong> Listening to multiple accents helps you understand
+        pronunciation differences and improves listening skills.
+      </p>
+    </>
   </>
 ));
 
 const VoicesContent = memo(() => (
   <>
-    <p>Toggle between male and female voices for each accent:</p>
-    <ul className="tips-list">
-      <li>Use the interactive toggle to switch between voice types</li>
-      <li>
-        Listen to the same word pronounced by different voices to catch subtle
-        variations
-      </li>
-    </ul>
-    <p className="meaning-item">
-      <strong>Pro Tip:</strong> Some learners find certain voice types easier to
-      understand or mimic.
-    </p>
+    <>
+      <p>
+        Switch between male and female voices to hear different pronunciation
+        styles.
+      </p>
+
+      <ul className="tips-list">
+        <li>Use the voice toggle to compare different speakers.</li>
+        <li>
+          Listen multiple times to understand difficult sounds and stress
+          patterns.
+        </li>
+      </ul>
+
+      <p className="meaning-item">
+        <strong>Tip:</strong> Some learners find certain voices easier to
+        imitate while practicing pronunciation.
+      </p>
+    </>
   </>
 ));
 
@@ -215,26 +226,29 @@ const VocabBuildingContent = memo(() => (
 const PhoneticsContent = memo(() => (
   <div className="section-content">
     <p>
-      The International Phonetic Alphabet (IPA) transcription provides a
-      universal way to represent pronunciation:
+      The International Phonetic Alphabet (IPA) provides a universal way to
+      understand English pronunciation.
     </p>
+
     <ol className="tips-list">
       <li>
-        <strong>Learn Basic IPA Symbols</strong> - Familiarize yourself with
-        common English phonetic symbols.
+        <strong>Learn common IPA symbols</strong> used in English words.
       </li>
+
       <li>
-        <strong>Connect Symbols to Sounds</strong> - Listen to the pronunciation
-        while following along with the IPA.
+        <strong>Match symbols with sounds</strong> while listening to the audio
+        pronunciation.
       </li>
+
       <li>
-        <strong>Notice Patterns</strong> - The same sounds are always
-        represented by the same symbols, helping you recognize patterns.
+        <strong>Recognize pronunciation patterns</strong> that appear in many
+        words.
       </li>
     </ol>
+
     <p className="meaning-item">
-      <strong>Pro Tip:</strong> Understanding IPA can help you pronounce words
-      correctly even without hearing them!
+      <strong>Tip:</strong> Understanding IPA helps you pronounce unfamiliar
+      words correctly even before hearing them.
     </p>
   </div>
 ));
@@ -242,20 +256,23 @@ const PhoneticsContent = memo(() => (
 const DailyPracticeContent = memo(() => (
   <ol className="tips-list">
     <li>
-      <strong>Word of the Day</strong> - Learn one new word's pronunciation
-      daily.
+      <strong>Learn one new word each day</strong> to improve English
+      pronunciation gradually.
     </li>
+
     <li>
-      <strong>Accent Challenge</strong> - Practice the same set of words across
-      all four accents.
+      <strong>Practice different accents</strong> to hear pronunciation
+      variations.
     </li>
+
     <li>
-      <strong>Minimal Pairs Practice</strong> - Use QuickPronounce to master
-      similar-sounding words (like "ship" vs. "sheep").
+      <strong>Compare similar words</strong> such as "ship" and "sheep" to
+      improve listening skills.
     </li>
+
     <li>
-      <strong>Recording Sessions</strong> - Record yourself pronouncing words
-      after listening to QuickPronounce, then compare.
+      <strong>Record yourself speaking</strong> and compare your pronunciation
+      with the audio.
     </li>
   </ol>
 ));
@@ -435,10 +452,13 @@ const QuickPronounceTips = memo(() => {
     <div className="tips-container">
       <div className="tips-wrapper">
         <div className="tips-content">
-          <h2 className="tips-title">Get the Most Out of QuickPronounce</h2>
+          <h2 className="tips-title">
+            Learn English Pronunciation Step by Step
+          </h2>
+
           <p className="tips-subtitle">
-            Your complete guide to mastering word pronunciation across different
-            English accents
+            Learn how to pronounce English words, explore different accents,
+            understand IPA symbols, and practice pronunciation with real audio.
           </p>
 
           {/* Tab Navigation - Memoized Component */}
@@ -503,10 +523,13 @@ const QuickPronounceTips = memo(() => {
           {/* Call to Action */}
           <div className="cta-section">
             <p className="cta-text">
-              We're constantly improving QuickPronounce to enhance your learning
-              experience.
+              Practice pronunciation regularly, explore different English
+              accents, and build confidence speaking English.
             </p>
-            <p className="cta-highlight">Happy learning!</p>
+
+            <p className="cta-highlight">
+              Keep listening, practicing, and improving every day.
+            </p>
           </div>
         </div>
       </div>

@@ -153,8 +153,8 @@ const blogPostsData = [
 ];
 
 const sortedBlogPostsData = [...blogPostsData].sort((a, b) => {
-  const dateDiff = new Date(b.date) - new Date(a.date);
-  return dateDiff !== 0 ? dateDiff : b.id - a.id;
+  const dateDiff = new Date(a.date) - new Date(b.date);
+  return dateDiff !== 0 ? dateDiff : a.id - b.id;
 });
 
 const BlogPosts = () => {

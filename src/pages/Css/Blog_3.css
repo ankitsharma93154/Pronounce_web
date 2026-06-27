@@ -1,3 +1,50 @@
+/* =============================================
+   Audio Drill & Accent Practice Section
+   ============================================= */
+.avb-audio-drill-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.avb-accent-drill-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--primary) !important; /* Forces consistency with your .avb-tip-box theme */
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+  transition: box-shadow var(--transition, 0.2s ease);
+}
+.avb-accent-drill-card:hover {
+  box-shadow: var(--shadow-md);
+}
+.avb-accent-drill-card h4 {
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+.avb-accent-drill-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 1rem 0;
+}
+.avb-accent-drill-card p:last-child {
+  margin-bottom: 0;
+}
+/* Responsive constraints matching your 768px break point */
+@media (max-width: 768px) {
+  .avb-accent-drill-card {
+    padding: 1.2rem;
+  }
+
+  .avb-accent-drill-card h4 {
+    font-size: 1.1rem;
+  }
+}
 .avb-comparison-blog {
   background-color: var(--bg-primary);
   color: var(--text-primary);

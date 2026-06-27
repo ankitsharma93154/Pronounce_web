@@ -1,12 +1,12 @@
 [
-  {"id":"syn-l5-q1","prompt":"aberration","options":["normality","anomaly","regularity","routine"],"answer":"anomaly","explanation":"Anomaly is a synonym of aberration.","level":5},
-  {"id":"syn-l5-q2","prompt":"esoteric","options":["common","obscure","popular","public"],"answer":"obscure","explanation":"Obscure relates to esoteric.","level":5},
-  {"id":"syn-l5-q3","prompt":"intransigent","options":["flexible","uncompromising","yielding","pliant"],"answer":"uncompromising","explanation":"Uncompromising is a synonym of intransigent.","level":5},
-  {"id":"syn-l5-q4","prompt":"obsequious","options":["subservient","independent","rebellious","bold"],"answer":"subservient","explanation":"Subservient matches obsequious.","level":5},
-  {"id":"syn-l5-q5","prompt":"ossify","options":["harden","soften","melt","bend"],"answer":"harden","explanation":"Harden is a synonym of ossify.","level":5},
-  {"id":"syn-l5-q6","prompt":"perfunctory","options":["thorough","superficial","careful","detailed"],"answer":"superficial","explanation":"Superficial corresponds to perfunctory.","level":5},
-  {"id":"syn-l5-q7","prompt":"sagacious","options":["foolish","wise","ignorant","naive"],"answer":"wise","explanation":"Wise is a synonym of sagacious.","level":5},
-  {"id":"syn-l5-q8","prompt":"pusillanimous","options":["brave","cowardly","bold","valiant"],"answer":"cowardly","explanation":"Cowardly is a synonym of pusillanimous.","level":5},
-  {"id":"syn-l5-q9","prompt":"obfuscate","options":["clarify","confuse","simplify","explain"],"answer":"confuse","explanation":"Confuse is a synonym of obfuscate.","level":5},
-  {"id":"syn-l5-q10","prompt":"magnanimous","options":["petty","generous","spiteful","mean"],"answer":"generous","explanation":"Generous is a synonym of magnanimous.","level":5}
+  {"id":"syn-l5-q1","question":"Select the synonym of \"aberration\".","options":["normality","anomaly","regularity","routine"],"answer":"anomaly","explanation":"Anomaly is a synonym of aberration.","level":5},
+  {"id":"syn-l5-q2","question":"Select the synonym of \"esoteric\".","options":["common","obscure","popular","public"],"answer":"obscure","explanation":"Obscure relates to esoteric.","level":5},
+  {"id":"syn-l5-q3","question":"Select the synonym of \"intransigent\".","options":["flexible","uncompromising","yielding","pliant"],"answer":"uncompromising","explanation":"Uncompromising is a synonym of intransigent.","level":5},
+  {"id":"syn-l5-q4","question":"Select the synonym of \"obsequious\".","options":["subservient","independent","rebellious","bold"],"answer":"subservient","explanation":"Subservient matches obsequious.","level":5},
+  {"id":"syn-l5-q5","question":"Select the synonym of \"ossify\".","options":["harden","soften","melt","bend"],"answer":"harden","explanation":"Harden is a synonym of ossify.","level":5},
+  {"id":"syn-l5-q6","question":"Select the synonym of \"perfunctory\".","options":["thorough","superficial","careful","detailed"],"answer":"superficial","explanation":"Superficial corresponds to perfunctory.","level":5},
+  {"id":"syn-l5-q7","question":"Select the synonym of \"sagacious\".","options":["foolish","wise","ignorant","naive"],"answer":"wise","explanation":"Wise is a synonym of sagacious.","level":5},
+  {"id":"syn-l5-q8","question":"Select the synonym of \"pusillanimous\".","options":["brave","cowardly","bold","valiant"],"answer":"cowardly","explanation":"Cowardly is a synonym of pusillanimous.","level":5},
+  {"id":"syn-l5-q9","question":"Select the synonym of \"obfuscate\".","options":["clarify","confuse","simplify","explain"],"answer":"confuse","explanation":"Confuse is a synonym of obfuscate.","level":5},
+  {"id":"syn-l5-q10","question":"Select the synonym of \"magnanimous\".","options":["petty","generous","spiteful","mean"],"answer":"generous","explanation":"Generous is a synonym of magnanimous.","level":5}
 ]

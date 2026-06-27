@@ -1,12 +1,12 @@
 [
-  {"id":"syn-l4-q1","prompt":"ameliorate","options":["worsen","improve","ignore","delay"],"answer":"improve","explanation":"Improve is a synonym of ameliorate.","level":4},
-  {"id":"syn-l4-q2","prompt":"ubiquitous","options":["rare","everywhere","scarce","limited"],"answer":"everywhere","explanation":"Everywhere conveys the idea of ubiquitous.","level":4},
-  {"id":"syn-l4-q3","prompt":"mitigate","options":["aggravate","alleviate","harm","destroy"],"answer":"alleviate","explanation":"Alleviate is a synonym of mitigate.","level":4},
-  {"id":"syn-l4-q4","prompt":"pristine","options":["dirty","immaculate","worn","aged"],"answer":"immaculate","explanation":"Immaculate is a synonym of pristine.","level":4},
-  {"id":"syn-l4-q5","prompt":"cogent","options":["unconvincing","compelling","weak","vague"],"answer":"compelling","explanation":"Compelling is a synonym of cogent.","level":4},
-  {"id":"syn-l4-q6","prompt":"profound","options":["superficial","deep","trivial","shallow"],"answer":"deep","explanation":"Deep is a synonym of profound.","level":4},
-  {"id":"syn-l4-q7","prompt":"reticent","options":["talkative","reserved","loud","brash"],"answer":"reserved","explanation":"Reserved is a synonym of reticent.","level":4},
-  {"id":"syn-l4-q8","prompt":"ephemeral","options":["lasting","short-lived","permanent","eternal"],"answer":"short-lived","explanation":"Short-lived corresponds to ephemeral.","level":4},
-  {"id":"syn-l4-q9","prompt":"belligerent","options":["friendly","hostile","calm","agreeable"],"answer":"hostile","explanation":"Hostile is a synonym of belligerent.","level":4},
-  {"id":"syn-l4-q10","prompt":"lucid","options":["confusing","clear","obscure","muddled"],"answer":"clear","explanation":"Clear is a synonym of lucid.","level":4}
+  {"id":"syn-l4-q1","question":"Select the synonym of \"ameliorate\".","options":["worsen","improve","ignore","delay"],"answer":"improve","explanation":"Improve is a synonym of ameliorate.","level":4},
+  {"id":"syn-l4-q2","question":"Select the synonym of \"ubiquitous\".","options":["rare","omnipresent","scarce","limited"],"answer":"omnipresent","explanation":"Omnipresent means present everywhere, a synonym of ubiquitous.","level":4},
+  {"id":"syn-l4-q3","question":"Select the synonym of \"mitigate\".","options":["aggravate","alleviate","harm","destroy"],"answer":"alleviate","explanation":"Alleviate is a synonym of mitigate.","level":4},
+  {"id":"syn-l4-q4","question":"Select the synonym of \"pristine\".","options":["dirty","immaculate","worn","aged"],"answer":"immaculate","explanation":"Immaculate is a synonym of pristine.","level":4},
+  {"id":"syn-l4-q5","question":"Select the synonym of \"cogent\".","options":["unconvincing","compelling","weak","vague"],"answer":"compelling","explanation":"Compelling is a synonym of cogent.","level":4},
+  {"id":"syn-l4-q6","question":"Select the synonym of \"profound\".","options":["superficial","deep","trivial","shallow"],"answer":"deep","explanation":"Deep is a synonym of profound.","level":4},
+  {"id":"syn-l4-q7","question":"Select the synonym of \"reticent\".","options":["talkative","reserved","loud","brash"],"answer":"reserved","explanation":"Reserved is a synonym of reticent.","level":4},
+  {"id":"syn-l4-q8","question":"Select the synonym of \"ephemeral\".","options":["lasting","short-lived","permanent","eternal"],"answer":"short-lived","explanation":"Short-lived corresponds to ephemeral.","level":4},
+  {"id":"syn-l4-q9","question":"Select the synonym of \"belligerent\".","options":["friendly","hostile","calm","agreeable"],"answer":"hostile","explanation":"Hostile is a synonym of belligerent.","level":4},
+  {"id":"syn-l4-q10","question":"Select the synonym of \"lucid\".","options":["confusing","clear","obscure","muddled"],"answer":"clear","explanation":"Clear is a synonym of lucid.","level":4}
 ]

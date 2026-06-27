@@ -138,54 +138,63 @@ const FAQPage = () => {
         icon: "✉️",
         category: "Support",
       },
-      // --- Query-driven additions (from Google Search Console) ---
+      // --- Query-driven additions (Optimized for low-hanging fruit keywords) ---
       {
         id: "faq-100",
-        question: "How do I pronounce this word?",
+        question: "How do I pronounce this word for me?",
         answer:
-          "Type the word into the search box and press Pronounce. Listen to the audio, check the IPA transcription and syllable stress, then repeat. Use the accent toggle to compare US/UK/AU/IN variants.",
+          "Simply type the word into the search box and click 'Pronounce'. Our tool will instantly pronounce this word for me (and you!) with clear audio and IPA transcription to help you master the sound.",
         icon: "🔊",
         category: "Learning",
       },
       {
         id: "faq-101",
-        question: "How do you say a word in English?",
+        question: "How do you say words in English correctly?",
         answer:
-          "Enter the word and play the pronunciation audio. For clarity, view the IPA and example sentences. Try slow speed first, then shadow at normal speed.",
+          "To learn how to say words in English correctly, enter any term to hear native-like audio. Use the phonetic transcription and syllable stress marks to understand the rhythm and flow of English pronunciation.",
         icon: "🗣️",
         category: "Learning",
       },
       {
         id: "faq-102",
-        question: "How to pronounce a word in English?",
+        question: "How to pronounce a word in English online?",
         answer:
-          "Use our tool to hear native-like audio and see phonetic transcription. If unsure about stress or vowel length, check the example sentences and compare accents.",
+          "Our online pronunciation tool is the fastest way to learn how to pronounce a word in English. It provides high-quality audio and phonetic breakdowns for thousands of English pronunciation words.",
         icon: "📘",
         category: "Learning",
       },
       {
         id: "faq-103",
-        question: "Where can I get pronunciation audio free online?",
+        question: "Where can I get the correct pronunciation of words?",
         answer:
-          "QuickPronounce provides free pronunciation audio for words in multiple accents with no sign-up required. Use the audio controls and IPA to learn accurate pronunciation quickly.",
-        icon: "💸",
+          "QuickPronounce is your primary source for the correct pronunciation of words. We provide free pronunciation audio in multiple accents, including American, British, and Australian, to ensure you sound natural.",
+        icon: "✅",
         category: "Tools",
       },
       {
         id: "faq-104",
-        question: "Is there an online pronunciation tool or app?",
+        question: "Does this tool have a natural word pronunciation voice?",
         answer:
-          "Yes. QuickPronounce is an online pronunciation tool optimized for desktop and mobile. It delivers instant audio, IPA transcription, and accent comparison to help learners practice anywhere.",
-        icon: "📱",
+          "Yes, QuickPronounce uses a high-quality word pronunciation voice that sounds natural and clear. This makes it much easier for learners to shadow and repeat words to improve their own speaking skills.",
+        icon: "🎙️",
         category: "Tools",
       },
       {
         id: "faq-105",
-        question: "Can I get pronunciation audio for multiple accents?",
+        question:
+          "Can I find a list of common words to pronounce for practice?",
         answer:
-          "Yes, you can choose between American, British, Australian, and Indian English to hear how pronunciation changes across accents. Comparing accents helps with listening flexibility and speaking accuracy.",
-        icon: "🌎",
-        category: "Features",
+          "Yes! We provide featured guides and lists of common words to pronounce, including mispronounced words and the word of the day, to help you build a consistent practice routine.",
+        icon: "📝",
+        category: "Learning",
+      },
+      {
+        id: "faq-106",
+        question: "How can I use this for online pronunciation practice?",
+        answer:
+          "QuickPronounce is the ultimate online pronunciation tool. You can search for any word, listen to the audio, compare accents, and use the IPA to refine your speech patterns anytime, anywhere.",
+        icon: "🌐",
+        category: "Techniques",
       },
     ],
     [],
@@ -259,13 +268,13 @@ const FAQPage = () => {
   return (
     <div className="faq-container">
       <SEO
-        title="How to Pronounce Words: FAQ for Audio, IPA & Accents"
-        description="Get answers about how to pronounce words, use word pronunciation audio, compare accents, and read IPA with QuickPronounce."
+        title="How to Pronounce Words: FAQ for Audio, IPA & Accents | Online Pronunciation Tool"
+        description="Get answers about how to pronounce words correctly, use word pronunciation audio, compare accents, and read IPA with our online pronunciation tool."
         path="/faq"
         ogType="website"
-        ogTitle="How to Pronounce Words FAQ | QuickPronounce"
-        ogDescription="Find quick answers about pronunciation audio, IPA symbols, accent differences, and effective speaking practice."
-        keywords="pronunciation FAQ, how to pronounce words, IPA symbols FAQ, accent differences, English pronunciation questions"
+        ogTitle="How to Pronounce Words FAQ | QuickPronounce Online Tool"
+        ogDescription="Find quick answers about correct pronunciation of words, IPA symbols, accent differences, and effective speaking practice."
+        keywords="pronunciation FAQ, how to pronounce words, correct pronunciation of words, how to say words in English, online pronunciation tool, IPA symbols FAQ, accent differences, English pronunciation questions"
       />
 
       <Helmet>
@@ -278,8 +287,9 @@ const FAQPage = () => {
           Learn how to master{" "}
           <strong>American, British, Australian, and Indian accents</strong>.
           Find tips on <strong>phonetic pronunciation</strong>,{" "}
-          <strong>word pronunciation audio</strong>, and using our free
-          pronunciation tool effectively.
+          <strong>word pronunciation audio</strong>, and using our free online{" "}
+          <strong>pronunciation tool</strong> effectively to get the{" "}
+          <strong>correct pronunciation of words</strong>.
         </p>
       </div>
 

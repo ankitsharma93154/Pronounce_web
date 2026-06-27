@@ -27,28 +27,28 @@
   },
   {
     "id": "ipa-l5-q3",
-    "question": "Which IPA matches \"controversy\" in American English?",
+    "question": "Which IPA shows \"controversy\" with stress on the second syllable, a pronunciation common in American English?",
     "options": [
-      "/ˈkɒntrəvɜːrsi/",
-      "/kənˈtrɒvərsi/",
-      "/ˈkɒntrəvəsi/",
-      "/kənˈtrɑːvərsi/"
+      "/kənˈtrɑːvərsi/",
+      "/kɒntrəˈvɜːrsi/",
+      "/kənˈtrɒvəsi/",
+      "/kʌnˈtrɑːvərsi/"
     ],
     "answer": "/kənˈtrɑːvərsi/",
-    "explanation": "In American English, controversy is often shown with stress on the second syllable: /kənˈtrɑːvərsi/.",
+    "explanation": "This second-syllable-stress pattern, /kənˈtrɑːvərsi/, is a widely used American pronunciation of controversy.",
     "level": 5
   },
   {
     "id": "ipa-l5-q4",
-    "question": "Which IPA matches \"literature\"?",
+    "question": "Which IPA shows the common 3-syllable American pronunciation of \"literature\"?",
     "options": [
       "/ˈlɪtrətʃʊr/",
-      "/ˈlɪtərətʃər/",
+      "/ˈlɪtrɪtʃər/",
       "/ˈlɪtrətʃər/",
       "/lɪˈtərətʃər/"
     ],
     "answer": "/ˈlɪtrətʃər/",
-    "explanation": "Literature is commonly stressed on the first syllable: /ˈlɪtrətʃər/.",
+    "explanation": "Literature is often pronounced with three syllables in casual American speech: /ˈlɪtrətʃər/. A fuller four-syllable form also exists, but this elided version is the most common everyday pronunciation.",
     "level": 5
   },
   {
@@ -66,15 +66,15 @@
   },
   {
     "id": "ipa-l5-q6",
-    "question": "Which IPA matches \"aesthetic\"?",
+    "question": "Which IPA shows a common American pronunciation of \"aesthetic\" with the long /iːs/ start?",
     "options": [
-      "/ɛsˈθɛtɪk/",
+      "/eɪsˈθɛtɪk/",
       "/iːˈθɛtɪk/",
       "/ˈiːsθɛtɪk/",
       "/iːsˈθɛtɪk/"
     ],
     "answer": "/iːsˈθɛtɪk/",
-    "explanation": "Aesthetic is commonly transcribed as /iːsˈθɛtɪk/, with stress on the second syllable.",
+    "explanation": "Aesthetic is commonly transcribed as /iːsˈθɛtɪk/ in American English, with stress on the second syllable. A shorter /ɛs-/ start is also used; this question targets the long-vowel form.",
     "level": 5
   },
   {

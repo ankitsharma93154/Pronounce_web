@@ -1824,10 +1824,71 @@ const Home = () => {
                 </div>
               </div>
 
+              <div
+                className="home-seo-panel"
+                aria-labelledby="home-practice-tool-title"
+              >
+                <h2
+                  className="about-page-section-title"
+                  id="home-practice-tool-title"
+                >
+                  Your Go-To Online Pronunciation Tool for Learning & Practice
+                </h2>
+
+                <p className="home-guides-subtitle">
+                  QuickPronounce helps you hear, understand, and practice
+                  English pronunciation in one place. Whether you want to learn
+                  how to pronounce a word, compare accents, study IPA symbols,
+                  or improve speaking skills through quizzes and listening
+                  exercises, our platform provides instant audio and interactive
+                  practice tools.
+                </p>
+
+                <ul className="home-intent-points">
+                  <li>Instant audio pronunciation for any English word.</li>
+
+                  <li>
+                    Compare American, British, Australian, and Indian accents.
+                  </li>
+
+                  <li>Detailed IPA phonetic transcriptions.</li>
+
+                  <li>
+                    Interactive pronunciation quizzes and listening exercises.
+                  </li>
+
+                  <li>
+                    Minimal-pair practice to improve sound recognition and
+                    fluency.
+                  </li>
+
+                  <li>Contextual examples to aid understanding.</li>
+
+                  <li>Free and accessible on any device.</li>
+                </ul>
+
+                <div className="home-practice-cta">
+                  <Link to="/" className="cta-button primary">
+                    Start Pronouncing Now
+                  </Link>
+
+                  <div className="secondary-actions">
+                    <Link to="/quiz" className="cta-button secondary">
+                      Practice Quizzes
+                    </Link>
+
+                    <Link to="/blog" className="cta-button secondary">
+                      Read Guides
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
               <div className="home-seo-panel" aria-labelledby="home-faq-title">
                 <h2 className="about-page-section-title" id="home-faq-title">
                   Common pronunciation questions
                 </h2>
+
                 <div className="home-faq-grid">
                   {homeFaqs.map((faq) => (
                     <article key={faq.question} className="home-faq-card">
@@ -1835,39 +1896,6 @@ const Home = () => {
                       <p>{faq.answer}</p>
                     </article>
                   ))}
-                </div>
-              </div>
-
-              <div
-                className="home-seo-panel"
-                aria-labelledby="home-practice-title"
-              >
-                <h2
-                  className="about-page-section-title"
-                  id="home-practice-title"
-                >
-                  Practice & Quizzes
-                </h2>
-
-                <p className="home-guides-subtitle">
-                  Improve pronunciation with interactive quizzes, listening
-                  exercises, and minimal-pair practice. Train your ear,
-                  strengthen sound recognition, and build confidence with short
-                  practice sessions designed for English learners.
-                </p>
-
-                <div className="home-practice-cta">
-                  <Link to="/quiz" className="cta-button primary">
-                    Try a pronunciation quiz
-                  </Link>
-
-                  <Link
-                    to="/blog/american-vs-british"
-                    className="cta-button secondary"
-                    style={{ marginLeft: "0.75rem" }}
-                  >
-                    Compare American & British pronunciation
-                  </Link>
                 </div>
               </div>
             </div>

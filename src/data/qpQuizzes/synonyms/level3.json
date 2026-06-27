@@ -1,12 +1,12 @@
 [
-  {"id":"syn-l3-q1","prompt":"vivid","options":["dull","bright","pale","faint"],"answer":"bright","explanation":"Bright is a synonym of vivid.","level":3},
-  {"id":"syn-l3-q2","prompt":"mend","options":["repair","damage","break","shatter"],"answer":"repair","explanation":"Repair is a synonym of mend.","level":3},
-  {"id":"syn-l3-q3","prompt":"frigid","options":["warm","freezing","hot","balmy"],"answer":"freezing","explanation":"Freezing is a synonym of frigid.","level":3},
-  {"id":"syn-l3-q4","prompt":"swift","options":["slow","rapid","delayed","sluggish"],"answer":"rapid","explanation":"Rapid is a synonym of swift.","level":3},
-  {"id":"syn-l3-q5","prompt":"ample","options":["scarce","plentiful","rare","limited"],"answer":"plentiful","explanation":"Plentiful matches ample.","level":3},
-  {"id":"syn-l3-q6","prompt":"tedious","options":["boring","exciting","fast","short"],"answer":"boring","explanation":"Boring is a synonym of tedious.","level":3},
-  {"id":"syn-l3-q7","prompt":"elated","options":["sad","joyful","tired","calm"],"answer":"joyful","explanation":"Joyful matches elated.","level":3},
-  {"id":"syn-l3-q8","prompt":"obscure","options":["clear","unknown","famous","popular"],"answer":"unknown","explanation":"Unknown is a close synonym of obscure in some contexts.","level":3},
-  {"id":"syn-l3-q9","prompt":"perturb","options":["calm","disturb","assist","encourage"],"answer":"disturb","explanation":"Disturb is a synonym of perturb.","level":3},
-  {"id":"syn-l3-q10","prompt":"candid","options":["honest","secretive","shy","closed"],"answer":"honest","explanation":"Honest is a synonym of candid.","level":3}
+  {"id":"syn-l3-q1","question":"Select the synonym of \"vivid\".","options":["dull","bright","pale","faint"],"answer":"bright","explanation":"Bright is a synonym of vivid.","level":3},
+  {"id":"syn-l3-q2","question":"Select the synonym of \"mend\".","options":["repair","damage","break","shatter"],"answer":"repair","explanation":"Repair is a synonym of mend.","level":3},
+  {"id":"syn-l3-q3","question":"Select the synonym of \"frigid\".","options":["warm","freezing","hot","balmy"],"answer":"freezing","explanation":"Freezing is a synonym of frigid.","level":3},
+  {"id":"syn-l3-q4","question":"Select the synonym of \"swift\".","options":["slow","rapid","delayed","sluggish"],"answer":"rapid","explanation":"Rapid is a synonym of swift.","level":3},
+  {"id":"syn-l3-q5","question":"Select the synonym of \"ample\".","options":["scarce","plentiful","rare","limited"],"answer":"plentiful","explanation":"Plentiful matches ample.","level":3},
+  {"id":"syn-l3-q6","question":"Select the synonym of \"tedious\".","options":["boring","exciting","fast","short"],"answer":"boring","explanation":"Boring is a synonym of tedious.","level":3},
+  {"id":"syn-l3-q7","question":"Select the synonym of \"elated\".","options":["sad","joyful","tired","calm"],"answer":"joyful","explanation":"Joyful matches elated.","level":3},
+  {"id":"syn-l3-q8","question":"Select the synonym of \"obscure\".","options":["clear","unknown","famous","popular"],"answer":"unknown","explanation":"Unknown is a close synonym of obscure in some contexts.","level":3},
+  {"id":"syn-l3-q9","question":"Select the synonym of \"perturb\".","options":["calm","disturb","assist","encourage"],"answer":"disturb","explanation":"Disturb is a synonym of perturb.","level":3},
+  {"id":"syn-l3-q10","question":"Select the synonym of \"candid\".","options":["honest","secretive","shy","closed"],"answer":"honest","explanation":"Honest is a synonym of candid.","level":3}
 ]

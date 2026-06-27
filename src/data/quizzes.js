@@ -30,7 +30,6 @@ export const quizCatalog = [
     questionsPerLevel: 10,
     rules: ["5 levels", "10 questions per level", "30s timer", "MCQs"],
     outcomes: ["Broader word choice", "Faster recall", "Better reading"],
-    promptPrefix: "Select the synonym of",
   },
   {
     slug: "antonyms",
@@ -49,7 +48,6 @@ export const quizCatalog = [
       "Better word contrast",
       "Stronger recall",
     ],
-    promptPrefix: "Select the antonym of",
   },
   {
     slug: "ipa",
@@ -68,7 +66,6 @@ export const quizCatalog = [
       "Better transcription reading",
       "Improved listening",
     ],
-    promptPrefix: "Which IPA matches",
   },
   {
     slug: "word-stress",
@@ -87,7 +84,6 @@ export const quizCatalog = [
       "Improved rhythm",
       "Better word recognition",
     ],
-    promptPrefix: "Where is the stress in",
   },
 ];
 
@@ -99,7 +95,6 @@ export const getQuizLevels = (quiz) =>
 
 export const buildQuizQuestions = (quiz, level) => {
   let levelQuestions = [];
-  const promptPrefix = `${quiz.promptPrefix} `;
 
   try {
     // dynamic require per-level JSON; bundlers like webpack will include these files
@@ -122,15 +117,11 @@ export const buildQuizQuestions = (quiz, level) => {
         return {
           id: q.id,
           level: q.level || level,
-          prompt: (() => {
-            const rawPrompt = q.prompt || q.question || q.promptText || "";
-
-            if (rawPrompt.startsWith(promptPrefix)) {
-              return rawPrompt.slice(promptPrefix.length).trim();
-            }
-
-            return rawPrompt;
-          })(),
+          // "question" is the current data format (full question text baked
+          // into the JSON). Fallbacks to "prompt"/"promptText" are kept only
+          // so quiz types not yet migrated off the old template format
+          // (e.g. ipa, wordStress) don't break.
+          question: q.question || q.prompt || q.promptText || "",
           options,
           answerIndex: typeof answerIndex === "number" ? answerIndex : 0,
           explanation: q.explanation || q.expl || "",

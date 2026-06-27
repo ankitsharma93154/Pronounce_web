@@ -1,7 +1,7 @@
 [
   {
     "id": "ant-l2-q1",
-    "prompt": "accept",
+    "question": "Select the antonym of \"accept\".",
     "options": [
       "allow",
       "receive",
@@ -14,7 +14,7 @@
   },
   {
     "id": "ant-l2-q2",
-    "prompt": "generous",
+    "question": "Select the antonym of \"generous\".",
     "options": [
       "kind",
       "stingy",
@@ -27,7 +27,7 @@
   },
   {
     "id": "ant-l2-q3",
-    "prompt": "increase",
+    "question": "Select the antonym of \"increase\".",
     "options": [
       "grow",
       "raise",
@@ -40,7 +40,7 @@
   },
   {
     "id": "ant-l2-q4",
-    "prompt": "rough",
+    "question": "Select the antonym of \"rough\".",
     "options": [
       "smooth",
       "coarse",
@@ -53,7 +53,7 @@
   },
   {
     "id": "ant-l2-q5",
-    "prompt": "ancient",
+    "question": "Select the antonym of \"ancient\".",
     "options": [
       "old",
       "antique",
@@ -66,7 +66,7 @@
   },
   {
     "id": "ant-l2-q6",
-    "prompt": "complex",
+    "question": "Select the antonym of \"complex\".",
     "options": [
       "intricate",
       "simple",
@@ -79,7 +79,7 @@
   },
   {
     "id": "ant-l2-q7",
-    "prompt": "scarce",
+    "question": "Select the antonym of \"scarce\".",
     "options": [
       "rare",
       "limited",
@@ -92,7 +92,7 @@
   },
   {
     "id": "ant-l2-q8",
-    "prompt": "arrive",
+    "question": "Select the antonym of \"arrive\".",
     "options": [
       "depart",
       "come",
@@ -105,7 +105,7 @@
   },
   {
     "id": "ant-l2-q9",
-    "prompt": "approve",
+    "question": "Select the antonym of \"approve\".",
     "options": [
       "support",
       "accept",
@@ -118,7 +118,7 @@
   },
   {
     "id": "ant-l2-q10",
-    "prompt": "transparent",
+    "question": "Select the antonym of \"transparent\".",
     "options": [
       "clear",
       "see-through",

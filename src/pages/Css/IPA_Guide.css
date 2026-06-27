@@ -73,6 +73,38 @@
   color: var(--text-primary);
 }
 
+/* =============================================
+   Inbound Strategy: English Parsing Module
+   ============================================= */
+
+.ipa-english-parsing-section {
+  background: var(
+    --ipa-soft-indigo
+  ) !important; /* Reuses the layout token architecture perfectly */
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--ipa-accent-indigo) !important;
+  padding: 1.25rem 1.35rem;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+}
+
+.ipa-english-parsing-section h2 {
+  color: var(--ipa-accent-indigo);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.ipa-english-parsing-section p {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.ipa-english-parsing-section p:last-child {
+  margin-bottom: 0;
+}
+
 /* Honest note / inline note */
 .ipa-honest-note,
 .ipa-inline-note {

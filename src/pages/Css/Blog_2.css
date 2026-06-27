@@ -100,7 +100,67 @@
 .words-section {
   margin-bottom: 3rem;
 }
+/* ==========================================================================
+   Optimization Spotlight & Data Tuning Extensions
+   ========================================================================== */
+.optimization-spotlight {
+  margin-top: 3rem;
+}
 
+.spotlight-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.spotlight-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.spotlight-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.spotlight-card h4 {
+  color: var(--primary);
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.spotlight-card p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Ensure consistent adaptability for dark theme tokens */
+body.dark .spotlight-card {
+  background-color: var(--bg-dark);
+  border-color: var(--border-dark);
+}
+/* Inline styles for spotlight keywords pointing to homepage */
+.spotlight-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    color var(--transition),
+    opacity var(--transition);
+}
+
+.spotlight-link:hover {
+  color: var(--primary-hover, #1890ff);
+  text-decoration: underline; /* Standard smooth underline on hover only */
+}
 /* removed .sections-grid to keep word-category sections stacked */
 
 .references-list {

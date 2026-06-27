@@ -1,7 +1,7 @@
 [
   {
     "id": "ant-l4-q1",
-    "prompt": "lucid",
+    "question": "Select the antonym of \"lucid\".",
     "options": [
       "clear",
       "confusing",
@@ -14,7 +14,7 @@
   },
   {
     "id": "ant-l4-q2",
-    "prompt": "marshal",
+    "question": "Select the antonym of \"marshal\" (to organize or arrange).",
     "options": [
       "organize",
       "arrange",
@@ -27,7 +27,7 @@
   },
   {
     "id": "ant-l4-q3",
-    "prompt": "venerate",
+    "question": "Select the antonym of \"venerate\".",
     "options": [
       "revere",
       "honor",
@@ -40,7 +40,7 @@
   },
   {
     "id": "ant-l4-q4",
-    "prompt": "mitigate",
+    "question": "Select the antonym of \"mitigate\".",
     "options": [
       "aggravate",
       "alleviate",
@@ -53,7 +53,7 @@
   },
   {
     "id": "ant-l4-q5",
-    "prompt": "resilient",
+    "question": "Select the antonym of \"resilient\".",
     "options": [
       "strong",
       "durable",
@@ -66,7 +66,7 @@
   },
   {
     "id": "ant-l4-q6",
-    "prompt": "benevolent",
+    "question": "Select the antonym of \"benevolent\".",
     "options": [
       "kind",
       "charitable",
@@ -79,7 +79,7 @@
   },
   {
     "id": "ant-l4-q7",
-    "prompt": "ephemeral",
+    "question": "Select the antonym of \"ephemeral\".",
     "options": [
       "short-lived",
       "lasting",
@@ -92,7 +92,7 @@
   },
   {
     "id": "ant-l4-q8",
-    "prompt": "augment",
+    "question": "Select the antonym of \"augment\".",
     "options": [
       "increase",
       "add",
@@ -105,7 +105,7 @@
   },
   {
     "id": "ant-l4-q9",
-    "prompt": "sagacious",
+    "question": "Select the antonym of \"sagacious\".",
     "options": [
       "wise",
       "foolish",
@@ -118,7 +118,7 @@
   },
   {
     "id": "ant-l4-q10",
-    "prompt": "composure",
+    "question": "Select the antonym of \"composure\".",
     "options": [
       "calm",
       "poise",

@@ -79,9 +79,7 @@ const QuizQuestion = ({
       </div>
 
       <div className="qz-prompt">
-        <strong>
-          {quiz.promptPrefix} &quot;{question.prompt}&quot;
-        </strong>
+        <strong>{question.question}</strong>
       </div>
 
       <div className="qz-options">

@@ -239,6 +239,24 @@ const EdEndingsPronunciation = () => {
         </ul>
       </BlogSection>
 
+      {/* NEWLY APPENDED STRATEGY FOR CORE GENERAL KEYWORDS */}
+      {/* Targets: "pronounce", "pronounce the word" */}
+      <BlogSection title="How to Pronounce the Word Elements in Real-Time">
+        <p>
+          To intuitively pronounce regular past tense markers during fluid
+          conversations, you must shift your perspective away from individual
+          characters. If you train yourself to analyze structural boundaries,
+          you will know exactly how to pronounce the word strings seamlessly
+          based on physical voice tract rules rather than structural guesswork.
+        </p>
+        <p>
+          Isolating final phonemes on QuickPronounce before appending a past
+          marker is an exceptional strategy. Real-time verification ensures you
+          don't default to unnatural syllable additions when speaking under
+          conversational velocity.
+        </p>
+      </BlogSection>
+
       <BlogSection title="How to Automate the Rule in 14 Days">
         <p>
           Use this two-week system if your goal is reliable habit formation.

@@ -1,7 +1,7 @@
 [
   {
     "id": "ant-l1-q1",
-    "prompt": "hot",
+    "question": "Select the antonym of \"hot\".",
     "options": [
       "warm",
       "cold",
@@ -14,7 +14,7 @@
   },
   {
     "id": "ant-l1-q2",
-    "prompt": "big",
+    "question": "Select the antonym of \"big\".",
     "options": [
       "huge",
       "giant",
@@ -27,7 +27,7 @@
   },
   {
     "id": "ant-l1-q3",
-    "prompt": "happy",
+    "question": "Select the antonym of \"happy\".",
     "options": [
       "joyful",
       "glad",
@@ -40,7 +40,7 @@
   },
   {
     "id": "ant-l1-q4",
-    "prompt": "start",
+    "question": "Select the antonym of \"start\".",
     "options": [
       "begin",
       "end",
@@ -53,7 +53,7 @@
   },
   {
     "id": "ant-l1-q5",
-    "prompt": "fast",
+    "question": "Select the antonym of \"fast\".",
     "options": [
       "slow",
       "quick",
@@ -66,7 +66,7 @@
   },
   {
     "id": "ant-l1-q6",
-    "prompt": "light",
+    "question": "Select the antonym of \"light\" (as in brightness).",
     "options": [
       "bright",
       "shiny",
@@ -79,7 +79,7 @@
   },
   {
     "id": "ant-l1-q7",
-    "prompt": "up",
+    "question": "Select the antonym of \"up\".",
     "options": [
       "above",
       "higher",
@@ -92,7 +92,7 @@
   },
   {
     "id": "ant-l1-q8",
-    "prompt": "in",
+    "question": "Select the antonym of \"in\".",
     "options": [
       "inside",
       "out",
@@ -105,20 +105,20 @@
   },
   {
     "id": "ant-l1-q9",
-    "prompt": "open",
+    "question": "Select the antonym of \"open\".",
     "options": [
-      "shut",
-      "ajar",
       "unlocked",
+      "ajar",
+      "unfastened",
       "close"
     ],
     "answer": "close",
-    "explanation": "Close means to shut something, the opposite action of open.",
+    "explanation": "Close means to shut something, the opposite of open.",
     "level": 1
   },
   {
     "id": "ant-l1-q10",
-    "prompt": "full",
+    "question": "Select the antonym of \"full\".",
     "options": [
       "plentiful",
       "abundant",

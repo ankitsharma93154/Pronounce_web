@@ -1,12 +1,12 @@
 [
   {
     "id": "ant-l5-q1",
-    "prompt": "magnanimous",
+    "question": "Select the antonym of \"magnanimous\".",
     "options": [
       "generous",
-      "petty",
-      "mean",
-      "spiteful"
+      "noble",
+      "charitable",
+      "petty"
     ],
     "answer": "petty",
     "explanation": "Petty suggests small-mindedness, while magnanimous means noble and generous.",
@@ -14,7 +14,7 @@
   },
   {
     "id": "ant-l5-q2",
-    "prompt": "veracity",
+    "question": "Select the antonym of \"veracity\".",
     "options": [
       "truth",
       "accuracy",
@@ -27,11 +27,11 @@
   },
   {
     "id": "ant-l5-q3",
-    "prompt": "anachronistic",
+    "question": "Select the antonym of \"anachronistic\".",
     "options": [
       "outdated",
-      "modern",
-      "current",
+      "old-fashioned",
+      "obsolete",
       "timely"
     ],
     "answer": "timely",
@@ -40,7 +40,7 @@
   },
   {
     "id": "ant-l5-q4",
-    "prompt": "arduous",
+    "question": "Select the antonym of \"arduous\".",
     "options": [
       "easy",
       "difficult",
@@ -53,7 +53,7 @@
   },
   {
     "id": "ant-l5-q5",
-    "prompt": "circumspect",
+    "question": "Select the antonym of \"circumspect\".",
     "options": [
       "careful",
       "cautious",
@@ -66,7 +66,7 @@
   },
   {
     "id": "ant-l5-q6",
-    "prompt": "loquacious",
+    "question": "Select the antonym of \"loquacious\".",
     "options": [
       "talkative",
       "quiet",
@@ -79,7 +79,7 @@
   },
   {
     "id": "ant-l5-q7",
-    "prompt": "obsequious",
+    "question": "Select the antonym of \"obsequious\".",
     "options": [
       "submissive",
       "subservient",
@@ -92,7 +92,7 @@
   },
   {
     "id": "ant-l5-q8",
-    "prompt": "tenacious",
+    "question": "Select the antonym of \"tenacious\".",
     "options": [
       "persistent",
       "determined",
@@ -105,7 +105,7 @@
   },
   {
     "id": "ant-l5-q9",
-    "prompt": "propitious",
+    "question": "Select the antonym of \"propitious\".",
     "options": [
       "favorable",
       "inauspicious",
@@ -118,7 +118,7 @@
   },
   {
     "id": "ant-l5-q10",
-    "prompt": "meticulous",
+    "question": "Select the antonym of \"meticulous\".",
     "options": [
       "careful",
       "precise",

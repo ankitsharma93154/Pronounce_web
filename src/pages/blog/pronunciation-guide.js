@@ -426,6 +426,47 @@ const PronunciationGuide = () => {
             </div>
           </section>
 
+          {/* New Optimized Keyword Spotlight Section with Homepage Links */}
+          <section className="words-section optimization-spotlight">
+            <h2 className="section-title">
+              🎙️ Free Word Pronouncer & Live Audio Tools
+            </h2>
+            <p className="section-description">
+              Struggling with a unique string of vocabulary? Utilizing a
+              reliable, automated{" "}
+              <a href="/" className="spotlight-link">
+                word pronouncer
+              </a>{" "}
+              makes mastering conversational phonetics dynamic and effortless.
+            </p>
+            <div className="spotlight-container">
+              <div className="spotlight-card">
+                <h4>🔊 Pronounce Words Audio Instantly</h4>
+                <p>
+                  Static transcriptions only tell half the story. Accessing
+                  high-fidelity, native speaker{" "}
+                  <a href="/" className="spotlight-link">
+                    pronunciation audio
+                  </a>{" "}
+                  ensures you pick up subtle mouth placements and rhythmic
+                  variations that a standard dictionary might omit.
+                </p>
+              </div>
+              <div className="spotlight-card">
+                <h4>💻 Interactive Pronunciation Online</h4>
+                <p>
+                  Whether parsing technical documentation or academic syllabi,
+                  having an on-demand, free web interface to{" "}
+                  <a href="/" className="spotlight-link">
+                    pronounce words online
+                  </a>{" "}
+                  helps bridge the structural gap between reading text and fluid
+                  speech.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section className="words-section">
             <h2 className="section-title">📚 References</h2>
             <div className="seo-keyword-box" style={{ marginBottom: "1rem" }}>

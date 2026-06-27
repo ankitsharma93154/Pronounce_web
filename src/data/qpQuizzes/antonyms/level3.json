@@ -1,7 +1,7 @@
 [
   {
     "id": "ant-l3-q1",
-    "prompt": "benefit",
+    "question": "Select the antonym of \"benefit\".",
     "options": [
       "advantage",
       "gain",
@@ -14,7 +14,7 @@
   },
   {
     "id": "ant-l3-q2",
-    "prompt": "optimistic",
+    "question": "Select the antonym of \"optimistic\".",
     "options": [
       "pessimistic",
       "hopeful",
@@ -27,7 +27,7 @@
   },
   {
     "id": "ant-l3-q3",
-    "prompt": "abundant",
+    "question": "Select the antonym of \"abundant\".",
     "options": [
       "plentiful",
       "ample",
@@ -40,7 +40,7 @@
   },
   {
     "id": "ant-l3-q4",
-    "prompt": "sophisticated",
+    "question": "Select the antonym of \"sophisticated\".",
     "options": [
       "refined",
       "naive",
@@ -53,7 +53,7 @@
   },
   {
     "id": "ant-l3-q5",
-    "prompt": "scarcity",
+    "question": "Select the antonym of \"scarcity\".",
     "options": [
       "shortage",
       "lack",
@@ -66,7 +66,7 @@
   },
   {
     "id": "ant-l3-q6",
-    "prompt": "exuberant",
+    "question": "Select the antonym of \"exuberant\".",
     "options": [
       "lively",
       "energetic",
@@ -79,7 +79,7 @@
   },
   {
     "id": "ant-l3-q7",
-    "prompt": "coherent",
+    "question": "Select the antonym of \"coherent\".",
     "options": [
       "clear",
       "incoherent",
@@ -92,7 +92,7 @@
   },
   {
     "id": "ant-l3-q8",
-    "prompt": "diligent",
+    "question": "Select the antonym of \"diligent\".",
     "options": [
       "careful",
       "hardworking",
@@ -105,7 +105,7 @@
   },
   {
     "id": "ant-l3-q9",
-    "prompt": "benign",
+    "question": "Select the antonym of \"benign\".",
     "options": [
       "kind",
       "gentle",
@@ -118,7 +118,7 @@
   },
   {
     "id": "ant-l3-q10",
-    "prompt": "sincere",
+    "question": "Select the antonym of \"sincere\".",
     "options": [
       "honest",
       "insincere",

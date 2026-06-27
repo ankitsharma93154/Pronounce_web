@@ -2,6 +2,7 @@ import React from "react";
 import BlogArticleTemplate, {
   BlogSection,
 } from "../../components/BlogArticleTemplate";
+import "../Css/IELTSBlog.css";
 import headerImg from "../../images/blogs/ielts/IELTS_header.webp";
 import stressImg from "../../images/blogs/ielts/IELTS_stress_reduction.webp";
 
@@ -224,6 +225,25 @@ const IELTSBlog = () => {
           <em>"go away"</em>
           {" -> "}
           <em>"go-w-away"</em>
+        </p>
+      </BlogSection>
+
+      {/* NEWLY APPENDED STRATEGY FOR IELTS LANDING KEYWORDS */}
+      {/* Targets: "how to pronounce", "how do you say" */}
+      <BlogSection title="How to Pronounce Phrases and Complex Words Under Exam Pressure">
+        <p className="bt-text">
+          When candidates are thrown into abstract Part 3 discussions, figuring
+          out exactly how to pronounce academic vocabulary on the fly can stall
+          lexical processing speed. If you are struggling with a complex lexical
+          segment and wondering how do you say long multi-syllable items
+          rhythmically without halting, the solution lies in identifying the
+          primary vowel anchor beforehand.
+        </p>
+        <p className="bt-text">
+          Before taking the live exam, running difficult topic groupings through
+          the QuickPronounce audio analysis widget ensures your muscle memory
+          handles stress positioning shifts naturally, preserving your general
+          fluency metrics when speech velocity accelerates.
         </p>
       </BlogSection>
 

@@ -1,12 +1,12 @@
 [
-  {"id":"syn-l2-q1","prompt":"brave","options":["timid","bold","scared","quiet"],"answer":"bold","explanation":"Bold is a synonym of brave.","level":2},
-  {"id":"syn-l2-q2","prompt":"ancient","options":["modern","old","new","recent"],"answer":"old","explanation":"Old is a synonym of ancient.","level":2},
-  {"id":"syn-l2-q3","prompt":"difficult","options":["hard","simple","easy","clear"],"answer":"hard","explanation":"Hard is a synonym of difficult.","level":2},
-  {"id":"syn-l2-q4","prompt":"honest","options":["truthful","fraudulent","deceitful","shady"],"answer":"truthful","explanation":"Truthful matches honest.","level":2},
-  {"id":"syn-l2-q5","prompt":"fortunate","options":["lucky","unlucky","sad","angry"],"answer":"lucky","explanation":"Lucky is a synonym of fortunate.","level":2},
-  {"id":"syn-l2-q6","prompt":"observe","options":["watch","ignore","forget","hide"],"answer":"watch","explanation":"Watch is a synonym of observe.","level":2},
-  {"id":"syn-l2-q7","prompt":"sufficient","options":["enough","insufficient","little","rare"],"answer":"enough","explanation":"Enough is a synonym of sufficient.","level":2},
-  {"id":"syn-l2-q8","prompt":"recommend","options":["advise","warn","prevent","stop"],"answer":"advise","explanation":"Advise is a synonym of recommend.","level":2},
-  {"id":"syn-l2-q9","prompt":"prevent","options":["stop","allow","permit","help"],"answer":"stop","explanation":"Stop is a synonym of prevent.","level":2},
-  {"id":"syn-l2-q10","prompt":"improve","options":["worsen","enhance","reduce","break"],"answer":"enhance","explanation":"Enhance is a synonym of improve.","level":2}
+  {"id":"syn-l2-q1","question":"Select the synonym of \"brave\".","options":["timid","bold","scared","quiet"],"answer":"bold","explanation":"Bold is a synonym of brave.","level":2},
+  {"id":"syn-l2-q2","question":"Select the synonym of \"ancient\".","options":["modern","old","new","recent"],"answer":"old","explanation":"Old is a synonym of ancient.","level":2},
+  {"id":"syn-l2-q3","question":"Select the synonym of \"difficult\".","options":["hard","simple","easy","clear"],"answer":"hard","explanation":"Hard is a synonym of difficult.","level":2},
+  {"id":"syn-l2-q4","question":"Select the synonym of \"honest\".","options":["truthful","fraudulent","deceitful","shady"],"answer":"truthful","explanation":"Truthful matches honest.","level":2},
+  {"id":"syn-l2-q5","question":"Select the synonym of \"fortunate\".","options":["lucky","unlucky","sad","angry"],"answer":"lucky","explanation":"Lucky is a synonym of fortunate.","level":2},
+  {"id":"syn-l2-q6","question":"Select the synonym of \"observe\" (to watch).","options":["watch","ignore","forget","hide"],"answer":"watch","explanation":"Watch is a synonym of observe.","level":2},
+  {"id":"syn-l2-q7","question":"Select the synonym of \"sufficient\".","options":["enough","insufficient","little","rare"],"answer":"enough","explanation":"Enough is a synonym of sufficient.","level":2},
+  {"id":"syn-l2-q8","question":"Select the synonym of \"recommend\".","options":["advise","warn","prevent","stop"],"answer":"advise","explanation":"Advise is a synonym of recommend.","level":2},
+  {"id":"syn-l2-q9","question":"Select the synonym of \"prevent\".","options":["stop","allow","permit","help"],"answer":"stop","explanation":"Stop is a synonym of prevent.","level":2},
+  {"id":"syn-l2-q10","question":"Select the synonym of \"improve\".","options":["worsen","enhance","reduce","break"],"answer":"enhance","explanation":"Enhance is a synonym of improve.","level":2}
 ]

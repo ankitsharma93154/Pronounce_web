@@ -5,7 +5,7 @@
     "options": [
       "/ʃɪp/",
       "/ʃiːp/",
-      "/ʃep/",
+      "/ʃɛp/",
       "/ʃəp/"
     ],
     "answer": "/ʃiːp/",
@@ -71,7 +71,7 @@
       "/puːl/",
       "/pʊl/",
       "/pəl/",
-      "/pul/"
+      "/pɔl/"
     ],
     "answer": "/puːl/",
     "explanation": "Pool is transcribed with /uː/, showing the long vowel sound.",
@@ -96,7 +96,7 @@
     "options": [
       "/bɪt/",
       "/biːt/",
-      "/bet/",
+      "/bɛt/",
       "/bət/"
     ],
     "answer": "/biːt/",
@@ -108,7 +108,7 @@
     "question": "Which IPA matches \"bit\"?",
     "options": [
       "/biːt/",
-      "/bet/",
+      "/bɛt/",
       "/bət/",
       "/bɪt/"
     ],
