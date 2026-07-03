@@ -122,7 +122,7 @@ const Support = () => {
           aria-label="Support milestone"
         >
           <p>
-            Supporters this month : <strong>1</strong>
+            Supporters this month : <strong>10</strong>
             <span className="support-page__banner-heart"> ❤</span>. Thank you
             for supporting QuickPronounce.
           </p>
