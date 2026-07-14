@@ -1516,7 +1516,7 @@ const Home = () => {
 
     const link = document.createElement("link");
     link.rel = "preconnect";
-    link.href = "https://backend-8isq.vercel.app";
+    link.href = "https://quickpronounce-api-vhu7m.ondigitalocean.app";
     document.head.appendChild(link);
 
     return () => {
