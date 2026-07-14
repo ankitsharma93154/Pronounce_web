@@ -985,7 +985,7 @@ const QuickPronounceTips = lazy(() => import("../components/tips"));
 
 const BACKEND_PRONUNCIATION_URL =
   // "https://backend-8isq.vercel.app/get-pronunciation";
-  "https://backend-nine-ruby-17.vercel.app/get-pronunciation";
+  "https://quickpronounce-api-vhu7m.ondigitalocean.app/get-pronunciation";
 const REQUEST_TIMEOUT_MS = 10000;
 const SEARCH_DEBOUNCE_MS = 400;
 const CACHE_STORAGE_KEY = "quickpronounce_pronunciation_cache_v2";
