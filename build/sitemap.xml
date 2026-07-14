@@ -31,6 +31,11 @@
       <priority>0.8</priority>
    </url>
    <url>
+      <loc>https://www.quickpronounce.site/api-validation</loc>
+      <lastmod>2026-06-09</lastmod>
+      <priority>0.8</priority>
+   </url>
+   <url>
       <loc>https://www.quickpronounce.site/blog</loc>
       <lastmod>2026-03-15</lastmod>
       <priority>0.7</priority>
@@ -111,21 +116,21 @@
    <priority>0.3</priority>
 </url>
 
-   <url>
-      <loc>https://www.quickpronounce.site/quiz</loc>
-      <lastmod>2026-05-15</lastmod>
-      <priority>0.9</priority>
-   </url>
-   <url>
-      <loc>https://www.quickpronounce.site/quiz/synonyms</loc>
-      <lastmod>2026-05-15</lastmod>
-      <priority>0.7</priority>
-   </url>
-   <url>
-      <loc>https://www.quickpronounce.site/quiz/antonyms</loc>
-      <lastmod>2026-05-15</lastmod>
-      <priority>0.7</priority>
-   </url>
+      <url>
+         <loc>https://www.quickpronounce.site/quiz</loc>
+         <lastmod>2026-05-15</lastmod>
+         <priority>0.9</priority>
+      </url>
+      <url>
+         <loc>https://www.quickpronounce.site/quiz/synonyms</loc>
+         <lastmod>2026-05-15</lastmod>
+         <priority>0.7</priority>
+      </url>
+      <url>
+         <loc>https://www.quickpronounce.site/quiz/antonyms</loc>
+         <lastmod>2026-05-15</lastmod>
+         <priority>0.7</priority>
+      </url>
       <url>
          <loc>https://www.quickpronounce.site/quiz/ipa</loc>
          <lastmod>2026-05-22</lastmod>
@@ -137,4 +142,5 @@
          <priority>0.7</priority>
       </url>
 
-</urlset>
+   </urlset>
+

@@ -907,6 +907,12 @@ body.dark .home-practice-cta .cta-button.secondary {
   font-family: monospace;
   font-size: 1.25rem;
 }
+.phonetic-message {
+  margin: 0.65rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
 .ipa-help-line {
   display: flex;
   align-items: center;

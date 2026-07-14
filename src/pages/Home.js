@@ -1056,12 +1056,35 @@ const homeFaqs = [
   },
 ];
 
+const resolvePronunciationMessage = (data = {}) =>
+  String(
+    data.message ?? data.suggestion ?? data.error ?? data.reason ?? "",
+  ).trim();
+
+const readResponsePayload = async (response) => {
+  if (!response) return {};
+
+  const contentType = response.headers.get("content-type") || "";
+
+  try {
+    if (contentType.includes("application/json")) {
+      return await response.json();
+    }
+
+    const text = await response.text();
+    return text ? { message: text } : {};
+  } catch (_) {
+    return {};
+  }
+};
+
 const Home = () => {
   const [state, setState] = useState({
     word: "",
     accent: "en-US",
     isMale: true,
     phonetic: "",
+    pronunciationMessage: "",
     speed: "normal",
     hasPronounced: false,
     isLoading: false,
@@ -1090,6 +1113,7 @@ const Home = () => {
     accent,
     isMale,
     phonetic,
+    pronunciationMessage,
     speed,
     hasPronounced,
     isLoading,
@@ -1250,7 +1274,8 @@ const Home = () => {
   const applyPronunciationResult = useCallback(
     (data, requestKey) => {
       const result = {
-        phonetic: data.phonetic || "Phonetic transcription not available.",
+        phonetic: data.phonetic || "",
+        pronunciationMessage: resolvePronunciationMessage(data),
         entries: Array.isArray(data.entries) ? data.entries : [],
         default_pos: data.default_pos || null,
         synonyms: Array.isArray(data.synonyms) ? data.synonyms : [],
@@ -1264,6 +1289,7 @@ const Home = () => {
 
       updateState({
         phonetic: result.phonetic,
+        pronunciationMessage: result.pronunciationMessage,
         entries: result.entries,
         default_pos: result.default_pos,
         synonyms: result.synonyms,
@@ -1389,7 +1415,21 @@ const Home = () => {
         }
 
         if (!response.ok) {
-          throw new Error(`Server error: ${response.status}`);
+          const errorData = await readResponsePayload(response);
+          applyPronunciationResult(
+            {
+              ...errorData,
+              phonetic: "",
+              entries: [],
+              default_pos: null,
+              synonyms: [],
+              antonyms: [],
+              syllables: [],
+              audioContent: null,
+            },
+            requestKey,
+          );
+          return;
         }
 
         const data = await response.json();
@@ -1635,6 +1675,7 @@ const Home = () => {
               isLoading={isLoading}
               hasPronounced={hasPronounced}
               phonetic={phonetic}
+              pronunciationMessage={pronunciationMessage}
               entries={entries}
               default_pos={default_pos}
               activePos={activePos}

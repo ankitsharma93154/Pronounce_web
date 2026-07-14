@@ -56,6 +56,7 @@ const ResultsCard = memo(
     isLoading,
     hasPronounced,
     phonetic,
+    pronunciationMessage,
     entries,
     default_pos,
     activePos,
@@ -85,6 +86,7 @@ const ResultsCard = memo(
       ) : (
         <ResultsContent
           phonetic={phonetic}
+          pronunciationMessage={pronunciationMessage}
           entries={entries}
           default_pos={default_pos}
           activePos={activePos}

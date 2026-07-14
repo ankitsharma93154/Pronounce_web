@@ -38,6 +38,7 @@ import SupportBanner from "./SupportBanner";
 const ResultsContent = memo(
   ({
     phonetic,
+    pronunciationMessage,
     entries,
     default_pos,
     activePos,
@@ -51,6 +52,7 @@ const ResultsContent = memo(
     <div className="results-content">
       <PhoneticSection
         phonetic={phonetic}
+        pronunciationMessage={pronunciationMessage}
         getPronunciation={getPronunciation}
         toggleFavorite={toggleFavorite}
         isFavorite={isFavorite}

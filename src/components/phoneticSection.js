@@ -2,7 +2,13 @@ import React, { memo } from "react";
 import { AudioWaveform, BookOpen } from "lucide-react";
 
 const PhoneticSection = memo(
-  ({ phonetic, getPronunciation, isPlaying, syllables }) => (
+  ({
+    phonetic,
+    pronunciationMessage,
+    getPronunciation,
+    isPlaying,
+    syllables,
+  }) => (
     <div className="phonetic-section">
       <div className="section-header">
         <h3 className="section-title">Phonetic Transcription</h3>
@@ -22,6 +28,10 @@ const PhoneticSection = memo(
           {phonetic || "/ _ /"}
         </span>
       </div>
+
+      {pronunciationMessage && (
+        <p className="phonetic-message">{pronunciationMessage}</p>
+      )}
 
       <p className="ipa-help-line">
         <BookOpen className="cta-inline-icon" size={14} />
