@@ -25,7 +25,7 @@ const PhoneticSection = memo(
         </button>
 
         <span className={`phonetic-text${isPlaying ? " playing" : ""}`}>
-          {phonetic || "/ _ /"}
+          {phonetic || "Phonetic transcription not available."}
         </span>
       </div>
 
